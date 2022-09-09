@@ -1,0 +1,41 @@
+.card-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 25vw;
+    .card-image{
+        margin-bottom: 20em;
+        width: 15em;
+        position: relative;
+    }
+    .card-parte-texto{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(10px);
+        height: 35vh;
+        width: 25%;
+        border-radius: 1.5em;
+        .card-parte-texto-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 100%;
+            align-items: center;
+            h1{
+                color: #fff;
+            }
+            p{
+                font-size: .9em;
+                color: #fff;
+                text-align: center;
+                margin-bottom: 3em;
+            }
+        }
+        
+    }
+}

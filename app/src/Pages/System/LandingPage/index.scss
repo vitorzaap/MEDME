@@ -1,3 +1,105 @@
+@font-face {
+    font-family: 'NotoSans_regular';
+    src: url(../../../assets/fonts/Noto_Sans/NotoSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'NotoSans_semibold';
+    src: url(../../../assets/fonts/Noto_Sans/NotoSans-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'NotoSans_bold';
+    src: url(../../../assets/fonts/Noto_Sans/NotoSans-ExtraBold.ttf);
+}
 .landing-main{
     display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-image: url('../../../assets/images/wallpaper\ landing\ page.svg');
+
+    header{
+        height: 10vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 1em;
+
+        .lm-header-logo{
+            width: 5em;
+        }
+        .lm-header-div{
+            display: flex;
+            align-items: center;
+            
+            .lm-button-text{
+                font-family: 'NotoSans_regular';
+                letter-spacing: -0.25px;
+                border: none;
+                color: #fff;
+                padding: 1em;
+                font-size: .925em;
+            }
+            .lm-button-1{
+                outline: none;
+                cursor: pointer;
+                font-family: 'NotoSans_semibold';
+                border: .2em solid #FFFFFF;
+                border-radius: 3em;
+                padding: .7em 2em .7em 2em;
+                background-color: transparent;
+                color: #fff;
+                transition: all .2s;
+            }
+            .lm-button-1:hover{
+                transform: scale(1.05);
+            }
+        }
+    }
+    .lm-section-1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 80vh;
+        .lm-section-1-div-text{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                font-family: 'NotoSans_semibold';
+                color: #fff;
+                font-size: 3em;
+                font-weight: 700;
+                line-height: 1.5em;
+                text-align: center;
+                width: 65vw;
+                text-shadow: 1px 4px 10px #00000033;
+            }
+            p{ 
+                font-size: .85em;
+                color: #fff;
+                width: 55vw;
+                text-align: center;
+                text-shadow: 2px 2px 5px #00000040;
+            }
+            .lm-section-1-div-text-space-div{
+                height: 5vh;
+            }
+            button{
+                font-family: 'NotoSans_bold';
+                padding: 1.5vh 2em;
+                border-radius: 3em;
+                border: none;
+                font-size: 1.2em;
+                cursor: pointer;
+                color: #6336FF;
+            }
+        }
+        
+    }
+    .space-div{
+        height: 20vh;
+    }
+    .lm-section-2-cards{
+        display: flex;
+        justify-content: space-around;
+    }
 }
