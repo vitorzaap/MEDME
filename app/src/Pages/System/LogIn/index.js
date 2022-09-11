@@ -8,16 +8,15 @@ export default function Index() {
 			<div className="login-main-content">
 				<div className="login-main-content-text">
 					<img src={Logo} alt="Logo" />
-					<h1>Crie sua conta</h1>
+					<h1>Seja bem-vindo de volta!</h1>
 					<p>
-						Já possui uma conta? <button className="sg-lg-btn">Entrar agora!</button>
+						Não possui uma conta? <button className="sg-lg-btn">Criar agora!</button>
 					</p>
 				</div>
 				<div className="login-main-content-inputs">
-					<Input text="Nome" placeholder="Victor Santos" type="text" />
 					<Input text="E-mail" placeholder="medme@medme.com" type="email" />
 					<Input text="Senha" placeholder="********" type="password" />
-					<button className="sg-lg-btn-complex">Criar conta</button>
+					<button className="sg-lg-btn-complex">Entrar</button>
 				</div>
 			</div>
 		</main>
