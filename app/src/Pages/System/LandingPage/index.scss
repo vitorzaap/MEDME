@@ -40,6 +40,8 @@
                 transition: all .2s;
             }
             .lm-button-1:hover{
+                background-color: #fff;
+                color: #6336FF;
                 transform: scale(1.05);
             }
         }
@@ -81,6 +83,14 @@
                 font-size: 1.2em;
                 cursor: pointer;
                 color: #6336FF;
+                transition: all .2s;
+            }
+            button:hover{
+                transform: scale(1.05);
+                color: #fff;
+                background-color: #ffffff00;
+                border: 1px solid #fff;
+
             }
         }
         

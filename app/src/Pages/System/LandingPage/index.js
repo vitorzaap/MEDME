@@ -12,11 +12,11 @@ export default function Index() {
     return (
         <main className="landing-main">
             <header>
-                <img src={Logo} className='lm-header-logo'/>
+                <img src={Logo} className='lm-header-logo' alt="logo"/>
                 <div className="lm-header-div">
-                    <a className="lm-button-text">Home</a>
-                    <a className="lm-button-text">Sobre nós</a>
-                    <a className="lm-button-text">Valores</a>
+                    <a className="lm-button-text" href="#">Home</a>
+                    <a className="lm-button-text"href="#">Sobre nós</a>
+                    <a className="lm-button-text"href="#">Valores</a>
                     <button className="lm-button-1" onClick={() => { navigate("/login")}}>Fazer Login</button>
                 </div>
             </header>
@@ -29,7 +29,7 @@ export default function Index() {
                         Obtenha ajuda de qualquer lugar a qualquer momento, com o nosso atendimento rápido você não vai passar por problemas.
                     </p>
                     <div className="lm-section-1-div-text-space-div"></div>
-                    <button>
+                    <button onClick={() => { navigate("/sigin")}}>
                         Cadastrar-se de graça
                     </button>
                     </div>
