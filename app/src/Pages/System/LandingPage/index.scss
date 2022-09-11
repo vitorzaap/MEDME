@@ -14,11 +14,11 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-image: url('../../../assets/images/wallpaper\ landing\ page.svg');
+    background-image: url('../../../assets/images/wallpaperLp.svg');
 
     header{
         height: 10vh;
-        width: 100vw;
+        max-width: 100vw;
         display: flex;
         justify-content: space-between;
         padding: 0 1em;
@@ -33,6 +33,7 @@
             .lm-button-text{
                 font-family: 'NotoSans_regular';
                 letter-spacing: -0.25px;
+                cursor: pointer;
                 border: none;
                 color: #fff;
                 padding: 1em;
