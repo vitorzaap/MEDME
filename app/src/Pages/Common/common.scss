@@ -1,25 +1,24 @@
 //cores para uso em todas as partes do site.
-$primaria: #6336FF;
-$cinza: #EDEEF2;
+$primaria: #6336ff;
+$cinza: #edeef2;
 $btn-hover: #6236fff1;
 @font-face {
-    font-family: 'Noto-regular';
-    src: url("../../assets/fonts/Noto_Sans/NotoSans-Regular.ttf");
+	font-family: "Noto-regular";
+	src: url("../../assets/fonts/Noto_Sans/NotoSans-Regular.ttf");
 }
 @font-face {
-    font-family: 'Noto-semibold';
-    src: url("../../assets/fonts/Noto_Sans/NotoSans-SemiBold.ttf");
+	font-family: "Noto-semibold";
+	src: url("../../assets/fonts/Noto_Sans/NotoSans-SemiBold.ttf");
 }
 @font-face {
-    font-family: 'Noto-bold';
-    src: url("../../assets/fonts/Noto_Sans/NotoSans-Bold.ttf");
+	font-family: "Noto-bold";
+	src: url("../../assets/fonts/Noto_Sans/NotoSans-Bold.ttf");
 }
 
 @font-face {
 	font-family: "Noto-light";
 	src: url("../../assets/fonts/Noto_Sans/NotoSans-Light.ttf");
 }
-
 
 * {
 	box-sizing: border-box;
@@ -28,7 +27,8 @@ $btn-hover: #6236fff1;
 	user-select: none;
 }
 
-.sg-lg-btn{ //essa classe é reutilizável para botões simples, com apenas texto e colorido
+.sg-lg-btn {
+	//essa classe é reutilizável para botões simples, com apenas texto e colorido
 	border: none;
 	background: none;
 	cursor: pointer;
@@ -37,12 +37,12 @@ $btn-hover: #6236fff1;
 	color: $primaria; //exemplo de uso
 }
 
-.sg-lg-btn:hover{
+.sg-lg-btn:hover {
 	color: #6236ffc0;
 }
 
-.sg-lg-btn-complex{
-	padding: .625em;
+.sg-lg-btn-complex {
+	padding: 0.625em;
 	cursor: pointer;
 	font-family: "Noto-bold";
 	font-size: 1.0625em;
@@ -50,9 +50,9 @@ $btn-hover: #6236fff1;
 	background-color: $primaria;
 	border: none;
 	color: #fff;
-	border-radius: .5em;
+	border-radius: 0.5em;
 }
 
-.sg-lg-btn-complex:hover{
+.sg-lg-btn-complex:hover {
 	background-color: #6236fff1;
 }
