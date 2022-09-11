@@ -1,3 +1,38 @@
-.login-main{
-    display: flex;
+.login-main {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background: url("../../../assets/images/login-bg.png") no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	.login-main-content {
+		display: flex;
+		width: max-content;
+		height: max-content;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		.login-main-content-text {
+			h1 {
+				font-family: "Noto-bold";
+				font-size: 2.5em;
+			}
+
+			p {
+				font-family: "Noto-regular";
+				font-size: 0.875em;
+			}
+		}
+
+        .login-main-content-inputs{
+            display: flex;
+            flex-direction: column;
+            padding: 2em 0;
+
+            .sg-lg-btn-complex{
+                margin-top: 1.5em;
+            }
+        }
+	}
 }

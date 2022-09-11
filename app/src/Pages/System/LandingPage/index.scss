@@ -1,15 +1,4 @@
-@font-face {
-    font-family: 'NotoSans_regular';
-    src: url(../../../assets/fonts/Noto_Sans/NotoSans-Regular.ttf);
-}
-@font-face {
-    font-family: 'NotoSans_semibold';
-    src: url(../../../assets/fonts/Noto_Sans/NotoSans-SemiBold.ttf);
-}
-@font-face {
-    font-family: 'NotoSans_bold';
-    src: url(../../../assets/fonts/Noto_Sans/NotoSans-ExtraBold.ttf);
-}
+
 .landing-main{
     display: flex;
     flex-direction: column;
@@ -31,7 +20,7 @@
             align-items: center;
             
             .lm-button-text{
-                font-family: 'NotoSans_regular';
+                font-family: 'Noto-regular';
                 letter-spacing: -0.25px;
                 cursor: pointer;
                 border: none;
@@ -42,7 +31,7 @@
             .lm-button-1{
                 outline: none;
                 cursor: pointer;
-                font-family: 'NotoSans_semibold';
+                font-family: 'Noto-semibold';
                 border: .2em solid #FFFFFF;
                 border-radius: 3em;
                 padding: .7em 2em .7em 2em;
@@ -65,7 +54,7 @@
             flex-direction: column;
             align-items: center;
             h1{
-                font-family: 'NotoSans_semibold';
+                font-family: 'Noto-semibold';
                 color: #fff;
                 font-size: 3em;
                 font-weight: 700;
@@ -85,7 +74,7 @@
                 height: 5vh;
             }
             button{
-                font-family: 'NotoSans_bold';
+                font-family: 'Noto-bold';
                 padding: 1.5vh 2em;
                 border-radius: 3em;
                 border: none;

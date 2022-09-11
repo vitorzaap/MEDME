@@ -5,8 +5,10 @@ import Card from './Card/index.js'
 import image1 from '../../../assets/images/icon1-card.svg'
 import image2 from '../../../assets/images/icon2-card.svg'
 import image3 from '../../../assets/images/icon3-card.svg'
+import { useNavigate } from "react-router-dom";
 
 export default function Index() {
+    const navigate = useNavigate();
     return (
         <main className="landing-main">
             <header>
@@ -15,7 +17,7 @@ export default function Index() {
                     <a className="lm-button-text">Home</a>
                     <a className="lm-button-text">Sobre nós</a>
                     <a className="lm-button-text">Valores</a>
-                    <button className="lm-button-1">Fazer Login</button>
+                    <button className="lm-button-1" onClick={() => { navigate("/login")}}>Fazer Login</button>
                 </div>
             </header>
             <section className="lm-section-1">
