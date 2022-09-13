@@ -1,17 +1,16 @@
 import { Router } from "express";
-
+import { userLogin } from "../Repo/userRepo.js";
 const router = Router();
 
-router.get("/api/test", async (req, res) => {
-	try {
-		res.send("Yeah, its working!");
-	} catch (err) {
-		res.status(401).send({
-			erro: err.message,
-		});
-	}
+router.post("/api/user/login", async (req, res) => {
+  try {
+    const [email, pass] = req.body;
+    res.send(await userLogin(email, pass));
+  } catch (err) {
+    res.status(401).send({
+      erro: err.message,
+    });
+  }
 });
-
-
 
 export default router;
