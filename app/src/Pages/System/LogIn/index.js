@@ -55,11 +55,13 @@ export default function Index() {
 									}, 2500)
 								}
 								catch (err) {
-									ref.current.complete();
+									setTimeout(() => {
+										ref.current.complete();
 									setDisabled(false)
 									if (err.response.status === 401) {
 										setErro(err.response.data.erro);
 									}
+									}, 1000)
 								}
 							}
 							
