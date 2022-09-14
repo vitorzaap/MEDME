@@ -2,10 +2,8 @@
     cursor: pointer;
     display: flex;
     justify-content: flex-end;
-    border: 1px solid red;
     align-items: center;
-    width: 12em;
-    padding: 2em;
+    width: 10.5em;
     height: 3em;
     border-radius: .6em;
 
@@ -17,8 +15,8 @@
     height: 3em;
     padding: .7em;
     img{
-        width: 3em;
-        height: 3em;
+        width: 2.5em;
+        height: 2.5em;
     }
    }
    .div-p {
@@ -30,12 +28,12 @@
     padding: .3em;
     p{
         font-family: 'Noto-bold';
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
    }
 }
 .cards:hover{
-    background-color: #6336FF;
+    background-color: #6236ffd4;
     color: white;
     
     .icon {

@@ -11,9 +11,9 @@ import logoaval from "../../../assets/images/medal-2.svg"
 export default function Menu(props) {
     return(
         <main className="content-menu">
-            <div className="Container">
+            <div className="Container-lateral">
                 
-                <div className="Subcontainer">
+                <div className="Subcontainer-lateral">
                     <div className="Card">
                         <div className="div-img">
                             <img src={logo} />
@@ -36,7 +36,7 @@ export default function Menu(props) {
                     </div>
                     
                 </div>
-                <div className="Subcontainer2">
+                <div className="Subcontainer2-lateral">
                 <div className="Card">
                         <div className="div-img">
                             <img src={logosair} />

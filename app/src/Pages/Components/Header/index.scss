@@ -1,0 +1,67 @@
+.header-component {
+    border: 1px solid red;
+    width: 86vw;
+    height: 11vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: .3em;
+
+    .search-header{
+        cursor: pointer;
+        width: 50%;
+        height: 50%;
+        display: flex;
+        justify-content: flex-start;
+        background-color: #F6F7F9;
+        align-items: center;
+        padding: .8em 0 .8em 1.6em;
+        border-radius: 1.8em;
+
+        img {
+            width: 1.5em;
+            margin: 0 .6em 0 0;
+        }
+        input {
+            background-color: transparent;
+            width: 40%;
+            height: 100%;
+            padding: .4em;
+            border: none;
+            outline: none;
+            font-size: 1.2em;
+            font-family: "Noto-regular" ;
+        }
+    }
+    .icon-header {
+        width: 22%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: .6em;
+        img {
+            width: 2.2em;
+            cursor: pointer;
+        }
+    }
+    .user-card {
+        width: 14%;
+        height: 52%;
+        border-radius: 12px;
+        background-color: #F2ECFF;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin: 0 2.4em 0 0;
+
+        img {
+            width: 2.2em;
+            cursor: pointer;
+            border: 1px solid red;
+        }
+        p{
+            font-size: 1em;
+            font-family: "Noto-semibold";
+        }
+    }
+}

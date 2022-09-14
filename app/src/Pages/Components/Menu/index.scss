@@ -1,7 +1,7 @@
 .content-menu {
-    width: 100vw;
-    height: 100vh;
-    .Container {
+
+    .Container-lateral {
+        border: 1px solid red;
         width: 14vw;
         height: 100vh;
         background-color: #fff;
@@ -10,7 +10,7 @@
         align-items: center;
         justify-content: space-between;  
     }
-    .Subcontainer {
+    .Subcontainer-lateral {
         height: 50%;
         width: 100%;
         display: flex;
@@ -18,8 +18,9 @@
         justify-content: space-around;
         align-items: center;
     }
-    .Subcontainer2{
+    .Subcontainer2-lateral{
         width: 100%;
+        height: 10%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -43,8 +44,8 @@
     height: 3em;
     padding: .7em;
     img{
-        width: 3em;
-        height: 3em;
+        width: 2.5em;
+        height: 2.5em;
     }
    }
    .div-p {
