@@ -53,6 +53,14 @@ $btn-hover: #6236fff1;
 	border-radius: 0.5em;
 }
 
+.sg-lg-btn-complex:disabled{
+	background-color: #8766fff1;
+}
+
+.sg-lg-btn-complex:disabled:hover{
+	background-color: #8766fff1;
+}
+
 .sg-lg-btn-complex:hover {
 	background-color: #6236fff1;
 }
@@ -90,11 +98,12 @@ $btn-hover: #6236fff1;
 		font-family: "Noto-regular";
 		font-size: 0.90625em;
 	}
-	.err-p{
-		font-size: 0.825em;
-		color: red;
-		font-family: "Noto-regular";
-	}
+	
 	//favor não alterar valores aqui.
+}
+.err-p{
+	font-size: 0.825em;
+	color: red;
+	font-family: "Noto-regular";
 }
 

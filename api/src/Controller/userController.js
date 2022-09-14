@@ -4,9 +4,13 @@ const router = Router();
 
 router.post("/api/user/login", async (req, res) => {
 	try {
-		const {email, pass} = req.body;
-		const resp = await userLogin(email, pass);
-		res.send(resp);
+		const { email, senha } = req.body;
+		const r = await userLogin(email, senha);
+		if (!r) {
+			throw new Error("Senha ou E-mail incorretos.");
+		} else {
+			res.send(r);
+		}
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,

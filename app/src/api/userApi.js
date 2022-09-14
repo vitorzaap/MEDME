@@ -9,5 +9,6 @@ export async function userLogin(email, pass) {
         email: email,
         senha: pass
     });
+    
     return r.data;
 }
