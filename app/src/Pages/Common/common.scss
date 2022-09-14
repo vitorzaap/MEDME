@@ -79,6 +79,21 @@ $btn-hover: #6236fff1;
 		color: #6b6f80;
 		font-family: "Noto-regular";
 	}
+
+	.err-input{
+		background-color: #ebebeb;
+		border: .5px solid red;
+		padding: 1.1em 1em 1.12em 1em;
+        width: 100%;
+		border-radius: 0.625em;
+		font-family: "Noto-regular";
+		font-size: 0.90625em;
+	}
+	.err-p{
+		font-size: 0.825em;
+		color: red;
+		font-family: "Noto-regular";
+	}
 	//favor não alterar valores aqui.
 }
 
