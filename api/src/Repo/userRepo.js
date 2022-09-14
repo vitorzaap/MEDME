@@ -11,6 +11,5 @@ export async function userLogin(email, pass) {
                ds_senha = ?
         `;
     const [res] = await con.query(c, [email, pass]);
-    console.log(res[0])
 	return res[0];
 }
