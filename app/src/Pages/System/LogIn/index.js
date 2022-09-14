@@ -5,7 +5,6 @@ import { userLogin } from "../../../api/userApi.js";
 import { useState } from "react";
 export default function Index() {
 	const [classErrEmail, setClassErrEmail] = useState("default-input");
-	const [btn, setBtn] = useState(false)
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
