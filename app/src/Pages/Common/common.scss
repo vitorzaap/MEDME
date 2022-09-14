@@ -56,3 +56,29 @@ $btn-hover: #6236fff1;
 .sg-lg-btn-complex:hover {
 	background-color: #6236fff1;
 }
+
+.input-main {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	padding: 0.5em 0;
+	.input-text {
+		font-family: "Noto-semibold";
+	}
+	.default-input {
+		background-color: #ebebeb;
+		outline: none;
+		border: none;
+		padding: 1.1em 1em 1.12em 1em;
+        width: 100%;
+		border-radius: 0.625em;
+		font-family: "Noto-regular";
+		font-size: 0.90625em;
+	}
+	.default-input::placeholder {
+		color: #6b6f80;
+		font-family: "Noto-regular";
+	}
+	//favor não alterar valores aqui.
+}
+

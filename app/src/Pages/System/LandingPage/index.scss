@@ -7,13 +7,15 @@
 
     header{
         height: 10vh;
-        max-width: 100vw;
+        width: 100vw;
         display: flex;
+        backdrop-filter: blur(10px);
+        position: fixed;
         justify-content: space-between;
-        padding: 0 1em;
+        padding: 0 2em;
 
         .lm-header-logo{
-            width: 5em;
+            width: 8em;
         }
         .lm-header-div{
             display: flex;

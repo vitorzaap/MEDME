@@ -1,12 +1,12 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
-import clientController from "./Controller/clientController.js"
+import userController from "./Controller/userController.js"
 
 const router = express();
 router.use(cors());
 router.use(express.json());
-router.use(clientController);
+router.use(userController);
 
 router.listen(process.env.PORT, () => console.log(`Server online on PORT: ${process.env.PORT}`));
 
