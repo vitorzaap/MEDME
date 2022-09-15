@@ -33,10 +33,11 @@
    }
 }
 .cards:hover{
-    background-color: #6236ffd4;
+    background-color: #6336FF;
     color: white;
     
     .icon {
         filter: invert(100%);
     }
+    transition: 500ms;
 }
