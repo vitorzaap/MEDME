@@ -1,4 +1,12 @@
 .main-consultas{
     display: flex;
-    
+    .container-consultas {
+        display: flex;
+        flex-direction: column;
+        .content-consultas{
+            width: 86vw;
+            height: 89vh;
+            background-color: #EDEEF2;
+        }
+    }
 }

@@ -7,7 +7,12 @@ export default function Index() {
     return(
         <main className="main-consultas">
             <Menu />
-            <Cabecalho />
+            <div className="container-consultas">
+                <Cabecalho />
+                <div className="content-consultas">
+                    
+                </div>
+            </div>
         </main>
     )
 }
