@@ -1,7 +1,8 @@
 import "./index.scss"
 import "../../../Common/common.scss"
+import iconuser from "../../../../assets/images/image 4.svg"
 
-export default function Index() {
+export default function Index(props) {
     
      function hideNova(){
         var element = document.getElementById("pop-up")
@@ -19,7 +20,12 @@ export default function Index() {
                     <div className="l-nova">
                         <div className="paciente-input">
                             <label>Paciente</label>
-                            <input />
+                            <select>
+                                <option> 
+                                    <img src={iconuser} /> 
+                                    <p>Sr.Piton</p>
+                                </option>
+                            </select>
                         </div>
                         <div className="descricao-input">
                             <label>Descrição</label>
@@ -28,8 +34,8 @@ export default function Index() {
                         <div className="data-input">
                             <label>Data e hora</label>
                             <div className="data-hora-inputs">
-                                <input />
-                                <input />
+                                <input type="date" className="date-input" />
+                                <input type="time" className="time-input" />
                             </div>
                         </div>
                         <div className="tipo-input">
@@ -48,7 +54,7 @@ export default function Index() {
                         </div>
                         <div className="link-input">
                             <label>Link da consulta</label>
-                            <p></p>
+                            <p>http://localhost:3000/consultas</p>
                         </div>
                     </div>
                 </div>
