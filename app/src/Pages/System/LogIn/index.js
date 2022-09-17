@@ -22,7 +22,9 @@ export default function Index() {
 					<img src={Logo} alt="Logo" />
 					<h1>Bem-vindo de volta!</h1>
 					<p>
-						Não possui uma conta? <button className="sg-lg-btn">Criar agora!</button>
+						Não possui uma conta? <button className="sg-lg-btn" onClick={() => {
+							nav("/sigin")
+						}}>Criar agora!</button>
 					</p>
 				</div>
 				<div className="login-main-content-inputs">
