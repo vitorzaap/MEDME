@@ -17,3 +17,21 @@ Desta forma, você consegue resolver seus problemas sem mesmo sair de casa, bast
 - [@Kalellz](https://github.com/Kalellz) - Kalel Rodrigues
 - [@Horvath9](https://github.com/Horvath9) - Pedro Horvath
 - [@boaventuraxyz](https://github.com/boaventuraxyz) - Julio Boaventura
+
+## Links
+
+ - Diagrama de atividade:
+https://www.figma.com/file/KQ7PcgrkLs6XPaouSPcPxH/mapeamento-dos-endpoints?node-id=0%3A1
+
+- Figma - Protótipo 
+https://www.figma.com/file/k5elN4gKLilrgglIqzAUMc
+
+
+- Figma - Telas
+https://www.figma.com/file/iU0eakoqOWlkZdPvh3sVk7
+
+
+- Mer:
+https://www.figma.com/file/Xqvh216Hd34n3HP9VaT33H/MEDME-MER-(Copy)?node-id=0%3A1
+
+___
