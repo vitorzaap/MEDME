@@ -40,7 +40,11 @@ export default function Index(props) {
                         </div>
                         <div className="tipo-input">
                             <label>Tipo de consulta</label>
-                            <input />
+                            <select>
+                                <option>
+                                <p>Psicologia</p>
+                                </option>
+                            </select>
                         </div>
                     </div>
                     <div className="r-nova">
@@ -59,7 +63,7 @@ export default function Index(props) {
                     </div>
                 </div>
                 <div className="button-confirm">
-                    <button>Confirmar consulta</button>
+                    <button className="button-consult">Confirmar consulta</button>
                 </div>
             </section>              
         </main>
