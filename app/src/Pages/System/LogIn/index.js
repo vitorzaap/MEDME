@@ -9,6 +9,7 @@ export default function Index() {
 	const [classErrEmail, setClassErrEmail] = useState("default-input");
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
 	const [erro, setErro] = useState("");
+	const [inputErr, setInputErr] = useState("")
 	const [disabled, setDisabled] = useState(false);
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
@@ -16,7 +17,7 @@ export default function Index() {
 	const nav = useNavigate();
 	return (
 		<main className="login-main">
-			<LoadingBar ref={ref} />
+			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="login-main-content">
 				<div className="login-main-content-text">
 					<img src={Logo} alt="Logo" />
@@ -66,8 +67,6 @@ export default function Index() {
 									}, 1000)
 								}
 							}
-							
-							
 						}}>
 						Entrar
 					</button>

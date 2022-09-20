@@ -74,3 +74,42 @@
 		}
 	}
 }
+
+@media (max-width: 1280px) {
+	.sigin-main {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		background: url("../../../assets/images/login-bg.png") no-repeat;
+		background-size: cover;
+		justify-content: center;
+		align-items: center;
+		.sigin-main-content {
+			display: flex;
+			width: 33.5vw;
+			height: max-content;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			.sigin-main-content-text {
+				h1 {
+					font-family: "Noto-semibold";
+					font-size: 2em;
+				}
+				p {
+					font-family: "Noto-regular";
+					font-size: 0.875em;
+				}
+			}
+			.sigin-main-content-inputs {
+				display: flex;
+				flex-direction: column;
+				padding: 2em 0;
+				width: 100%;
+				.sg-lg-btn-complex {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
+}

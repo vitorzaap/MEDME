@@ -9,6 +9,7 @@ export default function Index() {
     const [classErrEmail, setClassErrEmail] = useState("default-input");
     const [ClassErrPass, setClassErrPass] = useState("default-input");
     const [ClassErrName, setClassErrName] = useState("default-input");
+	const [inputErr, setInputErr] = useState("")
 	const [erro, setErro] = useState("");
     const [disabled, setDisabled] = useState(false);
     const [name, setName] = useState("");
@@ -19,7 +20,7 @@ export default function Index() {
     
     return (
         <main className="sigin-main">
-			<LoadingBar ref={ref} />
+			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="sigin-main-content">
 				<div className="sigin-main-content-text">
 					<img src={Logo} alt="Logo" />
@@ -34,17 +35,17 @@ export default function Index() {
                 <div className="input-main">
 						<p className="input-text">Nome</p>
 						<input type="email" className={ClassErrName} placeholder="Vitor Santos" value={name} onChange={e => setName(e.target.value)} />
-						{ClassErrName === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+						{ClassErrName === "err-input" && <p className="err-p">{inputErr}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">E-mail</p>
 						<input type="email" className={classErrEmail} placeholder="medme@medme.com" value={email} onChange={e => setEmail(e.target.value)} />
-						{classErrEmail === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+						{classErrEmail === "err-input" && <p className="err-p">{inputErr}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">Senha</p>
 						<input type="password" className={ClassErrPass} placeholder="********" value={pass} onChange={e => setPass(e.target.value)} />
-						{ClassErrPass === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+						{ClassErrPass === "err-input" && <p className="err-p">{inputErr}</p>}
 					</div>
 					<button
 						className="sg-lg-btn-complex"
@@ -53,6 +54,7 @@ export default function Index() {
 							!email ? setClassErrEmail("err-input") : setClassErrEmail("default-input");
                             !pass ? setClassErrPass("err-input") : setClassErrPass("default-input");
                             !name ? setClassErrName("err-input") : setClassErrName("default-input");
+							pass < 8 ? setInputErr("A senha deve conter no mínimo 8 caracteres.") : set
 							if (email && pass && name) {
 								ref.current.continuousStart();
 								setDisabled(true);
