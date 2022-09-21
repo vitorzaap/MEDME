@@ -6,20 +6,21 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import LoadingBar from "react-top-loading-bar"
 export default function Index() {
-    const [classErrEmail, setClassErrEmail] = useState("default-input");
-    const [ClassErrPass, setClassErrPass] = useState("default-input");
-    const [ClassErrName, setClassErrName] = useState("default-input");
-	const [inputErr, setInputErr] = useState("")
-	const [erro, setErro] = useState("");
-    const [disabled, setDisabled] = useState(false);
-    const [name, setName] = useState("");
+	const [classErrEmail, setClassErrEmail] = useState("default-input");
+	const [ClassErrPass, setClassErrPass] = useState("default-input");
+	const [ClassErrName, setClassErrName] = useState("default-input");
+	const [erroPass, setErroPass] = useState("")
+	const [erroName, setErroName] = useState("");
+	const [erroEmail, setErroEmail] = useState("");
+	const [disabled, setDisabled] = useState(false);
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const ref = useRef();
-    const nav = useNavigate();
-    
-    return (
-        <main className="sigin-main">
+	const nav = useNavigate();
+
+	return (
+		<main className="sigin-main">
 			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="sigin-main-content">
 				<div className="sigin-main-content-text">
@@ -31,31 +32,54 @@ export default function Index() {
 						}}>Entrar agora!</button>
 					</p>
 				</div>
-                <div className="sigin-main-content-inputs">
-                <div className="input-main">
+				<div className="sigin-main-content-inputs">
+					<div className="input-main">
 						<p className="input-text">Nome</p>
 						<input type="email" className={ClassErrName} placeholder="Vitor Santos" value={name} onChange={e => setName(e.target.value)} />
-						{ClassErrName === "err-input" && <p className="err-p">{inputErr}</p>}
+						{ClassErrName === "err-input" && <p className="err-p">{erroName}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">E-mail</p>
 						<input type="email" className={classErrEmail} placeholder="medme@medme.com" value={email} onChange={e => setEmail(e.target.value)} />
-						{classErrEmail === "err-input" && <p className="err-p">{inputErr}</p>}
+						{classErrEmail === "err-input" && <p className="err-p">{erroEmail}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">Senha</p>
 						<input type="password" className={ClassErrPass} placeholder="********" value={pass} onChange={e => setPass(e.target.value)} />
-						{ClassErrPass === "err-input" && <p className="err-p">{inputErr}</p>}
+						{ClassErrPass === "err-input" && <p className="err-p">{erroPass}</p>}
 					</div>
 					<button
 						className="sg-lg-btn-complex"
 						disabled={disabled}
 						onClick={async () => {
-							!email ? setClassErrEmail("err-input") : setClassErrEmail("default-input");
-                            !pass ? setClassErrPass("err-input") : setClassErrPass("default-input");
-                            !name ? setClassErrName("err-input") : setClassErrName("default-input");
-							pass < 8 ? setInputErr("A senha deve conter no mínimo 8 caracteres.") : set
-							if (email && pass && name) {
+							if (!pass) {
+								setClassErrPass("err-input")
+								setErroPass("Este campo não pode estar vazio.")
+							}
+							else if (pass.length < 8) {
+								setClassErrPass("err-input")
+								setErroPass("A senha deve ter no mínimo 8 caracteres.")
+							}
+							else {
+								setClassErrPass("default-input")
+							}
+							if (!name) {
+								setClassErrName("err-input")
+								setErroName("Este campo não pode estar vazio.")
+							}
+							else {
+								setClassErrName("default-input")
+							}
+
+							if (!email) {
+								setClassErrEmail("err-input")
+								setErroEmail("Este campo não pode estar vazio.")
+							}
+							else {
+								setClassErrEmail("default-input")
+							}
+							if (pass.length >= 8 && email && name) {
+								console.log(true)
 								ref.current.continuousStart();
 								setDisabled(true);
 								try {
@@ -70,21 +94,24 @@ export default function Index() {
 								catch (err) {
 									setTimeout(() => {
 										ref.current.complete();
-									setDisabled(false)
-									if (err.response.status === 401) {
-										setErro(err.response.data.erro);
-									}
+										setDisabled(false)
+										if (err.response.status === 401) {
+											if (err.response.data.erro == "E-mail já está em uso.") {
+												setClassErrEmail("err-input");
+												setErroEmail(err.response.data.erro)
+											}
+										}
 									}, 1000)
 								}
 							}
-	
-							
+
+
 						}}>
 						Criar conta
 					</button>
-					{erro != "" && <p className="err-p">{erro}</p>}
+
 				</div>
 			</div>
 		</main>
-    );
+	);
 }

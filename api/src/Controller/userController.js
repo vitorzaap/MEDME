@@ -18,7 +18,7 @@ router.post("/api/user/login", async (req, res) => {
 	}
 });
 
-router.post("/api/user/sigIn", async (req, res) => {
+router.post("/api/user/account", async (req, res) => {
 	try {
 		const user = req.body;
 		const verif = await verifUserEmail(user.email);
