@@ -7,7 +7,6 @@ export default function Index(props) {
     function hideNova(){
         var element = document.getElementById("pop-up")
         element.classList.remove("show-main")
-
     }
 
     return(
