@@ -104,10 +104,12 @@
                         height: 3em;
                         border-radius: 8px;
                         background-color: #f8f8f8;
+                        
+                    
                   
                         display: flex;
                         align-items: center;
-                        justify-content: space-between;
+                        justify-content: space-around;
                         input {
                            
                             border: none;
@@ -121,14 +123,19 @@
                             font-size: .9em;
                             border-radius: 0.5em;
                             background-color: #F2ECFF;
+                            color:#6336FF;
+                            font-family: "Noto-regular";
+
                         }
                         .time-input{
                             width: 5.8em;
-                            height: 2.05em;
+                            height: 3em;
                             font-size: .9em;
                             border-radius: 0.5em;
                             background-color: #F2ECFF;
+                            color:#6336FF;
                         }
+                        
                         
                         
                        
