@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { medicLogin } from "../Repo/medicRepo.js";
+import { medicLogin , novaConsulta } from "../Repo/medicRepo.js";
+
 const router = Router();
 
 router.post("/api/medic/login", async (req, res) => {
@@ -12,5 +13,18 @@ router.post("/api/medic/login", async (req, res) => {
 		});
 	}
 });
+
+router.post("/api/medic/consulta" , async (req, resp) =>{
+	try{
+
+		const nova = req.body;
+
+		const consulta = await novaConsulta(nova);
+		resp.send(consulta)
+
+	} catch(err){
+
+	}
+})
 
 export default router;

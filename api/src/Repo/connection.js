@@ -6,5 +6,5 @@ const con = await mysql.createConnection({
 	password: process.env.PASS,
 	database: process.env.DB,
 });
-
+console.log("BD conectado!");
 export { con };

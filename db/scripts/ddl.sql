@@ -37,6 +37,7 @@ CREATE TABLE tb_consulta(
     ds_plataforma			varchar(200) not null,
     vl_preco				decimal not null,
     ds_link					varchar(500),
+    ds_situacao             varchar(200),
     FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
