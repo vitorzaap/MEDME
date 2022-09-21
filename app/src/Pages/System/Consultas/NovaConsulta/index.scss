@@ -2,9 +2,10 @@
     width: 75vw;
     height: 75vh;
     border-radius: 1em;
-    background-color: aliceblue;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
+    padding: 5em; 
     
 
     section {
@@ -33,19 +34,14 @@
             height: 80%;
            
 
-            .l-nova{
-                align-items: flex-start;
-            }
-            .r-nova{
-                align-items: flex-end;
-            }
-
             .l-nova, .r-nova{
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                align-items: flex-start;
                 width: 50%;
                 height: 100%;
+                border: solid 2px red;
                 
 
                 .paciente-input, .descricao-input, .data-input, .tipo-input, .plataforma-input, .preco-input, .link-input {
@@ -63,25 +59,23 @@
 
                     input{
                         border: none;
+                        background-color: #F8F8F8;
                     }
                 }
                 .paciente-input, .descricao-input, .data-input, .tipo-input {
                     align-items: flex-start;
                 }
-                .plataforma-input, .preco-input, .link-input{
-                    align-items: flex-end;
-                }
-                .paciente-input{
-                    width: fit-content;
+                
+                
                 
 
 
                     select{
                         width: 14em;
-                        height: 4em;
+                        height: 3em;
                         border: none;
                         background-color: #F2ECFF;
-                       border-radius: .3em; 
+                        border-radius: .3em; 
                         display: flex;
                         align-items: center;
                         padding: .5em;
@@ -96,7 +90,7 @@
                     textarea{
                         resize: none;
                         border: none;
-                        width: 28em;
+                        width: 28.06em;
                         padding: .8em;
                         font-family: "Noto-regular";
                         height: 10em;
@@ -107,12 +101,13 @@
                     .data-hora-inputs {
                         width: 15em;
                         border-radius: 8px;
+                        background-color: #f8f8f8;
                   
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
                         input {
-                            background-color: #F2ECFF;
+                           
                             border: none;
                             padding: .3em;
                             height: 3em;
@@ -123,23 +118,47 @@
                             height: 3em;
                             font-size: .9em;
                             border-radius: 0.5em;
+                            background-color: #F2ECFF;
                         }
                         .time.input{
                             width: 10em;
                             height: 3em;
                             font-size: .9em;
                             border-radius: 0.5em;
+                            background-color: #F2ECFF;
                         }
+                        
                         
                        
                     }
+                    
                 }
-                
+
+               
+                .plat-in, .link-in{
+                    width: 25.3em;
+                    height: 3.125em;
+                    font-size: .9em;
+                    border-radius: 0.5em;
+                    background-color: #F2ECFF;
+                    padding: .8em;
+
+                }
+                .pre-in{
+                    width: 25.3em;
+                    height: 3.125em;
+                    font-size: .9em;
+                    border-radius: 0.5em;
+                    background-color: #F2ECFF;
+                    padding: .8em;
+
+                }
+
             }
         }
 
     }
-}
+
 
 .pop-up {
     position: fixed;
@@ -176,3 +195,21 @@
     font-size: 24px;
 
 }
+.button-confirm{
+    border: solid 2px red;
+    display:flex;
+    align-items: center;
+    margin-top: 5em;
+}
+.time.input{
+    width: 10em;
+    height: 3em;
+    font-size: .9em;
+    border-radius: 0.5em;
+    background-color: #F2ECFF;
+}
+.r-nova{
+    margin-bottom: 8.25em;
+    height: 57%
+}
+//se falarem do meu margin eu vou bater, dps arrumo "clean" seus lixos, só quero fazer rápido

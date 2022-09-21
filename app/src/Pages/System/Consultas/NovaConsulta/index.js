@@ -47,21 +47,25 @@ export default function Index(props) {
                             </select>
                         </div>
                     </div>
+                    <section className="right-sec">
                     <div className="r-nova">
                         <div className="plataforma-input">
                             <label>Plataforma da consulta</label>
-                            <input />
+                            <input  className="plat-in"  placeholder="Escreva a plataforma"></input>
                         </div>
                         <div className="preco-input">
                             <label>Preço</label>
-                            <p>0</p>
+                            <input type="number" className="pre-in" placeholder="Defina um preço">
+                            </input>
+                           
                         </div>
                         <div className="link-input">
                             <label>Link da consulta</label>
-                            <p>http://localhost:3000/consultas</p>
+                            <input className="link-in" placeholder="Cole o link"></input>
                         </div>
-                    </div>
+                    </div></section>
                 </div>
+                
                 <div className="button-confirm">
                     <button className="button-consult">Confirmar consulta</button>
                 </div>
