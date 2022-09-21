@@ -4,14 +4,14 @@ import iconuser from "../../../../assets/images/image 4.svg"
 
 export default function Index(props) {
     
-     function hideNova(){
+    function hideNova(){
         var element = document.getElementById("pop-up")
         element.classList.remove("show-main")
 
     }
 
     return(
-        <main className="nova-content">
+        <main  className="nova-content">
             <section>
                 <div  className="title-nova">
                     <h1>Nova Consulta #3</h1>
@@ -47,7 +47,7 @@ export default function Index(props) {
                             </select>
                         </div>
                     </div>
-                    <section className="right-sec">
+                   
                     <div className="r-nova">
                         <div className="plataforma-input">
                             <label>Plataforma da consulta</label>
@@ -63,11 +63,11 @@ export default function Index(props) {
                             <label>Link da consulta</label>
                             <input className="link-in" placeholder="Cole o link"></input>
                         </div>
-                    </div></section>
+                    </div>
                 </div>
                 
                 <div className="button-confirm">
-                    <button className="button-consult">Confirmar consulta</button>
+                    <button className="button-consult" onClick={hideNova} >Confirmar consulta</button>
                 </div>
             </section>              
         </main>
