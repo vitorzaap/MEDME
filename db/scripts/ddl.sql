@@ -1,6 +1,9 @@
 -- fiz algumas correções. Não garanto 100% de acerto.
 CREATE DATABASE medmedb;
+DROP DATABASE medmedb;
 USE medmedb;
+
+SELECT * from tb_consulta;
 
 CREATE TABLE tb_usuario(
 	id_usuario			int primary key auto_increment,
@@ -14,6 +17,14 @@ CREATE TABLE tb_atuacao(
 	id_atuacao			int primary key auto_increment,
     ds_atuacao			varchar(200) not null
 );
+
+SELECT tb_atuacao.ds_atuacao	atuacao1,
+		tb_atuacao.ds_atuacao	atuacao2
+from tb_atuacao
+inner join tb_medico on tb_medico.id_atuacao1 = tb_atuacao.id_atuacao
+where tb_medico.id_medico = 1;
+
+select * from tb_medico;
 
 CREATE TABLE tb_medico(
 	id_medico		int primary key auto_increment,
@@ -37,7 +48,7 @@ CREATE TABLE tb_consulta(
     ds_plataforma			varchar(200) not null,
     vl_preco				decimal not null,
     ds_link					varchar(500),
-    ds_situacao             varchar(200),
+    ds_situacao				varchar(200),
     FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
