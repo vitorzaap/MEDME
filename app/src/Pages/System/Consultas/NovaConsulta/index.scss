@@ -1,223 +1,59 @@
-.nova-content {
-    width: 75vw;
-    height: 75vh;
-    border-radius: 1em;
-    background-color: #ffffff;
-    display: flex;
-    justify-content: center;
-    padding: 5em; 
-    
+.consult-content {
+	display: flex;
+	width: 60vw;
+	height: 70vh;
+	padding: 2em 1em;
+	background-color: #fff;
+	border-radius: 1em;
+	flex-direction: column;
 
-    section {
-        width: 95%;
-        height: 95%;
-        
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-         
-        .title-nova{
-            width: 100%;
-            height: 10%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
+	.main-input {
+		display: flex;
+		border: 1px solid red;
+		width: 100%;
+		height: 100%;
+		justify-content: space-between;
 
-            h1{
-                font-family: "Noto-bold";
-                font-size: 2.5em;
+		.r-input,
+		.l-input {
+			display: flex;
+			flex-direction: column;
+			border: 1px solid red;
+			width: 45%;
+
+            .default-input{
+                background-color: #F8F8F8;
             }
-        }
-        .main-content-nova {
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            height: 80%;
-           
-
-            .l-nova, .r-nova{
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                width: 50%;
-                height: 100%;
-                align-items: flex-start;
-             
-                
-
-                .paciente-input, .descricao-input, .data-input, .tipo-input, .plataforma-input, .preco-input, .link-input {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                   
-                    padding: .5em;
-                    
-                    label{
-                        padding: .5em 0 .5em 0;
-                        font-family: "Noto-semibold";
-                        font-size: 1.2em;
-                    }
-
-                    input{
-                        border: none;
-                        background-color: #F8F8F8;
-                    }
-                }
-                .paciente-input, .descricao-input, .data-input, .tipo-input {
-                    align-items: flex-start;
-                }
-                
-                
-                
-
-
-                    select{
-                        width: 14em;
-                        height: 3em;
-                        border: none;
-                        background-color: #F2ECFF;
-                        border-radius: .3em; 
-                        display: flex;
-                        align-items: center;
-                        padding: .5em;
-                        font-family: "Noto-semibold";
-                        font-size: .9em;
-                    }
-                }
-                .descricao-input{
-                    width: fit-content;
-                    height: 35%;
-
-                    textarea{
-                        resize: none;
-                        border: none;
-                        width: 28.06em;
-                        padding: .8em;
-                        font-family: "Noto-regular";
-                        height: 10em;
-                        background-color: #F8F8F8;
-                    }
-                }
-                .data-input{
-                    .data-hora-inputs {
-                        width: 23em;
-                        height: 3em;
-                        border-radius: 8px;
-                        background-color: #f8f8f8;
-                        
-                    
-                  
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-around;
-                        input {
-                           
-                            border: none;
-                            padding: .3em;
-                            height: 3em;
-                            border-radius: 0.5em;
-                        }
-                        .date-input {
-                            width: 12.8em;
-                            height: 3em;
-                            font-size: .9em;
-                            border-radius: 0.5em;
-                            background-color: #F2ECFF;
-                            color:#6336FF;
-                            font-family: "Noto-regular";
-
-                        }
-                        .time-input{
-                            width: 5.8em;
-                            height: 3em;
-                            font-size: .9em;
-                            border-radius: 0.5em;
-                            background-color: #F2ECFF;
-                            color:#6336FF;
-                        }
-                        
-                        
-                        
-                       
-                    }
-                    
-                }
-
-               
-                .plat-in, .link-in{
-                    width: 25.3em;
-                    height: 3.125em;
-                    font-size: .9em;
-                    border-radius: 0.5em;
-                    background-color: #F2ECFF;
-                    padding: .8em;
-
-                }
-                .pre-in{
-                    width: 25.3em;
-                    height: 3.125em;
-                    font-size: .9em;
-                    border-radius: 0.5em;
-                    background-color: #F2ECFF;
-                    padding: .8em; 
-
-                }
-
-            }
-        }
-
+		}
+		.div-btn {
+			display: flex;
+			width: 100%;
+			height: max-content;
+		}
+	}
+    .sg-lg-btn-complex{
+        font-size: 1.225em;
     }
-
+}
 
 .pop-up {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #000000b6;
-    transform: scale(1.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: visibility 0.6s ease-in-out, trasform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #000000b6;
+	transform: scale(1.1);
+	opacity: 0;
+	visibility: hidden;
 }
 .show-main {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
 }
 
-
-.button-consult{
-    cursor: pointer;
-    border: none;
-    width: 100%;
-    height: 3em;
-    background-color: #6336FF;
-    border-radius: 1em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ffffff;
-    font-size: 24px;
-
-}
-.button-confirm{
-    display:flex;
-    width: 75%;
-    align-items: center;
-    margin-top: 5em;
-}
-.time.input{
-    width: 10em;
-    height: 3em;
-    font-size: .9em;
-    border-radius: 0.5em;
-    background-color: #F2ECFF;
-}
-.r-nova{
-    align-items: flex-start;
-    height: 57%
-}
 //se falarem do meu margin eu vou bater, dps arrumo "clean" seus lixos, só quero fazer rápido
+
+// transition: visibility 0.6s ease-in-out, trasform 0.6s ease-in-out, opacity 0.6s ease-in-out;

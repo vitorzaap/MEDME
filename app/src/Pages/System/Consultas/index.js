@@ -15,8 +15,6 @@ export default function Index() {
             element.classList.add("show-main");
     }
 
-    
-
 
     return(
         <main className="main-consultas">
@@ -50,12 +48,7 @@ export default function Index() {
                                             <th>N° Consulta</th>
                                             <th>Plataforma</th>
                                             <th>Status</th>
-                                        </tr>
-
-
-
-
-                                        
+                                        </tr> 
                                     </table>
                                 </div>
                             </div>
