@@ -10,25 +10,23 @@ export async function userLogin(user) {
          WHERE ds_email = ? AND
                ds_senha = ?
         `;
-    const [res] = await con.query(c, [user.email, user.pass]);
+	const [res] = await con.query(c, [user.email, user.pass]);
 	return res[0];
 }
 
 export async function verifUserEmail(email) {
-    const c =
-        `
+	const c = `
         SELECT ds_email FROM tb_usuario WHERE ds_email = ?;
-        `
-    const [res] = await con.query(c, [email]);
-    return res[0];
+        `;
+	const [res] = await con.query(c, [email]);
+	return res[0];
 }
 export async function userSigIn(user) {
-    const c =
-        `
+	const c = `
         INSERT INTO tb_usuario(nm_usuario, ds_email, ds_senha)
                     VALUES(?, ?, ?);
-        `
-    const [res] = await con.query(c, [user.name, user.email, user.pass]);
-    user.Id = res.insertId;
-    return user;
+        `;
+	const [res] = await con.query(c, [user.name, user.email, user.pass]);
+	user.Id = res.insertId;
+	return user;
 }
