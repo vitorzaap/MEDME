@@ -16,7 +16,12 @@ export default function Index(props) {
 				<h1>Nova Consulta #{consult}</h1>
 			</div>
 			<div className="main-input">
-				<div className="r-input"></div>
+                <div className="r-input">
+                <div className="input-main">
+						<p className="input-text">Plataforma</p>
+						<textarea cols="10" rows="10" className="default-textarea" placeholder="Escreva algo de importante"></textarea>
+					</div>
+                </div>
 
 				<div className="l-input">
 					<div className="input-main">
