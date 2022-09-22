@@ -83,24 +83,10 @@ $btn-hover: #6236fff1;
 		font-family: "Noto-regular";
 		font-size: 0.90625em;
 	}
-	.default-input::placeholder, .default-textarea::placeholder {
+	.default-input::placeholder {
 		color: #6b6f80;
 		font-family: "Noto-regular";
 	}
-
-	.default-textarea{
-		max-width: 100%;
-		max-height: 12em;
-		background-color: #F8F8F8;
-		outline: none;
-		border: solid .5em #F8F8F8;
-		padding: .6em .5em .62em .5em;
-		border-radius: 0.625em;
-		font-family: "Noto-regular";
-		font-size: 0.90625em;
-	}
-
-	
 
 	.err-input{
 		background-color: #ebebeb;
