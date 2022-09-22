@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://localhost:5000"
+    baseURL: "http://remotemysql.com:3306"
 })
 
 export async function userLogin(email, pass) {
