@@ -2,14 +2,13 @@
 	display: flex;
 	width: 60vw;
 	height: 70vh;
-	padding: 2em 1em;
+	padding: 1em 2em;
 	background-color: #fff;
 	border-radius: 1em;
 	flex-direction: column;
 
 	.main-input {
 		display: flex;
-		border: 1px solid red;
 		width: 100%;
 		height: 100%;
 		justify-content: space-between;
@@ -18,7 +17,6 @@
 		.l-input {
 			display: flex;
 			flex-direction: column;
-			border: 1px solid red;
 			width: 45%;
 
             .default-input{
