@@ -28,7 +28,7 @@ export default function Index() {
 					<h1>Criar conta</h1>
 					<p>
 						Já possui uma conta? <button className="sg-lg-btn" onClick={() => {
-							nav("/login")
+							nav("/user/login")
 						}}>Entrar agora!</button>
 					</p>
 				</div>

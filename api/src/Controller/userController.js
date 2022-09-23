@@ -9,7 +9,7 @@ router.post("/api/user/login", async (req, res) => {
 		if (!r) {
 			throw new Error("Senha ou E-mail incorretos.");
 		} else {
-			res.send(r);
+			res.status(201).send(r);
 		}
 	} catch (err) {
 		res.status(401).send({

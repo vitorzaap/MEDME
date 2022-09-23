@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Lp from "./Pages/System/LandingPage";
 import LogIn from "./Pages/System/LogIn";
+import MedicLogin from "./Pages/Medic/login";
 import SigIn from "./Pages/System/SignIn";
 import Consultas from "./Pages/System/Consultas"
 export default function Index() {
@@ -8,8 +9,9 @@ export default function Index() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Lp />} />
-				<Route path="/login" element={<LogIn />} />
-				<Route path="/sigin" element={<SigIn />} />
+				<Route path="/user/login" element={<LogIn />} />
+				<Route path="/medic/login" element={<MedicLogin />} />
+				<Route path="/user/account" element={<SigIn />} />
 				<Route path="/consultas" element={<Consultas />} />
 			</Routes>
 		</BrowserRouter>

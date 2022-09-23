@@ -11,26 +11,13 @@ export default function Index(props) {
 
     const [pacienteId, setPacienteId] = useState();
     const [descricao, setDescricao] = useState("");
-    const [data, setData] = useState("");
-    const [hora, setHora] = useState("");
+    const [data, setData] = useState();
+    const [hora, setHora] = useState();
     const [tipo, setTipo] = useState();
     const [plataforma, setPlataforma] = useState("");
     const [preco, setPreco] = useState();
     const [link, setLink] = useState("");
-
     const [paciente, setPaciente] = useState([])
-
-   async function addConsulta(){
-    try{
-        const medico = storage('local-storage').id;
-        const r = await adicionarConsulta(medico, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
-        alert('cadastrado')
-        hideNova()
-    } catch(err){
-        alert(err.message.data)
-    }
-
-   }
     
     function hideNova(){
         var element = document.getElementById("pop-up")
@@ -39,7 +26,6 @@ export default function Index(props) {
 
     async function carregarPacientes(){
         const i = storage('local-storage').id;
-        console.log(i)
         const r = await listarPacientes(i);
         setPaciente(r);
     }
@@ -62,13 +48,9 @@ export default function Index(props) {
                             <label>Paciente</label>
                             <select value={pacienteId} onChange={e => setPacienteId(e.target.value)}>
                                 <option selected disabled hidden>Selecionar paciente</option>
-                                <option>ola</option>
-                                <option> 
-                                    {paciente.map(item =>
-                                        <option value={setPacienteId}>ola</option>
-                                    )} 
-                                </option>    
-                                <option>oioio</option>
+                                {paciente.map(item =>
+                                        <option value={setPacienteId}>{item.id}</option>
+                                    )}
                             </select>
                         </div>
                         <div className="descricao-input">
@@ -111,7 +93,10 @@ export default function Index(props) {
                 </div>
                 
                 <div className="button-confirm">
-                    <button className="button-consult" onClick={addConsulta} >Confirmar consulta</button>
+                    <button className="button-consult" onClick={async () => {
+                        const medicId = storage('local-storage').id;
+                        const r = await adicionarConsulta(medicId, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
+                    }} >Confirmar consulta</button>
                 </div>
             </section>              
         </main>

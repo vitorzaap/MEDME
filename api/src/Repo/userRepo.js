@@ -10,7 +10,7 @@ export async function userLogin(user) {
          WHERE ds_email = ? AND
                ds_senha = ?
         `;
-    const [res] = await con.query(c, [user.email, user.pass]);
+	const [res] = await con.query(c, [user.email, user.pass]);
 	return res[0];
 }
 

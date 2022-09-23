@@ -17,7 +17,7 @@ export default function Index() {
                     <a className="lm-button-text" href="#">Home</a>
                     <a className="lm-button-text"href="#">Sobre nós</a>
                     <a className="lm-button-text"href="#">Valores</a>
-                    <button className="lm-button-1" onClick={() => { navigate("/login")}}>Fazer Login</button>
+                    <button className="lm-button-1" onClick={() => { navigate("/user/login")}}>Fazer Login</button>
                 </div>
             </header>
             <section className="lm-section-1">
@@ -29,7 +29,7 @@ export default function Index() {
                         Obtenha ajuda de qualquer lugar a qualquer momento, com o nosso atendimento rápido você não vai passar por problemas.
                     </p>
                     <div className="lm-section-1-div-text-space-div"></div>
-                    <button onClick={() => { navigate("/sigin")}}>
+                    <button onClick={() => { navigate("/user/account")}}>
                         Cadastrar-se de graça
                     </button>
                     </div>

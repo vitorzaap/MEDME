@@ -6,13 +6,16 @@
   background-size: cover;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   .login-main-content {
     display: flex;
+    
     width: 25%;
     height: max-content;
     flex-direction: column;
     align-items: center;
     text-align: center;
+
     .login-main-content-text {
       h1 {
         font-family: "Noto-bold";
