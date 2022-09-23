@@ -3,15 +3,14 @@ import { con } from "./connection.js";
 export async function userLogin(user) {
 	const c = `
         SELECT 
-        id_medico  id,
-        nm_medico   nome,    
+        id_usuario  id,
         ds_email    email,
         ds_senha    senha
-        from tb_medico
+        from tb_usuario
          WHERE ds_email = ? AND
                ds_senha = ?
         `;
-	const [res] = await con.query(c, [user.email, user.pass]);
+    const [res] = await con.query(c, [user.email, user.pass]);
 	return res[0];
 }
 
