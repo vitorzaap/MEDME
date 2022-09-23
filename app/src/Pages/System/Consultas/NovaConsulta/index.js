@@ -39,10 +39,9 @@ export default function Index(props) {
 
     async function carregarPacientes(){
         const i = storage('local-storage').id;
+        console.log(i)
         const r = await listarPacientes(i);
         setPaciente(r);
-
-        
     }
     useEffect(() => {
         carregarPacientes();
