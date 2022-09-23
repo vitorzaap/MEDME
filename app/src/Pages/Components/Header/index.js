@@ -14,7 +14,7 @@ export default function Header(props) {
     useEffect(() => {
         
           const usuarioLogado = storage('local-storage')
-          setUsuario(usuarioLogado.nome)
+          setUsuario(usuarioLogado.name)
         
       }, [])
 

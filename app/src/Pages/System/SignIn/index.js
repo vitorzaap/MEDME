@@ -88,7 +88,7 @@ export default function Index() {
 										ref.current.complete();
 									}, 2000)
 									setTimeout(() => {
-										nav("/login")
+										nav("/user/login")
 									}, 2500)
 								}
 								catch (err) {

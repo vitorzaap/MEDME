@@ -43,11 +43,9 @@ export default function Index(props) {
                             
                             <select value={pacienteId} onChange={e => setPacienteId(e.target.value)} onClick={listar}>
                                 <option selected disabled hidden>Selecionar paciente</option>
-                                <option value="" key="">
-                                {paciente.map((item) => (<p>
+                                {paciente.map((item) => (<option value={item.id}>
                                         {item.nameUser}
-                                    </p>))}
-                                </option>
+                                    </option>))}
                             </select>
                         </div>
                         <div className="descricao-input">
@@ -68,7 +66,6 @@ export default function Index(props) {
                                 {atuacao.map((item) => (<p>
                                         {item.atuacao1}
                                 </p>))}
-                                
                                 </option>
                                 <option value={tipo} key="">
                                 {atuacao.map((item) => (<p>
@@ -100,8 +97,8 @@ export default function Index(props) {
                 <div className="button-confirm">
                     <button className="button-consult" onClick={async () => {
                         const medicId = storage('local-storage').id;
-                        await adicionarConsulta(medicId, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
-                        
+                        const r = await adicionarConsulta(medicId, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
+                        hideNova();
                     }} >Confirmar consulta</button>
                 </div>
             </section>              

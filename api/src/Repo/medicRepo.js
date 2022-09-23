@@ -19,19 +19,21 @@ export async function medicLogin(medic) {
 }
 
 export async function novaConsulta(consulta) {
-	console.log(consulta)
+	
 	const c = `
 						INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, ds_plataforma, vl_preco, ds_link, ds_situacao)
 							VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, 'RESPOSTA PENDENTE');
         `;
 	const [res] = await con.query(c, [consulta.medicoid, consulta.userid, consulta.descricao, consulta.data, consulta.hora, consulta.atuacao, consulta.plataforma, consulta.preco, consulta.link, consulta.situacao]);
 	consulta.id = res.insertId;
+	console.log(consulta)
 	return consulta;
 }
 
 export async function selecionarPaciente(id) {
 	const c = `
-	select tb_usuario.nm_usuario nameUser
+	select tb_usuario.nm_usuario nameUser,
+			tb_usuario.id_usuario	id
 			from tb_conversa
             inner join tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario 
             where tb_conversa.id_medico= ?;

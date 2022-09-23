@@ -22,6 +22,7 @@ export async function listarAtuacao(id) {
 }
 
 export async function adicionarConsulta(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link) {
+    console.log(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link)
 	const r = await api.post("/api/medic/consulta", {
 		medicoid: medico,
 		userid: paciente,

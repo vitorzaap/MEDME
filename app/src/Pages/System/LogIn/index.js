@@ -16,10 +16,6 @@ export default function Index() {
 	const [pass, setPass] = useState("");
 	const ref = useRef();
 	const nav = useNavigate();
-	
-
-	
-
 	return (
 		<main className="login-main">
 			<LoadingBar ref={ref} color="#6236fff1" />
