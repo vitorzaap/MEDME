@@ -54,7 +54,6 @@
         flex-direction: column;
         justify-content: center;
         height: 60vh;
-        border: 1px solid red;
         .lm-section-1-div-text{
             display: flex;
             flex-direction: column;
@@ -129,6 +128,9 @@
                 a{
                     font-family: "Noto-black";
                     font-size: 1em;
+                    cursor: pointer;
+                } a:hover{
+                    filter: opacity(80%);
                 }
                 
             }
