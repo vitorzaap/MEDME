@@ -4,6 +4,7 @@ export async function userLogin(user) {
 	const c = `
         SELECT 
         id_medico  id,
+        nm_medico   nome,    
         ds_email    email,
         ds_senha    senha
         from tb_medico

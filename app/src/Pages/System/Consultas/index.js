@@ -4,11 +4,13 @@ import Menu from "../../Components/Menu/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import iconAdd from "../../../assets/images/Union.svg"
 import NovaConsulta from "./NovaConsulta/index.js"
-import { useEffect } from "react";
+
 
 
 
 export default function Index() {
+
+    
 
 
     function showNova(){
@@ -28,7 +30,7 @@ export default function Index() {
                 <div className="content-consultas">
                     <div className="button-nova">
                         <button onClick={showNova} className="nova-consulta">
-                            <img src={iconAdd} />
+                            <img src={iconAdd} alt='icon' />
                             <p>Nova Consulta</p>
                         </button>
                     </div>

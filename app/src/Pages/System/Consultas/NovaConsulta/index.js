@@ -4,11 +4,12 @@ import iconuser from "../../../../assets/images/image 4.svg"
 import { listarPacientes, adicionarConsulta } from "../../../../api/medicApi"
 import { useState, useRef, useEffect } from "react";
 import storage from "local-storage"
+import axios from "axios";
 
 export default function Index(props) {
 
 
-    const [paciente, setPaciente] = useState();
+    const [pacienteId, setPacienteId] = useState();
     const [descricao, setDescricao] = useState("");
     const [data, setData] = useState("");
     const [hora, setHora] = useState("");
@@ -17,12 +18,12 @@ export default function Index(props) {
     const [preco, setPreco] = useState();
     const [link, setLink] = useState("");
 
-
+    const [paciente, setPaciente] = useState([])
 
    async function addConsulta(){
     try{
         const medico = storage('local-storage').id;
-        const r = await adicionarConsulta(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link);
+        const r = await adicionarConsulta(medico, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
         alert('cadastrado')
         hideNova()
     } catch(err){
@@ -37,15 +38,18 @@ export default function Index(props) {
     }
 
     async function carregarPacientes(){
-        const r = await listarPacientes();
+        const i = storage('local-storage').id;
+        const r = await listarPacientes(i);
         setPaciente(r);
-    }
 
+        
+    }
     useEffect(() => {
         carregarPacientes();
     }, [])
+   
 
-
+    
 
     return(
         <main  className="nova-content">
@@ -57,10 +61,15 @@ export default function Index(props) {
                     <div className="l-nova">
                         <div className="paciente-input">
                             <label>Paciente</label>
-                            <select value={paciente} onChange={e => setPaciente(e.target.value)}>
+                            <select value={pacienteId} onChange={e => setPacienteId(e.target.value)}>
                                 <option selected disabled hidden>Selecionar paciente</option>
-                                 <option> </option>    
-                             
+                                <option>ola</option>
+                                <option> 
+                                    {paciente.map(item =>
+                                        <option value={setPacienteId}>ola</option>
+                                    )} 
+                                </option>    
+                                <option>oioio</option>
                             </select>
                         </div>
                         <div className="descricao-input">
@@ -78,7 +87,7 @@ export default function Index(props) {
                             <label>Tipo de consulta</label>
                             <select value={tipo}>
                                 <option>
-                                <p></p>
+                                <p>sddsd</p>
                                 </option>
                             </select>
                         </div>

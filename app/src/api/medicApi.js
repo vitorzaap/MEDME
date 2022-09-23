@@ -4,12 +4,14 @@ const api = axios.create({
 })
 
 export async function listarPacientes(id){
-    const r = await api.get(`/api/medic/paciente/${id}`);
+    const r = await api.get(`/api/medic/paciente${id}`);
     return r.data
 }
 
 export async function adicionarConsulta(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link){
-    const r = await api.post(`/api/medic/consulta`, {
+    
+    
+    const r = await api.post("/api/medic/consulta", {
         medicoid: medico,
         userid: paciente,
         descricao: descricao,
@@ -20,6 +22,8 @@ export async function adicionarConsulta(medico, paciente, descricao, data, hora,
         preco: preco,
         link: link
     });
+
+    
 
     return r.data
 }
