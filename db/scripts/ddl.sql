@@ -3,7 +3,6 @@ CREATE DATABASE medmedb;
 DROP DATABASE medmedb;
 USE medmedb;
 
-SELECT * from tb_consulta;
 
 CREATE TABLE tb_usuario(
 	id_usuario			int primary key auto_increment,
@@ -20,8 +19,6 @@ CREATE TABLE tb_atuacao(
 
 
 
-select * from tb_medico;
-
 CREATE TABLE tb_medico(
 	id_medico		int primary key auto_increment,
     nm_medico		varchar(200) not null,
@@ -35,18 +32,18 @@ CREATE TABLE tb_medico(
     FOREIGN KEY (id_atuacao2) REFERENCES tb_atuacao(id_atuacao)
 );
 
-
 CREATE TABLE tb_consulta(
 	id_consulta				int primary key auto_increment,
     id_medico				int not null,
-    id_usuario				int not null,
+    id_usuario				int ,
     ds_consulta				varchar(2000) not null,
-    dt_consulta				datetime not null,
-    id_atuacao				int not null,
-    ds_plataforma			varchar(200) not null,
+    dt_consulta				date not null,
+    tm_consulta				time not null,
+    id_atuacao				int ,
+    ds_plataforma			varchar(200) ,
     vl_preco				decimal not null,
-    ds_link					varchar(500),
-    ds_situacao				varchar(200),
+    ds_link					varchar(500) ,
+    ds_situacao				varchar(200) ,
     FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
     FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
     FOREIGN KEY (id_atuacao) REFERENCES tb_medico(id_atuacao1)
