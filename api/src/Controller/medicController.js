@@ -20,7 +20,11 @@ router.post("/api/medic/consulta", async (req, resp) => {
 
 		const consulta = await novaConsulta(nova);
 		resp.send(consulta);
-	} catch (err) {}
+	} catch (err) {
+		resp.status(401).send({
+			erro: err.message,
+		});
+	}
 });
 
 router.get("/api/medic/paciente", async (req, resp) => {

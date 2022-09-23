@@ -5,6 +5,7 @@ import { userLogin } from "../../../api/userApi.js";
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom"
 import LoadingBar from "react-top-loading-bar"
+import storage from "local-storage"
 export default function Index() {
 	const [classErrEmail, setClassErrEmail] = useState("default-input");
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
@@ -15,6 +16,10 @@ export default function Index() {
 	const [pass, setPass] = useState("");
 	const ref = useRef();
 	const nav = useNavigate();
+	
+
+	
+
 	return (
 		<main className="login-main">
 			<LoadingBar ref={ref} color="#6236fff1" />
@@ -50,6 +55,9 @@ export default function Index() {
 								setDisabled(true);
 								try {
 									const r = await userLogin(email, pass);
+
+										storage('local-storage', r)
+
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000)

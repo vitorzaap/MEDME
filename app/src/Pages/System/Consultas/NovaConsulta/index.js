@@ -1,13 +1,51 @@
 import "./index.scss"
 import "../../../Common/common.scss"
 import iconuser from "../../../../assets/images/image 4.svg"
+import { listarPacientes, adicionarConsulta } from "../../../../api/medicApi"
+import { useState, useRef, useEffect } from "react";
+import storage from "local-storage"
 
 export default function Index(props) {
+
+
+    const [paciente, setPaciente] = useState();
+    const [descricao, setDescricao] = useState("");
+    const [data, setData] = useState("");
+    const [hora, setHora] = useState("");
+    const [tipo, setTipo] = useState();
+    const [plataforma, setPlataforma] = useState("");
+    const [preco, setPreco] = useState();
+    const [link, setLink] = useState("");
+
+
+
+   async function addConsulta(){
+    try{
+        const medico = storage('local-storage').id;
+        const r = await adicionarConsulta(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link);
+        alert('cadastrado')
+        hideNova()
+    } catch(err){
+        alert(err.message.data)
+    }
+
+   }
     
     function hideNova(){
         var element = document.getElementById("pop-up")
         element.classList.remove("show-main")
     }
+
+    async function carregarPacientes(){
+        const r = await listarPacientes();
+        setPaciente(r);
+    }
+
+    useEffect(() => {
+        carregarPacientes();
+    }, [])
+
+
 
     return(
         <main  className="nova-content">
@@ -19,29 +57,28 @@ export default function Index(props) {
                     <div className="l-nova">
                         <div className="paciente-input">
                             <label>Paciente</label>
-                            <select>
-                                <option> 
-                                    <img src={iconuser} /> 
-                                    <p>Sr.Piton</p>
-                                </option>
+                            <select value={paciente} onChange={e => setPaciente(e.target.value)}>
+                                <option selected disabled hidden>Selecionar paciente</option>
+                                 <option> </option>    
+                             
                             </select>
                         </div>
                         <div className="descricao-input">
                             <label>Descrição</label>
-                            <textarea placeholder="Escreva algo de importante"></textarea>
+                            <textarea placeholder="Escreva algo de importante" value={descricao} onChange={e => setDescricao(e.target.value)} ></textarea>
                         </div>
                         <div className="data-input">
                             <label>Data e hora</label>
                             <div className="data-hora-inputs">
-                                <input type="date" className="date-input" />
-                                <input type="time" className="time-input" />
+                                <input type="date" value={data} onChange={e => setData(e.target.value)} className="date-input" />
+                                <input type="time" value={hora} onChange={e => setHora(e.target.value)} className="time-input" />
                             </div>
                         </div>
                         <div className="tipo-input">
                             <label>Tipo de consulta</label>
-                            <select>
+                            <select value={tipo}>
                                 <option>
-                                <p>Psicologia</p>
+                                <p></p>
                                 </option>
                             </select>
                         </div>
@@ -50,23 +87,23 @@ export default function Index(props) {
                     <div className="r-nova">
                         <div className="plataforma-input">
                             <label>Plataforma da consulta</label>
-                            <input  className="plat-in"  placeholder="Escreva a plataforma"></input>
+                            <input  className="plat-in" value={plataforma} onChange={e => setPlataforma(e.target.value)}  placeholder="Escreva a plataforma"></input>
                         </div>
                         <div className="preco-input">
                             <label>Preço</label>
-                            <input type="number" className="pre-in" placeholder="Defina um preço">
+                            <input type="number" value={preco} onChange={e => setPreco(e.target.value)} className="pre-in" placeholder="Defina um preço">
                             </input>
                            
                         </div>
                         <div className="link-input">
                             <label>Link da consulta</label>
-                            <input className="link-in" placeholder="Cole o link"></input>
+                            <input value={link} onChange={e=> setLink(e.target.value)} className="link-in" placeholder="Cole o link"></input>
                         </div>
                     </div>
                 </div>
                 
                 <div className="button-confirm">
-                    <button className="button-consult" onClick={hideNova} >Confirmar consulta</button>
+                    <button className="button-consult" onClick={addConsulta} >Confirmar consulta</button>
                 </div>
             </section>              
         </main>

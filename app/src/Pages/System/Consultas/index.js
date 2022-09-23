@@ -7,6 +7,7 @@ import NovaConsulta from "./NovaConsulta/index.js"
 import { useEffect } from "react";
 
 
+
 export default function Index() {
 
 
@@ -49,6 +50,9 @@ export default function Index() {
                                             <th>Plataforma</th>
                                             <th>Status</th>
                                         </tr> 
+                                        
+
+                                        
                                     </table>
                                 </div>
                             </div>
