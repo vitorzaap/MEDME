@@ -6,23 +6,19 @@ import iconAdd from "../../../assets/images/Union.svg"
 import NovaConsulta from "./NovaConsulta/index.js"
 
 
-
-
 export default function Index() {
-
-    
-
 
     function showNova(){
         var element = document.getElementById("pop-up");
-            element.classList.add("show-main");
+        element.classList.add("show-main");
+        
     }
 
 
     return(
         <main className="main-consultas">
             <div className="pop-up" id="pop-up" >
-                <NovaConsulta/>
+                <NovaConsulta />
             </div>
             <Menu />
             <div className="container-consultas">

@@ -36,7 +36,6 @@ router.post("/api/medic/consulta", async (req, resp) => {
 router.get("/api/medic/chat", async (req, resp) => {
 	try{
 		const id = req.query.id;
-		console.log(id)
 		const resposta = await selecionarPaciente(id)
 			resp.send(resposta)
 	} catch(err){
@@ -50,7 +49,7 @@ router.get("/api/medic/atuacao", async (req,resp) =>{
 	try{
 
 		const {id} = req.query
-		const [resposta] = await selecionarAtuacao(id)
+		const [resposta] = await selecionarAtuacao(id);
 		resp.send(resposta)
 
 	} catch(err){

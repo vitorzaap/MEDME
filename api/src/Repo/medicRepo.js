@@ -15,7 +15,6 @@ export async function medicLogin(medic) {
                ds_senha = ?
         `;
 	const [res] = await con.query(c, [medic.email, medic.pass]);
-	console.log("...")
 	return res[0];
 }
 
@@ -50,5 +49,5 @@ export async function selecionarAtuacao(id){
 	where 		tb_medico.id_medico = ?;
 	`
 	const [res] = await con.query(c, id)
-	return [res]
+	return res;
 }

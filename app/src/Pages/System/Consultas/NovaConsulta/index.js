@@ -1,10 +1,9 @@
 import "./index.scss"
 import "../../../Common/common.scss"
 import iconuser from "../../../../assets/images/image 4.svg"
-import { listarPacientes, adicionarConsulta } from "../../../../api/medicApi"
+import { listarPacientes, adicionarConsulta, listarAtuacao } from "../../../../api/medicApi.js"
 import { useState, useRef, useEffect } from "react";
 import storage from "local-storage"
-import axios from "axios";
 
 export default function Index(props) {
 
@@ -18,24 +17,19 @@ export default function Index(props) {
     const [preco, setPreco] = useState();
     const [link, setLink] = useState("");
     const [paciente, setPaciente] = useState([])
-    
+    const [atuacao, setAtuacao] = useState([]);
     function hideNova(){
         var element = document.getElementById("pop-up")
         element.classList.remove("show-main")
     }
 
-    async function carregarPacientes(){
-        const i = storage('local-storage').id;
-        const r = await listarPacientes(i);
-        setPaciente(r);
+    async function listar() {
+        const id = storage("local-storage").id
+        const r = await listarPacientes(id);
+        const s = await listarAtuacao(id);
+        setAtuacao([s])
+        setPaciente([r])
     }
-    useEffect(() => {
-        carregarPacientes();
-    }, [])
-   
-
-    
-
     return(
         <main  className="nova-content">
             <section>
@@ -46,11 +40,14 @@ export default function Index(props) {
                     <div className="l-nova">
                         <div className="paciente-input">
                             <label>Paciente</label>
-                            <select value={pacienteId} onChange={e => setPacienteId(e.target.value)}>
+                            
+                            <select value={pacienteId} onChange={e => setPacienteId(e.target.value)} onClick={listar}>
                                 <option selected disabled hidden>Selecionar paciente</option>
-                                {paciente.map(item =>
-                                        <option value={setPacienteId}>{item.id}</option>
-                                    )}
+                                <option value="" key="">
+                                {paciente.map((item) => (<p>
+                                        {item.nameUser}
+                                    </p>))}
+                                </option>
                             </select>
                         </div>
                         <div className="descricao-input">
@@ -66,9 +63,17 @@ export default function Index(props) {
                         </div>
                         <div className="tipo-input">
                             <label>Tipo de consulta</label>
-                            <select value={tipo}>
+                            <select value={tipo} onClick={listar}>
                                 <option>
-                                <p>sddsd</p>
+                                {atuacao.map((item) => (<p>
+                                        {item.atuacao1}
+                                </p>))}
+                                
+                                </option>
+                                <option value={tipo} key="">
+                                {atuacao.map((item) => (<p>
+                                        {item.atuacao2}
+                                    </p>))}
                                 </option>
                             </select>
                         </div>
@@ -95,7 +100,8 @@ export default function Index(props) {
                 <div className="button-confirm">
                     <button className="button-consult" onClick={async () => {
                         const medicId = storage('local-storage').id;
-                        const r = await adicionarConsulta(medicId, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
+                        await adicionarConsulta(medicId, pacienteId, descricao, data, hora, tipo, plataforma, preco, link);
+                        
                     }} >Confirmar consulta</button>
                 </div>
             </section>              
