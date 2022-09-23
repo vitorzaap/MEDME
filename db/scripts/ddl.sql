@@ -18,11 +18,7 @@ CREATE TABLE tb_atuacao(
     ds_atuacao			varchar(200) not null
 );
 
-SELECT tb_atuacao.ds_atuacao	atuacao1,
-		tb_atuacao.ds_atuacao	atuacao2
-from tb_atuacao
-inner join tb_medico on tb_medico.id_atuacao1 = tb_atuacao.id_atuacao
-where tb_medico.id_medico = 1;
+
 
 select * from tb_medico;
 
@@ -39,18 +35,21 @@ CREATE TABLE tb_medico(
     FOREIGN KEY (id_atuacao2) REFERENCES tb_atuacao(id_atuacao)
 );
 
+
 CREATE TABLE tb_consulta(
 	id_consulta				int primary key auto_increment,
     id_medico				int not null,
     id_usuario				int not null,
     ds_consulta				varchar(2000) not null,
     dt_consulta				datetime not null,
+    id_atuacao				int not null,
     ds_plataforma			varchar(200) not null,
     vl_preco				decimal not null,
     ds_link					varchar(500),
     ds_situacao				varchar(200),
     FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
-    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
+    FOREIGN KEY (id_atuacao) REFERENCES tb_medico(id_atuacao1)
 );
 
 CREATE TABLE tb_situacao_consulta(

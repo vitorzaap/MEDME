@@ -3,10 +3,10 @@ import { con } from "./connection.js";
 export async function userLogin(user) {
 	const c = `
         SELECT 
-        id_usuario  id,
+        id_medico  id,
         ds_email    email,
         ds_senha    senha
-        from tb_usuario
+        from tb_medico
          WHERE ds_email = ? AND
                ds_senha = ?
         `;
