@@ -17,8 +17,9 @@ export default function Index(props) {
     const [plataforma, setPlataforma] = useState("");
     const [preco, setPreco] = useState();
     const [link, setLink] = useState("");
-
     const [paciente, setPaciente] = useState([])
+
+    console.log(paciente)
 
    async function addConsulta(){
     try{
@@ -65,7 +66,7 @@ export default function Index(props) {
                                 <option>ola</option>
                                 <option> 
                                     {paciente.map(item =>
-                                        <option value={setPacienteId}>ola</option>
+                                        <option value={item.id}> {item.paciente}</option>
                                     )} 
                                 </option>    
                                 <option>oioio</option>

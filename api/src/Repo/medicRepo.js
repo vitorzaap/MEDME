@@ -27,7 +27,7 @@ export async function selecionarPaciente(id){
             inner join tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario 
             where tb_conversa.id_medico= ?;
 	`
-	const [res] = await con.query(c, [id])
+	const [res] = await con.query(c, id)
 	return [res]
 }
 
