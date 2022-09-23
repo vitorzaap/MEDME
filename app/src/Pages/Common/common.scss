@@ -20,6 +20,15 @@ $btn-hover: #6236fff1;
 	src: url("../../assets/fonts/Noto_Sans/NotoSans-Light.ttf");
 }
 
+@font-face {
+	font-family: "Noto-extrabold";
+	src: url("../../assets/fonts/Noto_Sans/NotoSans-ExtraBold.ttf");
+}
+@font-face {
+	font-family: "Noto-black";
+	src: url("../../assets/fonts/Noto_Sans/NotoSans-Black.ttf");
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;

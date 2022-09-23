@@ -15,6 +15,7 @@ export async function medicLogin(medic) {
                ds_senha = ?
         `;
 	const [res] = await con.query(c, [medic.email, medic.pass]);
+	console.log("...")
 	return res[0];
 }
 
@@ -29,7 +30,7 @@ export async function novaConsulta(consulta) {
 	return consulta;
 }
 
-export async function selecionarPaciente(id){
+export async function selecionarPaciente(id) {
 	const c = `
 	select tb_usuario.nm_usuario nameUser
 			from tb_conversa

@@ -1,6 +1,7 @@
 import "./index.scss";
 import "../../Common/common.scss";
 import Logo from '../../../assets/images/Logo.svg'
+import logoFooter from '../../../assets/images/logo-footer.svg' 
 import Card from './Card/index.js'
 import image1 from '../../../assets/images/icon1-card.svg'
 import image2 from '../../../assets/images/icon2-card.svg'
@@ -40,6 +41,19 @@ export default function Index() {
                 <Card titulo="Rapidez e Agilidade" texto="Dura menos de 3 minutos para você começar a conversar com um de nossos médicos, basta criar sua conta e escolher quem você quer conversar." imagem={image2} />
                 <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} />
             </section>
+            <div className="space-div"></div>
+            <footer>
+                <div className="footer-content">
+                    <img src={logoFooter} alt='logo-roxa' />
+                    <div className="links-footer">
+                        <a>Fale conosco</a>
+                        <a>Termos e privacidade</a>
+                        <a>Cookies</a>
+                    </div>
+                    <p className="footer-signature">©2022, Medme Company.</p>
+                </div>
+            </footer>
         </main>
+        
     );
 }
