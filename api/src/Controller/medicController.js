@@ -2,7 +2,6 @@ import { Router } from "express";
 import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao } from "../Repo/medicRepo.js";
 
 const router = Router();
-
 router.post("/api/medic/login", async (req, res) => {
 	try {
 		const medic = req.body;

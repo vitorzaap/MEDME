@@ -11,13 +11,12 @@ export default function Index() {
     function showNova(){
         var element = document.getElementById("pop-up");
         element.classList.add("show-main");
-        
     }
 
 
-    return(
+    return( 
         <main className="main-consultas">
-            <div className="pop-up" id="pop-up" >
+            <div className="pop-up" id="pop-up">
                 <NovaConsulta />
             </div>
             <Menu />
@@ -46,11 +45,8 @@ export default function Index() {
                                             <th>Tipo</th>
                                             <th>N° Consulta</th>
                                             <th>Plataforma</th>
-                                            <th>Status</th>
+                                            <th>Status Da Consulta</th>
                                         </tr> 
-                                        
-
-                                        
                                     </table>
                                 </div>
                             </div>
