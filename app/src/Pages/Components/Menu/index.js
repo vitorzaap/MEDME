@@ -36,16 +36,16 @@ export default function Menu(props) {
                         </div>
                     </div>
                     <div>
-                        <Cards img={icondb} txt="Dashboard" local="/Dashboard"/>
+                        <Cards img={icondb} txt="Dashboard" local="/dashboard"/>
                     </div>
                     <div>
-                        <Cards img={iconmail} txt="Mensagens" local="/Mensagens"/>   
+                        <Cards img={iconmail} txt="Mensagens" local="/mensagens"/>   
                     </div>
                     <div>
-                        <Cards  img={iconcalendar} txt="Consultas" local="/Consultas"/>
+                        <Cards  img={iconcalendar} txt="Consultas" local="/consultas"/>
                     </div>
                     <div>
-                        <Cards img={logoaval} txt="Avaliações" local="/Avaliações"/>
+                        <Cards img={logoaval} txt="Avaliações" local="/avaliações"/>
                     </div>
                     
                 </div>
