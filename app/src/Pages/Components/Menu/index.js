@@ -9,7 +9,7 @@ import logosair from "../../../assets/images/arrow-log-out.svg"
 import logoaval from "../../../assets/images/medal-2.svg"
 import { useNavigate } from "react-router-dom"
 import storage from "local-storage";
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export default function Menu(props) {
     const navigate = useNavigate()
@@ -22,6 +22,7 @@ export default function Menu(props) {
             navigate('/')
         }
     },[])
+    
     return(
         <main className="content-menu">
             <div className="Container-lateral">
@@ -36,16 +37,16 @@ export default function Menu(props) {
                         </div>
                     </div>
                     <div>
-                        <Cards img={icondb} txt="Dashboard" local="/dashboard"/>
+                        <Cards img={icondb} txt="Dashboard" local="dashboard" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={iconmail} txt="Mensagens" local="/mensagens"/>   
+                        <Cards img={iconmail} txt="Mensagens" local='mensagens' selecionado={props.selecionado}/>   
                     </div>
                     <div>
-                        <Cards  img={iconcalendar} txt="Consultas" local="/consultas"/>
+                        <Cards  img={iconcalendar} txt="Consultas" local="consultas" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={logoaval} txt="Avaliações" local="/avaliações"/>
+                        <Cards img={logoaval} txt="Avaliações" local="avaliações" selecionado={props.selecionado}/>
                     </div>
                     
                 </div>

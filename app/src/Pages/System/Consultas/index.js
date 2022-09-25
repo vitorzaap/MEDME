@@ -19,7 +19,7 @@ export default function Index() {
             <div className="pop-up" id="pop-up">
                 <NovaConsulta />
             </div>
-            <Menu />
+            <Menu selecionado="consultas"/>
             <div className="container-consultas">
                 <Cabecalho />
                 <div className="content-consultas">

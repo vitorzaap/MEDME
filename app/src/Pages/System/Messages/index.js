@@ -11,7 +11,7 @@ import Temporario from "../../../assets/images/Temporario.svg"
 export default function Index() {
 	return (
 		<main className="messages-main">
-            <Menu />
+            <Menu selecionado="mensagens" />
             <section className="messages-section-main">
                 <Cabecalho />
                 <div className="messages-content">

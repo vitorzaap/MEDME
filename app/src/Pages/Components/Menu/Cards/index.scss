@@ -48,3 +48,39 @@
     }
     transition: 500ms;
 }
+.card-Selecionado{
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 10.5em;
+    height: 3em;
+    border-radius: .6em;
+    background-color: #6336FF;
+
+   .div-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3em;
+    height: 3em;
+    padding: .7em;
+    .icon {
+        filter: invert(100%);
+    }
+   }
+   .div-p {
+    width: 8em;
+    height: 3em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .3em;
+    .card-p{
+        font-family: 'Noto-bold';
+        font-size: 1.1em;
+        color: white;
+        text-decoration: none;
+    }
+   }
+}
