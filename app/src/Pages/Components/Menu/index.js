@@ -7,8 +7,21 @@ import iconmail from "../../../assets/images/mail-unread.svg"
 import iconcalendar from "../../../assets/images/calendar.svg"
 import logosair from "../../../assets/images/arrow-log-out.svg" 
 import logoaval from "../../../assets/images/medal-2.svg"
+import { useNavigate } from "react-router-dom"
+import storage from "local-storage";
+import { useEffect } from "react"
 
 export default function Menu(props) {
+    const navigate = useNavigate()
+    function SairClick(){
+        storage.remove('local-storage')
+        navigate('/')
+    }
+    useEffect(() => {
+        if(!storage('local-storage')){
+            navigate('/')
+        }
+    },[])
     return(
         <main className="content-menu">
             <div className="Container-lateral">
@@ -41,7 +54,7 @@ export default function Menu(props) {
                         <div className="div-img">
                             <img src={logosair} />
                         </div>
-                        <div className="div-p">
+                        <div className="div-p" onClick={SairClick}>
                             <p>Sair</p>
                         </div>
                     </div>

@@ -6,16 +6,18 @@ import iconuser from "../../../assets/images/user-icon.svg"
 import iconconfig from "../../../assets/images/more-vertical.svg"
 import storage from "local-storage"
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Header(props) {
 
     const [usuario, setUsuario] = useState('')
-
+    const navigate = useNavigate()
     useEffect(() => {
-        
-          const usuarioLogado = storage('local-storage')
-          setUsuario(usuarioLogado.name)
-        
+        const usuarioLogado = storage('local-storage')
+        setUsuario(usuarioLogado.name)
+        if(!storage('local-storage')){
+            navigate('/')
+        }
       }, [])
 
     return(

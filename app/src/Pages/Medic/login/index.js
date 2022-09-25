@@ -14,7 +14,7 @@ export default function Index() {
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const ref = useRef();
-	const nav = useNavigate();
+	const navigate = useNavigate();
 
 	return (
 		<main className="login-main">
@@ -28,12 +28,12 @@ export default function Index() {
 						<button
 							className="sg-lg-btn"
 							onClick={() => {
-								nav("/user/account");
+								navigate("/user/account");
 							}}>
 							Crie sua Conta! 
                         </button>
                         <span> Ou <button className="sg-lg-btn" onClick={() => {
-							nav("/user/login")
+							navigate("/user/login")
 						}}>Entre agora!</button></span>
 					</p>
 				</div>
@@ -66,7 +66,7 @@ export default function Index() {
 										ref.current.complete();
 									}, 2000);
 									setTimeout(() => {
-										nav("/consultas");
+										navigate("/consultas");
 									}, 2500);
 								} catch (err) {
 									setTimeout(() => {
