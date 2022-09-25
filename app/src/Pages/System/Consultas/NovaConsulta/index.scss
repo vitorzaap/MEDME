@@ -1,16 +1,14 @@
 .nova-content {
-	width: 60vw;
-	height: 75vh;
+	width: 70vw;
+	height: 85vh;
 	border-radius: 0.5em;
 	background-color: #ffffff;
 	display: flex;
 	justify-content: center;
-	padding: 5em;
-
+	padding: 2.5em;
 	section {
 		width: 95%;
-		height: 95%;
-
+		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -178,8 +176,8 @@
 .button-consult {
 	cursor: pointer;
 	border: none;
-	width: 100%;
-	height: 3em;
+	width: 90%;
+	height: 2.5em;
 	background-color: #6336ff;
 	border-radius: 0.5em;
 	display: flex;
@@ -192,7 +190,7 @@
 	display: flex;
 	width: 95%;
 	align-items: center;
-	margin-top: 5em;
+	margin: 1.5em 0 0 4em;
 }
 .time.input {
 	width: 10em;
