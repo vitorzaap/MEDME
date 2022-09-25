@@ -1,4 +1,3 @@
-import "./index.scss";
 import "../../Common/common.scss";
 import Logo from "../../../assets/images/login-logo.svg";
 import { medicLogin } from "../../../api/medicApi.js";

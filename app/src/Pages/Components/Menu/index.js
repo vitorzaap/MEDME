@@ -18,21 +18,21 @@ export default function Menu(props) {
                         <div className="div-img">
                             <img src={logo} />
                         </div>
-                        <div className="div-p">
+                        <div className="logo-div-p">
                             <p>Medme</p>
                         </div>
                     </div>
                     <div>
-                        <Cards img={icondb} txt="Dashboard" />
+                        <Cards img={icondb} txt="Dashboard" local="/Dashboard"/>
                     </div>
                     <div>
-                        <Cards img={iconmail} txt="Mensagens"  />   
+                        <Cards img={iconmail} txt="Mensagens" local="/Mensagens"/>   
                     </div>
                     <div>
-                        <Cards  img={iconcalendar} txt="Consultas" />
+                        <Cards  img={iconcalendar} txt="Consultas" local="/Consultas"/>
                     </div>
                     <div>
-                        <Cards img={logoaval} txt="Avaliações" />
+                        <Cards img={logoaval} txt="Avaliações" local="/Avaliações"/>
                     </div>
                     
                 </div>
