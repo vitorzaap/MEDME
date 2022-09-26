@@ -13,12 +13,8 @@ import { useEffect, useState } from "react"
 
 export default function Menu(props) {
     const navigate = useNavigate()
-    function SairClick(){
-        storage.remove('local-storage')
-        navigate('/')
-    }
     useEffect(() => {
-        if(!storage('local-storage')){
+        if(!storage('userInfo')){
             navigate('/')
         }
     },[])
@@ -55,7 +51,10 @@ export default function Menu(props) {
                         <div className="div-img">
                             <img src={logosair} />
                         </div>
-                        <div className="div-p" onClick={SairClick}>
+                        <div className="div-p" onClick={() => {
+                            storage.remove('local-storage')
+                            navigate('/')
+                        }}>
                             <p>Sair</p>
                         </div>
                     </div>

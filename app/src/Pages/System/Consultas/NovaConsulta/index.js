@@ -23,23 +23,27 @@ export default function Index(props) {
 			<div className="main-input">
 				<div className="r-input">
 					<div className="select-user">
-						<select
+                        <div className="input-main">
+                        <select
 							className="user-dropdown"
 							value={userId}
 							onChange={e => setUserId(e.target.value)}
                             onClick={async () => {
-                                
-							}}>
+                                const userInfo = storage("userInfo")
+                                const r = await listarPacientes(userInfo.id)
+                                setUsers([r]);
+                                }}>
 							<option selected disabled hidden>
 								Selecionar paciente
 							</option>
 							{users.map((item) => (
-                                    <option value={item.id} key="" className="default-opt">
+                                    <option value={item.id} key="" className="opt">
 									{item.nameUser}
 								</option>
 							))}
 							;
 						</select>
+                        </div>
 					</div>
 					<div className="input-main">
 						<p className="input-text">Plataforma</p>

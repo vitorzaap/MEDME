@@ -13,9 +13,9 @@ export default function Header(props) {
     const [usuario, setUsuario] = useState('')
     const navigate = useNavigate()
     useEffect(() => {
-        const usuarioLogado = storage('local-storage')
+        const usuarioLogado = storage('userInfo')
         setUsuario(usuarioLogado.name)
-        if(!storage('local-storage')){
+        if(!storage('userInfo')){
             navigate('/')
         }
       }, [])

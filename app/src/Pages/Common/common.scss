@@ -70,6 +70,19 @@ $btn-hover: #6236fff1;
 	flex-direction: column;
 	text-align: left;
 	padding: 0.5em 0;
+	
+	.user-dropdown{
+		padding: .765em 1em;
+		border: none;
+		width: 100%;
+		font-size: 1em;
+		background-color: #f8f8f8;
+		border-radius: .5em;
+		cursor: pointer;
+		outline: none;
+		font-family: 'Noto-regular';
+		
+	}
 	.input-text {
 		font-family: "Noto-semibold";
 	}
@@ -128,12 +141,4 @@ button {
 	padding: 2em;
 }
 
-.user-dropdown{
-	padding: .5em 1em;
-	border: none;
-	background-color: #f8f8f8;
-	border-radius: .5em;
-	cursor: pointer;
-	font-family: 'Noto-regular';
-	
-}
+
