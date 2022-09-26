@@ -122,3 +122,18 @@ $btn-hover: #6236fff1;
 button {
 	cursor: pointer;
 }
+
+.default-opt{
+	border: 1px solid red;
+	padding: 2em;
+}
+
+.user-dropdown{
+	padding: .5em 1em;
+	border: none;
+	background-color: #f8f8f8;
+	border-radius: .5em;
+	cursor: pointer;
+	font-family: 'Noto-regular';
+	
+}

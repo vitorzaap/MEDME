@@ -8,8 +8,8 @@ export async function medicLogin(medic) {
 			   ds_senha			pass,
 			   ds_medico		descricao,
 			   img_icon			icon,
-			   id_atuacao1		atuacao1,
-			   id_atuacao2		atuacao2
+			   id_atuacao		atuacao,
+			   id_atuacao1		atuacao1
 		  FROM tb_medico
          WHERE ds_email = ? AND
                ds_senha = ?

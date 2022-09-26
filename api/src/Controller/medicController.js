@@ -6,13 +6,12 @@ router.post("/api/medic/login", async (req, res) => {
 	try {
 		const medic = req.body;
 		const r = await medicLogin(medic);
+		console.log(r)
 		if (!r) {
-			throw new Error("Senha ou E-mail incorretos.")
-		}
-		else {
+			throw new Error("Senha ou E-mail incorretos.");
+		} else {
 			res.status(201).send(r);
 		}
-		
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,
@@ -33,29 +32,27 @@ router.post("/api/medic/consulta", async (req, resp) => {
 });
 
 router.get("/api/medic/chat", async (req, resp) => {
-	try{
-		const id = req.query.id;
-		const resposta = await selecionarPaciente(id)
-			resp.send(resposta)
-	} catch(err){
+	try {
+		const {id} = req.query;
+		const resposta = await selecionarPaciente(id);
+		resp.send(resposta);
+	} catch (err) {
 		resp.status(401).send({
 			erro: err.message,
 		});
 	}
 });
 
-router.get("/api/medic/atuacao", async (req,resp) =>{
-	try{
-
-		const {id} = req.query
+router.get("/api/medic/atuacao", async (req, resp) => {
+	try {
+		const { id } = req.query;
 		const [resposta] = await selecionarAtuacao(id);
-		resp.send(resposta)
-
-	} catch(err){
+		resp.send(resposta);
+	} catch (err) {
 		resp.status(401).send({
 			erro: err.message,
 		});
 	}
-})
+});
 
 export default router;

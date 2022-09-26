@@ -1,21 +1,20 @@
 import "./index.scss";
 import "../../../Common/common.scss";
+import Icon from "../../../../assets/images/user-icon.svg"
 import { listarPacientes, listarAtuacao } from "../../../../api/medicApi.js";
+import storage from "local-storage"
 import { useEffect, useState } from "react";
 
 export default function Index(props) {
-	const [userId, setUserId] = useState(1);
+	const [userId, setUserId] = useState();
 	const [consult, setConsult] = useState();
 	const [users, setUsers] = useState([]);
 	const [action, setAction] = useState([]);
 	function hideNova() {
 		var element = document.getElementById("pop-up");
 		element.classList.remove("show-main");
-	}
-    async function list() {
-        const r = await listarPacientes(userId);
-        console.log(r)
     }
+    
 	return (
 		<main className="consult-content">
 			<div className="title">
@@ -27,18 +26,16 @@ export default function Index(props) {
 						<select
 							className="user-dropdown"
 							value={userId}
-							onChange={(e) => setUserId(e.target.value)}
-							onClick={async () => {
-                                const r = await listarPacientes(userId);
-                                console.log(r)
-                                setUsers(r)
+							onChange={e => setUserId(e.target.value)}
+                            onClick={async () => {
+                                
 							}}>
 							<option selected disabled hidden>
 								Selecionar paciente
 							</option>
 							{users.map((item) => (
-								<option value={item.id} key="">
-									{item.nameUser} ss
+                                    <option value={item.id} key="" className="default-opt">
+									{item.nameUser}
 								</option>
 							))}
 							;

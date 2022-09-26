@@ -14,8 +14,7 @@ export default function Index() {
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const ref = useRef();
-	const navigate = useNavigate();
-
+	const nav = useNavigate();
 	return (
 		<main className="login-main">
 			<LoadingBar ref={ref} color="#6236fff1" />
@@ -28,7 +27,7 @@ export default function Index() {
 						<button
 							className="sg-lg-btn"
 							onClick={() => {
-								navigate("/user/account");
+								nav("/user/account");
 							}}>
 							Crie sua Conta!
 						</button>
@@ -38,7 +37,7 @@ export default function Index() {
 							<button
 								className="sg-lg-btn"
 								onClick={() => {
-									navigate("/user/login");
+									nav("/user/login");
 								}}>
 								Entre agora!
 							</button>
@@ -67,14 +66,12 @@ export default function Index() {
 								setDisabled(true);
 								try {
 									const r = await medicLogin(email, pass);
-
-									storage("local-storage", r);
-
+									storage("userInfo", r);
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000);
 									setTimeout(() => {
-										navigate("/consultas");
+										nav("/consultas");
 									}, 2500);
 								} catch (err) {
 									setTimeout(() => {

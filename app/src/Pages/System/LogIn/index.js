@@ -57,7 +57,7 @@ export default function Index() {
 								try {
 									const r = await userLogin(email, pass);
 
-										storage('local-storage', r)
+										storage('userInfo', r)
 
 									setTimeout(() => {
 										ref.current.complete();
