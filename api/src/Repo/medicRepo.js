@@ -62,7 +62,8 @@ export async function selecionarPaciente(id) {
 
 export async function selecionarAtuacao(id) {
 	const c = `
-		SELECT 	tb_atuacao.ds_atuacao	atuacao
+		SELECT 	tb_atuacao.ds_atuacao	atuacao,
+		tb_atuacao.id_atuacao			id
 	from 		tb_atuacao
 	inner join 	tb_medico on tb_medico.id_atuacao = tb_atuacao.id_atuacao 
 	where 		tb_medico.id_medico = ?;
