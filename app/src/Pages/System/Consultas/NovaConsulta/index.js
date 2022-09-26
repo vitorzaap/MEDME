@@ -1,26 +1,33 @@
 import "./index.scss";
 import "../../../Common/common.scss";
 import Icon from "../../../../assets/images/user-icon.svg"
-import { listarPacientes, listarAtuacao, listarPlataforma } from "../../../../api/medicApi.js";
+import cancel from "../../../../assets/images/cancel.svg"
+import { listarPacientes, listarAtuacao, listarPlataforma, adicionarConsulta } from "../../../../api/medicApi.js";
 import storage from "local-storage"
-import { useEffect, useState } from "react";
+import LoadingBar from "react-top-loading-bar";
+import { useEffect, useRef, useState } from "react";
 
 export default function Index(props) {
 	const [userId, setUserId] = useState();
 	const [consult, setConsult] = useState();
 	const [users, setUsers] = useState([]);
 	const [action, setAction] = useState([]);
+	const [actionId, setActionId] = useState();
 	const [plataforma, setPlataforma] = useState([]);
 	const [plataformaId, setPlataformaId] = useState();
+	const [erro, setErro] = useState();
 	const [desc, setDesc] = useState();
 	const [date, setDate] = useState();
 	const [time, setTime] = useState();
 	const [classErrDes, setClassErrDesc] = useState("default-textarea");
+	const [classErrAction, setClassErrAction] = useState("user-dropdown")
 	const [classErrPrice, setClassErrPrice] = useState("coin-div");
 	const [classErrLink, setClassErrLink] = useState("default-input");
 	const [classErrPlataforma, setClassErrPlataforma] = useState("user-dropdown");
+	const [disabled, setDisabled] = useState(false);
 	const [classErrUser, setClassErrUser] = useState("user-dropdown");
 	const [link, setLink] = useState();
+	const ref = useRef();
 	const [price, setPrice] = useState();
 	function hideNova() {
 		var element = document.getElementById("pop-up");
@@ -29,8 +36,12 @@ export default function Index(props) {
     
 	return (
 		<main className="consult-content">
+			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="title">
 				<h1>Nova Consulta #{storage("userInfo").numConsulta}</h1>
+				<img src={cancel} alt="cancelar" onClick={() => {
+					hideNova();
+				}} />
 			</div>
 			<div className="main-input">
 				<div className="r-input">
@@ -62,7 +73,7 @@ export default function Index(props) {
 					</div>
 					<div className="input-main">
 						<p className="input-text">Descrição</p>
-						<textarea cols="10" rows="10" className={classErrDes} placeholder="Escreva algo de importante"></textarea>
+						<textarea cols="10" rows="10" className={classErrDes} value={desc} onChange={e => setDesc(e.target.value)} placeholder="Escreva algo de importante"></textarea>
 						{classErrDes === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 					</div>
 					<div className="input-main">
@@ -74,6 +85,29 @@ export default function Index(props) {
 							</div>
 						</div>
 					</div>
+					<div className="input-main">
+						<p className="input-text">Tipo da consulta</p>
+                        <select
+							className={classErrAction}
+							value={actionId}
+							onChange={e => setActionId(e.target.value)}
+                            onClick={async () => {
+                                const userInfo = storage("userInfo")
+                                const r = await listarAtuacao(userInfo.id)
+								setAction([r]);
+                                }}>
+							<option selected disabled hidden>
+								Selecionar tipo
+							</option>
+							{action.map((item) => (
+                                    <option value={item.id} key="" className="opt">
+									{item.atuacao}
+								</option>
+							))}
+							;
+							</select>
+							{classErrUser === "err-dropdown" && <p className="err-p">Selecione um paciente.</p>}
+                    </div>	
 				</div>
 
 				<div className="l-input">
@@ -114,15 +148,43 @@ export default function Index(props) {
 						<input type="text" className={classErrLink} placeholder="https://meet.com	/suaconsultaonline" value={link} onChange={e => setLink(e.target.value)} />
 						{classErrLink === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 					</div>
+					
 				</div>
+				
 			</div>
 			<div className="div-btn">
-				<button className="sg-lg-btn-complex" onClick={async () => {
+				<button className="sg-lg-btn-complex" disabled={disabled} onClick={async () => {
 					!link ? setClassErrLink("err-input") : setClassErrLink("default-input");
 					!desc ? setClassErrDesc("err-input") : setClassErrDesc("default-input");
 					!price ? setClassErrPrice("err-div") : setClassErrPrice("coin-div");
 					!plataformaId ? setClassErrPlataforma("err-dropdown") : setClassErrPlataforma("user-dropdown");
+					!actionId ? setClassErrPlataforma("err-dropdown") : setClassErrPlataforma("user-dropdown");
 					!userId ? setClassErrUser("err-dropdown") : setClassErrUser("user-dropdown");
+					try {
+						if (link && desc && price && plataformaId && actionId && userId) {
+							setDisabled(true);
+						ref.current.continuousStart();
+						const medic = storage("userInfo")
+						const r = await adicionarConsulta(medic.id, userId, desc, date, time, actionId, plataformaId, price, link)
+						setTimeout(() => {
+							ref.current.complete();
+						}, 100)
+						setTimeout(() => {
+							setDisabled(false);
+							hideNova();
+							
+						}, 1500)
+						}
+					}
+					catch (err) {
+						setTimeout(() => {
+							ref.current.complete();
+						setDisabled(false)
+						if (err.response.status === 401) {
+							setErro(err.response.data.erro);
+						}
+						}, 1000)
+					}
 				}}>Marcar consulta</button>
 			</div>
 		</main>

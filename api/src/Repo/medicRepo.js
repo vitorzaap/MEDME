@@ -22,7 +22,7 @@ export async function medicLogin(medic) {
 export async function novaConsulta(consulta) {
 	
 	const c = `
-			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, ds_plataforma, vl_preco, ds_link, ds_situacao)
+			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, id_plataforma, vl_preco, ds_link, ds_situacao)
 			VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, 'RESPOSTA PENDENTE');
         `;
 	const [res] = await con.query(c, [
@@ -62,10 +62,9 @@ export async function selecionarPaciente(id) {
 
 export async function selecionarAtuacao(id) {
 	const c = `
-		SELECT 	tb_atuacao.ds_atuacao	atuacao1,
-				tb_atuacao.ds_atuacao	atuacao2
+		SELECT 	tb_atuacao.ds_atuacao	atuacao
 	from 		tb_atuacao
-	inner join 	tb_medico on tb_medico.id_atuacao1 = tb_atuacao.id_atuacao 
+	inner join 	tb_medico on tb_medico.id_atuacao = tb_atuacao.id_atuacao 
 	where 		tb_medico.id_medico = ?;
 	`;
 	const [res] = await con.query(c, id);
