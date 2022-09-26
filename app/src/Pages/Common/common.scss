@@ -20,15 +20,6 @@ $btn-hover: #6236fff1;
 	src: url("../../assets/fonts/Noto_Sans/NotoSans-Light.ttf");
 }
 
-@font-face {
-	font-family: "Noto-extrabold";
-	src: url("../../assets/fonts/Noto_Sans/NotoSans-ExtraBold.ttf");
-}
-@font-face {
-	font-family: "Noto-black";
-	src: url("../../assets/fonts/Noto_Sans/NotoSans-Black.ttf");
-}
-
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -50,7 +41,6 @@ $btn-hover: #6236fff1;
 	color: #6236ffc0;
 }
 
-
 .sg-lg-btn-complex {
 	padding: 0.625em;
 	cursor: pointer;
@@ -63,11 +53,11 @@ $btn-hover: #6236fff1;
 	border-radius: 0.5em;
 }
 
-.sg-lg-btn-complex:disabled{
+.sg-lg-btn-complex:disabled {
 	background-color: #8766fff1;
 }
 
-.sg-lg-btn-complex:disabled:hover{
+.sg-lg-btn-complex:disabled:hover {
 	background-color: #8766fff1;
 }
 
@@ -88,35 +78,47 @@ $btn-hover: #6236fff1;
 		outline: none;
 		border: none;
 		padding: 1.1em 1em 1.12em 1em;
-        width: 100%;
+		width: 100%;
 		border-radius: 0.625em;
 		font-family: "Noto-regular";
 		font-size: 0.90625em;
 	}
-	.default-input::placeholder {
+	.default-input::placeholder,
+	.default-textarea::placeholder {
 		color: #6b6f80;
 		font-family: "Noto-regular";
 	}
 
-	.err-input{
-		background-color: #ebebeb;
-		border: .5px solid red;
+	.default-textarea {
+		max-width: 100%;
+		max-height: 12em;
+		background-color: #f8f8f8;
 		outline: none;
-		padding: 1.1em 1em 1.12em 1em;
-        width: 100%;
+		border: solid 0.5em #f8f8f8;
+		padding: 0.6em 0.5em 0.62em 0.5em;
 		border-radius: 0.625em;
 		font-family: "Noto-regular";
 		font-size: 0.90625em;
 	}
-	
+
+	.err-input {
+		background-color: #ebebeb;
+		border: 0.5px solid red;
+		outline: none;
+		padding: 1.1em 1em 1.12em 1em;
+		width: 100%;
+		border-radius: 0.625em;
+		font-family: "Noto-regular";
+		font-size: 0.90625em;
+	}
+
 	//favor não alterar valores aqui.
 }
-.err-p{
+.err-p {
 	font-size: 0.825em;
 	color: red;
 	font-family: "Noto-regular";
 }
-button{
+button {
 	cursor: pointer;
 }
-

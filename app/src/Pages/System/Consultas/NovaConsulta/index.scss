@@ -1,158 +1,37 @@
-.nova-content {
-	width: 70vw;
-	height: 85vh;
-	border-radius: 0.5em;
-	background-color: #ffffff;
+.consult-content {
 	display: flex;
-	justify-content: center;
-	padding: 2.5em;
-	section {
-		width: 95%;
-		height: 100%;
+	width: 60vw;
+	height: 70vh;
+	padding: 1em 2em;
+	background-color: #fff;
+	border-radius: 1em;
+	flex-direction: column;
+
+	.main-input {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		width: 100%;
+		height: 100%;
+		justify-content: space-between;
 
-		.title-nova {
-			width: 100%;
-			height: 10%;
+		.r-input,
+		.l-input {
 			display: flex;
-			justify-content: flex-start;
-			align-items: center;
+			flex-direction: column;
+			width: 45%;
 
-			h1 {
-				font-family: "Noto-bold";
-				font-size: 2.5em;
-			}
+            .default-input{
+                background-color: #F8F8F8;
+            }
 		}
-		.main-content-nova {
+		.div-btn {
 			display: flex;
 			width: 100%;
-			justify-content: center;
-			height: 80%;
-
-			.l-nova,
-			.r-nova {
-				display: flex;
-				flex-direction: column;
-				justify-content: flex-start;
-				width: 50%;
-				height: 100%;
-				align-items: flex-start;
-
-				.paciente-input,
-				.descricao-input,
-				.data-input,
-				.tipo-input,
-				.plataforma-input,
-				.preco-input,
-				.link-input {
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-
-					padding: 0.5em;
-
-					label {
-						padding: 0.5em 0 0.5em 0;
-						font-family: "Noto-semibold";
-						font-size: 1.2em;
-					}
-
-					input {
-						border: none;
-						background-color: #f8f8f8;
-					}
-				}
-				.paciente-input,
-				.descricao-input,
-				.data-input,
-				.tipo-input {
-					align-items: flex-start;
-				}
-
-				select {
-					width: 14em;
-					height: 3em;
-					border: none;
-					background-color: #f2ecff;
-					border-radius: 0.3em;
-					display: flex;
-					align-items: center;
-					padding: 0.5em;
-					font-family: "Noto-semibold";
-					font-size: 0.9em;
-				}
-			}
-			.descricao-input {
-				width: fit-content;
-				height: 35%;
-
-				textarea {
-					resize: none;
-					border: none;
-					width: 28.06em;
-					padding: 0.8em;
-					font-family: "Noto-regular";
-					height: 10em;
-					background-color: #f8f8f8;
-				}
-			}
-			.data-input {
-				.data-hora-inputs {
-					width: 17.5em;
-					height: 3em;
-					border-radius: 8px;
-					background-color: #f8f8f8;
-
-					display: flex;
-					align-items: center;
-					justify-content: space-between;
-					input {
-						border: none;
-						padding: 0.3em;
-						height: 3em;
-						border-radius: 0.5em;
-					}
-					.date-input {
-						width: 12.8em;
-						height: 3em;
-						font-size: 0.9em;
-						border-radius: 0.5em;
-						background-color: #f2ecff;
-						color: #6336ff;
-						font-family: "Noto-regular";
-					}
-					.time-input {
-						width: 5.8em;
-						height: 3em;
-						font-size: 0.9em;
-						border-radius: 0.5em;
-						background-color: #f2ecff;
-						color: #6336ff;
-					}
-				}
-			}
-
-			.plat-in,
-			.link-in {
-				width: 25.3em;
-				height: 3.125em;
-				font-size: 0.9em;
-				border-radius: 0.5em;
-				background-color: #f2ecff;
-				padding: 0.8em;
-			}
-			.pre-in {
-				width: 25.3em;
-				height: 3.125em;
-				font-size: 0.9em;
-				border-radius: 0.5em;
-				background-color: #f2ecff;
-				padding: 0.8em;
-			}
+			height: max-content;
 		}
 	}
+    .sg-lg-btn-complex{
+        font-size: 1.225em;
+    }
 }
 
 .pop-up {
@@ -166,41 +45,10 @@
 	transform: scale(1.1);
 	opacity: 0;
 	visibility: hidden;
-	transition: visibility 0.6s ease-in-out, trasform 0.6s ease-in-out, opacity 0.6s ease-in-out;
 }
 .show-main {
 	opacity: 1;
 	visibility: visible;
+	transform: scale(1);
 }
-
-.button-consult {
-	cursor: pointer;
-	border: none;
-	width: 90%;
-	height: 2.5em;
-	background-color: #6336ff;
-	border-radius: 0.5em;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #ffffff;
-	font-size: 24px;
-}
-.button-confirm {
-	display: flex;
-	width: 95%;
-	align-items: center;
-	margin: 1.5em 0 0 4em;
-}
-.time.input {
-	width: 10em;
-	height: 3em;
-	font-size: 0.9em;
-	border-radius: 0.5em;
-	background-color: #f2ecff;
-}
-.r-nova {
-	align-items: flex-start;
-	height: 57%;
-}
-//se falarem do meu margin eu vou bater, dps arrumo "clean" seus lixos, só quero fazer rápido
+// transition: visibility 0.6s ease-in-out, trasform 0.6s ease-in-out, opacity 0.6s ease-in-out;

@@ -30,11 +30,19 @@ export default function Index() {
 							onClick={() => {
 								navigate("/user/account");
 							}}>
-							Crie sua Conta! 
-                        </button>
-                        <span> Ou <button className="sg-lg-btn" onClick={() => {
-							navigate("/user/login")
-						}}>Entre agora!</button></span>
+							Crie sua Conta!
+						</button>
+						<span>
+							{" "}
+							Ou{" "}
+							<button
+								className="sg-lg-btn"
+								onClick={() => {
+									navigate("/user/login");
+								}}>
+								Entre agora!
+							</button>
+						</span>
 					</p>
 				</div>
 				<div className="login-main-content-inputs">
@@ -46,7 +54,7 @@ export default function Index() {
 					<div className="input-main">
 						<p className="input-text">Senha</p>
 						<input type="password" className={ClassErrPass} placeholder="********" value={pass} onChange={(e) => setPass(e.target.value)} />
-                        {ClassErrPass === "err-input" && <p className="err-p">{erro}</p>}
+						{ClassErrPass === "err-input" && <p className="err-p">{erro}</p>}
 					</div>
 					<button
 						className="sg-lg-btn-complex"
@@ -72,14 +80,12 @@ export default function Index() {
 									setTimeout(() => {
 										ref.current.complete();
 										setDisabled(false);
-                                        if (err.response.status === 401) {
-                                            if (err.response.data.erro == "Senha ou E-mail incorretos.") {
-                                                setClassErrEmail("err-input")
-                                                setClassErrPass("err-input")
-                                                
-                                            }
-                                            setErro(err.response.data.erro);
-                                            
+										if (err.response.status === 401) {
+											if (err.response.data.erro == "Senha ou E-mail incorretos.") {
+												setClassErrEmail("err-input");
+												setClassErrPass("err-input");
+											}
+											setErro(err.response.data.erro);
 										}
 									}, 1000);
 								}
@@ -87,7 +93,6 @@ export default function Index() {
 						}}>
 						Entrar
 					</button>
-					
 				</div>
 			</div>
 		</main>
