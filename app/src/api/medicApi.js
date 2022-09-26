@@ -21,6 +21,11 @@ export async function listarAtuacao(id) {
     return r.data;
 }
 
+export async function listarPlataforma() {
+	const r = await api.get(`/api/medic/plataforma`)
+	return r.data;
+}
+
 export async function adicionarConsulta(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link) {
     console.log(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link)
 	const r = await api.post("/api/medic/consulta", {

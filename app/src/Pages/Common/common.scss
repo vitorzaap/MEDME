@@ -70,18 +70,59 @@ $btn-hover: #6236fff1;
 	flex-direction: column;
 	text-align: left;
 	padding: 0.5em 0;
-	
-	.user-dropdown{
-		padding: .765em 1em;
+
+	.date-main {
+		display: flex;
+		width: 100%;
+		background-color: #f8f8f8;
+		padding: 0.5em 0;
+		justify-content: center;
+		.date-content {
+			display: flex;
+			width: 90%;
+			justify-content: space-around;
+			height: max-content;
+			input[type="date"]::-webkit-inner-spin-button,
+			input[type="date"]::-webkit-calendar-picker-indicator,
+			input[type="time"]::-webkit-calendar-picker-indicator {
+				filter: invert(26%) sepia(78%) saturate(2470%) hue-rotate(243deg) brightness(93%) contrast(122%);
+				cursor: pointer;
+			}
+			.default-date,
+			.default-hour {
+				padding: 0.5em 3em;
+				border: none;
+				outline: none;
+				background-color: #f2ecff;
+				border-radius: 0.5em;
+				font-family: "Noto-semibold";
+				font-size: 1em;
+				color: #6336ff;
+			}
+		}
+	}
+	.user-dropdown {
+		padding: 0.765em 1em;
 		border: none;
 		width: 100%;
 		font-size: 1em;
 		background-color: #f8f8f8;
-		border-radius: .5em;
+		border-radius: 0.5em;
 		cursor: pointer;
 		outline: none;
-		font-family: 'Noto-regular';
-		
+		font-family: "Noto-regular";
+	}
+	.err-dropdown {
+		padding: 0.765em 1em;
+		border: none;
+		width: 100%;
+		font-size: 1em;
+		background-color: #f8f8f8;
+		border-radius: 0.5em;
+		cursor: pointer;
+		outline: none;
+		border: 1px solid red;
+		font-family: "Noto-regular";
 	}
 	.input-text {
 		font-family: "Noto-semibold";
@@ -124,8 +165,6 @@ $btn-hover: #6236fff1;
 		font-family: "Noto-regular";
 		font-size: 0.90625em;
 	}
-
-	//favor não alterar valores aqui.
 }
 .err-p {
 	font-size: 0.825em;
@@ -136,9 +175,7 @@ button {
 	cursor: pointer;
 }
 
-.default-opt{
+.default-opt {
 	border: 1px solid red;
 	padding: 2em;
 }
-
-

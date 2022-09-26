@@ -35,7 +35,7 @@ export default function Index() {
 				<div className="sigin-main-content-inputs">
 					<div className="input-main">
 						<p className="input-text">Nome</p>
-						<input type="email" className={ClassErrName} placeholder="Vitor Santos" value={name} onChange={e => setName(e.target.value)} />
+						<input type="text" className={ClassErrName} placeholder="Vitor Santos" value={name} onChange={e => setName(e.target.value)} />
 						{ClassErrName === "err-input" && <p className="err-p">{erroName}</p>}
 					</div>
 					<div className="input-main">
@@ -46,6 +46,7 @@ export default function Index() {
 					<div className="input-main">
 						<p className="input-text">Senha</p>
 						<input type="password" className={ClassErrPass} placeholder="********" value={pass} onChange={e => setPass(e.target.value)} />
+						
 						{ClassErrPass === "err-input" && <p className="err-p">{erroPass}</p>}
 					</div>
 					<button

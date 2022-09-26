@@ -9,7 +9,8 @@ export async function medicLogin(medic) {
 			   ds_medico		descricao,
 			   img_icon			icon,
 			   id_atuacao		atuacao,
-			   id_atuacao1		atuacao1
+			   id_atuacao1		atuacao1,
+			   nr_consulta		numConsulta
 		  FROM tb_medico
          WHERE ds_email = ? AND
                ds_senha = ?
@@ -21,12 +22,29 @@ export async function medicLogin(medic) {
 export async function novaConsulta(consulta) {
 	
 	const c = `
-						INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, ds_plataforma, vl_preco, ds_link, ds_situacao)
-							VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, 'RESPOSTA PENDENTE');
+			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, ds_plataforma, vl_preco, ds_link, ds_situacao)
+			VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, 'RESPOSTA PENDENTE');
         `;
-	const [res] = await con.query(c, [consulta.medicoid, consulta.userid, consulta.descricao, consulta.data, consulta.hora, consulta.atuacao, consulta.plataforma, consulta.preco, consulta.link, consulta.situacao]);
+	const [res] = await con.query(c, [
+		consulta.medicoid,
+		consulta.userid,
+		consulta.descricao,
+		consulta.data,
+		consulta.hora,
+		consulta.atuacao,
+		consulta.plataforma,
+		consulta.preco,
+		consulta.link,
+		consulta.situacao,
+	]);
 	consulta.id = res.insertId;
-	console.log(consulta)
+
+	const add = `
+	UPDATE tb_medico SET nr_consulta = nr_consulta + 1 WHERE id_medico = ?;
+	`;
+	const nConsult = await con.query(add, [consulta.medicoid]);
+	const verif = await con.query(`SELECT nr_consulta consultas FROM tb_medico WHERE id_medico = ?`, consulta.medicoid)
+	console.log(verif);
 	return consulta;
 }
 
@@ -37,19 +55,31 @@ export async function selecionarPaciente(id) {
 			from tb_conversa
             inner join tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario 
             where tb_conversa.id_medico= ?;
-	`
-	const [res] = await con.query(c, [id])
+	`;
+	const [res] = await con.query(c, [id]);
 	return res[0];
 }
 
-export async function selecionarAtuacao(id){
+export async function selecionarAtuacao(id) {
 	const c = `
 		SELECT 	tb_atuacao.ds_atuacao	atuacao1,
 				tb_atuacao.ds_atuacao	atuacao2
 	from 		tb_atuacao
 	inner join 	tb_medico on tb_medico.id_atuacao1 = tb_atuacao.id_atuacao 
 	where 		tb_medico.id_medico = ?;
-	`
-	const [res] = await con.query(c, id)
+	`;
+	const [res] = await con.query(c, id);
 	return res;
+}
+
+export async function secPlataforma() {
+	const c =
+		`
+		SELECT
+		id_plataforma id, 
+		ds_plataforma plataforma 
+		FROM tb_plataforma
+		`
+	const [res] = await con.query(c);
+	return [res];
 }

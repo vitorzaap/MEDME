@@ -19,9 +19,68 @@
 			flex-direction: column;
 			width: 45%;
 
-            .default-input{
-                background-color: #F8F8F8;
-            }
+			.default-input {
+				background-color: #f8f8f8;
+			}
+
+			.err-input{
+				background-color: #f8f8f8;
+			}
+
+			.coin-div {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 0.625em;
+				
+				.coin-text-main {
+					display: flex;
+					border-radius: 0.625em 0 0 0.625em;
+					height: max-content;
+					align-items: center;
+					justify-content: center;
+					width: 10%;
+					background-color: #f2ecff;
+					padding: 0.96em 0.9em;
+					.coin-text {
+						font-family: "Noto-regular";
+						color: #6336ff;
+					}
+				}
+				.default-input {
+					width: 90%;
+					border-radius: 0 0.625em 0.625em 0;
+				}
+
+				
+			}
+
+			.err-div{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 0.625em;
+				border: 1px solid red;
+
+				.coin-text-main {
+					display: flex;
+					border-radius: 0.625em 0 0 0.625em;
+					height: max-content;
+					align-items: center;
+					justify-content: center;
+					width: 10%;
+					background-color: #f2ecff;
+					padding: 0.96em 0.9em;
+					.coin-text {
+						font-family: "Noto-regular";
+						color: #6336ff;
+					}
+				}
+				.default-input {
+					width: 90%;
+					border-radius: 0 0.625em 0.625em 0;
+				}
+			}
 		}
 		.div-btn {
 			display: flex;
@@ -29,11 +88,10 @@
 			height: max-content;
 		}
 	}
-    .sg-lg-btn-complex{
-        font-size: 1.225em;
-    }
+	.sg-lg-btn-complex {
+		font-size: 1.225em;
+	}
 }
-
 .pop-up {
 	position: fixed;
 	width: 100vw;

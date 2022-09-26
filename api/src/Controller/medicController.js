@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao } from "../Repo/medicRepo.js";
+import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma } from "../Repo/medicRepo.js";
 
 const router = Router();
 router.post("/api/medic/login", async (req, res) => {
@@ -54,5 +54,18 @@ router.get("/api/medic/atuacao", async (req, resp) => {
 		});
 	}
 });
+
+router.get("/api/medic/plataforma", async (req, resp) => {
+	try {
+		const [r] = await secPlataforma();
+		resp.send(r);
+	} catch (err) {
+		resp.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+
+
 
 export default router;
