@@ -7,7 +7,5 @@ const router = express();
 router.use(cors());
 router.use(express.json());
 router.use(userController);
-router.use(medicController)
+router.use(medicController);
 router.listen(process.env.PORT, () => console.log(`Server online on PORT: ${process.env.PORT}`));
-
-
