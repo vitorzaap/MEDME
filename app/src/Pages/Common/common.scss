@@ -149,6 +149,8 @@ $btn-hover: #6236fff1;
 		max-height: 12em;
 		background-color: #f8f8f8;
 		outline: none;
+		min-height: 6em;
+		min-width: 40%;
 		border: solid 0.5em #f8f8f8;
 		padding: 0.6em 0.5em 0.62em 0.5em;
 		border-radius: 0.625em;
@@ -160,6 +162,8 @@ $btn-hover: #6236fff1;
 		background-color: #ebebeb;
 		max-width: 100%;
 		max-height: 12em;
+		min-height: 4em;
+		min-width: 40%;
 		border: 0.5px solid red;
 		outline: none;
 		padding: 1.1em 1em 1.12em 1em;
@@ -194,4 +198,129 @@ button {
 .default-opt {
 	border: 1px solid red;
 	padding: 2em;
+}
+
+@media screen and (max-width: 1280px){
+	.input-main {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		padding: 0.5em 0;
+	
+		.date-main {
+			display: flex;
+			width: 100%;
+			background-color: #f8f8f8;
+			padding: 0.5em 0;
+			justify-content: center;
+			border-radius: 1em;
+			.date-content {
+				display: flex;
+				width: 90%;
+				justify-content: space-around;
+				height: max-content;
+				input[type="date"]::-webkit-inner-spin-button,
+				input[type="date"]::-webkit-calendar-picker-indicator,
+				input[type="time"]::-webkit-calendar-picker-indicator {
+					filter: invert(26%) sepia(78%) saturate(2470%) hue-rotate(243deg) brightness(93%) contrast(122%);
+					cursor: pointer;
+				}
+				.default-date,
+				.default-hour {
+					padding: 0.5em 3em;
+					border: none;
+					outline: none;
+					background-color: #f2ecff;
+					border-radius: 0.5em;
+					font-family: "Noto-semibold";
+					font-size: 1em;
+					color: #6336ff;
+				}
+			}
+		}
+		.user-dropdown {
+			padding: 0.765em 1em;
+			border: none;
+			width: 100%;
+			font-size: 1em;
+			background-color: #f8f8f8;
+			border-radius: 0.5em;
+			cursor: pointer;
+			outline: none;
+			font-family: "Noto-regular";
+		}
+		.err-dropdown {
+			padding: 0.765em 1em;
+			border: none;
+			width: 100%;
+			font-size: 1em;
+			background-color: #f8f8f8;
+			border-radius: 0.5em;
+			cursor: pointer;
+			outline: none;
+			border: 1px solid red;
+			font-family: "Noto-regular";
+		}
+		.input-text {
+			font-family: "Noto-semibold";
+		}
+		.default-input {
+			background-color: #ebebeb;
+			outline: none;
+			border: none;
+			padding: 1.1em 1em 1.12em 1em;
+			width: 100%;
+			border-radius: 0.625em;
+			font-family: "Noto-regular";
+			font-size: 0.90625em;
+		}
+		.default-input::placeholder,
+		.default-textarea::placeholder {
+			color: #6b6f80;
+			font-family: "Noto-regular";
+		}
+	
+		.default-textarea {
+			max-width: 100%;
+			max-height: 12em;
+			background-color: #f8f8f8;
+			outline: none;
+			border: solid 0.5em #f8f8f8;
+			padding: 0.6em 0.5em 0.62em 0.5em;
+			border-radius: 0.625em;
+			font-family: "Noto-regular";
+			font-size: 0.90625em;
+		}
+	
+		.err-textarea {
+			background-color: #ebebeb;
+			max-width: 100%;
+			max-height: 12em;
+			border: 0.5px solid red;
+			outline: none;
+			padding: 1.1em 1em 1.12em 1em;
+			width: 100%;
+			border-radius: 0.625em;
+			font-family: "Noto-regular";
+			font-size: 0.90625em;
+		}
+	
+		.err-input {
+			background-color: #ebebeb;
+			border: 0.5px solid red;
+			max-width: 100%;
+			max-height: 12em;
+			outline: none;
+			padding: 1.1em 1em 1.12em 1em;
+			width: 100%;
+			border-radius: 0.625em;
+			font-family: "Noto-regular";
+			font-size: 0.90625em;
+		}
+	}
+	.err-p {
+		font-size: 0.825em;
+		color: red;
+		font-family: "Noto-regular";
+	}
 }

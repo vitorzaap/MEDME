@@ -44,7 +44,6 @@ export async function novaConsulta(consulta) {
 	`;
 	const nConsult = await con.query(add, [consulta.medicoid]);
 	const verif = await con.query(`SELECT nr_consulta consultas FROM tb_medico WHERE id_medico = ?`, consulta.medicoid)
-	console.log(verif);
 	return consulta;
 }
 
