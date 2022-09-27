@@ -155,7 +155,7 @@ export default function Index(props) {
 			<div className="div-btn">
 				<button className="sg-lg-btn-complex" disabled={disabled} onClick={async () => {
 					!link ? setClassErrLink("err-input") : setClassErrLink("default-input");
-					!desc ? setClassErrDesc("err-input") : setClassErrDesc("default-input");
+					!desc ? setClassErrDesc("err-input") : setClassErrDesc("default-textarea");
 					!price ? setClassErrPrice("err-div") : setClassErrPrice("coin-div");
 					!plataformaId ? setClassErrPlataforma("err-dropdown") : setClassErrPlataforma("user-dropdown");
 					!actionId ? setClassErrPlataforma("err-dropdown") : setClassErrPlataforma("user-dropdown");

@@ -156,9 +156,24 @@ $btn-hover: #6236fff1;
 		font-size: 0.90625em;
 	}
 
+	.err-textarea {
+		background-color: #ebebeb;
+		max-width: 100%;
+		max-height: 12em;
+		border: 0.5px solid red;
+		outline: none;
+		padding: 1.1em 1em 1.12em 1em;
+		width: 100%;
+		border-radius: 0.625em;
+		font-family: "Noto-regular";
+		font-size: 0.90625em;
+	}
+
 	.err-input {
 		background-color: #ebebeb;
 		border: 0.5px solid red;
+		max-width: 100%;
+		max-height: 12em;
 		outline: none;
 		padding: 1.1em 1em 1.12em 1em;
 		width: 100%;
