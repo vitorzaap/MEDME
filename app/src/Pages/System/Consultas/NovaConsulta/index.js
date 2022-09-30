@@ -9,9 +9,10 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Index(props) {
 	const [userId, setUserId] = useState();
-	const [consult, setConsult] = useState();
 	const [users, setUsers] = useState([]);
 	const [action, setAction] = useState([]);
+	const [disabledClient, setDisabledClient] = useState(false);
+	const [clientString, setClientString] = useState("Selecione um Paciente")
 	const [actionId, setActionId] = useState();
 	const [plataforma, setPlataforma] = useState([]);
 	const [plataformaId, setPlataformaId] = useState();
@@ -51,19 +52,19 @@ export default function Index(props) {
                         <select
 							className={classErrUser}
 							value={userId}
+
 							onChange={e => setUserId(e.target.value)}
                             onClick={async () => {
                                 const userInfo = storage("userInfo")
                                 const r = await listarPacientes(userInfo.id)
 								setUsers([r]);
-								
                                 }}>
 							<option selected disabled hidden>
-								Selecione um paciente
+								{clientString}
 							</option>
 							{users.map((item) => (
                                     <option value={item.id} key="" className="opt">
-									{item.nameUser}
+									{item.nameUser} 
 								</option>
 							))}
 							;
