@@ -30,3 +30,10 @@ export async function userSigIn(user) {
 	user.Id = res.insertId;
 	return user;
 }
+export async function userAccept(id){
+        const c = `UPDATE tb_consulta
+        SET ds_situacao = 'RESPOSTA ACEITA'
+        AND id_consulta = ?`
+        const res = await con.query(c, [id])
+        return res;
+}

@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { userLogin, userSigIn, verifUserEmail } from "../Repo/userRepo.js";
+import { response, Router } from "express";
+import { userLogin, userSigIn, verifUserEmail, userAccept } from "../Repo/userRepo.js";
 const router = Router();
 
 router.post("/api/user/login", async (req, res) => {
@@ -28,6 +28,18 @@ router.post("/api/user/account", async (req, res) => {
 		} else {
 			throw new Error("E-mail já está em uso.");
 		}
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+
+router.put("/api/usuario/consultas/aceitar/:id", async (req, res) => {
+	try {
+		const id = req.params;
+		const verif = await userAccept(id);
+		res.status(204)
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,
