@@ -19,8 +19,6 @@ export default function Index() {
                         <Cards titulo='Conversas' imagem={Calendar} tipo='numero' numero='4' subtitulo='Conversas ainda não respondidas.'/>
                     </div>
                     <div className="dashboard-consultas-content">
-                    
-                        <div className="lista-consultas-main">
                             <div className="div-h1-consultas-main">
                                 <h1 className="h1-consultas-main">Minhas consultas</h1>
                             </div>
@@ -33,15 +31,13 @@ export default function Index() {
                                             <th>Hora</th>
                                             <th>Marcada em</th>
                                             <th>Tipo</th>
-                                            <th>N° Consulta</th>
                                             <th>Plataforma</th>
                                             <th>Status Da Consulta</th>
-                                        </tr> 
+                                        </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
             </section>
 		</main>
