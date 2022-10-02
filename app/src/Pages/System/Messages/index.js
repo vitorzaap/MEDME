@@ -6,7 +6,6 @@ import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"
 import FileIcon from "../../../assets/images/file.svg"
 import SendVector from "../../../assets/images/send-vector.svg"
-import Temporario from "../../../assets/images/Temporario.svg"
 
 export default function Index() {
 	return (
@@ -63,7 +62,7 @@ export default function Index() {
                             <h1>David Lester</h1>
                         </header>
                         <div className="messages-main-content-conversation">
-                            <img src={Temporario} className="imagem-messages-temporario" />
+
                         </div>
                         <footer>
                             <div className="messages-inputzao">

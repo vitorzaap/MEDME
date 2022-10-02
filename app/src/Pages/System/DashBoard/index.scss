@@ -1,0 +1,132 @@
+$color1: #4375F4;
+$color2: #39B6D2;
+.dashboard-main{
+    overflow: hidden;
+    width: 100vw;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    .dashboard-section-main{
+        display: flex;
+		flex-direction: column;
+        .dashboard-content{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            width: 86vw;
+			height: 89vh;
+			background-color: #edeef2;
+            .dashboard-cards-content{
+                height: 35%;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+            .dashboard-consultas-content{
+                width: 95%;
+                height: 60%;
+                border-radius: 1em;
+                background-color: #fff;
+                    .lista-consultas-main {
+                        width: 95%;
+                        max-width: 125em;
+                        height: 95%;
+                        padding: 1em;
+                        background-color: #fff;
+                        border-radius: 1em;
+    
+                        .div-h1-consultas-main {
+                            width: 100%;
+                            height: 5;
+    
+                            .h1-consultas-main {
+                                font-family: "Noto-semibold";
+                                font-size: 1.3em;
+                                margin: 0 0 1em .3em;
+                            }
+                        }
+    
+                        .main-container-consultas {
+                            display: flex;
+                            width: 100%;
+                            height: 95%;
+    
+                            .titles-main-container-consultas {
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: flex-start;
+                                align-items: center;
+                                width: 100%;
+    
+                                table {
+                                    width: 100%;
+                                    border-bottom: 1px solid #373737;
+    
+                                    th {
+                                        font-family: "Noto-light";
+                                        color: #373737;
+                                        text-align: start;
+                                        padding: 0.3em;
+                                    }
+                                }
+                            }
+                        }
+                    
+                }
+            }
+        }
+    }
+}
+.dashboard-cards{
+    width: 30%;
+    height: 90%;
+    background-color: $color1;
+    margin: 1em;
+    border-radius: 1.5em;
+    display: flex;
+    flex-direction: column;
+    .dashboard-cards-div-1{
+        padding-left: 2em;
+        display: flex;
+        align-items: center;
+        height: 33%;
+        img{
+            width: 2em;
+            background-color: #8FAEFC;
+            border-radius: .5em;
+        }
+        h1{
+            font-size: .9em;
+            font-family: "Noto-semibold";
+            color: #FFFFFF;
+            padding-left: .2em;
+        }
+    }
+    .dashboard-cards-props{
+        width: 40%;
+        height: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 8%;
+        p{
+            font-size: 2em;
+            font-family: "Noto-semibold";
+            color: #FFFFFF;
+        }
+    }
+    .dashboard-cards-subtitulo{
+        height: 27%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 8%;
+        h1{
+            font-size: .9em;
+            font-family: "Noto-semibold";
+            color: #FFFFFF;
+        }
+    }
+}

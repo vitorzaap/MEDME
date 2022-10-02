@@ -63,7 +63,7 @@ export default function Index() {
 										ref.current.complete();
 									}, 2000)
 									setTimeout(() => {
-										nav("/consultas")
+										nav("/dashboard")
 									}, 2500)
 								}
 								catch (err) {

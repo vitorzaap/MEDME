@@ -6,6 +6,7 @@ import SigIn from "./Pages/System/SignIn";
 import Consultas from "./Pages/System/Consultas"
 import Messages from "./Pages/System/Messages"
 import Avaliacoes from "./Pages/System/Evaluation"
+import DashBoard from "./Pages/System/DashBoard"
 export default function Index() {
 	return (
 		<BrowserRouter>
@@ -17,6 +18,7 @@ export default function Index() {
 				<Route path="/consultas" element={<Consultas />} />
 				<Route path="/mensagens" element={<Messages />} />
 				<Route path="/avaliacoes" element={<Avaliacoes />} />
+				<Route path="/dashboard" element={<DashBoard />} />
 			</Routes>
 		</BrowserRouter>
 	);

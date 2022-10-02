@@ -27,9 +27,7 @@ export default function Index() {
 					<img src={Logo} alt="Logo" />
 					<h1>Criar conta</h1>
 					<p>
-						Já possui uma conta? <button className="sg-lg-btn" onClick={() => {
-							nav("/user/login")
-						}}>Entrar agora!</button>
+						Já possui uma conta? <button className="sg-lg-btn" onClick={() => {nav("/user/login")}}>Entrar agora!</button>
 					</p>
 				</div>
 				<div className="sigin-main-content-inputs">
@@ -50,9 +48,7 @@ export default function Index() {
 						{ClassErrPass === "err-input" && <p className="err-p">{erroPass}</p>}
 					</div>
 					<button
-						className="sg-lg-btn-complex"
-						disabled={disabled}
-						onClick={async () => {
+						className="sg-lg-btn-complex"disabled={disabled} onClick={async () => {
 							if (!pass) {
 								setClassErrPass("err-input")
 								setErroPass("Este campo não pode estar vazio.")
