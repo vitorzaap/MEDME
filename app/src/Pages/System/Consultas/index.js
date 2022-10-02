@@ -29,7 +29,29 @@ export default function Index() {
                             <p>Nova Consulta</p>
                         </button>
                     </div>
-                    
+                    <div className="get-consultas">
+                        <div className="lista-consultas-main">
+                            <div className="div-h1-consultas-main">
+                                <h1 className="h1-consultas-main">Minhas consultas</h1>
+                            </div>
+                            <div className="main-container-consultas">
+                                <div className="titles-main-container-consultas">
+                                    <table>
+                                        <tr>
+                                            <th>Paciente</th>
+                                            <th>Data</th>
+                                            <th>Hora</th>
+                                            <th>Marcada em</th>
+                                            <th>Tipo</th>
+                                            <th>N° Consulta</th>
+                                            <th>Plataforma</th>
+                                            <th>Status Da Consulta</th>
+                                        </tr> 
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
