@@ -34,8 +34,8 @@ router.post("/api/medic/consulta", async (req, resp) => {
 router.get("/api/medic/chat", async (req, resp) => {
 	try {
 		const {id} = req.query;
-		const resposta = await selecionarPaciente(id);
-		resp.send(resposta);
+		const r = await selecionarPaciente(id);
+		resp.send(r);
 	} catch (err) {
 		resp.status(401).send({
 			erro: err.message,

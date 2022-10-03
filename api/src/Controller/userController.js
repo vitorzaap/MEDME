@@ -35,7 +35,7 @@ router.post("/api/user/account", async (req, res) => {
 	}
 });
 
-router.put("/api/usuario/consultas/aceitar/:id", async (req, res) => {
+router.put("/api/user/consultas/aceitar/:id", async (req, res) => {
 	try {
 		const id = req.params;
 		const verif = await userAccept(id);
@@ -46,5 +46,16 @@ router.put("/api/usuario/consultas/aceitar/:id", async (req, res) => {
 		});
 	}
 });
+
+router.get("/api/user/consultas", async(req, res) => {
+	try {
+		const { userId } = req.query;
+		
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message
+		})
+	}
+})
 
 export default router;

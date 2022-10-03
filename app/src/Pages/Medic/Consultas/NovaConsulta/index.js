@@ -63,14 +63,14 @@ export default function Index(props) {
                             onClick={async () => {
                                 const userInfo = storage("userInfo")
                                 const r = await listarPacientes(userInfo.id)
-								setUsers([r]);
+								setUsers(r);
                                 }}>
 							<option selected disabled hidden>
 								{clientString}
 							</option>
 							{users.map((item) => (
                                     <option value={item.id} key="" className="opt">
-									{item.nameUser} 
+									{item.nome} 
 								</option>
 							))}
 							;

@@ -39,3 +39,10 @@ export async function userAccept(id){
         const res = await con.query(c, [id])
         return res;
 }
+
+export async function getConsultas(userId) {
+        const c = 
+                `
+                
+                `
+}

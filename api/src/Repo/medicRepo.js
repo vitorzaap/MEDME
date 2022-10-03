@@ -49,14 +49,14 @@ export async function novaConsulta(consulta) {
 
 export async function selecionarPaciente(id) {
 	const c = `
-	select tb_usuario.nm_usuario nameUser,
+			select tb_usuario.nm_usuario nome,
 			tb_usuario.id_usuario	id
 			from tb_conversa
             inner join tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario 
             where tb_conversa.id_medico= ?;
 	`;
 	const [res] = await con.query(c, [id]);
-	return res[0];
+	return res;
 }
 
 export async function selecionarAtuacao(id) {

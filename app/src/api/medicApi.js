@@ -12,7 +12,7 @@ export async function medicLogin(email, pass) {
 }
 
 export async function listarPacientes(id) {
-    const r = await api.get(`/api/medic/chat?id=${id}`);
+	const r = await api.get(`/api/medic/chat?id=${id}`);
 	return r.data;
 }
 
