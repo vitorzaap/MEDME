@@ -18,6 +18,12 @@ export default function Index() {
 	const [pass, setPass] = useState("");
 	const ref = useRef();
 	const nav = useNavigate();
+	document.addEventListener("keypress" , function (e) {
+		if(e.key === "Enter"){
+			const btn = document.querySelector("#send");
+			btn.click();
+		}
+	})
 
 	return (
 		<main className="sigin-main">
@@ -48,7 +54,8 @@ export default function Index() {
 						{ClassErrPass === "err-input" && <p className="err-p">{erroPass}</p>}
 					</div>
 					<button
-						className="sg-lg-btn-complex"disabled={disabled} onClick={async () => {
+
+					id="send" className="sg-lg-btn-complex"disabled={disabled} onClick={async () => {
 							if (!pass) {
 								setClassErrPass("err-input")
 								setErroPass("Este campo não pode estar vazio.")

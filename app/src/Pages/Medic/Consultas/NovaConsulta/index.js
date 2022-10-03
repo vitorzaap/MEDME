@@ -34,6 +34,12 @@ export default function Index(props) {
 		var element = document.getElementById("pop-up");
 		element.classList.remove("show-main");
 	}
+	document.addEventListener("keypress" , function (e) {
+		if(e.key === "Enter"){
+			const btn = document.querySelector("#send");
+			btn.click();
+		}
+	})
     
 	return (
 		<main className="consult-content">
@@ -154,7 +160,7 @@ export default function Index(props) {
 				
 			</div>
 			<div className="div-btn">
-				<button className="sg-lg-btn-complex" disabled={disabled} onClick={async () => {
+				<button id="send" className="sg-lg-btn-complex" disabled={disabled} onClick={async () => {
 					!link ? setClassErrLink("err-input") : setClassErrLink("default-input");
 					!desc ? setClassErrDesc("err-input") : setClassErrDesc("default-textarea");
 					!price ? setClassErrPrice("err-div") : setClassErrPrice("coin-div");
