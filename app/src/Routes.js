@@ -22,10 +22,10 @@ export default function Index() {
 
 				<Route path="/user/account" element={<SigUp />} />
 				<Route path="/user/login" element={<UserLogIn />} />
-				<Route path="/user/dashboard" element={<UserDashBoard />} />
-				<Route path="/user/mensagens" element={<UserMessages />} />
-				<Route path="/user/consultas" element={<UserConsultas />} />
-				<Route path="/user/avaliacoes" element={<UserAvaliacoes />} />
+				<Route path="/dashboard" element={<UserDashBoard />} />
+				<Route path="/mensagens" element={<UserMessages />} />
+				<Route path="/consultas" element={<UserConsultas />} />
+				<Route path="/avaliacoes" element={<UserAvaliacoes />} />
 			
 				<Route path="/medic/login" element={<MedicLogin />} />
 				<Route path="/medic/dashboard" element={<MedicDashBoard />} />

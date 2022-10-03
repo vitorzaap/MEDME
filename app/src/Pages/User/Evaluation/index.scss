@@ -40,15 +40,81 @@
                 }
                 .page-evaluation-comment{
                     height: 80%;
+                    width: 80vw;
                     .page-evaluation-comment-title{
                         font-family: "Noto-bold";
                         margin: .8em 1em;
                         font-size: 2em;
                         color: #252627;
                     }
-                    .page-evaluation-comment-comments{
-                        display: flex;
-                        height: 80%;
+                        .page-evaluation-comment-div-Feedback{
+                            height: 100%;
+                            width: 30vw;
+                            display: flex;
+                            flex-direction: column;
+                            margin-left: 2em;
+                            label{
+                                font-family: 'Noto-semibold';
+                                font-size: 1em;
+                                span{
+                                    color: red;
+                                }
+                            }
+                            textarea{
+                                height: 100%;
+                                padding: 1em;
+                                border-radius: .5em;
+                                outline: none;
+                                border: none;
+                                font-family: 'Noto-semibold';
+                                max-width: 100%;
+                                max-height: 70%;
+                                background-color: #EDEEF2;
+                            }
+                            button{
+                                border: none;
+                                outline: none;
+                                height: 3em;
+                                border-radius: .5em;
+                                background-color: #6336FF;
+                                color: #fff;
+                                font-family: 'Noto-bold';
+                                margin-top: 2em;
+                            }
+                        }
+                        .page-evaluation-medic{
+                            border-radius: .5em;
+                            padding: 1em;
+                            width: 60%;
+                            height: 100%;
+                            background-color: #F8F8F8;
+                            .page-evaluation-medic-info{
+                                display: flex;
+                                align-items: center;
+                                img{
+                                    height: 5em;
+                                    margin: 0 1em 0 0;
+                                }
+                                h1{
+                                    text-align: center;
+                                    font-size: 2em;
+                                    font-family: 'Noto-bold';
+                                }
+                            }
+                            .page-evaluation-medic-info-separation{
+                                width: 100%;
+                                padding: 2em 0;
+                            }
+                            .page-evaluation-medic-desc{
+                                width: 90%;
+                                p{
+                                    color: #252627;
+                                    font-size: .8em;
+                                    font-family: 'Noto-regular';
+                                    margin-left: .5em;
+                                }
+                            }
+                        }
                         .page-evaluation-comment-div-cards{
                             width: 65%;
                         }
@@ -91,7 +157,7 @@
                         }
                     }
                 }
-            }
+            
         }
     }
 }

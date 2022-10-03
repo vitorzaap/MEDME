@@ -23,12 +23,7 @@ export default function Index() {
             <div className="container-consultas">
                 <Cabecalho />
                 <div className="content-consultas">
-                    <div className="button-nova">
-                        <button onClick={showNova} className="nova-consulta">
-                            <img src={iconAdd} alt='icon' />
-                            <p>Nova Consulta</p>
-                        </button>
-                    </div>
+                    
                     <div className="get-consultas">
                         <div className="lista-consultas-main">
                             <div className="div-h1-consultas-main">
@@ -45,7 +40,6 @@ export default function Index() {
                                             <th>Tipo</th>
                                             <th>N° Consulta</th>
                                             <th>Plataforma</th>
-                                            <th>Status Da Consulta</th>
                                         </tr> 
                                     </table>
                                 </div>
