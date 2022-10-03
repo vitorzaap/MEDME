@@ -19,7 +19,7 @@ export default function Index() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Lp />} />
-				
+
 				<Route path="/user/account" element={<SigUp />} />
 				<Route path="/user/login" element={<UserLogIn />} />
 				<Route path="/user/dashboard" element={<UserDashBoard />} />

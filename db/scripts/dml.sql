@@ -1,3 +1,19 @@
+
+INSERT INTO tb_usuario(nm_usuario, sbr_usuario, ds_email, ds_senha)
+        VALUES("Pedro","Horvath Montemurro", "PedroHorvathMontemurro@gmail.com","PedroHorath123");
+INSERT INTO tb_atuacao(ds_atuacao)
+		VALUES("geral");
+INSERT INTO tb_atuacao(ds_atuacao)
+		VALUES("dentista");
+INSERT INTO tb_atuacao(ds_atuacao)
+		VALUES("veterinario");
+INSERT INTO tb_medico(nm_medico, ds_email, ds_senha, ds_medico, id_atuacao, id_atuacao1)
+            VALUES("Julio", "medicojulio@gmail.com","Sou um medico legal", "JulioBoaventuraMedico", 1, 2);
+
+
+
+
+
 INSERT INTO tb_usuario(nm_usuario, ds_email, ds_senha)
 		VALUES("xxxxi", "admin","admin");
         
@@ -72,3 +88,4 @@ select time_format(dt_consulta, '%H:%i' ) from tb_consulta;
 
         
         
+insert into tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) values (1,1,"Descrição teste",4.5);

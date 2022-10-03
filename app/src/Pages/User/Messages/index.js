@@ -1,6 +1,6 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Medico/index.js"
+import Menu from "../../Components/Menu-Usuario/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"

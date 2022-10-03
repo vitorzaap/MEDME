@@ -5,7 +5,8 @@ SHOW TABLES;
 
 CREATE TABLE tb_usuario(
 	id_usuario			INT PRIMARY KEY AUTO_INCREMENT,
-    	nm_usuario			VARCHAR(200) NOT NULL,
+    	nm_usuario			VARCHAR(10) NOT NULL,
+		sbr_usuario         VARCHAR(200) NOT NULL,
     	ds_email			VARCHAR(200) NOT NULL,
     	ds_senha			VARCHAR(200) NOT NULL,
     	img_icon			VARCHAR(200)
