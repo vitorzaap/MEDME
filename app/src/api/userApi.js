@@ -11,9 +11,10 @@ export async function userLogin(email, pass) {
 	return r.data;
 }
 
-export async function userSigIn(name, email, pass) {
+export async function userSigIn(name, sobrenome, email, pass) {
 	const r = await api.post("/api/user/account", {
 		name: name,
+		sobrenome: sobrenome,
 		email: email,
 		pass: pass,
 	});

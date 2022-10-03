@@ -18,11 +18,11 @@ export default function Menu(props) {
             navigate('/')
         }
     },[])
-    
+
     return(
         <main className="content-menu">
             <div className="Container-lateral">
-                
+
                 <div className="Subcontainer-lateral">
                     <div className="Card">
                         <div className="div-img">
@@ -33,18 +33,18 @@ export default function Menu(props) {
                         </div>
                     </div>
                     <div>
-                        <Cards img={icondb} txt="Dashboard" local="user/dashboard" selecionado={props.selecionado}/>
+                        <Cards img={icondb} txt="Dashboard" local="medic/dashboard" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={iconmail} txt="Mensagens" local='user/mensagens' selecionado={props.selecionado}/>   
+                        <Cards img={iconmail} txt="Mensagens" local='medic/mensagens' selecionado={props.selecionado}/>   
                     </div>
                     <div>
-                        <Cards  img={iconcalendar} txt="Consultas" local="user/consultas" selecionado={props.selecionado}/>
+                        <Cards  img={iconcalendar} txt="Consultas" local="medic/consultas" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={logoaval} txt="Avaliações" local="user/avaliacoes" selecionado={props.selecionado}/>
+                        <Cards img={logoaval} txt="Avaliações" local="medic/avaliacoes" selecionado={props.selecionado}/>
                     </div>
-                    
+
                 </div>
                 <div className="Subcontainer2-lateral">
                 <div className="Card">

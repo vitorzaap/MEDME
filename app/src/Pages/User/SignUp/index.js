@@ -9,11 +9,14 @@ export default function Index() {
 	const [classErrEmail, setClassErrEmail] = useState("default-input");
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
 	const [ClassErrName, setClassErrName] = useState("default-input");
+	const [ClassErrSobrenome, setClassErrSobrenome] = useState("default-input");
 	const [erroPass, setErroPass] = useState("")
 	const [erroName, setErroName] = useState("");
+	const [erroSobrenome, setErroSobrenome] = useState("");
 	const [erroEmail, setErroEmail] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [name, setName] = useState("");
+	const [sobrenome, setSobrenome] = useState("");
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const ref = useRef();
@@ -39,8 +42,13 @@ export default function Index() {
 				<div className="sigin-main-content-inputs">
 					<div className="input-main">
 						<p className="input-text">Nome</p>
-						<input type="text" className={ClassErrName} placeholder="Vitor Santos" value={name} onChange={e => setName(e.target.value)} />
+						<input type="text" className={ClassErrName} placeholder="Vitor" value={name} onChange={e => setName(e.target.value)} />
 						{ClassErrName === "err-input" && <p className="err-p">{erroName}</p>}
+					</div>
+					<div className="input-main">
+						<p className="input-text">Sobrenome</p>
+						<input type="text" className={ClassErrSobrenome} placeholder="Santos Menezes" value={sobrenome} onChange={e => setSobrenome(e.target.value)} />
+						{ClassErrSobrenome === "err-input" && <p className="err-p">{erroSobrenome}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">E-mail</p>
@@ -74,6 +82,13 @@ export default function Index() {
 							else {
 								setClassErrName("default-input")
 							}
+							if (!sobrenome) {
+								setClassErrSobrenome("err-input")
+								setErroSobrenome("Este campo não pode estar vazio.")
+							}
+							else {
+								setClassErrSobrenome("default-input")
+							}
 
 							if (!email) {
 								setClassErrEmail("err-input")
@@ -82,12 +97,12 @@ export default function Index() {
 							else {
 								setClassErrEmail("default-input")
 							}
-							if (pass.length >= 8 && email && name) {
+							if (pass.length >= 8 && email && name && sobrenome) {
 								console.log(true)
 								ref.current.continuousStart();
 								setDisabled(true);
 								try {
-									const r = await userSigIn(name, email, pass);
+									const r = await userSigIn(name, sobrenome, email, pass);
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000)
@@ -108,8 +123,6 @@ export default function Index() {
 									}, 1000)
 								}
 							}
-
-
 						}}>
 						Criar conta
 					</button>

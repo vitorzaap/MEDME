@@ -4,6 +4,8 @@ export async function userLogin(user) {
 	const c = `
         SELECT 
         id_usuario  id,
+        nm_usuario  name,
+        sbr_usuario sobrenome,
         ds_email    email,
         ds_senha    senha
         from tb_usuario
@@ -23,10 +25,10 @@ export async function verifUserEmail(email) {
 }
 export async function userSigIn(user) {
 	const c = `
-        INSERT INTO tb_usuario(nm_usuario, ds_email, ds_senha)
-                    VALUES(?, ?, ?);
+        INSERT INTO tb_usuario(nm_usuario, sbr_usuario, ds_email, ds_senha)
+                VALUES(?, ?, ?, ?);
         `;
-	const [res] = await con.query(c, [user.name, user.email, user.pass]);
+	const [res] = await con.query(c, [user.name, user.sobrenome, user.email, user.pass]);
 	user.Id = res.insertId;
 	return user;
 }

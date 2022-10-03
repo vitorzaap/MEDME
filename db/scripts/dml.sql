@@ -1,3 +1,13 @@
+show databases;
+use medmedb;
+show tables;
+select * from tb_avaliacao;
+insert into tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) values (1,1,"Descrição teste",4.5);
+select * from tb_situacao_consulta;
+select * from tb_consulta;
+select * from tb_usuario;
+select * from tb_medico;
+select * from tb_atuacao;
 
 INSERT INTO tb_usuario(nm_usuario, sbr_usuario, ds_email, ds_senha)
         VALUES("Pedro","Horvath Montemurro", "PedroHorvathMontemurro@gmail.com","PedroHorath123");
@@ -9,7 +19,6 @@ INSERT INTO tb_atuacao(ds_atuacao)
 		VALUES("veterinario");
 INSERT INTO tb_medico(nm_medico, ds_email, ds_senha, ds_medico, id_atuacao, id_atuacao1)
             VALUES("Julio", "medicojulio@gmail.com","Sou um medico legal", "JulioBoaventuraMedico", 1, 2);
-
 
 
 
