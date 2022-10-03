@@ -1,0 +1,139 @@
+.evaluation-main{
+    width: 100vw;
+	height: 100%;
+    overflow:hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    .evaluation-section-main{
+        display: flex;
+		flex-direction: column;
+        .evaluation-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #EDEEF2;
+            height: 89vh;
+            .evaluation-main-content{
+                border-radius: 1em;
+                background-color: #fff;
+                width: 95%;
+                height: 95%;
+                .page-evaluation-header{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    height: 20%;
+                    h1{
+                        font-family: "Noto-bold";
+                        margin: .8em 1.5em;
+                        color: #252627;
+                    }
+                    .page-evaluation-div-linha-separacao{
+                        display: flex;
+                        width: 100%;
+                        justify-content: center;
+                        .evaluation-linhaseparacao{
+                            width: 95%;
+                        }
+                    }
+                }
+                .page-evaluation-comment{
+                    height: 80%;
+                    .page-evaluation-comment-title{
+                        font-family: "Noto-bold";
+                        margin: .8em 1em;
+                        font-size: 2em;
+                        color: #252627;
+                    }
+                    .page-evaluation-comment-comments{
+                        display: flex;
+                        height: 80%;
+                        .page-evaluation-comment-div-cards{
+                            width: 65%;
+                        }
+                        .page-evaluation-comment-hates{
+                            text-align: center;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-around;
+                            align-items: center;
+                            height: 70%;
+                            width: 30%;
+                            background-color: #F8F8F8;
+                            border-radius: 2em;
+                            margin-top: 1em;
+                            .page-evaluation-comment-hates-div-total{
+                                text-align: center;
+                                height: 20%;
+                                width: 90%;
+                            }
+                            .page-evaluation-comment-hates-div-positivos{
+                                height: 20%;
+                                width: 90%;
+                                background-color: #E6FFF3;
+                                border-radius: 1em;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: #15FF2D;
+                            }
+                            .page-evaluation-comment-hates-div-negativos{
+                                height: 20%;
+                                width: 90%;
+                                background-color: #FFE6E6;
+                                border-radius: 1em;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: #FF9999;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.evaluation-cards{
+      display: flex;   
+      align-items: center;
+      background-color: #F8F8F8; 
+      border-radius: 1em;
+      margin: 1em;
+      height: 20%;
+      .evaluation-cards-image-profile{
+        margin-left: 1.2em;
+      }
+      .evaluation-cards-image-separation{
+        margin: 0 1em 0 1em;
+        height: 4em;
+      }
+      .evaluation-cards-div-comments{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 8vh;
+        .evaluation-cards-div-infos{
+            display: flex;
+            justify-content: space-between;
+            width: 95%;
+            h1{
+                font-family: "Noto-bold";
+                font-size: 1em;
+                color: #252627;
+            }
+            p{
+                font-family: "Noto-semibold";
+                font-size: .8em;
+                color: #252627;
+            }
+          }
+          .evaluation-cards-div-infos-desc{
+                width: 90%;
+                font-family: "Noto-regular";
+                color: #252627;
+                font-size: .9em;
+          }
+      }
+}

@@ -1,7 +1,7 @@
 import "./index.scss";
 import "../Consultas/index.scss"
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu/index.js"
+import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import Cards from "./Cards-DashBoard"
 import Calendar from '../../../assets/images/calendar-dashboard.svg'

@@ -33,16 +33,16 @@ export default function Menu(props) {
                         </div>
                     </div>
                     <div>
-                        <Cards img={icondb} txt="Dashboard" local="dashboard" selecionado={props.selecionado}/>
+                        <Cards img={icondb} txt="Dashboard" local="medic/dashboard" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={iconmail} txt="Mensagens" local='mensagens' selecionado={props.selecionado}/>   
+                        <Cards img={iconmail} txt="Mensagens" local='medic/mensagens' selecionado={props.selecionado}/>   
                     </div>
                     <div>
-                        <Cards  img={iconcalendar} txt="Consultas" local="consultas" selecionado={props.selecionado}/>
+                        <Cards  img={iconcalendar} txt="Consultas" local="medic/consultas" selecionado={props.selecionado}/>
                     </div>
                     <div>
-                        <Cards img={logoaval} txt="Avaliações" local="avaliacoes" selecionado={props.selecionado}/>
+                        <Cards img={logoaval} txt="Avaliações" local="medic/avaliacoes" selecionado={props.selecionado}/>
                     </div>
                     
                 </div>

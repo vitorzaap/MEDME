@@ -71,7 +71,7 @@ export default function Index() {
 										ref.current.complete();
 									}, 2000);
 									setTimeout(() => {
-										nav("/dashboard");
+										nav("/medic/dashboard");
 									}, 2500);
 								} catch (err) {
 									setTimeout(() => {

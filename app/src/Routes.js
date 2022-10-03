@@ -1,24 +1,38 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Lp from "./Pages/System/LandingPage";
-import LogIn from "./Pages/System/LogIn";
+
+import SigUp from "./Pages/User/SignUp";
+import UserLogIn from "./Pages/User/LogIn";
+import UserDashBoard from "./Pages/User/DashBoard";
+import UserMessages from "./Pages/User/Messages";
+import UserConsultas from "./Pages/User/Consultas";
+import UserAvaliacoes from "./Pages/User/Evaluation";
+
 import MedicLogin from "./Pages/Medic/login";
-import SigIn from "./Pages/System/SignIn";
-import Consultas from "./Pages/System/Consultas"
-import Messages from "./Pages/System/Messages"
-import Avaliacoes from "./Pages/System/Evaluation"
-import DashBoard from "./Pages/System/DashBoard"
+import MedicDashBoard from "./Pages/Medic/DashBoard";
+import MedicMessages from "./Pages/Medic/Messages";
+import MedicConsultas from "./Pages/Medic/Consultas";
+import MedicAvaliacoes from "./Pages/Medic/Evaluation";
+
 export default function Index() {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Lp />} />
-				<Route path="/user/login" element={<LogIn />} />
+				
+				<Route path="/user/account" element={<SigUp />} />
+				<Route path="/user/login" element={<UserLogIn />} />
+				<Route path="/user/dashboard" element={<UserDashBoard />} />
+				<Route path="/user/mensagens" element={<UserMessages />} />
+				<Route path="/user/consultas" element={<UserConsultas />} />
+				<Route path="/user/avaliacoes" element={<UserAvaliacoes />} />
+			
 				<Route path="/medic/login" element={<MedicLogin />} />
-				<Route path="/user/account" element={<SigIn />} />
-				<Route path="/consultas" element={<Consultas />} />
-				<Route path="/mensagens" element={<Messages />} />
-				<Route path="/avaliacoes" element={<Avaliacoes />} />
-				<Route path="/dashboard" element={<DashBoard />} />
+				<Route path="/medic/dashboard" element={<MedicDashBoard />} />
+				<Route path="/medic/mensagens" element={<MedicMessages />} />
+				<Route path="/medic/consultas" element={<MedicConsultas />} />
+				<Route path="/medic/avaliacoes" element={<MedicAvaliacoes />} />
+				
 			</Routes>
 		</BrowserRouter>
 	);

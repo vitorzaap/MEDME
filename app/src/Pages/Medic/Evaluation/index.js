@@ -1,6 +1,6 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu/index.js"
+import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import LinhaSeparação from "../../../assets/images/linha-separação2.svg"
 import Card from "./card-comments"
