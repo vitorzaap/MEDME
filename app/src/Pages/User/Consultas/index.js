@@ -6,13 +6,21 @@ import { useEffect, useState } from "react";
 import storage from "local-storage"
 import { getConsultas } from "../../../api/userApi.js";
 export default function Index() {
-    const [consultas, setConsultas] = useState([])
+	const [consultas, setConsultas] = useState([])
+	const [newDate, setNewDate] = useState([])
     useEffect(() => {
         async function getConsult() {
             const user = storage("userInfo");
-            const response = await getConsultas(user.id)
-            setConsultas(response);
-        }
+			let response = await getConsultas(user.id)
+			for (let i = 0; i < response.length; i++) {
+				const novaData = new Date(response[i].dataConsulta)
+				response[i].dataConsulta = novaData.toLocaleDateString("pt-BR")
+				response[i].horaConsulta = response[i].horaConsulta.slice(0, 5)
+			}
+			setConsultas(response);
+		}
+
+
         getConsult();
     }, [])
 
@@ -33,16 +41,23 @@ export default function Index() {
 								<th>Tipo</th>
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
+								
 							</tr>
-							{consultas.map((item) => (<tr className="data">
+							{consultas.map((item) => (
+								<tr className="data">
                                 <td>{item.medico}</td>
 								<td>{item.dataConsulta}</td>
                                 <td>{item.horaConsulta}</td>
                                 <td>...progress</td>
                                 <td>{item.atuacao}</td>
                                 <td>#{item.idConsulta}</td>
-                                <td>{item.plataforma}</td>
-                            </tr>))}
+								<td>{item.plataforma}</td>
+								<td>
+									<button className="btn-simple-green">Aceitar Consulta</button>
+									<button className="btn-simple-red">Recusar Consulta</button>
+								</td>
+								</tr>
+							))}
                             
                             
 							

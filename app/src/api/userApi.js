@@ -23,6 +23,5 @@ export async function userSigIn(name, sobrenome, email, pass) {
 
 export async function getConsultas(id) {
 	const r = await api.get(`/api/user/consultas?id=${id}`)
-	console.log(r.data)
 	return r.data
 }

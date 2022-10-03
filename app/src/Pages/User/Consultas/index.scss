@@ -36,7 +36,30 @@
 						text-align: left;
 
 						th {
-							padding: 1em 9em 1em 1em;
+							padding: 1em 4em 1em 1em;
+						}
+					}
+					.data{
+						.btn-simple-green{
+							background-color: #3DCC87;
+						}
+						.btn-simple-green:hover{
+							background-color: #5dce97;
+						}
+						.btn-simple-red{
+							background-color: #E23C3C;
+						}
+						.btn-simple-red:hover{
+							background-color: #e65656;
+						}
+						.btn-simple-green, .btn-simple-red{
+							padding: .825em 2em;
+							color: #fff;
+							border: none;
+							border-radius: .625em;
+							margin-right: 1em;
+							font-size: 1em;
+							font-family: "Noto-semibold";
 						}
 					}
 				}
