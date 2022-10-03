@@ -44,7 +44,7 @@ export async function getConsultas(userId) {
         const c = 
         `
         SELECT  id_consulta		        idConsulta,
-	        id_medico			idMedico,
+	        tb_medico.nm_medico		medico,
 	        tb_atuacao.ds_atuacao		atuacao,
                 tb_plataforma.ds_plataforma     plataforma,
                 ds_consulta			descricao,
@@ -55,6 +55,7 @@ export async function getConsultas(userId) {
 	FROM tb_consulta 
         INNER JOIN tb_plataforma ON tb_plataforma.id_plataforma = tb_consulta.id_plataforma
         INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao
+        INNER JOIN tb_medico ON tb_medico.id_medico = tb_consulta.id_medico
         WHERE id_usuario = ?;
         `
         const [res]= await con.query(c, [userId]);

@@ -12,7 +12,6 @@ export default function Index() {
             const user = storage("userInfo");
             const response = await getConsultas(user.id)
             setConsultas(response);
-            console.log(consultas)
         }
         getConsult();
     }, [])
@@ -35,24 +34,16 @@ export default function Index() {
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
 							</tr>
-							<tr className="data">
-								<td>Alfreds Futterkiste</td>
-								<td>04/10/2022</td>
-                                <td>12:00</td>
-                                <td>23/09/2022</td>
-                                <td>Dentista</td>
-                                <td>#124</td>
-                                <td>Google Meet</td>
-                            </tr>
-                            <tr className="data">
-								<td>Kalel Rodrigues</td>
-								<td>04/11/2022</td>
-                                <td>14:00</td>
-                                <td>83/09/2022</td>
-                                <td>Psicólogo</td>
-                                <td>#123</td>
-                                <td>Zoom</td>
-                            </tr>
+							{consultas.map((item) => (<tr className="data">
+                                <td>{item.medico}</td>
+								<td>{item.dataConsulta}</td>
+                                <td>{item.horaConsulta}</td>
+                                <td>...progress</td>
+                                <td>{item.atuacao}</td>
+                                <td>#{item.idConsulta}</td>
+                                <td>{item.plataforma}</td>
+                            </tr>))}
+                            
                             
 							
 						</table>
