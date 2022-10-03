@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { userLogin, userSigIn, verifUserEmail, userAccept } from "../Repo/userRepo.js";
+import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas } from "../Repo/userRepo.js";
 const router = Router();
 
 router.post("/api/user/login", async (req, res) => {
@@ -49,7 +49,9 @@ router.put("/api/user/consultas/aceitar/:id", async (req, res) => {
 
 router.get("/api/user/consultas", async(req, res) => {
 	try {
-		const { userId } = req.query;
+		const { id } = req.query;
+		const r = await getConsultas(id)
+		res.send(r)
 		
 	} catch (err) {
 		res.status(401).send({

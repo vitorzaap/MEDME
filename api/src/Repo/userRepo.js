@@ -42,7 +42,21 @@ export async function userAccept(id){
 
 export async function getConsultas(userId) {
         const c = 
-                `
-                
-                `
+        `
+        SELECT  id_consulta		        idConsulta,
+	        id_medico			idMedico,
+	        tb_atuacao.ds_atuacao		atuacao,
+                tb_plataforma.ds_plataforma     plataforma,
+                ds_consulta			descricao,
+                dt_consulta			dataConsulta,
+                tm_consulta			horaConsulta,
+                vl_preco		        preco,
+                ds_link		                link
+	FROM tb_consulta 
+        INNER JOIN tb_plataforma ON tb_plataforma.id_plataforma = tb_consulta.id_plataforma
+        INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao
+        WHERE id_usuario = ?;
+        `
+        const [res]= await con.query(c, [userId]);
+        return res;
 }
