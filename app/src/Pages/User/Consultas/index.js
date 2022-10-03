@@ -2,9 +2,20 @@ import "./index.scss";
 import "../../Common/common.scss";
 import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
-
+import { useEffect, useState } from "react";
+import storage from "local-storage"
+import { getConsultas } from "../../../api/userApi.js";
 export default function Index() {
-	
+    const [consultas, setConsultas] = useState([])
+    useEffect(() => {
+        async function getConsult() {
+            const user = storage("userInfo");
+            const response = await getConsultas(user.id)
+            setConsultas(response);
+            console.log(consultas)
+        }
+        getConsult();
+    }, [])
 
 	return (
 		<main className="user-main-consultas">
