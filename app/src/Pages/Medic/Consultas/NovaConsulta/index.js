@@ -42,7 +42,7 @@ export default function Index(props) {
 	})
     
 	return (
-		<main className="consult-content">
+		<main className="consult-content-1">
 			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="title">
 				<h1>Nova Consulta #{storage("userInfo").numConsulta}</h1>

@@ -24,7 +24,7 @@ export default function Index() {
                             </div>
                             <div className="main-container-consultas">
                                 <div className="titles-main-container-consultas">
-                                    <table>
+                                    <table >
                                         <tr>
                                             <th>Paciente</th>
                                             <th>Data</th>

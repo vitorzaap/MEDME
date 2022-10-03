@@ -8,6 +8,7 @@ import Card from "./card-comments";
 import David from "../../../assets/images/david.svg";
 export default function Index() {
 	return (
+        
 		<main className="evaluation-main">
 			<Menu selecionado="avaliacoes" />
 			<section className="evaluation-section-main">
@@ -33,7 +34,9 @@ export default function Index() {
 												className="default-textarea"
 												placeholder="Escreva algo de importante"></textarea>
 										</div>
-										<button className="sg-lg-btn-complex">Enviar feedback</button>
+                                        <div className="btn-div">
+                                        <button className="sg-lg-btn-complex">Enviar feedback</button>
+                                        </div>
 									</div>
 								</div>
 								<div className="page-evaluation-medic">

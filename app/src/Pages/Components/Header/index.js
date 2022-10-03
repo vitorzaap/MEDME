@@ -9,13 +9,11 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default function Header(props) {
-    const [letraMaiuscula, setLetraMaiuscula] = useState('')
-    const [usuario, setUsuario] = useState('')
+    const [usuario, setUsuario] = useState(".")
     const navigate = useNavigate()
     useEffect(() => {
         const usuarioLogado = storage('userInfo')
-        setLetraMaiuscula(usuarioLogado.name[0].toUpperCase())
-        setUsuario(usuarioLogado.name.slice([1]))
+        setUsuario(usuarioLogado.name)
         if(!storage('userInfo')){
             navigate('/')
         }
@@ -28,11 +26,11 @@ export default function Header(props) {
                 <input type="text" placeholder="Buscar consultas" />
             </div>
             <div className="icon-header">
-                <img src={iconsino} />
+                
             </div>
             <div className="user-card">
                 <img className="iconuser" src={iconuser} />
-                <p>{letraMaiuscula}{usuario}</p>
+                <p>{usuario[0].toUpperCase() + usuario.slice(1)}</p>
                 <img className="iconconfig" src={iconconfig} />
             </div>
         </header>

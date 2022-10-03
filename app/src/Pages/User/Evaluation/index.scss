@@ -1,6 +1,6 @@
 .evaluation-main{
     width: 100vw;
-	height: 100%;
+	height: 100vh;
     overflow:hidden;
 	display: flex;
 	justify-content: center;
@@ -59,8 +59,17 @@
                             span{
                                 color: red;
                             }
-                            
-                            
+                            .input-main{    
+                                height: 90.6%;
+
+                                .default-textarea{
+                                    max-height: 100%;
+                                }
+                            }
+                            .btn-div{
+                                display: flex;
+                                
+                            }
                         }
                         .page-evaluation-medic{
                             border-radius: .5em;
