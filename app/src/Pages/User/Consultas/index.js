@@ -3,7 +3,7 @@ import "../../Common/common.scss";
 import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
-import storage from "local-storage";
+import storage, { get } from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
@@ -28,6 +28,9 @@ export default function Index() {
 
 		getConsult();
 	}, []);
+	useEffect(() => {
+		getConsultas(consultas)
+	},consultas)
 
 	return (
 		<main className="user-main-consultas">

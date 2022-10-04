@@ -78,7 +78,7 @@ export default function Index() {
 									<td>{item.atuacao}</td>
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
-                                    <td className={item.idSituacao}>{item.situacao}</td>
+                                    <td className={`item${item.idSituacao}`}>{item.situacao}</td>
 								</tr>
 							))}
 						</table>

@@ -90,7 +90,8 @@ export async function getConsulta(id) {
 	tm_consulta						horaConsulta,
 	vl_preco		        		preco,
 	ds_link		                	link,
-	tb_situacao.ds_situacao			situacao
+	tb_situacao.ds_situacao			situacao,
+	tb_situacao.id_situacao			idSituacao
 	FROM tb_consulta 
 	INNER JOIN tb_plataforma ON tb_plataforma.id_plataforma = tb_consulta.id_plataforma
 	INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao

@@ -5,6 +5,8 @@ import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import Cards from "./Cards-DashBoard"
 import Calendar from '../../../assets/images/calendar-dashboard.svg'
+import Star from '../../../assets/images/Star1.svg'
+import Mail from '../../../assets/images/mail-unread2.svg'
 
 export default function Index() {
 	return (
@@ -14,9 +16,9 @@ export default function Index() {
                 <Cabecalho />
                 <div className="dashboard-content">
                     <div className="dashboard-cards-content">
-                        <Cards titulo='Avaliações' imagem={Calendar} tipo='numero' numero='65' subtitulo='Sua última avaliação'/>
-                        <Cards titulo='Consultas' imagem={Calendar} tipo='numero' numero='65' subtitulo='Consultas realizadas este mês.'/>
-                        <Cards titulo='Conversas' imagem={Calendar} tipo='numero' numero='4' subtitulo='Conversas ainda não respondidas.'/>
+                        <Cards titulo='Avaliações' imagem={Star} tipo='numero' numero='65' subtitulo='Sua última avaliação' cor='4375F4' accentcolor='8FAEFC'/>
+                        <Cards titulo='Consultas' imagem={Calendar} tipo='numero' numero='65' subtitulo='Consultas realizadas este mês.' cor='39B6D2' accentcolor='84D6E8'/>
+                        <Cards titulo='Conversas' imagem={Mail} tipo='numero' numero='4' subtitulo='Conversas ainda não respondidas.' cor='6336FF' accentcolor='7750FF'/>
                     </div>
                     <div className="dashboard-consultas-content">
                             <div className="div-h1-consultas-main">

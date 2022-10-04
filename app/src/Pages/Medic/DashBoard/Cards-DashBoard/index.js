@@ -4,9 +4,9 @@ import imagem from '../../../../assets/images/calendar-dashboard.svg'
 
 export default function Card(props){
     return(
-            <main className="dashboard-cards">
+            <main className="dashboard-cards" style={{backgroundColor: `#${props.cor}`}}>
                     <div className="dashboard-cards-div-1">
-                        <img src={props.imagem} />
+                        <img src={props.imagem} style={{backgroundColor: `#${props.accentcolor}`}}/>
                         <h1>{props.titulo}</h1>
                     </div>
                     <div className="dashboard-cards-props">
