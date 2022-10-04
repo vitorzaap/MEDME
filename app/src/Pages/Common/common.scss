@@ -65,6 +65,89 @@ $btn-hover: #6236fff1;
 	background-color: #6236fff1;
 }
 
+.main-div-table {
+	display: flex;
+	width: max-content;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+
+	.err-div-message{
+		display: flex;
+		border-radius: 1em;
+		width: 100%;
+		padding: 1em 0;
+		justify-content: center;
+		background-color: #ffe6e6;
+		.err-message{
+			font-size: 2em;
+			color: #ff6d6d;
+			font-family: "Noto-semibold";
+		}
+	}
+	.user-table {
+		background-color: #fff;
+		border-radius: .5em;
+		border-collapse: collapse;
+		padding: 0 1em;
+		width: max-content;
+		height: max-content;
+		max-height: 100%;
+		td {
+			padding: 1em;
+		}
+
+		tr:nth-child(even) {
+			background-color: #f2ecff;
+		}
+		.user-tr {
+			text-align: left;
+
+			th {
+				padding: 1em 4em 1em 1em;
+				font-family: "Noto-bold";
+			}
+		}
+		.data{
+
+			td{
+				font-family: "Noto-Regular";
+			}
+
+			.gray{
+				color: #6b6f80;
+			}
+			.red{
+				color: #E23C3C;
+			}
+			.green{
+				color: #3DCC87;
+			}
+			.btn-simple-green{
+				background-color: #3DCC87;
+			}
+			.btn-simple-green:hover{
+				background-color: #5dce97;
+			}
+			.btn-simple-red{
+				background-color: #E23C3C;
+			}
+			.btn-simple-red:hover{
+				background-color: #e65656;
+			}
+			.btn-simple-green, .btn-simple-red{
+				padding: .825em 2em;
+				color: #fff;
+				border: none;
+				border-radius: .625em;
+				margin-right: 1em;
+				font-size: 1em;
+				font-family: "Noto-semibold";
+			}
+		}
+	}
+}
+
 .input-main {
 	display: flex;
 	flex-direction: column;

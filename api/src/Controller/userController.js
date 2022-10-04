@@ -39,7 +39,7 @@ router.put("/api/user/consultas/aceitar/:id", async (req, res) => {
 	try {
 		const id = req.params;
 		const verif = await userAccept(id);
-		res.status(204)
+		res.status(204);
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,
@@ -47,21 +47,20 @@ router.put("/api/user/consultas/aceitar/:id", async (req, res) => {
 	}
 });
 
-router.get("/api/user/consultas", async(req, res) => {
+router.get("/api/user/consultas", async (req, res) => {
 	try {
 		const { id } = req.query;
-		const r = await getConsultas(id)
+		const r = await getConsultas(id);
 		if (r.length < 1) {
-			throw new Error("Você não tem nenhuma consulta ainda.")
-		}
-		else {
-			res.send(r)
+			throw new Error("Você não tem nenhuma consulta ainda.");
+		} else {
+			res.send(r);
 		}
 	} catch (err) {
 		res.status(401).send({
-			erro: err.message
-		})
+			erro: err.message,
+		});
 	}
-})
+});
 
 export default router;

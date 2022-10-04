@@ -41,3 +41,8 @@ export async function adicionarConsulta(medico, paciente, descricao, data, hora,
 	});
 	return r.data;
 }
+
+export async function getConsultas(id) {
+	const r = await api.get(`/api/medic/consulta?id=${id}`)
+	return r.data
+}

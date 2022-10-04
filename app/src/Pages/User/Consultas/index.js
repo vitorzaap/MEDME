@@ -7,14 +7,12 @@ import storage from "local-storage";
 import { getConsultas } from "../../../api/userApi.js";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
-	const [state, setState] = useState(false);
 	const [erro, setErro] = useState();
 	useEffect(() => {
 		async function getConsult() {
 			try {
 				const user = storage("userInfo");
 				let response = await getConsultas(user.id);
-				setState(false);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
@@ -23,7 +21,6 @@ export default function Index() {
 				setConsultas(response);
 			} catch (err) {
 				if (err.response.status == 401) {
-					setState(true);
 					setErro(err.response.data.erro);
 				}
 			}

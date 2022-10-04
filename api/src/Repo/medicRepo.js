@@ -20,10 +20,9 @@ export async function medicLogin(medic) {
 }
 
 export async function novaConsulta(consulta) {
-	
 	const c = `
-			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, id_plataforma, vl_preco, ds_link, ds_situacao)
-			VALUES(?, ?, ?, ?, ?, ?, ?, ?,?, 'RESPOSTA PENDENTE');
+			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, id_plataforma, vl_preco, ds_link, id_situacao)
+			VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1);
         `;
 	const [res] = await con.query(c, [
 		consulta.medicoid,
@@ -35,7 +34,6 @@ export async function novaConsulta(consulta) {
 		consulta.plataforma,
 		consulta.preco,
 		consulta.link,
-		consulta.situacao,
 	]);
 	consulta.id = res.insertId;
 
@@ -43,7 +41,6 @@ export async function novaConsulta(consulta) {
 	UPDATE tb_medico SET nr_consulta = nr_consulta + 1 WHERE id_medico = ?;
 	`;
 	const nConsult = await con.query(add, [consulta.medicoid]);
-	const verif = await con.query(`SELECT nr_consulta consultas FROM tb_medico WHERE id_medico = ?`, consulta.medicoid)
 	return consulta;
 }
 
@@ -61,24 +58,46 @@ export async function selecionarPaciente(id) {
 
 export async function selecionarAtuacao(id) {
 	const c = `
-		SELECT 	tb_atuacao.ds_atuacao	atuacao,
-		tb_atuacao.id_atuacao			id
-	from 		tb_atuacao
-	inner join 	tb_medico on tb_medico.id_atuacao = tb_atuacao.id_atuacao 
-	where 		tb_medico.id_medico = ?;
+		SELECT 		tb_atuacao.ds_atuacao	atuacao,
+			   		tb_atuacao.id_atuacao	id
+		  from 		tb_atuacao
+	inner join 		tb_medico on tb_medico.id_atuacao = tb_atuacao.id_atuacao 
+		 where 		tb_medico.id_medico = ?;
 	`;
 	const [res] = await con.query(c, id);
 	return res;
 }
 
 export async function secPlataforma() {
-	const c =
-		`
+	const c = `
 		SELECT
 		id_plataforma id, 
 		ds_plataforma plataforma 
 		FROM tb_plataforma
-		`
+		`;
 	const [res] = await con.query(c);
 	return [res];
+}
+
+export async function getConsulta(id) {
+	const c = `
+	SELECT  id_consulta		        idConsulta,
+	tb_usuario.nm_usuario			usuario,
+	tb_atuacao.ds_atuacao			atuacao,
+	tb_plataforma.ds_plataforma     plataforma,
+	ds_consulta						descricao,
+	dt_consulta						dataConsulta,
+	tm_consulta						horaConsulta,
+	vl_preco		        		preco,
+	ds_link		                	link,
+	tb_situacao.ds_situacao			situacao
+	FROM tb_consulta 
+	INNER JOIN tb_plataforma ON tb_plataforma.id_plataforma = tb_consulta.id_plataforma
+	INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao
+	INNER JOIN tb_usuario ON tb_usuario.id_usuario = tb_consulta.id_usuario
+	INNER JOIN tb_situacao ON tb_situacao.id_situacao = tb_consulta.id_situacao
+	WHERE id_medico = ?;
+		`;
+	const [res] = await con.query(c, [id]);
+	return res;
 }
