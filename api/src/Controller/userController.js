@@ -1,6 +1,5 @@
 import { response, Router } from "express";
 import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas } from "../Repo/userRepo.js";
-import moment from 'moment';
 
 const router = Router();
 
