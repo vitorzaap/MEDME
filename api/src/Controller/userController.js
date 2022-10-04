@@ -51,8 +51,12 @@ router.get("/api/user/consultas", async(req, res) => {
 	try {
 		const { id } = req.query;
 		const r = await getConsultas(id)
-		res.send(r)
-		
+		if (r.length < 1) {
+			throw new Error("Você não tem nenhuma consulta ainda.")
+		}
+		else {
+			res.send(r)
+		}
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message

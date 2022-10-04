@@ -3,26 +3,34 @@ import "../../Common/common.scss";
 import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
-import storage from "local-storage"
+import storage from "local-storage";
 import { getConsultas } from "../../../api/userApi.js";
 export default function Index() {
-	const [consultas, setConsultas] = useState([])
-	const [newDate, setNewDate] = useState([])
-    useEffect(() => {
-        async function getConsult() {
-            const user = storage("userInfo");
-			let response = await getConsultas(user.id)
-			for (let i = 0; i < response.length; i++) {
-				const novaData = new Date(response[i].dataConsulta)
-				response[i].dataConsulta = novaData.toLocaleDateString("pt-BR")
-				response[i].horaConsulta = response[i].horaConsulta.slice(0, 5)
+	const [consultas, setConsultas] = useState([]);
+	const [state, setState] = useState(false);
+	const [erro, setErro] = useState();
+	useEffect(() => {
+		async function getConsult() {
+			try {
+				const user = storage("userInfo");
+				let response = await getConsultas(user.id);
+				setState(false);
+				for (let i = 0; i < response.length; i++) {
+					const novaData = new Date(response[i].dataConsulta);
+					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
+					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
+				}
+				setConsultas(response);
+			} catch (err) {
+				if (err.response.status == 401) {
+					setState(true);
+					setErro(err.response.data.erro);
+				}
 			}
-			setConsultas(response);
 		}
 
-
-        getConsult();
-    }, [])
+		getConsult();
+	}, []);
 
 	return (
 		<main className="user-main-consultas">
@@ -37,31 +45,29 @@ export default function Index() {
 								<th>Paciente</th>
 								<th>Data</th>
 								<th>Hora</th>
-								<th>Marcada em</th>
 								<th>Tipo</th>
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
-								
 							</tr>
+							
 							{consultas.map((item) => (
 								<tr className="data">
-                                <td>{item.medico}</td>
-								<td>{item.dataConsulta}</td>
-                                <td>{item.horaConsulta}</td>
-                                <td>...progress</td>
-                                <td>{item.atuacao}</td>
-                                <td>#{item.idConsulta}</td>
-								<td>{item.plataforma}</td>
-								<td>
-									<button className="btn-simple-green">Aceitar Consulta</button>
-									<button className="btn-simple-red">Recusar Consulta</button>
-								</td>
+									<td>{item.medico}</td>
+									<td>{item.dataConsulta}</td>
+									<td>{item.horaConsulta}</td>
+									<td>{item.atuacao}</td>
+									<td>#{item.idConsulta}</td>
+									<td>{item.plataforma}</td>
+									<td>
+										<button className="btn-simple-green">Aceitar Consulta</button>
+										<button className="btn-simple-red">Recusar Consulta</button>
+									</td>
 								</tr>
 							))}
-                            
-                            
-							
 						</table>
+						{erro !== undefined && <div className="err-div-message">
+							<span className="err-message">{erro}</span>
+							</div>}
 					</div>
 				</div>
 			</div>

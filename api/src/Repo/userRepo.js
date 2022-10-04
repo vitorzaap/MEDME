@@ -58,6 +58,6 @@ export async function getConsultas(userId) {
         INNER JOIN tb_medico ON tb_medico.id_medico = tb_consulta.id_medico
         WHERE id_usuario = ?;
         `
-        const [res]= await con.query(c, [userId]);
+        const [res] = await con.query(c, [userId]);
         return res;
 }
