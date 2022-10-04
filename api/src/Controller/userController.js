@@ -58,11 +58,9 @@ router.get("/api/user/consultas", async (req, res) => {
 			const time = r[i].horaConsulta
 			const hour = time.slice(0, 2)
 			const minute = Number(time.slice(3, 5))
-			l.setHours(hour - 3, minute )
+			l.setHours(hour - 3, minute)
 			const diff = new Date() - l
-
-			
-			
+			r[i].diff = diff
 		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");

@@ -112,6 +112,10 @@ $btn-hover: #6236fff1;
 
 			td{
 				font-family: "Noto-Regular";
+				.div-btn-blue{
+					display: flex;
+					width: 100%;
+				}
 			}
 
 			.item1{
@@ -135,7 +139,14 @@ $btn-hover: #6236fff1;
 			.btn-simple-red:hover{
 				background-color: #e65656;
 			}
-			.btn-simple-green, .btn-simple-red{
+			.btn-simple-blue{
+				background-color: #0D98E7;
+				width: 100%;
+			}
+			.btn-simple-blue:hover{
+				background-color: #30a2e4;
+			}
+			.btn-simple-green, .btn-simple-red, .btn-simple-blue{
 				padding: .825em 2em;
 				color: #fff;
 				border: none;

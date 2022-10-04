@@ -3,11 +3,14 @@ import "../../Common/common.scss";
 import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
-import storage, { get } from "local-storage";
+import storage from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
+import { ToastContainer,toast } from "react-toastify"
+import { Navigate } from "react-router-dom";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
 	const [erro, setErro] = useState();
+	const nav = Navigate();
 	useEffect(() => {
 		async function getConsult() {
 			try {
@@ -25,13 +28,13 @@ export default function Index() {
 				}
 			}
 		}
-		
 
 		getConsult();
 	}, []);
 
 	return (
 		<main className="user-main-consultas">
+			<ToastContainer />
 			<Menu selecionado="consultas" />
 
 			<div className="user-consultas-main-content">
@@ -47,7 +50,7 @@ export default function Index() {
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
 							</tr>
-							
+
 							{consultas.map((item) => (
 								<tr className="data">
 									<td>{item.medico}</td>
@@ -57,33 +60,58 @@ export default function Index() {
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
 									<td>
-										<button className="btn-simple-green" onClick={async () => {
-											try {
-												const r = await statusConsult(item.idConsulta, 2);
-												alert("Consulta Aceita!")
-											} catch (err) {
-												if (err.response.status == 401) {
-													alert("Algo deu Errado.")
-												}
-											}
-										}}>Aceitar Consulta</button>
-										<button className="btn-simple-red" onClick={async () => {
-											try {
-												const r = await statusConsult(item.idConsulta, 3);
-												alert("Consulta Negada!")
-											} catch (err) {
-												if (err.response.status == 401) {
-													alert("Algo deu Errado.")
-												}
-											}
-										}}>Recusar Consulta</button>
+										{item.diff < 0 && (
+											<div>
+												<button
+													className="btn-simple-green"
+													onClick={async () => {
+														try {
+															const r = await statusConsult(item.idConsulta, 2);
+															toast.success("✅ Consulta Aceita com sucesso!");
+														} catch (err) {
+															if (err.response.status == 401) {
+
+															}
+														}
+													}}>
+													Aceitar Consulta
+												</button>
+												<button
+													className="btn-simple-red"
+													onClick={ async () => {
+														try {
+															const r = await statusConsult(item.idConsulta, 3);
+															toast.error("❌ Consulta Recusada com sucesso!");
+														} catch (err) {
+															if (err.response.status == 401) {
+															}
+														}
+													}}>
+													Recusar Consulta
+												</button>
+											</div>
+										)}
+										{item.diff > 0 && (
+											<div className="div-btn-blue">
+												<button className="btn-simple-blue" onClick={async () => {
+													try {
+														nav()
+													} catch (err) {
+														
+													}
+													
+												}}>Avaliar Consulta</button>
+											</div>
+										)}
 									</td>
 								</tr>
 							))}
 						</table>
-						{erro !== undefined && <div className="err-div-message">
-							<span className="err-message">{erro}</span>
-							</div>}
+						{erro !== undefined && (
+							<div className="err-div-message">
+								<span className="err-message">{erro}</span>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>
