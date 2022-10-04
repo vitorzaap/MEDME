@@ -35,6 +35,11 @@ CREATE TABLE tb_plataforma(
 	id_plataforma		INT PRIMARY KEY AUTO_INCREMENT,
    	ds_plataforma		VARCHAR(200)
  );
+
+CREATE TABLE tb_situacao(
+	id_situacao 	INT PRIMARY KEY AUTO_INCREMENT,
+	ds_situacao		VARCHAR(60)
+);
  
  CREATE TABLE tb_consulta(
 	id_consulta				INT PRIMARY KEY AUTO_INCREMENT,
@@ -47,11 +52,12 @@ CREATE TABLE tb_plataforma(
    	 tm_consulta				TIME NOT NULL,
    	 vl_preco				DECIMAL(10, 2) NOT NULL,
    	 ds_link				VARCHAR(500) ,
-   	 ds_situacao				VARCHAR(200) ,
+   	 id_situacao			INT,
    	 FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
    	 FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario),
    	 FOREIGN KEY (id_atuacao) REFERENCES tb_atuacao(id_atuacao),
-   	 FOREIGN KEY (id_plataforma) REFERENCES tb_plataforma(id_plataforma)
+   	 FOREIGN KEY (id_plataforma) REFERENCES tb_plataforma(id_plataforma),
+	 FOREIGN KEY (id_situacao) REFERENCES tb_situacao(id_situacao)
  );
 
 CREATE TABLE tb_situacao_consulta(
