@@ -26,6 +26,7 @@ export default function Index() {
 				let response = await getConsultas(medic.id);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
+					
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
                     response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
                     

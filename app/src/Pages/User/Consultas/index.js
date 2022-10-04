@@ -25,12 +25,10 @@ export default function Index() {
 				}
 			}
 		}
+		
 
 		getConsult();
 	}, []);
-	useEffect(() => {
-		getConsultas(consultas)
-	},consultas)
 
 	return (
 		<main className="user-main-consultas">
