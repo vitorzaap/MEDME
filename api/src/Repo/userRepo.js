@@ -32,11 +32,11 @@ export async function userSigIn(user) {
 	user.Id = res.insertId;
 	return user;
 }
-export async function userAccept(id){
+export async function userAccept(idSituation, id) {
         const c = `UPDATE tb_consulta
-        SET id_situacao = 2
-        AND id_consulta = ?`
-        const res = await con.query(c, [id])
+        SET id_situacao = ?
+        WHERE id_consulta = ?`
+        const res = await con.query(c, [idSituation, id])
         return res;
 }
 

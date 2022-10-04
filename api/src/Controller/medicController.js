@@ -6,7 +6,6 @@ router.post("/api/medic/login", async (req, res) => {
 	try {
 		const medic = req.body;
 		const r = await medicLogin(medic);
-		console.log(r);
 		if (!r) {
 			throw new Error("Senha ou E-mail incorretos.");
 		} else {

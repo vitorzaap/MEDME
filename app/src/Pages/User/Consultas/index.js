@@ -4,7 +4,7 @@ import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
-import { getConsultas } from "../../../api/userApi.js";
+import { getConsultas, statusConsult } from "../../../api/userApi.js";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
 	const [erro, setErro] = useState();
@@ -56,8 +56,26 @@ export default function Index() {
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
 									<td>
-										<button className="btn-simple-green">Aceitar Consulta</button>
-										<button className="btn-simple-red">Recusar Consulta</button>
+										<button className="btn-simple-green" onClick={async () => {
+											try {
+												const r = await statusConsult(item.idConsulta, 2);
+												alert("Consulta Aceita!")
+											} catch (err) {
+												if (err.response.status == 401) {
+													alert("Algo deu Errado.")
+												}
+											}
+										}}>Aceitar Consulta</button>
+										<button className="btn-simple-red" onClick={async () => {
+											try {
+												const r = await statusConsult(item.idConsulta, 3);
+												alert("Consulta Negada!")
+											} catch (err) {
+												if (err.response.status == 401) {
+													alert("Algo deu Errado.")
+												}
+											}
+										}}>Recusar Consulta</button>
 									</td>
 								</tr>
 							))}

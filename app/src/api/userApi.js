@@ -25,3 +25,8 @@ export async function getConsultas(id) {
 	const r = await api.get(`/api/user/consultas?id=${id}`)
 	return r.data
 }
+
+export async function statusConsult(id, situation) {
+	const r = await api.put(`/api/user/consultas?id=${id}&situation=${situation}`)
+	return r.status
+}

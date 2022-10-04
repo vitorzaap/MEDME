@@ -35,11 +35,11 @@ router.post("/api/user/account", async (req, res) => {
 	}
 });
 
-router.put("/api/user/consultas/aceitar/:id", async (req, res) => {
+router.put("/api/user/consultas", async (req, res) => {
 	try {
-		const id = req.params;
-		const verif = await userAccept(id);
-		res.status(204);
+		const { id, situation } = req.query;
+		const r = await userAccept(situation, id);
+		res.status(204).send();
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,
