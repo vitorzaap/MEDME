@@ -1,5 +1,7 @@
 import { response, Router } from "express";
 import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas } from "../Repo/userRepo.js";
+import moment from 'moment';
+
 const router = Router();
 
 router.post("/api/user/login", async (req, res) => {
@@ -39,6 +41,7 @@ router.put("/api/user/consultas", async (req, res) => {
 	try {
 		const { id, situation } = req.query;
 		const r = await userAccept(situation, id);
+
 		res.status(204).send();
 	} catch (err) {
 		res.status(401).send({
@@ -50,7 +53,18 @@ router.put("/api/user/consultas", async (req, res) => {
 router.get("/api/user/consultas", async (req, res) => {
 	try {
 		const { id } = req.query;
-		const r = await getConsultas(id);
+		let r = await getConsultas(id);
+		for (let i = 0; i < r.length; i++) {
+			let l = new Date(r[i].dataConsulta);
+			const time = r[i].horaConsulta
+			const hour = time.slice(0, 2)
+			const minute = Number(time.slice(3, 5))
+			l.setHours(hour - 3, minute )
+			const diff = new Date() - l
+
+			
+			
+		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
 		} else {

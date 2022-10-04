@@ -10,13 +10,12 @@ export default function Card(props){
                         <h1>{props.titulo}</h1>
                     </div>
                     <div className="dashboard-cards-props">
-                        {/*{props.tipo = 'numero' ? <p>{props.numero}</p> : <img src={imagem}/>} */}
-                        <p>65</p>
+                        {props.tipo == 'numero' && <p>{props.numero}</p>}
+                        {props.tipo != "numero" && <img src={imagem}/>}
                     </div>
                     <div className="dashboard-cards-subtitulo">
                         <h1>{props.subtitulo}</h1>
-                    </div>
-                
+                    </div>               
             </main>
     )
 }
