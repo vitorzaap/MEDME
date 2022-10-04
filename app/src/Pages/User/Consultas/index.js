@@ -5,7 +5,7 @@ import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
-import { ToastContainer,toast } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
@@ -70,7 +70,6 @@ export default function Index() {
 															toast.success("✅ Consulta Aceita com sucesso!");
 														} catch (err) {
 															if (err.response.status == 401) {
-
 															}
 														}
 													}}>
@@ -78,7 +77,7 @@ export default function Index() {
 												</button>
 												<button
 													className="btn-simple-red"
-													onClick={ async () => {
+													onClick={async () => {
 														try {
 															const r = await statusConsult(item.idConsulta, 3);
 															toast.error("❌ Consulta Recusada com sucesso!");
@@ -93,14 +92,15 @@ export default function Index() {
 										)}
 										{item.diff > 0 && (
 											<div className="div-btn-blue">
-												<button className="btn-simple-blue" onClick={async () => {
-													try {
-														nav()
-													} catch (err) {
-														
-													}
-													
-												}}>Avaliar Consulta</button>
+												<button
+													className="btn-simple-blue"
+													onClick={async () => {
+														try {
+															nav();
+														} catch (err) {}
+													}}>
+													Avaliar Consulta
+												</button>
 											</div>
 										)}
 									</td>
