@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas } from "../Repo/userRepo.js";
+import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao } from "../Repo/userRepo.js";
 
 const router = Router();
 
@@ -57,17 +57,28 @@ router.get("/api/user/consultas", async (req, res) => {
 			let l = new Date(r[i].dataConsulta);
 			const time = r[i].horaConsulta
 			const hour = time.slice(0, 2)
-			const minute = Number(time.slice(3, 5))
-			
+			const minute = Number(time.slice(3, 5))			
 			l.setHours(hour - 3, minute)
 			const difference = new Date() - l;
 			r[i].diff = difference;
+			//aaa
+
 		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
 		} else {
 			res.send(r);
 		}
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+router.post("/api/user/avalicao", async (req, res) => {
+	try {
+		const {medicId, userId, descricao, number} = req.body
+		const r = await addAvaliacao(medicId, userId, descricao, number)
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,

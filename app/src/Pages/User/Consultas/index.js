@@ -3,7 +3,7 @@ import "../../Common/common.scss";
 import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
-import storage, { get } from "local-storage";
+import storage from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";

@@ -6,13 +6,16 @@ import LinhaSeparação from "../../../assets/images/linha-separação2.svg";
 import LinhaSeparação2 from "../../../assets/images/linha-separação4.svg";
 import Card from "./card-comments";
 import David from "../../../assets/images/david.svg";
-import {FaStar} from 'react-icons/fa'
+import storage from "local-storage";
+import { FaStar } from 'react-icons/fa'
 import { useState } from "react";
-
+import { addAvaliacao } from "../../../api/userApi.js";
 
 export default function Index() {
+	const userInfo = storage('userInfo')
 	const stars = Array(5).fill(0)
 	const [valorEstrela, setValorEstrela] = useState(0)
+	const [descricaoConsulta, setDescricaoConsulta] = useState()
 	const colorStar = {
 		orange : "#F6D523",
 		gray : "#B4B4B4"
@@ -56,13 +59,25 @@ export default function Index() {
 										<div className="input-main">
 											<p className="input-text">Descrição <span>*</span></p>
 											<textarea
+												onChange={(e) => setDescricaoConsulta(e.target.value)}
+												value={descricaoConsulta}
 												cols="10"
 												rows="10"
 												className="default-textarea"
 												placeholder="Escreva algo de importante"></textarea>
 										</div>
                                         <div className="btn-div">
-                                        <button id="send" className="sg-lg-btn-complex">Enviar feedback</button>
+                                        <button 
+										id="send" 
+										className="sg-lg-btn-complex"
+										onClick={() => {
+											addAvaliacao(2, userInfo.id, descricaoConsulta, valorEstrela)
+											setDescricaoConsulta('')
+											setValorEstrela()
+											
+										}}
+										
+										>Enviar feedback</button>
                                         </div>
 									</div>
 								</div>

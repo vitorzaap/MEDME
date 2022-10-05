@@ -30,3 +30,12 @@ export async function statusConsult(id, situation) {
 	const r = await api.put(`/api/user/consultas?id=${id}&situation=${situation}`)
 	return r.status
 }
+export async function addAvaliacao(medicId, userId, descricao, number) {
+	const r = await api.post("/api/user/avalicao", {
+		medicId: medicId,
+		userId: userId,
+		descricao: descricao,
+		number: number,
+	});
+	return r.data;
+}
