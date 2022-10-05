@@ -36,7 +36,6 @@ export default function Index() {
 		<main className="user-main-consultas">
 			<ToastContainer />
 			<Menu selecionado="consultas" />
-
 			<div className="user-consultas-main-content">
 				<Cabecalho />
 				<div className="user-consultas-content">

@@ -5,7 +5,7 @@ import SigUp from "./Pages/User/SignUp";
 import UserLogIn from "./Pages/User/LogIn";
 import UserDashBoard from "./Pages/User/DashBoard";
 import UserMessages from "./Pages/User/Messages";
-import UserConsultas from "./Pages/User/Consultas/index.js";
+import UserConsultas from "./Pages/User/Consultas";
 import UserAvaliacoes from "./Pages/User/Evaluation";
 
 import MedicLogin from "./Pages/Medic/login";

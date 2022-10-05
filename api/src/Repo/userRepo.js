@@ -61,3 +61,11 @@ export async function getConsultas(userId) {
         const [res] = await con.query(c, [userId]);
         return res;
 }
+
+export async function addAvaliacao(medicId, userId, descricao, number){
+        const c = 
+        `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
+        `
+        const res = await con.query(c, [medicId, userId, descricao, number ]);
+        return res;
+}
