@@ -6,7 +6,7 @@ import LinhaSeparação from "../../../assets/images/linha-separação2.svg";
 import LinhaSeparação2 from "../../../assets/images/linha-separação4.svg";
 import Card from "./card-comments";
 import David from "../../../assets/images/david.svg";
-import {FaStar} from 'react-icons/fa'
+import { FaStar } from 'react-icons/fa'
 import { useState } from "react";
 
 

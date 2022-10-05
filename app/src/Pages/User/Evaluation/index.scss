@@ -1,12 +1,4 @@
-.estrela{
-    color: #F6D523;
-    width: 20%;
-    height: 100%;
-}
-.estrela:hover{
-    transition: .25s;
-    transform: scale(1.1);
-}
+
 .evaluation-main{
     width: 100vw;
 	height: 100vh;
@@ -56,6 +48,16 @@
                         width: 40%;
                         height: 50%;
                         padding: 0 0 .5em 2em ;
+                        .estrela{
+                            color: #F6D523;
+                            width: 20%;
+                            height: 100%;
+                            cursor: pointer;
+                        }
+                        .estrela:hover{
+                            transition: .2s;
+                            transform: scale(1.06);
+                        }
                     }
                 }
                 .page-evaluation-comment{
