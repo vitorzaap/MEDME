@@ -47,6 +47,7 @@ export default function Index() {
                 <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} />
             </section>
             <div className="space-div"></div>
+            {/* vou arrumar 100% ainda fellas, só deixa asssim pq n ta patético e ta aceitável, dps deixa redondinho, "clean" q nem vcs femeas gostam de falar */}
             <section className="tste">
                     <h1 className="h1-map-txt">
                        Onde Estamos
@@ -57,8 +58,8 @@ export default function Index() {
       <GoogleMap
         mapContainerStyle={{ width: '100%', height: '100%'}}
         center={{
-            lat: -27.590824,
-            lng: -48.551262,
+            lat: -23.643414,
+            lng: -46.762563,    
         }}
         zoom={15}
        
