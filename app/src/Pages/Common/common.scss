@@ -147,7 +147,7 @@ $btn-hover: #6236fff1;
 				background-color: #30a2e4;
 			}
 			.btn-simple-green, .btn-simple-red, .btn-simple-blue{
-				padding: .825em 2em;
+				padding: .725em 2em;
 				color: #fff;
 				border: none;
 				border-radius: .625em;
@@ -295,6 +295,138 @@ button {
 }
 
 @media screen and (max-width: 1280px){
+	.sg-lg-btn {
+		//essa classe é reutilizável para botões simples, com apenas texto e colorido
+		border: none;
+		background: none;
+		cursor: pointer;
+		font-family: "Noto-regular";
+		font-size: 1em;
+		color: $primaria; //exemplo de uso
+	}
+	
+	.sg-lg-btn:hover {
+		color: #6236ffc0;
+	}
+	
+	.sg-lg-btn-complex { //botão com fundo roxo
+		padding: 0.625em;
+		cursor: pointer;
+		font-family: "Noto-bold";
+		font-size: 1.0625em;
+		width: 100%;
+		background-color: $primaria;
+		border: none;
+		color: #fff;
+		border-radius: 0.5em;
+	}
+	
+	.sg-lg-btn-complex:disabled {
+		background-color: #8766fff1;
+	}
+	
+	.sg-lg-btn-complex:disabled:hover {
+		background-color: #8766fff1;
+	}
+	
+	.sg-lg-btn-complex:hover {
+		background-color: #6236fff1;
+	}
+	
+	.main-div-table {
+		display: flex;
+		width: max-content;
+		align-items: center;
+		flex-direction: column;
+		height: 100%;
+	
+		.err-div-message{
+			display: flex;
+			border-radius: 1em;
+			width: 100%;
+			padding: 1em 0;
+			justify-content: center;
+			background-color: #ffe6e6;
+			.err-message{
+				font-size: 2em;
+				color: #ff6d6d;
+				font-family: "Noto-semibold";
+			}
+		}
+		.user-table {
+			background-color: #fff;
+			border-radius: .5em;
+			border-collapse: collapse;
+			padding: 0 1em;
+			width: max-content;
+			height: max-content;
+			max-height: 100%;
+			td {
+				padding: 1em;
+			}
+	
+			tr:nth-child(even) {
+				background-color: #f2ecff;
+			}
+			.user-tr {
+				text-align: left;
+	
+				th {
+					padding: 1em 1em 1em 1em;
+					font-family: "Noto-bold";
+				}
+			}
+			.data{
+	
+				td{
+					font-family: "Noto-Regular";
+					.div-btn-blue{
+						display: flex;
+						width: 100%;
+					}
+				}
+	
+				.item1{
+					color: #6b6f80;
+				}
+				.item3{
+					color: #E23C3C;
+				}
+				.item2{
+					color: #3DCC87;
+				}
+				.btn-simple-green{
+					background-color: #3DCC87;
+				}
+				.btn-simple-green:hover{
+					background-color: #5dce97;
+				}
+				.btn-simple-red{
+					background-color: #E23C3C;
+				}
+				.btn-simple-red:hover{
+					background-color: #e65656;
+				}
+				.btn-simple-blue{
+					background-color: #0D98E7;
+					width: 100%;
+				}
+				.btn-simple-blue:hover{
+					background-color: #30a2e4;
+				}
+				.btn-simple-green, .btn-simple-red, .btn-simple-blue{
+					padding: .625em 1em;
+					color: #fff;
+					border: none;
+					border-radius: .625em;
+					margin-right: 1em;
+					font-size: 1em;
+					font-family: "Noto-semibold";
+				}
+			}
+		}
+	}
+	
 	.input-main {
 		display: flex;
 		flex-direction: column;
@@ -379,6 +511,8 @@ button {
 			max-height: 12em;
 			background-color: #f8f8f8;
 			outline: none;
+			min-height: 6em;
+			min-width: 40%;
 			border: solid 0.5em #f8f8f8;
 			padding: 0.6em 0.5em 0.62em 0.5em;
 			border-radius: 0.625em;
@@ -390,6 +524,8 @@ button {
 			background-color: #ebebeb;
 			max-width: 100%;
 			max-height: 12em;
+			min-height: 4em;
+			min-width: 40%;
 			border: 0.5px solid red;
 			outline: none;
 			padding: 1.1em 1em 1.12em 1em;
@@ -416,5 +552,13 @@ button {
 		font-size: 0.825em;
 		color: red;
 		font-family: "Noto-regular";
+	}
+	button {
+		cursor: pointer;
+	}
+	
+	.default-opt {
+		border: 1px solid red;
+		padding: 2em;
 	}
 }
