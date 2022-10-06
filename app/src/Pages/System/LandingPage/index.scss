@@ -44,7 +44,7 @@
             .lm-button-1:hover{
                 background-color: #fff;
                 color: #6336FF;
-                
+                transform: scale(1.05);
             }
         }
     }
@@ -88,9 +88,11 @@
                 transition: all .2s;
             }
             button:hover{
+                transform: scale(1.05);
                 color: #fff;
                 background-color: #ffffff00;
-                outline: 1px solid #fff;
+                border: 1px solid #fff;
+
             }
         }
         
@@ -98,10 +100,57 @@
     .space-div{
         height: 20vh;
     }
+   
     .lm-section-2-cards{
         display: flex;
         justify-content: space-around;
     }
+    .tste{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 60vh;
+        
+    
+
+
+        .lm-section-3-maps{
+            
+            height: 40vh;
+            width: 80vh;
+            border-radius: 2em;}
+
+            .lm-section-1-div-text-space-div{
+                height: 5vh;}
+
+                h1{
+                    font-family: 'Noto-semibold';
+                    color: #fff;
+                    font-size: 3em;
+                    font-weight: 700;
+                    line-height: 1.5em;
+                    text-align: center;
+                    width: 65vw;
+                    text-shadow: 1px 4px 10px #00000033;}
+
+                    p{ 
+                        font-size: .85em;
+                        color: #fff;
+                        width: 55vw;
+                        text-align: center;
+                        text-shadow: 2px 2px 5px #00000040;
+                    }
+
+                    .div-space{
+                        height: 2vh;
+                    }
+
+
+
+        
+}
+
     footer{
         display: flex;
         justify-content: center;

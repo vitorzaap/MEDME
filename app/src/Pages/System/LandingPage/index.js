@@ -7,9 +7,16 @@ import image1 from '../../../assets/images/icon1-card.svg'
 import image2 from '../../../assets/images/icon2-card.svg'
 import image3 from '../../../assets/images/icon3-card.svg'
 import { useNavigate } from "react-router-dom";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import React from "react";
 
 export default function Index() {
     const navigate = useNavigate();
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: "AIzaSyAqU0N1DMMcJGJdEE1fCrvHu_L59YvMHSM"
+      })
+    
     return (
         <main className="landing-main">
             <header>
@@ -40,6 +47,42 @@ export default function Index() {
                 <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} />
             </section>
             <div className="space-div"></div>
+            <section className="tste">
+                    <h1 className="h1-map-txt">
+                       Onde Estamos
+                    </h1>
+                    <div className="lm-section-1-div-text-space-div"></div>
+            <div className="lm-section-3-maps">
+            {isLoaded ? (
+      <GoogleMap
+        mapContainerStyle={{ width: '100%', height: '100%'}}
+        center={{
+            lat: -27.590824,
+            lng: -48.551262,
+        }}
+        zoom={15}
+       
+      >
+        
+        <></>
+      </GoogleMap>
+  ) : <></>
+            }
+           
+            </div>
+            <div className="div-space"></div>
+            <div>
+                <p>
+                    Rua Sancho Garcia, 15
+                </p>
+                <p>
+                    05763-000
+                </p>
+            </div>
+            </section>
+            
+            <div className="space-div"></div>
+           
            
             <footer>
                 <div className="footer-content">
