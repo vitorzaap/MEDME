@@ -111,7 +111,7 @@ export default function Index() {
 																		<button
 																			onClick={async () => {
 																				toast.dismiss(t.id);
-																				toast.error(`Consulta #${item.idConsulta} recusada com sucesso!`);
+																				toast.success(`Consulta #${item.idConsulta} recusada com sucesso!`);
 																				const r = await statusConsult(item.idConsulta, 3);
 																			}}
 																			style={{

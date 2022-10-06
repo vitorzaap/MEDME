@@ -61,8 +61,6 @@ router.get("/api/user/consultas", async (req, res) => {
 			l.setHours(hour - 3, minute)
 			const difference = new Date() - l;
 			r[i].diff = difference;
-			//aaa
-
 		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
