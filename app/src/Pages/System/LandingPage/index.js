@@ -40,28 +40,7 @@ export default function Index() {
                 <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} />
             </section>
             <div className="space-div"></div>
-            <section>
-                <GoogleMapReact
-                    bootstrapURLKeys={{ key: /* YOUR KEY HERE */ }}
-                    defaultCenter={this.props.center}
-                    defaultZoom={this.props.zoom}
-                    yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
-                    >
-            <AnyReactComponent
-                lat={59.955413}
-                lng={30.337844}
-                text="My Marker"
-            />
-            </GoogleMapReact>
-
-            <AnyReactComponent
-                lat={59.955413}
-                lng={30.337844}
-                text="My Marker"
-            />
-            </section>
-
+           
             <footer>
                 <div className="footer-content">
                     <img src={logoFooter} alt='logo-roxa' />
