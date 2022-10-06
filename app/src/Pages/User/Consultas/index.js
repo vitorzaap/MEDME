@@ -65,7 +65,7 @@ export default function Index() {
 															toast(
 																(t) => (
 																	<span>
-																		Deseja aceitar a consulta #{item.idConsulta}?
+																		Deseja <span style={{color: "#5dce97", fontWeight: "bolder"}}>aceitar</span> a consulta #{item.idConsulta}?
 																		<button
 																			onClick={async () => {
 																				toast.dismiss(t.id);
@@ -107,7 +107,7 @@ export default function Index() {
 															toast(
 																(t) => (
 																	<span>
-																		Deseja aceitar a consulta #{item.idConsulta}?
+																		Deseja <span style={{color: "#E23C3C", fontWeight: "bolder"}}>recusar</span> a consulta #{item.idConsulta}?
 																		<button
 																			onClick={async () => {
 																				toast.dismiss(t.id);
@@ -116,14 +116,14 @@ export default function Index() {
 																			}}
 																			style={{
 																				padding: ".6em 1.2em",
-																				backgroundColor: "#3DCC87",
+																				backgroundColor: "#E23C3C",
 																				color: "#fff",
 																				border: "none",
 																				marginLeft: ".5em",
 																				borderRadius: ".5em",
 																				fontSize: ".92em",
 																			}}>
-																			Aceitar
+																			Recusar
 																		</button>
 																	</span>
 																),
