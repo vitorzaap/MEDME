@@ -5,6 +5,8 @@ import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
+import { useNavigate } from "react-router-dom";
+
 import toast, { Toaster } from "react-hot-toast";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
@@ -28,6 +30,8 @@ export default function Index() {
 		}
 		getConsult();
 	}, []);
+
+	const navigate = useNavigate();
 
 	return (
 		<main className="user-main-consultas">
@@ -149,7 +153,7 @@ export default function Index() {
 													className="btn-simple-blue"
 													onClick={async () => {
 														try {
-															
+															navigate("/avaliacoes")
 														} catch (err) {
 															
 														}

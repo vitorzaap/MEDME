@@ -58,8 +58,8 @@ export default function Index() {
       <GoogleMap
         mapContainerStyle={{ width: '100%', height: '100%'}}
         center={{
-            lat: -23.643414,
-            lng: -46.762563,    
+            lat: -23.680462921941125,
+            lng: -46.70816664844635    
         }}
         zoom={15}
        
@@ -74,10 +74,10 @@ export default function Index() {
             <div className="div-space"></div>
             <div>
                 <p>
-                    Rua Sancho Garcia, 15
+                    Av. Coronel Octaviano de Freitas Costa, 463
                 </p>
                 <p>
-                    05763-000
+                04773-000
                 </p>
             </div>
             </section>
