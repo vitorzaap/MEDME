@@ -69,7 +69,7 @@ export default function Index() {
 															toast(
 																(t) => (
 																	<span>
-																		Deseja <span style={{color: "#5dce97", fontWeight: "bolder"}}>aceitar</span> a consulta #{item.idConsulta}?
+																		Deseja <span style={{color: "#5dce97", fontWeight: "bolder"}}>aceitar</span> a consulta <b>#{item.idConsulta}</b>?
 																		<button
 																			onClick={async () => {
 																				toast.dismiss(t.id);
