@@ -174,7 +174,7 @@ $btn-hover: #6236fff1;
 		border-radius: 1em;
 		.date-content {
 			display: flex;
-			width: 90%;
+			width: 100%;
 			justify-content: space-around;
 			height: max-content;
 			input[type="date"]::-webkit-inner-spin-button,
@@ -185,11 +185,10 @@ $btn-hover: #6236fff1;
 			}
 			.default-date,
 			.default-hour {
-				padding: 0.5em 3em;
+				padding: 0.5em 1em;
 				border: none;
 				outline: none;
 				background-color: #f2ecff;
-				border-radius: 0.5em;
 				font-family: "Noto-semibold";
 				font-size: 1em;
 				color: #6336ff;
@@ -453,7 +452,7 @@ button {
 				}
 				.default-date,
 				.default-hour {
-					padding: 0.5em 3em;
+					padding: 0.5em 1em;
 					border: none;
 					outline: none;
 					background-color: #f2ecff;

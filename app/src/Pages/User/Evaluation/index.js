@@ -10,9 +10,11 @@ import storage from "local-storage";
 import { FaStar } from 'react-icons/fa'
 import { useState } from "react";
 import { addAvaliacao } from "../../../api/userApi.js";
+import { useParams } from "react-router-dom";
 
 export default function Index() {
 	const userInfo = storage('userInfo')
+	const { id } = useParams();
 	const stars = Array(5).fill(0)
 	const [valorEstrela, setValorEstrela] = useState(0)
 	const [descricaoConsulta, setDescricaoConsulta] = useState()
@@ -71,7 +73,7 @@ export default function Index() {
 										id="send" 
 										className="sg-lg-btn-complex"
 										onClick={() => {
-											addAvaliacao(2, userInfo.id, descricaoConsulta, valorEstrela)
+											addAvaliacao(id, userInfo.id, descricaoConsulta, valorEstrela)
 											setDescricaoConsulta('')
 											setValorEstrela()
 											

@@ -153,7 +153,7 @@ export default function Index() {
 													className="btn-simple-blue"
 													onClick={async () => {
 														try {
-															navigate("/avaliacoes")
+															navigate(`/avaliacoes/${item.id}`)
 														} catch (err) {
 															
 														}

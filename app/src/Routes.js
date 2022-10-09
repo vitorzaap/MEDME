@@ -25,8 +25,7 @@ export default function Index() {
 				<Route path="/dashboard" element={<UserDashBoard />} />
 				<Route path="/mensagens" element={<UserMessages />} />
 				<Route path="/consultas" element={<UserConsultas />} />
-				<Route path="/avaliacoes" element={<UserAvaliacoes />} />
-			
+				<Route path="/avaliacoes/:id" element={<UserAvaliacoes />} />
 				<Route path="/medic/login" element={<MedicLogin />} />
 				<Route path="/medic/dashboard" element={<MedicDashBoard />} />
 				<Route path="/medic/mensagens" element={<MedicMessages />} />

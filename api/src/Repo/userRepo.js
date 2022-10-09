@@ -45,6 +45,7 @@ export async function getConsultas(userId) {
         `
         SELECT  id_consulta		        idConsulta,
 	        tb_medico.nm_medico		medico,
+                tb_medico.id_medico             id,
 	        tb_atuacao.ds_atuacao		atuacao,
                 tb_plataforma.ds_plataforma     plataforma,
                 ds_consulta			descricao,
