@@ -1,11 +1,31 @@
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-30px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}
 .card-main{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40vh;
     width: 25vw;
-    .card-image{
-        margin-bottom: 37vh;
+    .card-image-1{  
+        transform: translateY(0px);
+        animation: float 5s infinite;
+        margin-bottom: 35vh;
+        width: 15em;
+        position: relative;
+    }
+    .card-image-2{  
+        transform: translateY(100px);
+        animation: float 3.5s infinite;
+        margin-bottom: 35vh;
         width: 15em;
         position: relative;
     }
@@ -34,6 +54,7 @@
                 color: #fff;
                 text-align: center;
                 margin-bottom: 3em;
+                width: 85%;
             }
             
         }

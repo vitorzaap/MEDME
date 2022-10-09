@@ -5,7 +5,7 @@ export default function Index(props) {
     return (
         <main className="card-main">
             <div>
-               <img src={props.imagem} className="card-image"/>
+               <img src={props.imagem} className={`card-image-${props.flutuagem}`}/>
             </div>
             <div className="card-parte-texto">
                 <div className="card-parte-texto-text">

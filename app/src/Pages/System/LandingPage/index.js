@@ -42,9 +42,9 @@ export default function Index() {
             </section>
             <div className="space-div"></div>
             <section className="lm-section-2-cards">
-                <Card titulo="Serviços" texto="Consultas com preços que cabem no seu bolso! Entregamos a melhor qualidade e conforto com um ótimo atendimento ao cliente." imagem={image1} />
-                <Card titulo="Rapidez e Agilidade" texto="Dura menos de 3 minutos para você começar a conversar com um de nossos médicos, basta criar sua conta e escolher quem você quer conversar." imagem={image2} />
-                <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} />
+                <Card titulo="Serviços" texto="Consultas com preços que cabem no seu bolso! Entregamos a melhor qualidade e conforto com um ótimo atendimento ao cliente." imagem={image1} flutuagem='1'/>
+                <Card titulo="Rapidez e Agilidade" texto="Dura menos de 3 minutos para você começar a conversar com um de nossos médicos, basta criar sua conta e escolher quem você quer conversar." imagem={image2} flutuagem='2' />
+                <Card titulo="Conversas" texto="Fale pelo chat, ou agende uma consulta no conforto da sua residência, resolvar seus problemas facilmente sem muitas complicações." imagem={image3} flutuagem='1' />
             </section>
             <div className="space-div"></div>
             {/* vou arrumar 100% ainda fellas, só deixa asssim pq n ta patético e ta aceitável, dps deixa redondinho, "clean" q nem vcs femeas gostam de falar */}
