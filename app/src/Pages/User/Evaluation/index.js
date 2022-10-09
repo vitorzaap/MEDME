@@ -10,9 +10,10 @@ import storage from "local-storage";
 import { FaStar } from 'react-icons/fa'
 import { useState } from "react";
 import { addAvaliacao } from "../../../api/userApi.js";
-import { useParams } from "react-router-dom";
+import { useNavigate , useParams } from "react-router-dom";
 
 export default function Index() {
+	const navigate = useNavigate();
 	const userInfo = storage('userInfo')
 	const { id } = useParams();
 	const stars = Array(5).fill(0)
@@ -74,9 +75,8 @@ export default function Index() {
 										className="sg-lg-btn-complex"
 										onClick={() => {
 											addAvaliacao(id, userInfo.id, descricaoConsulta, valorEstrela)
-											setDescricaoConsulta('')
-											setValorEstrela()
 											
+											navigate('/dashboard')
 										}}
 										
 										>Enviar feedback</button>
