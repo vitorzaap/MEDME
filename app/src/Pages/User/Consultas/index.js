@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import storage from "local-storage";
 import { getConsultas, statusConsult } from "../../../api/userApi.js";
 import { useNavigate } from "react-router-dom";
-
+import Accept from "./buttonElements/accept"
 import toast, { Toaster } from "react-hot-toast";
+import Avaliation from "./buttonElements/avaliation.js"
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
 	const [erro, setErro] = useState();
@@ -43,12 +44,13 @@ export default function Index() {
 					<div className="main-div-table">
 						<table className="user-table">
 							<tr className="user-tr">
-								<th>Paciente</th>
+								<th>Médico</th>
 								<th>Data</th>
 								<th>Hora</th>
 								<th>Tipo</th>
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
+								<th style={{ textAlign: "center" }}>Status e Ações</th>
 							</tr>
 
 							{consultas.map((item) => (
@@ -59,108 +61,15 @@ export default function Index() {
 									<td>{item.atuacao}</td>
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
-									<td>
-										{item.diff < 0 && (
-											<div>
-												<button
-													className="btn-simple-green"
-													onClick={async () => {
-														try {
-															toast(
-																(t) => (
-																	<span>
-																		Deseja <span style={{color: "#5dce97", fontWeight: "bolder"}}>aceitar</span> a consulta <b>#{item.idConsulta}</b>?
-																		<button
-																			onClick={async () => {
-																				toast.dismiss(t.id);
-																				toast.success(`Consulta #${item.idConsulta} aceita com sucesso!`);
-																				const r = await statusConsult(item.idConsulta, 2);
-																			}}
-																			style={{
-																				padding: ".6em 1.2em",
-																				backgroundColor: "#3DCC87",
-																				color: "#fff",
-																				border: "none",
-																				marginLeft: ".5em",
-																				borderRadius: ".5em",
-																				fontSize: ".92em",
-																			}}>
-																			Aceitar
-																		</button>
-																	</span>
-																),
-																{
-																	style: {
-																		width: "max-content",
-																		maxWidth: "max-content",
-																	},
-																}
-															);
-														} catch (err) {
-															if (err.response.status == 401) {
-															}
-														}
-													}}>
-													Aceitar Consulta
-												</button>
-												<button
-													className="btn-simple-red"
-													onClick={async () => {
-														try {
-															const r = await statusConsult(item.idConsulta, 3);
-															toast(
-																(t) => (
-																	<span>
-																		Deseja <span style={{color: "#E23C3C", fontWeight: "bolder"}}>recusar</span> a consulta #{item.idConsulta}?
-																		<button
-																			onClick={async () => {
-																				toast.dismiss(t.id);
-																				toast.success(`Consulta #${item.idConsulta} recusada com sucesso!`);
-																				const r = await statusConsult(item.idConsulta, 3);
-																			}}
-																			style={{
-																				padding: ".6em 1.2em",
-																				backgroundColor: "#E23C3C",
-																				color: "#fff",
-																				border: "none",
-																				marginLeft: ".5em",
-																				borderRadius: ".5em",
-																				fontSize: ".92em",
-																			}}>
-																			Recusar
-																		</button>
-																	</span>
-																),
-																{
-																	style: {
-																		width: "max-content",
-																		maxWidth: "max-content",
-																	},
-																}
-															);
-														} catch (err) {
-															if (err.response.status == 401) {
-															}
-														}
-													}}>
-													Recusar Consulta
-												</button>
-											</div>
+									<td className="td-buttons">
+										{item.idSituacao == 2 && <span className="item2">Você aceitou esta consulta!</span>}
+										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
+										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
+										{(item.diff < 0 && item.idSituacao == 1) && (
+											<Accept idConsulta={item.idConsulta} />
 										)}
-										{item.diff > 0 && (
-											<div className="div-btn-blue">
-												<button
-													className="btn-simple-blue"
-													onClick={async () => {
-														try {
-															navigate(`/avaliacoes/${item.id}`)
-														} catch (err) {
-															
-														}
-													}}>
-													Avaliar Consulta
-												</button>
-											</div>
+										{(item.diff > 0 && item.idSituacao != 4) && (
+											<Avaliation id={item.id} idConsulta={item.idConsulta} />
 										)}
 									</td>
 								</tr>

@@ -41,10 +41,6 @@ export default function Menu(props) {
                     <div>
                         <Cards  img={iconcalendar} txt="Consultas" local="consultas" selecionado={props.selecionado}/>
                     </div>
-                    <div>
-                        <Cards img={logoaval} txt="Avaliações" local="avaliacoes" selecionado={props.selecionado}/>
-                    </div>
-
                 </div>
                 <div className="Subcontainer2-lateral">
                 <div className="Card">

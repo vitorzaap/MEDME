@@ -88,11 +88,12 @@ $btn-hover: #6236fff1;
 	.user-table {
 		background-color: #fff;
 		border-radius: .5em;
+		overflow-y: scroll;
 		border-collapse: collapse;
 		padding: 0 1em;
 		width: max-content;
+		max-height: 550px;
 		height: max-content;
-		max-height: 100%;
 		td {
 			padding: 1em;
 		}
@@ -118,42 +119,50 @@ $btn-hover: #6236fff1;
 				}
 			}
 
-			.item1{
-				color: #6b6f80;
-			}
-			.item3{
-				color: #E23C3C;
-			}
-			.item2{
-				color: #3DCC87;
-			}
-			.btn-simple-green{
-				background-color: #3DCC87;
-			}
-			.btn-simple-green:hover{
-				background-color: #5dce97;
-			}
-			.btn-simple-red{
-				background-color: #E23C3C;
-			}
-			.btn-simple-red:hover{
-				background-color: #e65656;
-			}
-			.btn-simple-blue{
-				background-color: #0D98E7;
-				width: 100%;
-			}
-			.btn-simple-blue:hover{
-				background-color: #30a2e4;
-			}
-			.btn-simple-green, .btn-simple-red, .btn-simple-blue{
-				padding: .725em 2em;
-				color: #fff;
-				border: none;
-				border-radius: .625em;
-				margin-right: 1em;
-				font-size: 1em;
-				font-family: "Noto-semibold";
+			.td-buttons{
+				text-align: center;
+				.item1{
+					color: #6b6f80;
+				}
+				.item3{
+					color: #E23C3C;
+				}
+				.item2{
+					color: #3DCC87;
+				}
+				.item4{
+					color: #0D98E7;
+				}
+				.btn-simple-green{
+					background-color: #3DCC87;
+					margin-right: .5em;
+				}
+				.btn-simple-green:hover{
+					background-color: #5dce97;
+				}
+				.btn-simple-red{
+					background-color: #E23C3C;
+					margin: 0 !important;
+				}
+				.btn-simple-red:hover{
+					background-color: #e65656;
+				}
+				.btn-simple-blue{
+					background-color: #0D98E7;
+					width: 100%;
+					margin: 0 !important;
+				}
+				.btn-simple-blue:hover{
+					background-color: #30a2e4;
+				}
+				.btn-simple-green, .btn-simple-red, .btn-simple-blue{
+					padding: .725em 1em;
+					color: #fff;
+					border: none;
+					border-radius: .625em;
+					font-size: .875em;
+					font-family: "Noto-semibold";
+				}
 			}
 		}
 	}
@@ -359,7 +368,6 @@ button {
 			padding: 0 1em;
 			width: max-content;
 			height: max-content;
-			max-height: 100%;
 			td {
 				padding: 1em;
 			}
@@ -396,12 +404,14 @@ button {
 				}
 				.btn-simple-green{
 					background-color: #3DCC87;
+					margin-right: .5em;
 				}
 				.btn-simple-green:hover{
 					background-color: #5dce97;
 				}
 				.btn-simple-red{
 					background-color: #E23C3C;
+					margin: 0 !important;
 				}
 				.btn-simple-red:hover{
 					background-color: #e65656;
@@ -409,19 +419,21 @@ button {
 				.btn-simple-blue{
 					background-color: #0D98E7;
 					width: 100%;
+					
 				}
 				.btn-simple-blue:hover{
 					background-color: #30a2e4;
 				}
+
 				.btn-simple-green, .btn-simple-red, .btn-simple-blue{
-					padding: .625em 1em;
+					padding: .725em .1em;
 					color: #fff;
 					border: none;
 					border-radius: .625em;
-					margin-right: 1em;
-					font-size: 1em;
+					font-size: .8em;
 					font-family: "Noto-semibold";
 				}
+				
 			}
 		}
 	}

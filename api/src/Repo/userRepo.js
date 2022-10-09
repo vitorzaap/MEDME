@@ -51,6 +51,7 @@ export async function getConsultas(userId) {
                 ds_consulta			descricao,
                 dt_consulta			dataConsulta,
                 tm_consulta			horaConsulta,
+                id_situacao                     idSituacao,
                 vl_preco		        preco,
                 ds_link		                link
 	FROM tb_consulta 
