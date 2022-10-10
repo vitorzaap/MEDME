@@ -25,7 +25,13 @@ export default function Menu(props) {
                 
                 <div className="Subcontainer-lateral">
                     <div className="Card">
-                        <div className="div-img">
+                        <div className="div-img" onClick={async () => {
+                try {
+                    navigate("/")
+                } catch (err) {
+                    
+                }
+            }}>
                             <img src={logo} />
                         </div>
                         <div className="logo-div-p">
