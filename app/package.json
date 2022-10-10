@@ -1,6 +1,6 @@
 {
-  "name": "app",
-  "version": "0.1.0",
+  "name": "medme",
+  "version": "2.1.0",
   "private": true,
   "dependencies": {
     "@react-google-maps/api": "^2.13.1",

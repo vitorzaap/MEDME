@@ -71,6 +71,11 @@ $btn-hover: #6236fff1;
 	align-items: center;
 	flex-direction: column;
 	height: 100%;
+	
+	.btn-size-div{
+		width: 100%;
+		margin-bottom: 1em;
+	}
 
 	.err-div-message{
 		display: flex;

@@ -53,13 +53,13 @@ export default function Index() {
                 <Cabecalho />
                 <div className="content-consultas">
                     <div className="button-nova">
-                        <button onClick={showNova} className="nova-consulta">
-                            <img src={iconAdd} alt='icon' />
-                            <p>Nova Consulta</p>
-                        </button>
+						
                     </div>
                     <div className="get-consultas">
-                    <div className="main-div-table">
+						<div className="main-div-table">
+						<div className="btn-size-div">
+						<button className="sg-lg-btn-complex" onClick={showNova}>Nova Consulta</button>
+						</div>
 						<table className="user-table">
 							<tr className="user-tr">
 								<th>Paciente</th>
