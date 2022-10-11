@@ -6,7 +6,7 @@ import icondb from "../../../assets/images/home-4.svg"
 import iconmail from "../../../assets/images/mail-unread.svg"
 import iconcalendar from "../../../assets/images/calendar.svg"
 import logosair from "../../../assets/images/arrow-log-out.svg" 
-import logoaval from "../../../assets/images/medal-2.svg"
+import logomedic from "../../../assets/images/face-happy.svg"
 import { useNavigate } from "react-router-dom"
 import storage from "local-storage";
 import { useEffect, useState } from "react"
@@ -46,6 +46,9 @@ export default function Menu(props) {
                     </div>
                     <div>
                         <Cards  img={iconcalendar} txt="Consultas" local="consultas" selecionado={props.selecionado}/>
+                    </div>
+                    <div>
+                        <Cards img={logomedic} txt="Médicos" local="medics" selecionado={props.selecionado}/>
                     </div>
                 </div>
                 <div className="Subcontainer2-lateral">

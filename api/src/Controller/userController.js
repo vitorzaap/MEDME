@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao } from "../Repo/userRepo.js";
+import { getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao } from "../Repo/userRepo.js";
 
 const router = Router();
 
@@ -83,5 +83,14 @@ router.post("/api/user/avalicao", async (req, res) => {
 		});
 	}
 });
-
+router.get("/api/user/medics", async (req, res) => {
+	try {
+		let r = await getMedics();
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
 export default router;

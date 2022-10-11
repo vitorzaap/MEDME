@@ -21,7 +21,7 @@ export async function userSigIn(name, sobrenome, email, pass) {
 	return r.data;
 }
 
-export async function getConsultas(id) {
+export async function getConsultasId(id) {
 	const r = await api.get(`/api/user/consultas?id=${id}`)
 	return r.data
 }
@@ -38,4 +38,8 @@ export async function addAvaliacao(medicId, userId, descricao, number) {
 		number: number,
 	});
 	return r.data;
+}
+export async function getConsultas() {
+	const r = await api.get(`/api/user/medics`)
+	return r.data
 }

@@ -71,3 +71,16 @@ export async function addAvaliacao(medicId, userId, descricao, number){
         const res = await con.query(c, [medicId, userId, descricao, number ]);
         return res;
 }
+export async function getMedics(){
+        const c =`
+        SELECT 	id_medico               id,
+                        nm_medico 	nome,
+                        img_icon        icon,
+                        id_atuacao      atuacao,
+                        id_atuacao1	atuacao1,
+                        ds_medico	descricao
+                        FROM tb_medico;
+        `
+        const [res] = await con.query(c)
+        return res
+}
