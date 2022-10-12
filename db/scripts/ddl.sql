@@ -85,18 +85,19 @@ CREATE TABLE tb_conversa(
     	FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
-CREATE TABLE tb_mensagem(
+CREATE TABLE tb_mensagem_medico(
 		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
     	id_conversa		INT NOT NULL,
-    	ds_mensagem		VARCHAR (1000) NOT NULL,
-    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa)
+		id_medico		INT NOT NULL,
+    	ds_mensagem_medico		VARCHAR (1000) NOT NULL,
+    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa),
+		FOREIGN KEY (id_medico) REFERENCES tb_conversa(id_medico)
 );
-
-CREATE TABLE tb_notificacao(
-	id_notificacao		INT PRIMARY KEY AUTO_INCREMENT,
-    	id_mensagem		INT,
-    	id_conversa		INT,
-    	ds_notificacao		VARCHAR(500),
-	FOREIGN KEY (id_mensagem) REFERENCES tb_mensagem(id_mensagem),
-    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa)
+CREATE TABLE tb_mensagem_usuario(
+		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
+    	id_conversa		INT NOT NULL,
+		id_usuario		INT NOT NULL,
+    	ds_mensagem_usuario		VARCHAR (1000) NOT NULL,
+    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa),
+		FOREIGN KEY (id_usuario) REFERENCES tb_conversa(id_usuario)
 );
