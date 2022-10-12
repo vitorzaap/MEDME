@@ -6,10 +6,23 @@ import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"
 import FileIcon from "../../../assets/images/file.svg"
 import SendVector from "../../../assets/images/send-vector.svg"
+import { useEffect, useState } from "react";
 
 export default function Index() {
-	return (
-		<main className="messages-main">
+    const [message, setMessage] = useState('')
+    const [messages, setMessages] = useState([])
+    const SubmitMessage = e => {
+        e.preventDefault()
+        if (message.trim()) {
+            setMessages([...messages,{
+                id:1,
+                message
+            }])
+            setMessage('')
+        }
+    }
+    return (
+        <main className="messages-main">
             <Menu selecionado="mensagens" />
             <section className="messages-section-main">
                 <Cabecalho />
@@ -18,41 +31,41 @@ export default function Index() {
                         <table className="page-messages-users">
                             <tr>
                                 <div className="page-messages-users-div-1">
-                                <img src={DavidLester} />
-                                <div className="page-messages-users-div-2">
-                                    <div className="page-messages-users-div-3">
-                                        <h1>
-                                            David Lester
-                                        </h1>
-                                        <p>
-                                            16:20
+                                    <img src={DavidLester} />
+                                    <div className="page-messages-users-div-2">
+                                        <div className="page-messages-users-div-3">
+                                            <h1>
+                                                David Lester
+                                            </h1>
+                                            <p>
+                                                16:20
+                                            </p>
+                                        </div>
+                                        <p className="page-messages-users-descricao">
+                                            Teste de Mensagem Teste de Mensagem Teste de Mensagem
                                         </p>
                                     </div>
-                                    <p className="page-messages-users-descricao">
-                                        Teste de Mensagem Teste de Mensagem Teste de Mensagem
-                                    </p>
                                 </div>
-                                </div>
-                                <img src={LinhaSeparação} className="linha-separacao-img"/>
+                                <img src={LinhaSeparação} className="linha-separacao-img" />
                             </tr>
                             <tr>
                                 <div className="page-messages-users-div-1">
-                                <img src={DavidLester} />
-                                <div className="page-messages-users-div-2">
-                                    <div className="page-messages-users-div-3">
-                                        <h1>
-                                            David Lester
-                                        </h1>
-                                        <p>
-                                            16:20
+                                    <img src={DavidLester} />
+                                    <div className="page-messages-users-div-2">
+                                        <div className="page-messages-users-div-3">
+                                            <h1>
+                                                David Lester
+                                            </h1>
+                                            <p>
+                                                16:20
+                                            </p>
+                                        </div>
+                                        <p className="page-messages-users-descricao">
+                                            Teste de Mensagem Teste de Mensagem Teste de Mensagem
                                         </p>
                                     </div>
-                                    <p className="page-messages-users-descricao">
-                                        Teste de Mensagem Teste de Mensagem Teste de Mensagem
-                                    </p>
                                 </div>
-                                </div>
-                                <img src={LinhaSeparação} className="linha-separacao-img"/>
+                                <img src={LinhaSeparação} className="linha-separacao-img" />
                             </tr>
                         </table>
                     </div>
@@ -62,18 +75,32 @@ export default function Index() {
                             <h1>David Lester</h1>
                         </header>
                         <div className="messages-main-content-conversation">
-                            
+                            <ul className="chat">
+                                <li className="user-message">
+                                    <span>
+                                        Teste de mensagem Teste de mensagem Teste de mensagem
+                                    </span>
+                                </li>
+                                {messages.map(m => (
+                                    <li className="my-message" key={m.id}>
+                                        <span>
+                                            {m.message}
+                                        </span>
+                                    </li>
+                                )
+                                )}
+                            </ul>
                         </div>
                         <footer>
-                            <div className="messages-inputzao">
-                                    <img src={FileIcon} className="messages-FileIcon"/>
-                                    <input type="text" placeholder="Envie uma mensagem."/>
-                                <img src={SendVector} className="messages-SendVector"/>
-                            </div>
+                            <form className="messages-inputzao" onSubmit={SubmitMessage}>
+                                <img src={FileIcon} className="messages-FileIcon" />
+                                <input type="text" placeholder="Envie uma mensagem." value={message} onChange={(e) => setMessage(e.target.value)} />
+                                <img src={SendVector} className="messages-SendVector" onClick={SubmitMessage} />
+                            </form>
                         </footer>
                     </div>
                 </div>
             </section>
-		</main>
-	);
+        </main>
+    );
 }
