@@ -19,7 +19,10 @@ INSERT INTO tb_atuacao(ds_atuacao)
 		VALUES("veterinario");
 INSERT INTO tb_medico(nm_medico, ds_email, ds_senha, ds_medico, id_atuacao, id_atuacao1)
             VALUES("Julio", "medicojulio@gmail.com","Sou um medico legal", "JulioBoaventuraMedico", 1, 2);
-
+INSERT INTO tb_conversa(id_medico, id_usuario)
+			VALUES(1,1);
+INSERT INTO tb_mensagem(id_conversa, ds_mensagem)
+			VALUES(1, 'Mensagem Teste');
 
 
 

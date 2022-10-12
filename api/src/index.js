@@ -1,14 +1,13 @@
 import express from "express";
 import cors from "cors";
-import { Server } from 'socket.io'
-import http from 'http'
 import "dotenv/config";
 import userController from "./Controller/userController.js"
 import medicController from "./Controller/medicController.js"
 
-const app = express()
+{/*const app = express()
 const server = http.createServer(app)
 const sockets =  new Server(server)
+*/}
 const router = express();
 
 router.use(cors());
@@ -16,7 +15,7 @@ router.use(express.json());
 router.use(userController);
 router.use(medicController);
 router.listen(process.env.PORT, () => console.log(`Server online on PORT: ${process.env.PORT}`));
-
+{/*
 const state = {
     members: [],
     messages: []
@@ -49,4 +48,4 @@ sockets.on('connection', socket => {
     })
 })
 server.listen(3000, () => {console.log(`> Online | Port: 3000`)
-})
+})*/}

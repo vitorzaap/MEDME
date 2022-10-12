@@ -86,9 +86,9 @@ CREATE TABLE tb_conversa(
 );
 
 CREATE TABLE tb_mensagem(
-	id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
+		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
     	id_conversa		INT NOT NULL,
-    	ds_mensagem		VARCHAR (5000) NOT NULL,
+    	ds_mensagem		VARCHAR (1000) NOT NULL,
     	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa)
 );
 
