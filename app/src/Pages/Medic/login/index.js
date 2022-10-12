@@ -9,7 +9,6 @@ export default function Index() {
 	const [classErrEmail, setClassErrEmail] = useState("default-input");
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
 	const [erro, setErro] = useState("");
-	const [inputErr, setInputErr] = useState("");
 	const [disabled, setDisabled] = useState(false);
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
@@ -66,8 +65,22 @@ export default function Index() {
 						className="sg-lg-btn-complex"
 						disabled={disabled}
 						onClick={async () => {
-							!email ? setClassErrEmail("err-input") : setClassErrEmail("default-input");
-							!pass ? setClassErrPass("err-input") : setClassErrPass("default-input");
+							if (!email) {
+								setClassErrEmail("err-input")
+								setErro("Este campo não pode estar vazio.")
+							}
+							else {
+								setClassErrEmail("default-input");
+								setErro("")
+							}
+							if (!pass) {
+								setClassErrPass("err-input")
+								setErro("Este campo não pode estar vazio.")
+							}
+							else {
+								setClassErrPass("default-input");
+								setErro("")
+							}
 							if (email && pass) {
 								ref.current.continuousStart();
 								setDisabled(true);
