@@ -33,16 +33,15 @@ export async function userSigIn(user) {
 	return user;
 }
 export async function userAccept(idSituation, id) {
-        const c = `UPDATE tb_consulta
+	const c = `UPDATE tb_consulta
         SET id_situacao = ?
-        WHERE id_consulta = ?`
-        const res = await con.query(c, [idSituation, id])
-        return res;
+        WHERE id_consulta = ?`;
+	const res = await con.query(c, [idSituation, id]);
+	return res;
 }
 
 export async function getConsultas(userId) {
-        const c = 
-        `
+	const c = `
         SELECT  id_consulta		        idConsulta,
 	        tb_medico.nm_medico		medico,
                 tb_medico.id_medico             id,
@@ -59,28 +58,28 @@ export async function getConsultas(userId) {
         INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao
         INNER JOIN tb_medico ON tb_medico.id_medico = tb_consulta.id_medico
         WHERE id_usuario = ?;
-        `
-        const [res] = await con.query(c, [userId]);
-        return res;
+        `;
+	const [res] = await con.query(c, [userId]);
+	return res;
 }
 
-export async function addAvaliacao(medicId, userId, descricao, number){
-        const c = 
-        `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
-        `
-        const res = await con.query(c, [medicId, userId, descricao, number ]);
-        return res;
+export async function addAvaliacao(medicId, userId, descricao, number) {
+	const c = `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
+        `;
+	const res = await con.query(c, [medicId, userId, descricao, number]);
+	return res;
 }
-export async function getMedics(){
-        const c =`
-        SELECT 	id_medico               id,
-                        nm_medico 	nome,
-                        img_icon        icon,
-                        id_atuacao      atuacao,
-                        id_atuacao1	atuacao1,
-                        ds_medico	descricao
-                        FROM tb_medico;
-        `
-        const [res] = await con.query(c)
-        return res
+export async function getMedics() {
+	const c = `
+        SELECT 	id_medico         id,
+        nm_medico 	           nome,
+        img_icon                   icon,
+        tb_atuacao.ds_atuacao      atuacao,
+        tb_atuacao.ds_atuacao	   atuacao1,
+        ds_medico	           descricao
+        FROM tb_medico
+        INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_medico.id_atuacao;
+        `;
+	const [res] = await con.query(c);
+	return res;
 }
