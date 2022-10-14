@@ -23,11 +23,11 @@ Desta forma, você consegue resolver seus problemas sem mesmo sair de casa, bast
  - Diagrama de atividade:
 https://www.figma.com/file/KQ7PcgrkLs6XPaouSPcPxH/mapeamento-dos-endpoints?node-id=0%3A1
 
-- Figma - Protótipo 
+- Figma - Protótipo:
 https://www.figma.com/file/k5elN4gKLilrgglIqzAUMc
 
 
-- Figma - Telas
+- Figma - Telas:
 https://www.figma.com/file/iU0eakoqOWlkZdPvh3sVk7
 
 
