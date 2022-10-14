@@ -4,7 +4,7 @@ import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
-import { getConsultas, statusConsult } from "../../../api/userApi.js";
+import { getConsultas, getConsultasId, statusConsult } from "../../../api/userApi.js";
 import { useNavigate } from "react-router-dom";
 import Accept from "./buttonElements/accept"
 import toast, { Toaster } from "react-hot-toast";
@@ -16,17 +16,16 @@ export default function Index() {
 		async function getConsult() {
 			try {
 				const user = storage("userInfo");
-				let response = await getConsultas(user.id);
+				let response = await getConsultasId(user.id);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
 					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
 				}
 				setConsultas(response);
+				console.log(response)
 			} catch (err) {
-				if (err.response.status == 401) {
-					setErro(err.response.data.erro);
-				}
+				setErro(err.response.data.erro)
 			}
 		}
 		getConsult();

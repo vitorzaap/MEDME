@@ -6,7 +6,7 @@ import iconAdd from "../../../assets/images/Union.svg"
 import NovaConsulta from "./NovaConsulta/index.js"
 import { getConsultas } from "../../../api/medicApi.js"
 import storage from "local-storage"
-
+import { Toaster } from "react-hot-toast";
 import { useState, useEffect } from "react";
 
 
@@ -45,7 +45,8 @@ export default function Index() {
 
     return( 
         <main className="main-consultas">
-            <div className="pop-up" id="pop-up">
+			<div className="pop-up" id="pop-up">
+				<Toaster />
                 <NovaConsulta />
             </div>
             <Menu selecionado="consultas"/>

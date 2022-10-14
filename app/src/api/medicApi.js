@@ -30,12 +30,12 @@ export async function adicionarConsulta(medico, paciente, descricao, data, hora,
     console.log(medico, paciente, descricao, data, hora, tipo, plataforma, preco, link)
 	const r = await api.post("/api/medic/consulta", {
 		medicoid: medico,
-		userid: paciente,
+		userid: Number(paciente),
 		descricao: descricao,
 		data: data,
 		hora: hora,
-		atuacao: tipo,
-		plataforma: plataforma,
+		atuacao: Number(tipo),
+		plataforma: Number(plataforma),
 		preco: preco,
 		link: link,
 	});

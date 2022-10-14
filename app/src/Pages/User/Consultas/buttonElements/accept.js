@@ -14,9 +14,15 @@ export default function Index(props) {
 									<button
 										onClick={async () => {
 											toast.dismiss(t.id);
-                                            toast.success(`Consulta #${props.idConsulta} aceita com sucesso!`);
-                                            window.location.reload();
+											toast.loading("Carregando...")
+											setTimeout(() => {
+												toast.dismiss();
+												toast.success(`Consulta #${props.idConsulta} aceita com sucesso!`);
+											}, 1000)
 											const r = await statusConsult(props.idConsulta, 2);
+											setTimeout(() => {
+												window.location.reload();
+											}, 2000)
 										}}
 										style={{
 											padding: ".6em 1.2em",
@@ -53,13 +59,20 @@ export default function Index(props) {
 						toast(
 							(t) => (
 								<span>
-									Deseja <span style={{ color: "#E23C3C", fontWeight: "bolder" }}>recusar</span> a consulta #{props.idConsulta}?
+									Deseja <span style={{ color: "#E23C3C", fontWeight: "bolder" }}>recusar</span> a consulta <b>#{props.idConsulta}</b>?
 									<button
 										onClick={async () => {
 											toast.dismiss(t.id);
-											toast.success(`Consulta #${props.idConsulta} recusada com sucesso!`);
-                                            const r = await statusConsult(props.idConsulta, 3);
-                                            window.location.reload();
+											toast.loading("Carregando...")
+											setTimeout(() => {
+												toast.dismiss();
+												toast.success(`Consulta #${props.idConsulta} recusada com sucesso!`);
+											}, 1000)
+											const r = await statusConsult(props.idConsulta, 3);
+											setTimeout(() => {
+												window.location.reload();
+											}, 2000)
+											
 										}}
 										style={{
 											padding: ".6em 1.2em",

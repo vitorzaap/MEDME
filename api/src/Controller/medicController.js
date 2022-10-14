@@ -21,7 +21,7 @@ router.post("/api/medic/login", async (req, res) => {
 router.post("/api/medic/consulta", async (req, res) => {
 	try {
 		const nova = req.body;
-
+		
 		const consulta = await novaConsulta(nova);
 		res.send(consulta);
 	} catch (err) {
