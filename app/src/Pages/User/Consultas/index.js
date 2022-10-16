@@ -17,7 +17,7 @@ export default function Index() {
 		async function getConsult() {
 			try {
 				const user = storage("userInfo");
-				let response = await getConsultasId(user.id, 6);
+				let response = await getConsultasId(user.id, 2);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
