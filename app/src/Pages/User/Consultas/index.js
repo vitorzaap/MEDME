@@ -49,13 +49,14 @@ export default function Index() {
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
 								<th style={{ textAlign: "center" }}>Status e Ações</th>
+								{consultas.length >= 10 && 
 								<th> <button className="btn-simple-green" onClick={() => {
 									let page = storage("page")
 									storage("page", page+1)
 									setTimeout(() => {
 										window.location.reload();
 									}, 500)
-								}}>Próxima Página</button> </th>
+								}}>Próxima Página</button> </th>}
 								<th> <button className="btn-simple-green" onClick={() => {
 									let page = storage("page")
 									storage("page", page-1)
