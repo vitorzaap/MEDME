@@ -51,7 +51,8 @@ router.put("/api/user/consultas", async (req, res) => {
 
 router.get("/api/user/consultas", async (req, res) => {
 	try {
-		const { id } = req.query;
+		let add = 1
+		let { id, start, limit} = req.query; // parametros start e end para definir o tamanho da array a ser retornada.
 		let r = await getConsultas(id);
 		for (let i = 0; i < r.length; i++) {
 			let l = new Date(r[i].dataConsulta);
@@ -61,11 +62,13 @@ router.get("/api/user/consultas", async (req, res) => {
 			l.setHours(hour - 3, minute)
 			const difference = new Date() - l;
 			r[i].diff = difference;
+			r[i].idConsultaUsuario = add;
+			add++
 		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
 		} else {
-			res.send(r);
+			res.send(r.slice(Number(start), Number(start) + Number(limit))); // retorno a array com limite para a paginação.
 		}
 	} catch (err) {
 		res.status(401).send({

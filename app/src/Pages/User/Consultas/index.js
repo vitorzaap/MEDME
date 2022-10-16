@@ -11,19 +11,19 @@ import toast, { Toaster } from "react-hot-toast";
 import Avaliation from "./buttonElements/avaliation.js"
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
+
 	const [erro, setErro] = useState();
 	useEffect(() => {
 		async function getConsult() {
 			try {
 				const user = storage("userInfo");
-				let response = await getConsultasId(user.id);
+				let response = await getConsultasId(user.id, 6);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
 					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
 				}
 				setConsultas(response);
-				console.log(response)
 			} catch (err) {
 				setErro(err.response.data.erro)
 			}
@@ -58,17 +58,17 @@ export default function Index() {
 									<td>{item.dataConsulta}</td>
 									<td>{item.horaConsulta}</td>
 									<td>{item.atuacao}</td>
-									<td>#{item.idConsulta}</td>
+									<td>#{item.idConsultaUsuario}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
 										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Você aceitou esta consulta!</span>}
 										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
 										{(item.diff < 0 && item.idSituacao == 1) && (
-											<Accept idConsulta={item.idConsulta} />
+											<Accept idConsulta={item.idConsultaUsuario} />
 										)}
 										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && (
-											<Avaliation id={item.id} idConsulta={item.idConsulta} />
+											<Avaliation id={item.id} idConsulta={item.idConsultaUsuario} />
 										)}
 									</td>
 								</tr>

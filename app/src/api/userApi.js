@@ -21,8 +21,9 @@ export async function userSigIn(name, sobrenome, email, pass) {
 	return r.data;
 }
 
-export async function getConsultasId(id) {
-	const r = await api.get(`/api/user/consultas?id=${id}`)
+export async function getConsultasId(id, page) {
+	const virtualPage = ((page - 1) * 5) <= 0 ? 0 : (page - 1) * 5
+	const r = await api.get(`/api/user/consultas?id=${id}&start=${virtualPage}&limit=5`)
 	return r.data
 }
 
