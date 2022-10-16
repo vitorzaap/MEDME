@@ -61,13 +61,13 @@ export default function Index() {
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{item.idSituacao == 2 && <span className="item2">Você aceitou esta consulta!</span>}
+										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Você aceitou esta consulta!</span>}
 										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
 										{(item.diff < 0 && item.idSituacao == 1) && (
 											<Accept idConsulta={item.idConsulta} />
 										)}
-										{(item.diff > 0 && item.idSituacao != 4) && (
+										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && (
 											<Avaliation id={item.id} idConsulta={item.idConsulta} />
 										)}
 									</td>
