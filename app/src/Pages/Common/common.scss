@@ -41,7 +41,48 @@ $btn-hover: #6236fff1;
 	color: #6236ffc0;
 }
 
-.sg-lg-btn-complex { //botão com fundo roxo
+.div-table-navButtons {
+	display: flex;
+	padding: 0.5em 1em;
+	border-radius: 0 0 .5em .5em;
+	background-color: #fff;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.btn-nav {
+	padding: 0.5em 1em;
+	background-color: #6336ff;
+	border: none;
+	color: #fff;
+	border-radius: 0.5em;
+	font-size: 0.825em;
+	cursor: pointer;
+	font-family: "Noto-semibold";
+
+	.nav-btn-div {
+		display: flex;
+
+		img {
+			margin-left: 0.5em;
+			width: 12px;
+			filter: invert(1);
+		}
+
+		.back {
+			margin-right: 0.5em;
+			width: 12px;
+			filter: invert(1);
+		}
+	}
+}
+
+.btn-nav:hover{
+	background-color: #6236fff1;
+}
+
+.sg-lg-btn-complex {
+	//botão com fundo roxo
 	padding: 0.625em;
 	cursor: pointer;
 	font-family: "Noto-bold";
@@ -71,20 +112,20 @@ $btn-hover: #6236fff1;
 	align-items: center;
 	flex-direction: column;
 	height: 100%;
-	
-	.btn-size-div{
+
+	.btn-size-div {
 		width: 100%;
 		margin-bottom: 1em;
 	}
 
-	.err-div-message{
+	.err-div-message {
 		display: flex;
 		border-radius: 1em;
 		width: 100%;
 		padding: 1em 0;
 		justify-content: center;
 		background-color: #ffe6e6;
-		.err-message{
+		.err-message {
 			font-size: 2em;
 			color: #ff6d6d;
 			font-family: "Noto-semibold";
@@ -92,13 +133,13 @@ $btn-hover: #6236fff1;
 	}
 	.user-table {
 		background-color: #fff;
-		border-radius: .5em;
-		overflow-y: scroll;
+		border-radius: 0.5em 0.5em 0 0;
+		
 		border-collapse: collapse;
 		padding: 0 1em;
 		width: max-content;
-		max-height: 550px;
 		height: max-content;
+
 		td {
 			padding: 1em;
 		}
@@ -107,65 +148,68 @@ $btn-hover: #6236fff1;
 			background-color: #f2ecff;
 		}
 		.user-tr {
-			text-align: left;
+			text-align: center;
 
 			th {
 				padding: 1em 4em 1em 1em;
+				text-align: center;
 				font-family: "Noto-bold";
 			}
 		}
-		.data{
-
-			td{
+		.data {
+			td {
 				font-family: "Noto-Regular";
-				.div-btn-blue{
+				text-align: center;
+				.div-btn-blue {
 					display: flex;
 					width: 100%;
 				}
 			}
 
-			.td-buttons{
+			.td-buttons {
 				text-align: center;
-				.item1{
+				.item1 {
 					color: #6b6f80;
 				}
-				.item3{
-					color: #E23C3C;
+				.item3 {
+					color: #e23c3c;
 				}
-				.item2{
-					color: #3DCC87;
+				.item2 {
+					color: #3dcc87;
 				}
-				.item4{
-					color: #0D98E7;
+				.item4 {
+					color: #0d98e7;
 				}
-				.btn-simple-green{
-					background-color: #3DCC87;
-					margin-right: .5em;
+				.btn-simple-green {
+					background-color: #3dcc87;
+					margin-right: 0.5em;
 				}
-				.btn-simple-green:hover{
+				.btn-simple-green:hover {
 					background-color: #5dce97;
 				}
-				.btn-simple-red{
-					background-color: #E23C3C;
+				.btn-simple-red {
+					background-color: #e23c3c;
 					margin: 0 !important;
 				}
-				.btn-simple-red:hover{
+				.btn-simple-red:hover {
 					background-color: #e65656;
 				}
-				.btn-simple-blue{
-					background-color: #0D98E7;
+				.btn-simple-blue {
+					background-color: #0d98e7;
 					width: 100%;
 					margin: 0 !important;
 				}
-				.btn-simple-blue:hover{
+				.btn-simple-blue:hover {
 					background-color: #30a2e4;
 				}
-				.btn-simple-green, .btn-simple-red, .btn-simple-blue{
-					padding: .725em 1em;
+				.btn-simple-green,
+				.btn-simple-red,
+				.btn-simple-blue {
+					padding: 0.725em 1em;
 					color: #fff;
 					border: none;
-					border-radius: .625em;
-					font-size: .875em;
+					border-radius: 0.625em;
+					font-size: 0.875em;
 					font-family: "Noto-semibold";
 				}
 			}
@@ -307,7 +351,7 @@ button {
 	padding: 2em;
 }
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1280px) {
 	.sg-lg-btn {
 		//essa classe é reutilizável para botões simples, com apenas texto e colorido
 		border: none;
@@ -317,12 +361,13 @@ button {
 		font-size: 1em;
 		color: $primaria; //exemplo de uso
 	}
-	
+
 	.sg-lg-btn:hover {
 		color: #6236ffc0;
 	}
-	
-	.sg-lg-btn-complex { //botão com fundo roxo
+
+	.sg-lg-btn-complex {
+		//botão com fundo roxo
 		padding: 0.625em;
 		cursor: pointer;
 		font-family: "Noto-bold";
@@ -333,34 +378,34 @@ button {
 		color: #fff;
 		border-radius: 0.5em;
 	}
-	
+
 	.sg-lg-btn-complex:disabled {
 		background-color: #8766fff1;
 	}
-	
+
 	.sg-lg-btn-complex:disabled:hover {
 		background-color: #8766fff1;
 	}
-	
+
 	.sg-lg-btn-complex:hover {
 		background-color: #6236fff1;
 	}
-	
+
 	.main-div-table {
 		display: flex;
 		width: max-content;
 		align-items: center;
 		flex-direction: column;
 		height: 100%;
-	
-		.err-div-message{
+
+		.err-div-message {
 			display: flex;
 			border-radius: 1em;
 			width: 100%;
 			padding: 1em 0;
 			justify-content: center;
 			background-color: #ffe6e6;
-			.err-message{
+			.err-message {
 				font-size: 2em;
 				color: #ff6d6d;
 				font-family: "Noto-semibold";
@@ -368,7 +413,7 @@ button {
 		}
 		.user-table {
 			background-color: #fff;
-			border-radius: .5em;
+			border-radius: 0.5em 0.5em 0 0;
 			border-collapse: collapse;
 			padding: 0 1em;
 			width: max-content;
@@ -376,79 +421,78 @@ button {
 			td {
 				padding: 1em;
 			}
-	
+
 			tr:nth-child(even) {
 				background-color: #f2ecff;
 			}
 			.user-tr {
 				text-align: left;
-	
+
 				th {
 					padding: 1em 1em 1em 1em;
 					font-family: "Noto-bold";
 				}
 			}
-			.data{
-	
-				td{
+			.data {
+				td {
 					font-family: "Noto-Regular";
-					.div-btn-blue{
+					.div-btn-blue {
 						display: flex;
 						width: 100%;
 					}
 				}
-	
-				.item1{
+
+				.item1 {
 					color: #6b6f80;
 				}
-				.item3{
-					color: #E23C3C;
+				.item3 {
+					color: #e23c3c;
 				}
-				.item2{
-					color: #3DCC87;
+				.item2 {
+					color: #3dcc87;
 				}
-				.btn-simple-green{
-					background-color: #3DCC87;
-					margin-right: .5em;
+				.btn-simple-green {
+					background-color: #3dcc87;
+					margin-right: 0.5em;
 				}
-				.btn-simple-green:hover{
+				.btn-simple-green:hover {
 					background-color: #5dce97;
 				}
-				.btn-simple-red{
-					background-color: #E23C3C;
+				.btn-simple-red {
+					background-color: #e23c3c;
 					margin: 0 !important;
 				}
-				.btn-simple-red:hover{
+				.btn-simple-red:hover {
 					background-color: #e65656;
 				}
-				.btn-simple-blue{
-					background-color: #0D98E7;
+				.btn-simple-blue {
+					background-color: #0d98e7;
 					width: 100%;
-					
 				}
-				.btn-simple-blue:hover{
+				.btn-simple-blue:hover {
 					background-color: #30a2e4;
 				}
 
-				.btn-simple-green, .btn-simple-red, .btn-simple-blue{
-					padding: .725em .1em;
+				.btn-simple-green,
+				.btn-simple-red,
+				.btn-simple-blue {
+					padding: 0.725em 0.1em;
 					color: #fff;
 					border: none;
-					border-radius: .625em;
-					font-size: .8em;
+					border-radius: 0.625em;
+					font-size: 0.8em;
 					font-family: "Noto-semibold";
 				}
-				
 			}
 		}
 	}
-	
+
 	.input-main {
 		display: flex;
 		flex-direction: column;
 		text-align: left;
 		padding: 0.5em 0;
-	
+
 		.date-main {
 			display: flex;
 			width: 100%;
@@ -521,7 +565,7 @@ button {
 			color: #6b6f80;
 			font-family: "Noto-regular";
 		}
-	
+
 		.default-textarea {
 			max-width: 100%;
 			max-height: 12em;
@@ -535,7 +579,7 @@ button {
 			font-family: "Noto-regular";
 			font-size: 0.90625em;
 		}
-	
+
 		.err-textarea {
 			background-color: #ebebeb;
 			max-width: 100%;
@@ -550,7 +594,7 @@ button {
 			font-family: "Noto-regular";
 			font-size: 0.90625em;
 		}
-	
+
 		.err-input {
 			background-color: #ebebeb;
 			border: 0.5px solid red;
@@ -572,7 +616,7 @@ button {
 	button {
 		cursor: pointer;
 	}
-	
+
 	.default-opt {
 		border: 1px solid red;
 		padding: 2em;
