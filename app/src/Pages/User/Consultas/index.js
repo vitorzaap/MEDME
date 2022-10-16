@@ -11,13 +11,12 @@ import toast, { Toaster } from "react-hot-toast";
 import Avaliation from "./buttonElements/avaliation.js"
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
-
 	const [erro, setErro] = useState();
 	useEffect(() => {
 		async function getConsult() {
 			try {
 				const user = storage("userInfo");
-				let response = await getConsultasId(user.id, 2);
+				let response = await getConsultasId(user.id, storage("page"));
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
@@ -50,6 +49,20 @@ export default function Index() {
 								<th>N° Consulta</th>
 								<th>Plataforma</th>
 								<th style={{ textAlign: "center" }}>Status e Ações</th>
+								<th> <button className="btn-simple-green" onClick={() => {
+									let page = storage("page")
+									storage("page", page+1)
+									setTimeout(() => {
+										window.location.reload();
+									}, 500)
+								}}>Próxima Página</button> </th>
+								<th> <button className="btn-simple-green" onClick={() => {
+									let page = storage("page")
+									storage("page", page-1)
+									setTimeout(() => {
+										window.location.reload();
+									}, 500)
+								}}>Voltar Página</button> </th>
 							</tr>
 
 							{consultas.map((item) => (
@@ -70,7 +83,9 @@ export default function Index() {
 										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && (
 											<Avaliation id={item.id} idConsulta={item.idConsultaUsuario} />
 										)}
+										
 									</td>
+									
 								</tr>
 							))}
 						</table>

@@ -57,7 +57,7 @@ export default function Menu(props) {
                             <img src={logosair} />
                         </div>
                         <div className="div-p" onClick={() => {
-                            storage.remove('local-storage')
+                            storage.remove('userInfo')
                             navigate('/')
                         }}>
                             <p>Sair</p>
