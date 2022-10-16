@@ -57,13 +57,14 @@ export default function Index() {
 										window.location.reload();
 									}, 500)
 								}}>Próxima Página</button> </th>}
+								{storage("page") >= 1 && 
 								<th> <button className="btn-simple-green" onClick={() => {
 									let page = storage("page")
 									storage("page", page-1)
 									setTimeout(() => {
 										window.location.reload();
 									}, 500)
-								}}>Voltar Página</button> </th>
+								}}>Voltar Página</button> </th>}
 							</tr>
 
 							{consultas.map((item) => (
