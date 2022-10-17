@@ -19,50 +19,17 @@ $color2: #39B6D2;
 			height: 89vh;
 			background-color: #edeef2;
             .dashboard-cards-content{
-                height: 35%;
+                height: 50%;
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
             }
-            .dashboard-consultas-content{
-                width: 95%;
-                height: 60%;
-                border-radius: 1em;
-                background-color: #fff;
-                padding: 1em;
-                        .div-h1-consultas-main {
-                            width: 100%;
-                            .h1-consultas-main {
-                                font-family: "Noto-semibold";
-                                font-size: 1.3em;
-                                margin: 0 0 1em .3em;
-                            }
-                        }
-    
-                        .main-container-consultas {
-                            display: flex;
-                            width: 100%;
-                            height: 95%;
-    
-                            .titles-main-container-consultas {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: flex-start;
-                                align-items: center;
-                                width: 100%;
-    
-                                table {
-                                    width: 100%;
-                                    
-    
-                                    th {
-                                        font-family: "Noto-light";
-                                        color: #373737;
-                                        text-align: start;
-                                        padding: 0.3em;
-                                    }
-                                }
-                            }
+            .main-div-table{
+                width: 100%;
+                justify-content: center;
+                .user-table{
+                    width: 80%;
+                    border-radius: .5em;
                 }
             }
         }

@@ -5,8 +5,34 @@ import Menu from "../../Components/Menu-Usuario/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import Cards from "./Cards-DashBoard"
 import Calendar from '../../../assets/images/calendar-dashboard.svg'
+import { useEffect, useState } from "react";
+import storage from "local-storage";
+import { getConsultasId } from "../../../api/userApi.js";
 
 export default function Index() {
+    const [consultas, setConsultas] = useState([]);
+    const [erro, setErro] = useState();
+	useEffect(() => {
+		async function getConsult() {
+			try {
+				let limit = 9;
+				const user = storage("userInfo");
+				if (window.innerHeight <= 696) {
+					limit = 3;
+				}
+				let response = await getConsultasId(user.id, storage("page"), limit);
+				for (let i = 0; i < response.length; i++) {
+					const novaData = new Date(response[i].dataConsulta);
+					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
+					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
+				}
+				setConsultas(response);
+			} catch (err) {
+				setErro(err.response.data.erro);
+			}
+		}
+		getConsult();
+	}, []);
 	return (
 		<main className="dashboard-main">
             <Menu selecionado="dashboard" />
@@ -17,25 +43,43 @@ export default function Index() {
                         <Cards titulo='Avaliações' imagem={Calendar} tipo='numero' numero='65' subtitulo='Sua última avaliação'/>
                         <Cards titulo='Conversas' imagem={Calendar} tipo='numero' numero='4' subtitulo='Conversas ainda não respondidas.'/>
                     </div>
-                    <div className="dashboard-consultas-content">
-                            <div className="div-h1-consultas-main">
-                                <h1 className="h1-consultas-main">Minhas consultas</h1>
-                            </div>
-                            <div className="main-container-consultas">
-                                <div className="titles-main-container-consultas">
-                                    <table>
-                                        <tr>
-                                            <th>Paciente</th>
-                                            <th>Data</th>
-                                            <th>Hora</th>
-                                            <th>Marcada em</th>
-                                            <th>Tipo</th>
-                                            <th>Plataforma</th>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="main-div-table">
+						<table className="user-table">
+							<tr className="user-tr">
+								<th>Médico</th>
+								<th>Data</th>
+								<th>Hora</th>
+								<th>Tipo</th>
+								<th>N° Consulta</th>
+								<th>Plataforma</th>
+								<th style={{ textAlign: "center" }}>Status e Ações</th>
+							</tr>
+
+							{consultas.map((item) => (
+								<tr className="data">
+									<td>{item.medico}</td>
+									<td>{item.dataConsulta}</td>
+									<td>{item.horaConsulta}</td>
+									<td>{item.atuacao}</td>
+									<td>#{item.idConsultaUsuario}</td>
+									<td>{item.plataforma}</td>
+									<td className="td-buttons">
+										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Você aceitou esta consulta!</span>}
+										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
+										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
+										{item.diff < 0 && item.idSituacao == 1 && <span className="item1"> <b>Você precisa aceitar esta consulta</b></span>}
+										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && <span className="item1"> <b>Você precisa avaliar esta consulta!</b></span>}
+									</td>
+								</tr>
+							))}
+							
+						</table>
+						{erro !== undefined && (
+							<div className="err-div-message">
+								<span className="err-message">{erro}</span>
+							</div>
+						)}
+					</div>
                     </div>
             </section>
 		</main>

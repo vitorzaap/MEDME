@@ -17,7 +17,7 @@
 			height: 89vh;
 			background-color: #edeef2;
             .dashboard-cards-content{
-                height: 35%;
+                height: 50%;
                 width: 100%;
                 display: flex;
                 justify-content: space-around;
@@ -37,35 +37,12 @@
                             }
                         }
     
-                        .main-container-consultas {
-                            display: flex;
-                            width: 100%;
-                            height: 95%;
-    
-                            .titles-main-container-consultas {
-                                display: flex;
-                                flex-direction: column;
-                                justify-content: flex-start;
-                                align-items: center;
-                                width: 100%;
-    
-                                table {
-                                    width: 100%;
-                                    border-bottom: 1px solid #373737;
-                                    th {
-                                        font-family: "Noto-light";
-                                        color: #373737;
-                                        text-align: start;
-                                        padding: 0.3em;
-                                    }
-                                }
-                            }
-                }
+                        
             }
         }
     }
 }
-.dashboard-cards{
+.doctor-dashboard-cards{
     width: 30%;
     height: 90%;
     margin: 1em;
