@@ -82,23 +82,20 @@ export default function Index() {
 											<button
 												id="send"
 												className="sg-lg-btn-complex"
-												onClick={() => {
+												onClick={async () => {
 													toast(
 														(t) => (
 															<span>
 																Tem certeza que deseja enviar este feedback?
 																<button
 																	onClick={async () => {
-																		setDescricaoConsulta("");
-																		setValorEstrela();
-																		setTimeout(() => {
-																			nav("/consultas");
-																		}, 4000)
 																		toast.dismiss(t.id);
 																		toast.success(`Feedback enviado com sucesso!`);
 																		const s = await statusConsult(idConsulta, 4);
 																		const r = await addAvaliacao(id, userInfo.id, descricaoConsulta, valorEstrela);
-																		
+																		setTimeout(() => {
+																			nav("/consultas");
+																		}, 4000)
 																			
 																	}}
 																	style={{

@@ -18,7 +18,7 @@ export default function Index() {
 				let limit = 9;
 				const user = storage("userInfo");
 				if (window.innerHeight <= 696) {
-					limit = 3;
+					limit = 4;
 				}
 				let response = await getConsultasId(user.id, storage("page"), limit);
 				for (let i = 0; i < response.length; i++) {

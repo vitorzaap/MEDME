@@ -34,8 +34,8 @@ export async function userSigIn(user) {
 }
 export async function userAccept(idSituation, id) {
 	const c = `UPDATE tb_consulta
-        SET id_situacao = ?
-        WHERE id_consulta = ?`;
+                        SET id_situacao = ?
+                        WHERE id_consulta = ?`;
 	const res = await con.query(c, [idSituation, id]);
 	return res;
 }

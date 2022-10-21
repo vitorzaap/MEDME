@@ -29,6 +29,7 @@ export default function Index() {
 					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
 				}
 				setConsultas(response);
+				console.log(response)
 			} catch (err) {
 				setErro(err.response.data.erro);
 			}
@@ -61,14 +62,14 @@ export default function Index() {
 									<td>{item.dataConsulta}</td>
 									<td>{item.horaConsulta}</td>
 									<td>{item.atuacao}</td>
-									<td>#{item.idConsultaUsuario}</td>
+									<td>#{item.idSituacao	}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Você aceitou esta consulta!</span>}
+										{(item.idSituacao == 2 && item.diff < 0)  && <span className="item2">Você aceitou esta consulta!</span>}
 										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
-										{item.diff < 0 && item.idSituacao == 1 && <Accept idConsulta={item.idConsultaUsuario} />}
-										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && <Avaliation id={item.id} idConsulta={item.idConsultaUsuario} />}
+										{(item.diff < 0 && item.idSituacao == 1) && <Accept idConsulta={item.idConsulta} />}
+										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && <Avaliation id={item.id} idConsulta={item.idConsultaUsuario} />}
 									</td>
 								</tr>
 							))}

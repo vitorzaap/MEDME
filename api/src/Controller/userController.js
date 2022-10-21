@@ -39,8 +39,8 @@ router.post("/api/user/account", async (req, res) => {
 router.put("/api/user/consultas", async (req, res) => {
 	try {
 		const { id, situation } = req.query;
+		console.log(id, situation)
 		const r = await userAccept(situation, id);
-
 		res.status(204).send();
 	} catch (err) {
 		res.status(401).send({
