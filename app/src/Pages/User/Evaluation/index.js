@@ -9,10 +9,11 @@ import Card from "./card-comments";
 import David from "../../../assets/images/david.svg";
 import storage from "local-storage";
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addAvaliacao } from "../../../api/userApi.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { getDoctorById } from "../../../api/medicApi";
 export default function Index() {
 	const userInfo = storage("userInfo");
 	const { id, idConsulta } = useParams();
@@ -20,6 +21,8 @@ export default function Index() {
 	const stars = Array(5).fill(0);
 	const [valorEstrela, setValorEstrela] = useState(0);
 	const [descricaoConsulta, setDescricaoConsulta] = useState();
+	const [doctorName, setDoctorName] = useState("");
+	const [doctorDesc, setDoctorDesc] = useState("")
 	const colorStar = {
 		orange: "#F6D523",
 		gray: "#B4B4B4",
@@ -40,6 +43,15 @@ export default function Index() {
 		setDescricaoConsulta("");
 		setValorEstrela();
 	}
+
+	useEffect(() => {
+		const fetchDoctor = async () => {
+			const [r] = await getDoctorById(id)
+			setDoctorDesc(r.ds_medico);
+			setDoctorName(r.nm_medico);
+		}
+		fetchDoctor();
+	}, [])
 
 	return (
 		<main className="evaluation-main">
@@ -127,17 +139,12 @@ export default function Index() {
 								<div className="page-evaluation-medic">
 									<div className="page-evaluation-medic-info">
 										<img src={David} />
-										<h1>David Laster</h1>
+										<h1>{doctorName}</h1>
 									</div>
 									<img src={LinhaSeparação2} className="page-evaluation-medic-info-separation" />
 									<div className="page-evaluation-medic-desc">
 										<p>
-											Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-											nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-											eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor
-											sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-											ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-											pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+											{doctorDesc}
 										</p>
 									</div>
 								</div>

@@ -102,3 +102,12 @@ export async function getConsulta(id) {
 	const [res] = await con.query(c, [id]);
 	return res;
 }
+
+export async function getDoctorById(id) {
+	const c = 
+		`
+		SELECT * FROM tb_medico WHERE id_medico = ?
+		`
+	const [res] = await con.query(c, [id])
+	return res;
+}

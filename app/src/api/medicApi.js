@@ -45,3 +45,8 @@ export async function getConsultas(id) {
 	const r = await api.get(`/api/medic/consulta?id=${id}`)
 	return r.data
 }
+
+export async function getDoctorById(doctorId) {
+	const r = await api.get(`/api/medic?id=${doctorId}`)
+	return r.data;
+}

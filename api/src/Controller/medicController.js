@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta } from "../Repo/medicRepo.js";
+import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById } from "../Repo/medicRepo.js";
 
 const router = Router();
 router.post("/api/medic/login", async (req, res) => {
@@ -18,10 +18,25 @@ router.post("/api/medic/login", async (req, res) => {
 	}
 });
 
+router.get("/api/medic", async (req, res) => {
+	try {
+		const { id } = req.query;
+		const r = await getDoctorById(id);
+		if (!r || r.length < 1) {
+			throw new Error("Ocorreu algum erro.")
+		}
+		res.send(r);
+	}
+	catch (err) {
+		res.send({
+			erro: err.message
+		})
+	}
+})
+
 router.post("/api/medic/consulta", async (req, res) => {
 	try {
 		const nova = req.body;
-		
 		const consulta = await novaConsulta(nova);
 		res.send(consulta);
 	} catch (err) {
