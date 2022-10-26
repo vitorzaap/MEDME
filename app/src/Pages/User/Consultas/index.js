@@ -62,59 +62,59 @@ export default function Index() {
 									<td>{item.dataConsulta}</td>
 									<td>{item.horaConsulta}</td>
 									<td>{item.atuacao}</td>
-									<td>#{item.idSituacao	}</td>
+									<td>#{item.idSituacao}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao == 2 && item.diff < 0)  && <span className="item2">Você aceitou esta consulta!</span>}
-										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
-										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
+										{(item.idSituacao == 2 && item.diff < 0)  && <span className="item2">Consulta aceita</span>}
+										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
+										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
 										{(item.diff < 0 && item.idSituacao == 1) && <Accept idConsulta={item.idConsulta} />}
-										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && <Avaliation id={item.id} idConsulta={item.idConsultaUsuario} />}
+										{(item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3) && <Avaliation id={item.id} idConsulta={item.idConsulta} />}
 									</td>
 								</tr>
 							))}
 							
 						</table>
-						<div className="div-table-navButtons">
-								{storage("page") > 1 && (
-									<div>
+						{consultas.length > 10 && <div className="div-table-navButtons">
+							{storage("page") > 1 && (
+								<div>
 										
-										<button
-											className="btn-nav"
-											onClick={() => {
-												let page = storage("page");
-												storage("page", page - 1);
-												setTimeout(() => {
-													window.location.reload();
-												}, 500);
-											}}>
-											<div className="nav-btn-div">
-												<img src={arrowLeft} className='back' />
-												<p>Página Anterior</p>
-											</div>
-										</button>
-									</div>
-								)}
-								{((consultas.length >= 7 && window.innerHeight <= 696) || (consultas.length >= 10 && window.innerHeight > 696)) && (
-									<div>
+									<button
+										className="btn-nav"
+										onClick={() => {
+											let page = storage("page");
+											storage("page", page - 1);
+											setTimeout(() => {
+												window.location.reload();
+											}, 500);
+										}}>
+										<div className="nav-btn-div">
+											<img src={arrowLeft} className='back' />
+											<p>Página Anterior</p>
+										</div>
+									</button>
+								</div>
+							)}
+							{((consultas.length >= 7 && window.innerHeight <= 696) || (consultas.length >= 10 && window.innerHeight > 696)) && (
+								<div>
 										
-										<button
-											className="btn-nav"
-											onClick={() => {
-												let page = storage("page");
-												storage("page", page + 1);
-												setTimeout(() => {
-													window.location.reload();
-												}, 500);
-											}}>
-											<div className="nav-btn-div">
-												<p>Próxima Página</p>
-												<img src={arrowRight} />
-											</div>
-										</button>
-									</div>
-								)}
-							</div>
+									<button
+										className="btn-nav"
+										onClick={() => {
+											let page = storage("page");
+											storage("page", page + 1);
+											setTimeout(() => {
+												window.location.reload();
+											}, 500);
+										}}>
+										<div className="nav-btn-div">
+											<p>Próxima Página</p>
+											<img src={arrowRight} />
+										</div>
+									</button>
+								</div>
+							)}
+						</div>}
 						{erro !== undefined && (
 							<div className="err-div-message">
 								<span className="err-message">{erro}</span>

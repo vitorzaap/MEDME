@@ -102,13 +102,15 @@ export default function Index() {
 																<button
 																	onClick={async () => {
 																		toast.dismiss(t.id);
-																		toast.success(`Feedback enviado com sucesso!`);
+																		toast.loading("Enviando seu Feedback...")
+																		
+																		setTimeout(() => {
+																			toast.dismiss();
+																			toast.success(`Feedback enviado com sucesso!`);
+																		}, 2000);
+																		
 																		const s = await statusConsult(idConsulta, 4);
 																		const r = await addAvaliacao(id, userInfo.id, descricaoConsulta, valorEstrela);
-																		setTimeout(() => {
-																			nav("/consultas");
-																		}, 4000)
-																			
 																	}}
 																	style={{
 																		padding: ".6em 1.2em",

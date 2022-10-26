@@ -167,17 +167,37 @@ $btn-hover: #6236fff1;
 
 			.td-buttons {
 				text-align: center;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				.item1 {
 					color: #6b6f80;
 				}
 				.item3 {
 					color: #e23c3c;
+					padding: .5em;
+					width: 100%;
+					border-radius: 3em;
+					background-color: #ff909090;
+					outline: .08em solid #e23c3c;
 				}
 				.item2 {
-					color: #3dcc87;
+					color: #0fbf53;
+					width: 100%;
+					padding: .5em 0;
+					min-width: 5em;
+					border-radius: 3em;
+					background-color: #99ffc092;
+					outline: .08em solid #0fbf53;
 				}
 				.item4 {
 					color: #0d98e7;
+					width: 100%;
+					padding: .5em 0;
+					min-width: 5em;
+					border-radius: 3em;
+					background-color: #81d1ff96;
+					outline: .08em solid #0d98e7;
 				}
 				.btn-simple-green {
 					background-color: #3dcc87;
@@ -441,15 +461,7 @@ button {
 					}
 				}
 
-				.item1 {
-					color: #6b6f80;
-				}
-				.item3 {
-					color: #e23c3c;
-				}
-				.item2 {
-					color: #3dcc87;
-				}
+				
 				.btn-simple-green {
 					background-color: #3dcc87;
 					margin-right: 0.5em;

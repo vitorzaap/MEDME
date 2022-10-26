@@ -64,11 +64,11 @@ export default function Index() {
 									<td>#{item.idConsultaUsuario}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Você aceitou esta consulta!</span>}
-										{item.idSituacao == 3 && <span className="item3">Você recusou esta consulta!</span>}
-										{item.idSituacao == 4 && <span className="item4">Consulta já avaliada!</span>}
-										{item.diff < 0 && item.idSituacao == 1 && <span className="item1"> <b>Você precisa aceitar esta consulta</b></span>}
-										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && <span className="item1"> <b>Você precisa avaliar esta consulta!</b></span>}
+										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Consulta aceita</span>}
+										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
+										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
+										{item.diff < 0 && item.idSituacao == 1 && <span className="item1"> <b>Aceite esta consulta</b></span>}
+										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && <span className="item1"> <b>avalie esta consulta!</b></span>}
 									</td>
 								</tr>
 							))}
