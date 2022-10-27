@@ -6,7 +6,7 @@
     width: 10.5em;
     height: 3em;
     border-radius: .6em;
-    
+    transition: background-color .2s;
 
    .div-img{
     display: flex;
@@ -37,16 +37,8 @@
    }
 }
 .cards:hover{
-    background-color: #6336FF;
-    color: white;
-    
-    .icon {
-        filter: invert(100%);
-    }
-    .card-p{
-        color: white;
-    }
-    transition: 500ms;
+    background-color: #ded4ffda;
+    outline: 1px solid #b7a1ffda;
 }
 .card-Selecionado{
     cursor: pointer;

@@ -13,13 +13,12 @@ import MedicDashBoard from "./Pages/Medic/DashBoard";
 import MedicMessages from "./Pages/Medic/Messages";
 import MedicConsultas from "./Pages/Medic/Consultas";
 import MedicAvaliacoes from "./Pages/Medic/Evaluation";
-
+import UserProfile from "./Pages/User/Profile"
 export default function Index() {
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Lp />} />
-
 				<Route path="/user/account" element={<SigUp />} />
 				<Route path="/user/login" element={<UserLogIn />} />
 				<Route path="/dashboard" element={<UserDashBoard />} />
@@ -32,6 +31,7 @@ export default function Index() {
 				<Route path="/medic/mensagens" element={<MedicMessages />} />
 				<Route path="/medic/consultas" element={<MedicConsultas />} />
 				<Route path="/medic/avaliacoes" element={<MedicAvaliacoes />} />
+				<Route path="/profile" element={<UserProfile />} />
 			</Routes>
 		</BrowserRouter>
 	);

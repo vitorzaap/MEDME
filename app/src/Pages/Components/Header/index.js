@@ -28,10 +28,9 @@ export default function Header(props) {
             <div className="icon-header">
                 
             </div>
-            <div className="user-card">
+            <div className="user-card" onClick={() => navigate('/profile')}>
                 <img className="iconuser" src={iconuser} />
                 <p>{usuario[0].toUpperCase() + usuario.slice(1)}</p>
-                <img className="iconconfig" src={iconconfig} />
             </div>
         </header>
     )
