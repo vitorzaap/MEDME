@@ -1,0 +1,93 @@
+.feedback{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    header{
+        height: 10vh;
+        width: 100vw;
+        border: 1px solid red;
+        display: flex;
+        backdrop-filter: blur(10px);
+        justify-content: space-between;
+        padding: 0 2em;
+
+
+        img {
+            filter: invert(100%);
+        }
+        .lm-header-logo{
+            width: 8em;
+        }
+        .lm-header-div{
+            display: flex;
+            align-items: center;
+            
+            .lm-button-text{
+                font-family: 'Noto-regular';
+                letter-spacing: -0.25px;
+                cursor: pointer;
+                border: none;
+                color: #000;
+                padding: 1em;
+                font-size: .925em;
+                text-decoration: none;
+            }
+            .lm-button-1{
+                outline: none;
+                cursor: pointer;
+                font-family: 'Noto-semibold';
+                border: .2em solid #000;
+                border-radius: 3em;
+                padding: .7em 2em .7em 2em;
+                background-color: transparent;
+                color: #000;
+                transition: all .2s;
+            }
+            .lm-button-1:hover{
+                color: rgba(0, 0, 0, 0.654);
+                transform: scale(1.05);
+            }
+        }
+    }
+    section{
+        height: 75vh;
+        width: 100vw;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 15vh;
+        background-color: white;
+
+        .footer-content{
+            width: 90%;
+            height: 60%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .links-footer{
+                width: 30%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                a{
+                    font-family:"Noto-Semibold";
+                    font-size: 1em;
+                    cursor: pointer;
+                } a:hover{
+                    filter: opacity(80%);
+                }
+                
+            }
+            p{
+                font-family: "Noto-bold";
+                font-size: .9em;
+            }
+        }
+    }
+}

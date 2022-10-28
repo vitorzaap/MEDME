@@ -14,6 +14,8 @@ import MedicMessages from "./Pages/Medic/Messages";
 import MedicConsultas from "./Pages/Medic/Consultas";
 import MedicAvaliacoes from "./Pages/Medic/Evaluation";
 import UserProfile from "./Pages/User/Profile"
+import Feedback from "./Pages/System/LandingPage/Feedback";
+
 export default function Index() {
 	return (
 		<BrowserRouter>
@@ -32,6 +34,7 @@ export default function Index() {
 				<Route path="/medic/consultas" element={<MedicConsultas />} />
 				<Route path="/medic/avaliacoes" element={<MedicAvaliacoes />} />
 				<Route path="/profile" element={<UserProfile />} />
+				<Route path="/feedback" element={<Feedback />} />
 			</Routes>
 		</BrowserRouter>
 	);

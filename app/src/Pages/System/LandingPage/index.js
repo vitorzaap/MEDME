@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import React from "react";
 
+
 export default function Index() {
     const navigate = useNavigate();
     const { isLoaded } = useJsApiLoader({
@@ -89,9 +90,9 @@ export default function Index() {
                 <div className="footer-content">
                     <img src={logoFooter} alt='logo-roxa' />
                     <div className="links-footer">
-                        <a>Envie um feedback</a>
-                        <a>Termos e privacidade</a>
-                        <a>Trabalhe conosco</a>
+                        <a onClick={() => { navigate("/feedback")}}>Envie um feedback</a>
+                        <a onClick={() => { navigate("/user/login")}}>Termos e privacidade</a>
+                        <a onClick={() => { navigate("/user/login")}}>Trabalhe conosco</a>
                     </div>
                     <p className="footer-signature">©2022, Medme Company.</p>
                 </div>
