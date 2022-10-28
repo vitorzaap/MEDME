@@ -89,9 +89,9 @@ export default function Index() {
                 <div className="footer-content">
                     <img src={logoFooter} alt='logo-roxa' />
                     <div className="links-footer">
-                        <a>Fale conosco</a>
+                        <a>Envie um feedback</a>
                         <a>Termos e privacidade</a>
-                        <a>Cookies</a>
+                        <a>Trabalhe conosco</a>
                     </div>
                     <p className="footer-signature">©2022, Medme Company.</p>
                 </div>
