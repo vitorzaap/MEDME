@@ -30,9 +30,9 @@ export default function Index() {
 					</div>
 					<div className="input-main">
 						<p className="input-text">Mensagem</p>
-						<textarea className="default-textarea" />
+						<textarea className="default-input" />
 					</div>
-					<button className="sg-lg-btn">
+					<button className="sg-lg-btn-complex">
 						Enviar
 					</button>
 

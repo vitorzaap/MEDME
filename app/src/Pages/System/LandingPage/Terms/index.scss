@@ -1,0 +1,93 @@
+.terms-main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    header{
+        height: 10vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 2em;
+
+        .lm-header-logo{
+            width: 8em;
+        }
+        .lm-header-div{
+            display: flex;
+            align-items: center;
+            
+            .lm-button-text{
+                font-family: 'Noto-regular';
+                letter-spacing: -0.25px;
+                cursor: pointer;
+                border: none;
+                color: #fff;
+                padding: 1em;
+                font-size: .925em;
+                text-decoration: none;
+            }
+            .lm-button-1{
+                outline: none;
+                cursor: pointer;
+                font-family: 'Noto-semibold';
+                border: .2em solid #FFFFFF;
+                border-radius: 3em;
+                padding: .7em 2em .7em 2em;
+                background-color: transparent;
+                color: #fff;
+                transition: all .2s;
+            }
+            .lm-button-1:hover{
+                background-color: #fff;
+                color: #6336FF;
+                transform: scale(1.05);
+            }
+        }
+    }
+    section{
+        height: 25vh;
+       
+    }
+    .terms-title-privacity,.youngs-title,.privacity-title{
+                display: flex;
+                justify-content: flex-start;
+                font-family: 'Noto-semibold';
+                color: #222;
+                font-size: 3em;
+                font-weight: 700;
+                line-height: 1.5em;
+                text-align: center;
+                width: 65vw;
+                text-shadow: 1px 4px 10px #e6e6e633;
+
+    }
+    .terms-text,.youngs-text,.privacity-text{
+               
+                font-size: .85em;
+                color: #222;
+                width: 30vw;
+                text-align: center;
+                text-shadow: 2px 2px 5px #00000040;
+
+
+    }
+    .terms,.privacity-div,.youngs-div{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        
+        
+    }
+    li{
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+    .order-text{
+        width: 30vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+
+}
