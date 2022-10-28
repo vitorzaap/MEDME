@@ -5,26 +5,57 @@ import Header from "../../Components/Header";
 import Menu from "../../Components/Menu-Usuario";
 import iconuser from "../../../assets/images/user-icon.svg";
 import storage from "local-storage"
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getUser, userChangeProfile } from "../../../api/userApi";
 export default function Index() {
-    const user = storage("userInfo")
-    const [classErrNome, setClassErrNome] = useState("default-input");
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [senha, setSenha] = useState("");
-    const [repitSenha, setRepitSenha] = useState("");
-    const [passLength, setPassLength] = useState("")
-    function length() {
-        let s = ""
-        for (let i = 0; i < user.senha.length; i++){
-            s+= "*"
-        }
-        setPassLength(s)
-    }
+	const user = storage("userInfo");
+	const [usuario, setUsuario] = useState([])
+	const [classErrNome, setClassErrNome] = useState("default-input");
+	const [nome, setNome] = useState();
+	const [sobrenome, setSobrenome] = useState();
+	const [email, setEmail] = useState();
+	const [senha, setSenha] = useState();
+	const [repitSenha, setRepitSenha] = useState();
+	const [passLength, setPassLength] = useState("")
+	const [err, setErr] = useState('');
+	const navigate = useNavigate();
 
-    useEffect(() => {
-        length();
-    }, [])
+	async function exibirUser() {
+		const [r] = await getUser(user.id)
+		setUsuario(r)
+	}
+	useEffect(() => {
+		exibirUser()
+		if (!usuario) {
+			navigate('/')
+		}
+		length();
+	}, [])
+	function alterConfigVerification() {
+		if (!nome || nome === undefined) {
+			setNome(usuario.nm_usuario)
+		}
+		if (!sobrenome || sobrenome === undefined) {
+			setSobrenome(usuario.sbr_usuario)
+		}
+		if (!email || email === undefined) {
+			setEmail(usuario.ds_email)
+		}
+		if (!senha || senha === undefined) {
+			setSenha(usuario.ds_senha)
+		}
+	}
+	async function alterarConfig() {
+		await userChangeProfile(nome, sobrenome, email, senha, user.id)
+	}
+	function length() {
+		let s = ""
+		for (let i = 0; i < user.senha.length; i++) {
+			s += "*"
+		}
+		setPassLength(s)
+	}
 	return (
 		<main className="user-profile-main">
 			<Menu />
@@ -44,29 +75,127 @@ export default function Index() {
 						</div>
 						<div className="main-user-profile-form">
 							<div className="left-inputs">
-								<div className="input-main">
-									<p className="input-text">Nome</p>
-									<input type="text" className={classErrNome} placeholder={user.name} value={nome} onChange={(e) => setNome(e.target.value)} />
-									{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-                                </div>
-                                <div className="input-main">
-									<p className="input-text">Email</p>
-									<input type="text" className={classErrNome} placeholder={user.email} value={email} onChange={(e) => setEmail(e.target.value)} />
-									{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-                                </div>
-                                <div className="input-main">
-									<p className="input-text">Nova Senha</p>
-                                    <input type="text" className={classErrNome} placeholder={passLength} value={senha} onChange={(e) => setSenha(e.target.value)} />
-									{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-                                </div>
-                                <div className="input-main">
-									<p className="input-text">Confirmar Senha</p>
-                                    <input type="text" className={classErrNome} placeholder={passLength} value={repitSenha} onChange={(e) => setRepitSenha(e.target.value)} />
-									{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-                                </div>
-                                <button className="sg-lg-btn-complex">Editar Perfil</button>
+								{!nome
+								? 	<div className="input-main">
+										<p className="input-text">Nome</p>
+										<input type="text" className={classErrNome} placeholder={user.name} value={nome} onChange={(e) => setNome(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								: 	<div className="input-main">
+										<p className="input-text">Nome</p>
+										<input type="text" className={classErrNome} value={nome} onChange={(e) => {
+										setNome(e.target.value)
+										alterConfigVerification()
+										}}/>
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								}
+								{!sobrenome
+								? 	<div className="input-main">
+										<p className="input-text">Sobrenome</p>
+										<input type="text" className={classErrNome} placeholder={user.sobrenome} value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								: 	<div className="input-main">
+										<p className="input-text">Sobrenome</p>
+										<input type="text" className={classErrNome} value={sobrenome} onChange={(e) => {
+											setSobrenome(e.target.value)
+											alterConfigVerification()
+										}}/>
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								}
+								{!email
+								? 	<div className="input-main">
+										<p className="input-text">Email</p>
+										<input type="text" className={classErrNome} placeholder={user.email} value={email} onChange={(e) => setEmail(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								: 	<div className="input-main">
+										<p className="input-text">Email</p>
+										<input type="text" className={classErrNome} value={email} onChange={(e) => {
+											setEmail(e.target.value)
+											alterConfigVerification()
+											}}/>
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								}
+								{!senha
+								?	 <div className="input-main">
+										<p className="input-text">Nova Senha</p>
+										<input type="text" className={classErrNome} placeholder={passLength} value={senha} onChange={(e) => setSenha(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								:	 <div className="input-main">
+										<p className="input-text">Nova Senha</p>
+										<input type="text" className={classErrNome} value={senha} onChange={(e) => {
+											alterConfigVerification()
+											setSenha(e.target.value)
+											}}/>
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								}
+								{!repitSenha
+								? 	<div className="input-main">
+										<p className="input-text">Confirmar Senha</p>
+										<input type="text" className={classErrNome} placeholder={passLength} value={repitSenha} onChange={(e) => setRepitSenha(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+										</div>
+								: 	<div className="input-main">
+										<p className="input-text">Confirmar Senha</p>
+										<input type="text" className={classErrNome} value={repitSenha} onChange={(e) => setRepitSenha(e.target.value)} />
+										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
+									</div>
+								}
+								
+								<div className="btn-div">
+									<button
+										id="send"
+										className="sg-lg-btn-complex"
+										onClick={async () => {
+											alterConfigVerification()
+											toast(
+												(t) => (
+													<span>
+														Tem certeza que deseja editar seu perfil ?
+														<button
+															onClick={async () => {
+																toast.dismiss(t.id);
+																toast.loading("Editando o perfil...")
+
+																setTimeout(() => {
+																	toast.dismiss();
+																	toast.success(`Perfil editado com sucesso!`);
+																	alterarConfig();
+																}, 2000);
+																
+															}}
+															style={{
+																padding: ".6em 1.2em",
+																backgroundColor: "#3DCC87",
+																color: "#fff",
+																border: "none",
+																marginLeft: ".5em",
+																borderRadius: ".5em",
+																fontSize: ".92em",
+															}}>
+															Editar
+														</button>
+													</span>
+												),
+												{
+													style: {
+														width: "max-content",
+														maxWidth: "max-content",
+													},
+												}
+											);
+										}}>
+										Editar Perfil
+									</button>
+								</div>
 							</div>
-							
+							<h1>{err}</h1>
 						</div>
 					</div>
 				</div>

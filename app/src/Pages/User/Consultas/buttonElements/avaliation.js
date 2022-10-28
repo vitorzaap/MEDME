@@ -9,7 +9,6 @@ export default function Index(props) {
 				className="btn-simple-blue"
 				onClick={async () => {
 					try {
-						
 						navigate(`/avaliacoes/${props.id}/${props.idConsulta}`);
 					} catch (err) {}
 				}}>

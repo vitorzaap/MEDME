@@ -83,3 +83,23 @@ export async function getMedics() {
 	const [res] = await con.query(c);
 	return res;
 }
+export async function changeUser(user) {
+	const c = `
+        UPDATE  tb_usuario 
+        SET     nm_usuario = ?, 
+                sbr_usuario = ?,       
+                ds_email = ?,
+                ds_senha = ?
+        WHERE   id_usuario = ?
+        `;
+	const res = await con.query(c, [user.name, user.sobrenome, user.email, user.pass, user.id]);
+	return res;
+}
+export async function getUser(userId) {
+	const c = `
+        SELECT * FROM           tb_usuario 
+        WHERE                   id_usuario = ?;
+        `;
+	const [res] = await con.query(c, [userId]);
+	return res;
+}

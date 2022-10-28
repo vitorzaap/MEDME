@@ -44,3 +44,17 @@ export async function getConsultas() {
 	const r = await api.get(`/api/user/medics`)
 	return r.data
 }
+export async function userChangeProfile(name, sobrenome, email, pass, id) {
+	const r = await api.put("/api/user/account", {
+		name: name,
+		sobrenome: sobrenome,
+		email: email,
+		pass: pass,
+		id : id,
+	});
+	return r.data;
+}
+export async function getUser(id) {
+	const r = await api.get(`/api/user/${id}`)
+	return r.data
+}
