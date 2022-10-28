@@ -1,29 +1,29 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Usuario/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"
 import FileIcon from "../../../assets/images/file.svg"
 import SendVector from "../../../assets/images/send-vector.svg"
 import { useEffect, useState } from "react";
+import io from "socket.io-client"
+
+const socket = io.connect("http://localhost:5000");
 
 export default function Index() {
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
-    const SubmitMessage = e => {
-        e.preventDefault()
-        if (message.trim()) {
-            setMessages([...messages,{
-                id:1,
-                message
-            }])
-            setMessage('')
-        }
+    
+
+
+    useEffect(() => {
+
+    }, [])
+    function submitMessage() {
+        
     }
     return (
         <main className="messages-main">
-            <Menu selecionado="mensagens" />
             <section className="messages-section-main">
                 <Cabecalho />
                 <div className="messages-content">
@@ -92,10 +92,10 @@ export default function Index() {
                             </ul>
                         </div>
                         <footer>
-                            <form className="messages-inputzao" onSubmit={SubmitMessage}>
+                            <form className="messages-inputzao" onSubmit={submitMessage}>
                                 <img src={FileIcon} className="messages-FileIcon" />
                                 <input type="text" placeholder="Envie uma mensagem." value={message} onChange={(e) => setMessage(e.target.value)} />
-                                <img src={SendVector} className="messages-SendVector" onClick={SubmitMessage} />
+                                <img src={SendVector} className="messages-SendVector" onClick={submitMessage} />
                             </form>
                         </footer>
                     </div>

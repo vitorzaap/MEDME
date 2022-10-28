@@ -1,37 +1,47 @@
-import "./index.scss"
-import "../../Common/common.scss"
-import Lupa from "../../../assets/images/search-bar.svg"
-import iconsino from "../../../assets/images/bell-2.svg"
-import iconuser from "../../../assets/images/user-icon.svg"
-import iconconfig from "../../../assets/images/more-vertical.svg"
-import storage from "local-storage"
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-
-export default function Header(props) {
-    const [usuario, setUsuario] = useState(".")
-    const navigate = useNavigate()
-    useEffect(() => {
-        const usuarioLogado = storage('userInfo')
-        setUsuario(usuarioLogado.name)
-        if(!storage('userInfo')){
-            navigate('/')
-        }
-      }, [])
-
-    return(
-        <header className="header-component">
-            <div className="search-header">
-                <img src={Lupa} />
-                <input type="text" placeholder="Buscar consultas" />
-            </div>
-            <div className="icon-header">
-                
-            </div>
-            <div className="user-card" onClick={() => navigate('/profile')}>
-                <img className="iconuser" src={iconuser} />
-                <p>{usuario[0].toUpperCase() + usuario.slice(1)}</p>
-            </div>
-        </header>
-    )
+import "./index.scss";
+import storage from "local-storage";
+import { useNavigate } from "react-router-dom";
+import Logo from "../../../assets/images/Logo2 (2).svg"
+import icon from "../../../assets/images/user-icon.svg"
+import search from "../../../assets/images/search-bar.svg"
+export default function Index() {
+	const user = storage("userInfo");
+	const navigate = useNavigate();
+	return (
+		<header className="default-header">
+			<div className="default-header-content">
+				<div className="links-div">
+					<div className="logo-div">
+						<img src={Logo} width="32px" />
+					</div>
+					<div className="div-pages">
+						<button className="default-button-page" onClick={() => navigate("/dashboard")}>
+							Dashboard
+						</button>
+						<button className="default-button-page" onClick={() => navigate("/consultas")}>
+							Consultas
+						</button>
+						<button className="default-button-page" onClick={() => navigate("/mensagens")}>
+							Conversas
+						</button>
+						<button className="default-button-page" onClick={() => navigate("/medics")}>
+							Médicos
+						</button>
+					</div>
+				</div>
+				<div className="search-div">
+					<div className="input-search-main">
+						<div className="div-search-icon">
+							<img src={search} alt="search-icon" className="search-icon" />
+						</div>
+						<input type="search" className="default-header-search" placeholder="Busque o que quiser..." />
+					</div>
+				</div>
+				<div className="profile-div" onClick={() => navigate("/profile")}>
+					<img src={icon} alt="default-icon" width="32px" className="icon-user" />
+					<span className="profile-name">{user.name}</span>
+				</div>
+			</div>
+		</header>
+	);
 }

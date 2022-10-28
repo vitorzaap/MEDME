@@ -2,7 +2,6 @@ import "./index.scss";
 import "../../Common/common.scss";
 import toast, { Toaster } from "react-hot-toast";
 import Header from "../../Components/Header";
-import Menu from "../../Components/Menu-Usuario";
 import iconuser from "../../../assets/images/user-icon.svg";
 import storage from "local-storage"
 import { useNavigate } from "react-router-dom";
@@ -59,7 +58,6 @@ export default function Index() {
 	}
 	return (
 		<main className="user-profile-main">
-			<Menu />
 			<div className="user-profile-main-content">
 				<Toaster />
 				<Header />

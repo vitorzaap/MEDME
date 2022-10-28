@@ -1,6 +1,5 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"
@@ -10,7 +9,6 @@ import SendVector from "../../../assets/images/send-vector.svg"
 export default function Index() {
 	return (
 		<main className="messages-main">
-            <Menu selecionado="mensagens" />
             <section className="messages-section-main">
                 <Cabecalho />
                 <div className="messages-content">

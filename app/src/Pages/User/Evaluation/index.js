@@ -1,11 +1,8 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Usuario/index.js";
 import Cabecalho from "../../Components/Header/index.js";
-import LinhaSeparação from "../../../assets/images/linha-separação2.svg";
 import LinhaSeparação2 from "../../../assets/images/linha-separação4.svg";
 import { statusConsult } from "../../../api/userApi.js";
-import Card from "./card-comments";
 import David from "../../../assets/images/david.svg";
 import storage from "local-storage";
 import { FaStar } from "react-icons/fa";
@@ -55,7 +52,6 @@ export default function Index() {
 
 	return (
 		<main className="evaluation-main">
-			<Menu selecionado="avaliacoes" />
 			<section className="evaluation-section-main">
 				<Toaster />
 				<Cabecalho />

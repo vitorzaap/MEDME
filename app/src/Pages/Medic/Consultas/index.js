@@ -1,8 +1,6 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
-import iconAdd from "../../../assets/images/Union.svg"
 import NovaConsulta from "./NovaConsulta/index.js"
 import { getConsultas } from "../../../api/medicApi.js"
 import storage from "local-storage"
@@ -49,7 +47,6 @@ export default function Index() {
 				<Toaster />
                 <NovaConsulta />
             </div>
-            <Menu selecionado="consultas"/>
             <div className="container-consultas">
                 <Cabecalho />
                 <div className="content-consultas">

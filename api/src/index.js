@@ -1,5 +1,5 @@
 //importando o router para usar os endpoints e o serverHttp para rodar o servidor
-import { router, httpServer } from "./Web/socket.js";
+import { router, httpServer } from "./WebSocket/socket.js";
 
 //.env para a constante da porta
 import "dotenv/config";

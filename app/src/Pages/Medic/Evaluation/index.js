@@ -1,6 +1,5 @@
 import "./index.scss";
 import "../../Common/common.scss";
-import Menu from "../../Components/Menu-Medico/index.js"
 import Cabecalho from "../../Components/Header/index.js"
 import LinhaSeparação from "../../../assets/images/linha-separação2.svg"
 import Card from "./card-comments"
@@ -8,7 +7,6 @@ import David from "../../../assets/images/david.svg";
 export default function Index() {
 	return (
 		<main className="evaluation-main">
-            <Menu selecionado="avaliacoes" />
             <section className="evaluation-section-main">
                 <Cabecalho />
                 <div className="evaluation-content">

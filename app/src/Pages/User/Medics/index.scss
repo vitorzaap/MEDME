@@ -1,77 +1,61 @@
 .user-medics-main {
-    width: 100vw;
-    height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .user-medics-section-main {
-        display: flex;
-        flex-direction: column;
-
-        .user-medics-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            width: 86vw;
-            height: 89vh;
-            background-color: #edeef2;
-        }
-    }
+    width: 100%;
+    height: 100vh;
 }
 
 .User-Cards-Medic {
-    width: 90%;
-    height: 20em;
-    background: #FFFFFF;
-    border-radius: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    hr{
-        width: 95%;
-        color: #999999;
-    }
-    .User-Cards-Medic-Div-1{
-        width: 100%;
-        height: 50%;
-        display: flex;
-        align-items: center;
-        img{
-            height: 73%;
-            margin-left: 1em;
-        }
-        .User-Cards-Medic-Name{
-            width: 20vw;
-            font-family: "Noto-Bold";
-            font-size: 2.5em;
-            margin-left: .3em;
-        }
-        .User-Cards-Medic-Profissões{
-            margin-left: .5em;
-            width: 12.5vw;
-            display: flex;
-            justify-content: space-around;
-            p{
-                border: #6E43FF 2px solid;
-                border-radius: 2em;
-                padding: .2em .8em;
-                background-color: #8C6AFF;
-                color: #fff;
-                font-family: "Noto-semibold";
-                font-size: .7em;
-            }
-        }
-    }
-    .User-Cards-Medic-Descricao{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 93%;
-        height: 50%;
-        p{
-            font-size: .8em;
-        }
-    }
+	width: 90%;
+	height: 20em;
+	background: #ffffff;
+	border-radius: 1em;
+	display: flex;
+
+	flex-direction: column;
+	align-items: center;
+	hr {
+		width: 95%;
+		color: #999999;
+	}
+	.User-Cards-Medic-Div-1 {
+		width: 100%;
+		height: 50%;
+		display: flex;
+		align-items: center;
+		img {
+			height: 73%;
+			margin-left: 1em;
+		}
+		.User-Cards-Medic-Name {
+			width: 20vw;
+			font-family: "Noto-Bold";
+			font-size: 2.5em;
+			margin-left: 0.3em;
+		}
+		.User-Cards-Medic-Profissões {
+			margin-left: 0.5em;
+			width: 12.5vw;
+			display: flex;
+			justify-content: space-around;
+			p {
+				border: #6e43ff 2px solid;
+				border-radius: 2em;
+				padding: 0.2em 0.8em;
+				background-color: #8c6aff;
+				color: #fff;
+				font-family: "Noto-semibold";
+				font-size: 0.7em;
+			}
+		}
+	}
+	.User-Cards-Medic-Descricao {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 93%;
+		height: 50%;
+		p {
+			font-size: 0.8em;
+		}
+	}
 }
