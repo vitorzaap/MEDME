@@ -19,6 +19,7 @@ export default function Index() {
 	const [repitSenha, setRepitSenha] = useState();
 	const [passLength, setPassLength] = useState("")
 	const [err, setErr] = useState('');
+	const [verificPass, setVerificPass] = useState(0)
 	const navigate = useNavigate();
 
 	async function exibirUser() {
@@ -76,78 +77,65 @@ export default function Index() {
 						<div className="main-user-profile-form">
 							<div className="left-inputs">
 								{!nome
-								? 	<div className="input-main">
+									? <div className="input-main">
 										<p className="input-text">Nome</p>
 										<input type="text" className={classErrNome} placeholder={user.name} value={nome} onChange={(e) => setNome(e.target.value)} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
-								: 	<div className="input-main">
+									: <div className="input-main">
 										<p className="input-text">Nome</p>
 										<input type="text" className={classErrNome} value={nome} onChange={(e) => {
-										setNome(e.target.value)
-										alterConfigVerification()
-										}}/>
+											setNome(e.target.value)
+											alterConfigVerification()
+										}} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
 								}
 								{!sobrenome
-								? 	<div className="input-main">
+									? <div className="input-main">
 										<p className="input-text">Sobrenome</p>
 										<input type="text" className={classErrNome} placeholder={user.sobrenome} value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
-								: 	<div className="input-main">
+									: <div className="input-main">
 										<p className="input-text">Sobrenome</p>
 										<input type="text" className={classErrNome} value={sobrenome} onChange={(e) => {
 											setSobrenome(e.target.value)
 											alterConfigVerification()
-										}}/>
+										}} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
 								}
 								{!email
-								? 	<div className="input-main">
+									? <div className="input-main">
 										<p className="input-text">Email</p>
 										<input type="text" className={classErrNome} placeholder={user.email} value={email} onChange={(e) => setEmail(e.target.value)} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
-								: 	<div className="input-main">
+									: <div className="input-main">
 										<p className="input-text">Email</p>
 										<input type="text" className={classErrNome} value={email} onChange={(e) => {
 											setEmail(e.target.value)
 											alterConfigVerification()
-											}}/>
+										}} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
 								}
 								{!senha
-								?	 <div className="input-main">
+									? <div className="input-main">
 										<p className="input-text">Nova Senha</p>
 										<input type="text" className={classErrNome} placeholder={passLength} value={senha} onChange={(e) => setSenha(e.target.value)} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
-								:	 <div className="input-main">
+									: <div className="input-main">
 										<p className="input-text">Nova Senha</p>
 										<input type="text" className={classErrNome} value={senha} onChange={(e) => {
 											alterConfigVerification()
 											setSenha(e.target.value)
-											}}/>
+										}} />
 										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
 									</div>
 								}
-								{!repitSenha
-								? 	<div className="input-main">
-										<p className="input-text">Confirmar Senha</p>
-										<input type="text" className={classErrNome} placeholder={passLength} value={repitSenha} onChange={(e) => setRepitSenha(e.target.value)} />
-										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-										</div>
-								: 	<div className="input-main">
-										<p className="input-text">Confirmar Senha</p>
-										<input type="text" className={classErrNome} value={repitSenha} onChange={(e) => setRepitSenha(e.target.value)} />
-										{classErrNome === "err-input" && <p className="err-p">Este campo não pode estar vazio.</p>}
-									</div>
-								}
-								
 								<div className="btn-div">
 									<button
 										id="send"
@@ -168,7 +156,7 @@ export default function Index() {
 																	toast.success(`Perfil editado com sucesso!`);
 																	alterarConfig();
 																}, 2000);
-																
+
 															}}
 															style={{
 																padding: ".6em 1.2em",
