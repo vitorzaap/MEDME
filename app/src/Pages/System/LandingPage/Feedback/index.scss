@@ -1,93 +1,117 @@
-.feedback{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
+.sigin-main {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background: url("../../../../assets/images/login-bg.png") no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	.sigin-main-content {
+		display: flex;
+		width: 25%;
+		height: max-content;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		.sigin-main-content-text {
+			h1 {
+				font-family: "Noto-bold";
+				font-size: 2.5em;
+			}
+			p {
+				font-family: "Noto-regular";
+				font-size: 0.875em;
+			}
+		}
+		.sigin-main-content-inputs {
+			display: flex;
+			flex-direction: column;
+			padding: 2em 0;
+			width: 100%;
+			.sg-lg-btn-complex {
+				margin-top: 1.5em;
+				margin-bottom: 1.5em;
+			}
+		}
+	}
+}
 
-    header{
-        height: 10vh;
-        width: 100vw;
-        border: 1px solid red;
-        display: flex;
-        backdrop-filter: blur(10px);
-        justify-content: space-between;
-        padding: 0 2em;
 
 
-        img {
-            filter: invert(100%);
-        }
-        .lm-header-logo{
-            width: 8em;
-        }
-        .lm-header-div{
-            display: flex;
-            align-items: center;
-            
-            .lm-button-text{
-                font-family: 'Noto-regular';
-                letter-spacing: -0.25px;
-                cursor: pointer;
-                border: none;
-                color: #000;
-                padding: 1em;
-                font-size: .925em;
-                text-decoration: none;
-            }
-            .lm-button-1{
-                outline: none;
-                cursor: pointer;
-                font-family: 'Noto-semibold';
-                border: .2em solid #000;
-                border-radius: 3em;
-                padding: .7em 2em .7em 2em;
-                background-color: transparent;
-                color: #000;
-                transition: all .2s;
-            }
-            .lm-button-1:hover{
-                color: rgba(0, 0, 0, 0.654);
-                transform: scale(1.05);
-            }
-        }
-    }
-    section{
-        height: 75vh;
-        width: 100vw;
-    }
-    footer{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 15vh;
-        background-color: white;
+@media (max-width: 1280px) {
+	.sigin-main {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		background: url("../../../../assets/images/login-bg.png") no-repeat;
+		background-size: cover;
+		justify-content: center;
+		align-items: center;
+		.sigin-main-content {
+			display: flex;
+			width: 35%;
+			height: max-content;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			.sigin-main-content-text {
+				h1 {
+					font-family: "Noto-semibold";
+					font-size: 2em;
+				}
+				p {
+					font-family: "Noto-regular";
+					font-size: 0.875em;
+				}
+			}
+			.sigin-main-content-inputs {
+				display: flex;
+				flex-direction: column;
+				padding: 2em 0;
+				width: 100%;
+				.sg-lg-btn-complex {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
+}
 
-        .footer-content{
-            width: 90%;
-            height: 60%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .links-footer{
-                width: 30%;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                a{
-                    font-family:"Noto-Semibold";
-                    font-size: 1em;
-                    cursor: pointer;
-                } a:hover{
-                    filter: opacity(80%);
-                }
-                
-            }
-            p{
-                font-family: "Noto-bold";
-                font-size: .9em;
-            }
-        }
-    }
+@media (max-width: 414px) {
+	.sigin-main {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		background: url("../../../../assets/images/login-bg.png") no-repeat;
+		background-size: cover;
+		justify-content: center;
+		align-items: center;
+		.sigin-main-content {
+			display: flex;
+			width: 80%;
+			height: max-content;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			.sigin-main-content-text {
+				h1 {
+					font-family: "Noto-semibold";
+					font-size: 2em;
+				}
+				p {
+					font-family: "Noto-regular";
+					font-size: 0.875em;
+				}
+			}
+			.sigin-main-content-inputs {
+				display: flex;
+				flex-direction: column;
+				padding: 2em 0;
+				width: 100%;
+				.sg-lg-btn-complex {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
 }
