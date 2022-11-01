@@ -14,7 +14,9 @@ export default function Index() {
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
     
-
+    function enterConversation(){
+        const r = await
+    }
 
     useEffect(() => {
 

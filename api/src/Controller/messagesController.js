@@ -6,7 +6,12 @@ router.get("/messages", async (req, res) => {
 	try {
 		const { conversation } = req.query;
 		const r = await listMessages(conversation);
-		res.send(r);
+		if(r.length < 1){
+            throw new Error('Esta conversa não tem nenhuma mensagem!')
+        }
+        else{
+            res.send(r);
+        }
 	} catch (err) {
 		res.send({
 			erro: err.message,

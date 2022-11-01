@@ -1,7 +1,7 @@
 import { con } from "./connection.js";
 
 export async function userLogin(user) {
-	const c = `
+  const c = `
         SELECT 
         id_usuario  id,
         nm_usuario  name,
@@ -12,36 +12,41 @@ export async function userLogin(user) {
          WHERE ds_email = ? AND
                ds_senha = ?
         `;
-	const [res] = await con.query(c, [user.email, user.pass]);
-	return res[0];
+  const [res] = await con.query(c, [user.email, user.pass]);
+  return res[0];
 }
 
 export async function verifUserEmail(email) {
-	const c = `
+  const c = `
         SELECT ds_email FROM tb_usuario WHERE ds_email = ?;
         `;
-	const [res] = await con.query(c, [email]);
-	return res[0];
+  const [res] = await con.query(c, [email]);
+  return res[0];
 }
 export async function userSigIn(user) {
-	const c = `
+  const c = `
         INSERT INTO tb_usuario(nm_usuario, sbr_usuario, ds_email, ds_senha)
                 VALUES(?, ?, ?, ?);
         `;
-	const [res] = await con.query(c, [user.name, user.sobrenome, user.email, user.pass]);
-	user.Id = res.insertId;
-	return user;
+  const [res] = await con.query(c, [
+    user.name,
+    user.sobrenome,
+    user.email,
+    user.pass,
+  ]);
+  user.Id = res.insertId;
+  return user;
 }
 export async function userAccept(idSituation, id) {
-	const c = `UPDATE tb_consulta
+  const c = `UPDATE tb_consulta
                         SET id_situacao = ?
                         WHERE id_consulta = ?`;
-	const res = await con.query(c, [idSituation, id]);
-	return res;
+  const res = await con.query(c, [idSituation, id]);
+  return res;
 }
 
 export async function getConsultas(userId) {
-	const c = `
+  const c = `
         SELECT  id_consulta		        idConsulta,
 	        tb_medico.nm_medico		medico,
                 tb_medico.id_medico             id,
@@ -59,18 +64,18 @@ export async function getConsultas(userId) {
         INNER JOIN tb_medico ON tb_medico.id_medico = tb_consulta.id_medico
         WHERE id_usuario = ?;
         `;
-	const [res] = await con.query(c, [userId]);
-	return res;
+  const [res] = await con.query(c, [userId]);
+  return res;
 }
 
 export async function addAvaliacao(medicId, userId, descricao, number) {
-	const c = `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
+  const c = `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
         `;
-	const res = await con.query(c, [medicId, userId, descricao, number]);
-	return res;
+  const res = await con.query(c, [medicId, userId, descricao, number]);
+  return res;
 }
 export async function getMedics() {
-	const c = `
+  const c = `
         SELECT 	id_medico         id,
         nm_medico 	           nome,
         img_icon                   icon,
@@ -80,11 +85,11 @@ export async function getMedics() {
         FROM tb_medico
         INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_medico.id_atuacao;
         `;
-	const [res] = await con.query(c);
-	return res;
+  const [res] = await con.query(c);
+  return res;
 }
 export async function changeUser(user) {
-	const c = `
+  const c = `
         UPDATE  tb_usuario 
         SET     nm_usuario = ?, 
                 sbr_usuario = ?,       
@@ -92,14 +97,20 @@ export async function changeUser(user) {
                 ds_senha = ?
         WHERE   id_usuario = ?
         `;
-	const res = await con.query(c, [user.name, user.sobrenome, user.email, user.pass, user.id]);
-	return res;
+  const res = await con.query(c, [
+    user.name,
+    user.sobrenome,
+    user.email,
+    user.pass,
+    user.id,
+  ]);
+  return res;
 }
 export async function getUser(userId) {
-	const c = `
+  const c = `
         SELECT * FROM           tb_usuario 
         WHERE                   id_usuario = ?;
         `;
-	const [res] = await con.query(c, [userId]);
-	return res;
+  const [res] = await con.query(c, [userId]);
+  return res;
 }

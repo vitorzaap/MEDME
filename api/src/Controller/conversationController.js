@@ -37,12 +37,15 @@ router.get("/conversation", async (req, res) => {
 
 router.post("/conversation", async (req, res) => {
     try {
-        const { userId, doctorId } = req.query;
+        const { doctorId, userId } = req.query;
+        console.log(doctorId, userId)
         const r = await createConversation(userId, doctorId)
-        res.send(r)
+        res.sendStatus(200)
     }
     catch (err) {
-        
+        res.status(401).send({
+            erro: err.message
+        })
     }
 })
 
