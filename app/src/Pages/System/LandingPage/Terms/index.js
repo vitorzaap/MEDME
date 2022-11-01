@@ -8,7 +8,7 @@ export default function Terms() {
   return (
     <main className="terms-main">
       <header>
-        <img src={Logo} className="lm-header-logo" alt="logo" />
+        <img src={Logo} className="lm-header-logo" alt="logo" onClick={() => { navigate ('/')}} />
         <div className="lm-header-div">
           <button
             className="lm-button-1"
