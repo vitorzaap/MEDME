@@ -60,5 +60,27 @@
         }
         
     }
-    
+}
+@media (max-width: 414px){
+   .card-main{
+  
+    height: 25vh;
+    .card-parte-texto{
+       
+        width: 80%;
+        height: 20vh;
+        .card-parte-texto-text{
+            align-items: center;
+            justify-content: space-around;
+            height: 80%;
+            p{
+                margin-bottom: 0;
+            }
+
+        }
+    }
+    .card-image-1, .card-image-2{
+        visibility: hidden;
+    }
+   }       
 }
