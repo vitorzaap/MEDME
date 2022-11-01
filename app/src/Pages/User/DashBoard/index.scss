@@ -15,8 +15,8 @@ $color2: #39B6D2;
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            width: 86vw;
-			height: 89vh;
+            width: 100vw;
+			height: calc(100vh - 80px);
 			background-color: #edeef2;
             .dashboard-cards-content{
                 height: 50%;

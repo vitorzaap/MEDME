@@ -112,6 +112,7 @@ $btn-hover: #6236fff1;
 	width: max-content;
 	align-items: center;
 	flex-direction: column;
+	overflow-y: hidden;
 	height: 100%;
 
 	.btn-size-div {

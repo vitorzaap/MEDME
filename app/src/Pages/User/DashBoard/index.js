@@ -1,16 +1,16 @@
 import "./index.scss";
-import "../Consultas/index.scss"
+import "../Consultas/index.scss";
 import "../../Common/common.scss";
-import Cabecalho from "../../Components/Header/index.js"
-import Cards from "./Cards-DashBoard"
-import Calendar from '../../../assets/images/calendar-dashboard.svg'
+import Cabecalho from "../../Components/Header/index.js";
+import Cards from "./Cards-DashBoard";
+import Calendar from "../../../assets/images/calendar-dashboard.svg";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
 import { getConsultasId } from "../../../api/userApi.js";
 
 export default function Index() {
-    const [consultas, setConsultas] = useState([]);
-    const [erro, setErro] = useState();
+	const [consultas, setConsultas] = useState([]);
+	const [erro, setErro] = useState();
 	useEffect(() => {
 		async function getConsult() {
 			try {
@@ -34,14 +34,14 @@ export default function Index() {
 	}, []);
 	return (
 		<main className="dashboard-main">
-            <section className="dashboard-section-main">
-                <Cabecalho />
-                <div className="dashboard-content">
-                    <div className="dashboard-cards-content">
-                        <Cards titulo='Avaliações' imagem={Calendar} tipo='numero' numero='65' subtitulo='Sua última avaliação'/>
-                        <Cards titulo='Conversas' imagem={Calendar} tipo='numero' numero='4' subtitulo='Conversas ainda não respondidas.'/>
-                    </div>
-                    <div className="main-div-table">
+			<section className="dashboard-section-main">
+				<Cabecalho />
+				<div className="dashboard-content">
+					<div className="dashboard-cards-content">
+						<Cards titulo="Avaliações" imagem={Calendar} tipo="numero" numero="65" subtitulo="Sua última avaliação" />
+						<Cards titulo="Conversas" imagem={Calendar} tipo="numero" numero="4" subtitulo="Conversas ainda não respondidas." />
+					</div>
+					<div className="main-div-table">
 						<table className="user-table">
 							<tr className="user-tr">
 								<th>Médico</th>
@@ -65,12 +65,21 @@ export default function Index() {
 										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Consulta aceita</span>}
 										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
-										{item.diff < 0 && item.idSituacao == 1 && <span className="item1"> <b>Aceite esta consulta</b></span>}
-										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && <span className="item1"> <b>avalie esta consulta!</b></span>}
+										{item.diff < 0 && item.idSituacao == 1 && (
+											<span className="item1">
+												{" "}
+												<b>Aceite esta consulta</b>
+											</span>
+										)}
+										{item.diff > 0 && item.idSituacao != 4 && item.idSituacao != 3 && (
+											<span className="item1">
+												{" "}
+												<b>avalie esta consulta!</b>
+											</span>
+										)}
 									</td>
 								</tr>
 							))}
-							
 						</table>
 						{erro !== undefined && (
 							<div className="err-div-message">
@@ -78,8 +87,8 @@ export default function Index() {
 							</div>
 						)}
 					</div>
-                    </div>
-            </section>
+				</div>
+			</section>
 		</main>
 	);
 }

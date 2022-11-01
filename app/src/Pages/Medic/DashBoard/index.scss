@@ -1,93 +1,92 @@
-.dashboard-main{
-    overflow: hidden;
-    width: 100vw;
+.dashboard-main {
+	overflow: hidden;
+	width: 100vw;
 	height: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-    .dashboard-section-main{
-        display: flex;
+	.dashboard-section-main {
+		display: flex;
 		flex-direction: column;
-        .dashboard-content{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            width: 86vw;
-			height: 89vh;
+		.dashboard-content {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			width: 100vw;
+			height: calc(100vh - 80px);
 			background-color: #edeef2;
-            .dashboard-cards-content{
-                height: 50%;
-                width: 100%;
-                display: flex;
-                justify-content: space-around;
-            }
-            .dashboard-consultas-content{
-                width: 95%;
-                height: 60%;
-                border-radius: 1em;
-                background-color: #fff;
-                padding: 1em;
-                        .div-h1-consultas-main {
-                            width: 100%;
-                            .h1-consultas-main {
-                                font-family: "Noto-semibold";
-                                font-size: 1.3em;
-                                margin: 0 0 1em .3em;
-                            }
-                        }
-    
-                        
-            }
-        }
-    }
+			.dashboard-cards-content {
+				height: 50%;
+				width: 100%;
+				display: flex;
+				justify-content: space-around;
+			}
+			.dashboard-consultas-content {
+				width: 95%;
+				height: 60%;
+                
+				border-radius: 1em;
+				background-color: #fff;
+				padding: 1em;
+				.div-h1-consultas-main {
+					width: 100%;
+					.h1-consultas-main {
+						font-family: "Noto-semibold";
+						font-size: 1.3em;
+						margin: 0 0 1em 0.3em;
+					}
+				}
+			}
+		}
+	}
 }
-.doctor-dashboard-cards{
-    width: 30%;
-    height: 90%;
-    margin: 1em;
-    border-radius: 1.5em;
-    display: flex;
-    flex-direction: column;
-    .dashboard-cards-div-1{
-        padding-left: 2em;
-        display: flex;
-        align-items: center;
-        height: 33%;
-        img{
-            width: 2em;
-            border-radius: .5em;
-        }
-        h1{
-            font-size: .9em;
-            font-family: "Noto-semibold";
-            color: #FFFFFF;
-            padding-left: .2em;
-        }
-    }
-    .dashboard-cards-props{
-        width: 40%;
-        height: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin-left: 8%;
-        p{
-            font-size: 2em;
-            font-family: "Noto-semibold";
-            color: #FFFFFF;
-        }
-    }
-    .dashboard-cards-subtitulo{
-        height: 27%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        margin-left: 8%;
-        h1{
-            font-size: .9em;
-            font-family: "Noto-semibold";
-            color: #FFFFFF;
-        }
-    }
+.doctor-dashboard-cards {
+	width: 30%;
+	height: 90%;
+	margin: 1em;
+	border-radius: 1.5em;
+	display: flex;
+	flex-direction: column;
+	.dashboard-cards-div-1 {
+		padding-left: 2em;
+		display: flex;
+		align-items: center;
+		height: 33%;
+		img {
+			width: 2em;
+			border-radius: 0.5em;
+		}
+		h1 {
+			font-size: 0.9em;
+			font-family: "Noto-semibold";
+			color: #ffffff;
+			padding-left: 0.2em;
+		}
+	}
+	.dashboard-cards-props {
+		width: 40%;
+		height: 40%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-left: 8%;
+		p {
+			font-size: 2em;
+			font-family: "Noto-semibold";
+			color: #ffffff;
+		}
+	}
+	.dashboard-cards-subtitulo {
+		height: 27%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-left: 8%;
+		h1 {
+			font-size: 0.9em;
+			font-family: "Noto-semibold";
+			color: #ffffff;
+		}
+	}
 }

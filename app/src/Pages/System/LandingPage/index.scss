@@ -39,12 +39,11 @@
                 padding: .7em 2em .7em 2em;
                 background-color: transparent;
                 color: #fff;
-                transition: all .2s;
+                transition: all .3s;
             }
             .lm-button-1:hover{
                 background-color: #fff;
                 color: #6336FF;
-                transform: scale(1.05);
             }
         }
     }
@@ -85,13 +84,12 @@
                 font-size: 1.2em;
                 cursor: pointer;
                 color: #6336FF;
-                transition: all .2s;
+                transition: all .3s;
             }
             button:hover{
-                transform: scale(1.05);
                 color: #fff;
                 background-color: #ffffff00;
-                border: 1px solid #fff;
+                outline: 1px solid #fff;
 
             }
         }
