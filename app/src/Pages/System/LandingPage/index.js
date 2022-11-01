@@ -56,8 +56,8 @@ export default function Index() {
                     <div className="lm-section-1-div-text-space-div"></div>
             <div className="lm-section-3-maps">
             {isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={{ width: '100%', height: '100%'}}
+      <GoogleMap id="maps-api"
+        mapContainerStyle={{ width: '100%', height: '100%' }}
         center={{
             lat: -23.680462921941125,
             lng: -46.70816664844635    

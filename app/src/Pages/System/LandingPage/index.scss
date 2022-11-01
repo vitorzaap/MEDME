@@ -6,20 +6,20 @@
     background-image: url('../../../assets/images/wallpaperLp.svg');
     header{
         height: 10vh;
-        width: 100vw;
+        width: 100%;
+        
         display: flex;
         backdrop-filter: blur(10px);
-        position: fixed;
         justify-content: space-between;
         padding: 0 2em;
 
         .lm-header-logo{
             width: 8em;
+          
         }
         .lm-header-div{
             display: flex;
             align-items: center;
-            
             .lm-button-text{
                 font-family: 'Noto-regular';
                 letter-spacing: -0.25px;
@@ -120,8 +120,13 @@
             border-radius: 2em;}
 
             .lm-section-1-div-text-space-div{
-                height: 5vh;}
-
+                height: 5vh;
+                border-radius: 2em;
+            }
+            #maps-api{
+                border-radius: .35em;
+                width: 100%; height: 100%;
+            }
                 h1{
                     font-family: 'Noto-semibold';
                     color: #fff;
@@ -181,6 +186,81 @@
             p{
                 font-family: "Noto-bold";
                 font-size: .9em;
+            }
+        }
+    }
+}
+@media (max-width: 414px) {
+    .landing-main{
+        header{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 13vh;
+        }
+        .lm-section-1{
+           justify-content: center;
+            height: 45vh;
+            .lm-section-1-div-text{
+                width:100%; height: 100%;
+               justify-content: space-around;
+                h1{
+                    font-size: 1.9em;
+                    width: 100vw;
+                   
+                }
+                p{
+                    width: 80vw;
+                   
+                }
+            }
+        }
+        .lm-section-2-cards{
+            flex-direction: column;
+            align-items: center;
+            height: 80vh;
+            
+        }
+        .space-div{
+            width: 0;
+            height: 0;
+        }
+        .tste{
+
+            h1{
+                font-size: 2em;
+            }
+            .lm-section-3-maps{
+                width: 85%;
+                height: 42.5%;
+            }
+            p{
+                font-size: 1em;
+                width: 100%;
+            }
+        }
+        footer{
+            .footer-content{
+                flex-direction: column;
+
+                p{
+                    font-size: .6em;
+                    padding: 2em;
+                }
+                img{
+                    width: 2.5em;
+                }
+                .links-footer{
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    a{
+                        padding: 1em;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
             }
         }
     }
