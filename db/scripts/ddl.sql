@@ -28,7 +28,7 @@ CREATE TABLE tb_medico(
    	 id_atuacao1		INT,
    	 nr_consulta		INT DEFAULT 0,
 	 FOREIGN KEY (id_atuacao) REFERENCES tb_atuacao(id_atuacao),
-    	 FOREIGN KEY (id_atuacao1) REFERENCES tb_atuacao(id_atuacao)
+     FOREIGN KEY (id_atuacao1) REFERENCES tb_atuacao(id_atuacao)
 );
 
 CREATE TABLE tb_plataforma(
@@ -69,9 +69,9 @@ CREATE TABLE tb_situacao_consulta(
 
 CREATE TABLE tb_avaliacao(
 	id_avaliacao 		INT PRIMARY KEY AUTO_INCREMENT,
-   	id_medico		INT NOT NULL,
-    	id_usuario		INT NOT NULL,
-    	ds_avaliacao		VARCHAR(2000) NOT NULL,
+   	id_medico			INT NOT NULL,
+    id_usuario			INT NOT NULL,
+    ds_avaliacao		VARCHAR(2000) NOT NULL,
    	nr_avaliacao		INT NOT NULL,
 	FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
     	FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
@@ -80,24 +80,27 @@ CREATE TABLE tb_avaliacao(
 CREATE TABLE tb_conversa(
 	id_conversa		INT PRIMARY KEY AUTO_INCREMENT,
    	id_medico		INT NOT NULL,
-    	id_usuario		INT NOT NULL,
-    	FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
-    	FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+    id_usuario		INT NOT NULL,
+    FOREIGN KEY (id_medico) REFERENCES tb_medico(id_medico),
+    FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
+);
+
+CREATE TABLE tb_mensagem_usuario(
+		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
+    	id_conversa		INT,
+		id_usuario		INT,
+    	ds_mensagem		VARCHAR(500),
+		dt_mensagem		DATETIME,
+    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa),
+		FOREIGN KEY (id_usuario) REFERENCES tb_usuario(id_usuario)
 );
 
 CREATE TABLE tb_mensagem_medico(
 		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
-    	id_conversa		INT NOT NULL,
-		id_medico		INT NOT NULL,
-    	ds_mensagem_medico		VARCHAR (1000) NOT NULL,
+    	id_conversa		INT,
+		id_medico		INT,
+    	ds_mensagem		VARCHAR(500),
+		dt_mensagem		DATETIME,
     	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa),
 		FOREIGN KEY (id_medico) REFERENCES tb_conversa(id_medico)
-);
-CREATE TABLE tb_mensagem_usuario(
-		id_mensagem		INT PRIMARY KEY AUTO_INCREMENT,
-    	id_conversa		INT NOT NULL,
-		id_usuario		INT NOT NULL,
-    	ds_mensagem_usuario		VARCHAR (1000) NOT NULL,
-    	FOREIGN KEY (id_conversa) REFERENCES tb_conversa(id_conversa),
-		FOREIGN KEY (id_usuario) REFERENCES tb_conversa(id_usuario)
 );

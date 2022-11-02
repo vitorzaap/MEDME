@@ -5,9 +5,12 @@ const router = Router();
 
 router.get("/conversation", async (req, res) => {
 	try {
-		const { doctorId, userId } = req.query;
+        const { doctorId, userId } = req.query;
+        if (!doctorId && !userId) {
+            throw new Error("você não passou nenhum parâmetro.")
+        }
 		if (doctorId && !userId) {
-            const r = await doctorConversation(doctorId);
+            const r = await doctorConversation(Number(doctorId));
             if (!r || r == undefined) {
                 throw new Error("Nenhum cliente criou uma conversa ainda.")
             }
@@ -16,7 +19,7 @@ router.get("/conversation", async (req, res) => {
             }
 			
 		} else if (userId && !doctorId) {
-            const r = await userConversations(userId);
+            const r = await userConversations(Number(userId));
             if (!r || r == undefined) {
                 throw new Error("Você não tem nenhuma conversa.")
             }
@@ -38,8 +41,7 @@ router.get("/conversation", async (req, res) => {
 router.post("/conversation", async (req, res) => {
     try {
         const { doctorId, userId } = req.query;
-        console.log(doctorId, userId)
-        const r = await createConversation(userId, doctorId)
+        const r = await createConversation(Number(doctorId), Number(userId))
         res.sendStatus(200)
     }
     catch (err) {

@@ -5,6 +5,8 @@ import DavidLester from "../../../assets/images/david.svg"
 import LinhaSeparação from "../../../assets/images/linha-separação.svg"
 import FileIcon from "../../../assets/images/file.svg"
 import SendVector from "../../../assets/images/send-vector.svg"
+import storage from "local-storage"
+import { listConversation } from "../../../api/conversationApi.js"
 import { useEffect, useState } from "react";
 import io from "socket.io-client"
 
@@ -12,18 +14,23 @@ const socket = io.connect("http://localhost:5000");
 
 export default function Index() {
     const [message, setMessage] = useState('')
+    const user = storage("userInfo")
     const [messages, setMessages] = useState([])
+    const [conversation, setConversation] = useState([])
     
-    function enterConversation(){
-        const r = await
+    async function listUserConversation(){
+        const r = await listConversation(null, user.id)
+        setConversation(r)
     }
 
-    useEffect(() => {
-
-    }, [])
     function submitMessage() {
         
     }
+
+    useEffect(() => {
+        listUserConversation();
+    }, [])
+   
     return (
         <main className="messages-main">
             <section className="messages-section-main">

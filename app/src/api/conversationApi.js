@@ -1,6 +1,8 @@
 import { api } from './configs.js';
 
-export async function listConversations(doctorId, userId){
+export async function listConversation(doctorId, userId) {
+    if (doctorId == undefined) doctorId = null
+    if(userId == undefined) userId = null
     const r = await api.get(`/conversation?doctorId=${doctorId}&userId=${userId}`)
     return r.data;
 }
