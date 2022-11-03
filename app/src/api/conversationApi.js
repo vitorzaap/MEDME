@@ -1,9 +1,14 @@
 import { api } from './configs.js';
 
 export async function listConversation(doctorId, userId) {
-    if (doctorId == undefined) doctorId = null
-    if(userId == undefined) userId = null
-    const r = await api.get(`/conversation?doctorId=${doctorId}&userId=${userId}`)
+    let call = `/conversation?doctorId=${doctorId}&userId=${userId}`
+    if (!doctorId || doctorId == undefined) {
+        call = `/conversation?doctorId=&userId=${userId}`
+    }
+    else if (!userId || userId == undefined) {
+        call = `/conversation?doctorId=${doctorId}&userId=`
+    }
+    const r = await api.get(call)
     return r.data;
 }
 
