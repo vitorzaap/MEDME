@@ -82,8 +82,24 @@
                 background-image: url("../../../assets/images/message-wallpaper.jpg");
                 background-repeat: no-repeat;
                 background-size: cover;
+                flex-direction: column;
                 border-radius: 1em;
+                justify-content: space-between;
 				width: 80%;
+
+                .div-input-send-message{
+                    display: flex;
+                    height: 8.75%;
+                    background-color: rgb(55, 55, 55);
+                    border: 1px solid red;
+                    width: 100%;
+
+                    .div-send-archive{
+                        height: 100%;
+                        width: 10%;
+                        border: 1px solid red;
+                    }
+                }
 
 				.message-header {
 					display: flex;
@@ -108,6 +124,8 @@
                         font-family: 'Noto-semibold';
 
                     }
+
+                    
 				}
 			}
 		}

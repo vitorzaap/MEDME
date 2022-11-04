@@ -66,6 +66,10 @@ export default function Index() {
 								))}
 							</div>
 						</div>
+						<div className="messages-div"></div>
+						<div className="div-input-send-message">
+							<div className="div-send-archive"></div>
+						</div>
 					</div>
 				</div>
 			</div>
