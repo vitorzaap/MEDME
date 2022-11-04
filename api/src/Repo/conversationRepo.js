@@ -28,6 +28,23 @@ WHERE      tb_conversa.id_medico = ?;
 	return r;
 }
 
+export async function searchConversationbyId(conversationId) {
+        const c = 
+                `
+                SELECT tb_medico.id_medico      id,
+                       nm_medico                docName,
+                       ds_medico                docDesc,
+                       img_icon                 icon,
+                       id_atuacao               atuation,
+                       id_atuacao1              atuation1
+                FROM   tb_conversa
+                INNER JOIN tb_medico on tb_conversa.id_medico = tb_medico.id_medico
+                WHERE id_conversa = ?;
+                `
+        const [r] = await con.query(c, [conversationId]);
+        return r;
+}
+
 export async function createConversation(doctorId, userId) {
 	const c = `
         INSERT INTO tb_conversa(id_medico, id_usuario) 

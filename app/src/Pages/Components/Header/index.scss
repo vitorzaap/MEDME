@@ -113,3 +113,121 @@
 		}
 	}
 }
+
+@media screen and (max-width: 1280px) {
+	.default-header {
+		display: flex;
+		background-color: #6336ff;
+		outline: 1px solid rgba(211, 211, 211, 0.425);
+		padding: 1em 0;
+		height: max-content;
+		min-width: 100vw;
+		justify-content: center;
+		align-items: center;
+
+		.default-header-content {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 80%;
+			.links-div {
+				display: flex;
+				align-items: center;
+				.logo-div {
+					cursor: pointer;
+					filter: invert(1);
+				}
+				.logo-div:hover {
+					filter: invert(0.8);
+				}
+				.div-pages {
+					.default-button-page {
+						background-color: transparent;
+						border: none;
+						font-family: "Noto-semibold";
+						outline: none;
+						color: #fff;
+						font-size: .925em;
+						padding: 0.25em 0.8em;
+						margin: 0 0.2em;
+						transition: all 0.2s;
+						border-radius: 0.35em;
+					}
+					.default-button-page:hover {
+						background-color: #7d59ff;
+					}
+				}
+			}
+
+			.profile-div {
+				display: flex;
+				align-items: center;
+				color: #fff;
+				font-family: "Noto-semibold";
+				font-size: 1em;
+				cursor: pointer;
+				border-radius: 0.5em;
+				padding: 0.5em 1em;
+				transition: all 0.2s;
+				.profile-name {
+					margin-left: 0.5em;
+				}
+			}
+
+			.profile-div:hover {
+				background-color: #7d59ff;
+			}
+
+			.search-div {
+				display: flex;
+				height: max-content;
+				width: 40%;
+
+				.input-search-main {
+					display: flex;
+					width: 100%;
+					.div-search-icon {
+						padding: 0 0.65em;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						border-radius: 0.5em 0 0 0.5em;
+						background-color: #7d59ff;
+						border-top: 1px solid #e0d8ff96;
+						border-right: 0;
+						border-left: 1px solid #e0d8ff96;
+						border-bottom: 1px solid #e0d8ff96;
+						.search-icon {
+							width: 1.25em;
+							min-width: 1.25em;
+							max-width: 1.25em;
+						}
+					}
+
+					.default-header-search {
+						outline: none;
+						padding: 0.725em 0.25em;
+						background-color: #7d59ff;
+						font-family: "Noto-regular";
+						font-size: 14px;
+						color: #fff;
+						width: 50%;
+						border-radius: 0 0.5em 0.5em 0;
+						border-top: 1px solid #e0d8ff96;
+						border-right: 1px solid #e0d8ff96;
+						border-left: 0;
+						border-bottom: 1px solid #e0d8ff96;
+						transition: all .5s;
+					}
+					.default-header-search::placeholder {
+						font-family: "Noto-semibold";
+						color: rgb(245, 239, 255);
+					}
+					.default-header-search:focus {
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+}

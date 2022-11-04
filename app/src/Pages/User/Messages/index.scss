@@ -3,86 +3,113 @@
 	width: 100%;
 	height: 100%;
 	flex-direction: column;
-    align-items: center;
-    background-color: #6336ff;
+	align-items: center;
+	background-color: #252525;
 
 	.messages-content {
 		display: flex;
 		width: 80%;
-        background-color: rgb(252, 252, 252);
-        margin-top: 1px;
+		background-color: rgb(252, 252, 252);
+		margin-top: 1px;
 		height: calc(100vh - 81px);
-        align-items: center;
-        background-color: #6336ff;
-        
-		.content{
-            display: flex;
-            width: 100%;
-            height: calc(100% - 1em);
-            .div-conversation {
-                display: flex;
-                padding: 0 .25em 0 0;
-                height: 100%;
-                background-color: #fff;
-                border-top: 1px solid rgb(177, 177, 177);
-                border-bottom: 1px solid rgb(177, 177, 177);
-                border-right: 1px solid rgb(177, 177, 177);
-                width: 20%;
-    
-                .conversation-column {
-                    display: flex;
-                    cursor: pointer;
-                    padding: 0 0 0 .5em;
+		align-items: center;
+		background-color: #252525;
+
+		.content {
+			display: flex;
+			width: 100%;
+           
+            border-radius: 1em;
+			height: calc(100% - 1em);
+			.div-conversation {
+				display: flex;
+                flex-direction: column;
+                border-radius: 1em 0 0 1em;
+				height: 100%;
+                color: #fff;
+                border-right: .5px solid #000;
+				background-color: rgb(55, 55, 55);
+				width: 20%;
+
+                .conversation-column:first-child{
+                    border-radius: 1em 0 0 0;
+                }
+
+				.conversation-column {
+					display: flex;
+					cursor: pointer;
+					padding: 0 0 0 0.5em;
+                    border-bottom: 1px solid #282828;
+
                     
-    
-                    .icon-div {
+
+					.icon-div {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						width: calc(20% + 0.5em);
+						margin-right: 0.5em;
+
+						img {
+							width: 85%;
+						}
+					}
+					display: flex;
+					height: 9%;
+					width: 100%;
+
+					.conversation-info {
+						display: flex;
+						justify-content: left;
+						align-items: center;
+						width: 80%;
+						.name {
+							font-size: 1em;
+							font-family: "Noto-semibold";
+							height: max-content;
+							width: max-content;
+						}
+					}
+				}
+                
+				.conversation-column:hover {
+					background-color: rgba(149, 149, 149, 0.466);
+				}
+			}
+
+			.div-message {
+				display: flex;
+                background-image: url("../../../assets/images/message-wallpaper.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                border-radius: 1em;
+				width: 80%;
+
+				.message-header {
+					display: flex;
+					background-color: rgb(55, 55, 55);
+					
+                    border-radius: 0 1em 0 0;
+					width: 100%;
+					height: 9%;
+
+                    .div-message-header-icon{
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        width: calc(20% + .5em);
-                        margin-right: .5em;
-    
-                        img{
-                            width: 85%;
-                        }
+                        width: 6.75%;
                     }
-                    display: flex;
-                    height: 7%;
-                    width: 100%;
-    
-                    .conversation-info {
-                        display: flex;
-                        border-bottom: 1px solid rgb(177, 177, 177);
-                        justify-content: left;
-                        align-items: center;
-                        width: 80%;
-                        .name {
-                            font-size: 1.15em;
-                            height: max-content;
-                            width: max-content;
-                        }
-                    }
-                }
-                .conversation-column:hover{
-                    background-color: rgb(231, 231, 231);
-                }
-            }
-    
-            .div-message{
-                display: flex;
-                background-image: url("../../../assets/images/wave-haikei.svg");
-                background-repeat: no-repeat;
-                background-size: cover;
-                width: 80%;
 
-                .message-header{
-                    display: flex;
-                    background-color: rgba(255, 255, 255, 0.151);
-                    
-                    width: 100%;
-                    height: calc(7% + 2px);
-                }
-            }
-        }
+                    .div-message-header-name{
+                        display: flex;
+                        height: 100%;
+                        align-items: center;
+                        color: #fff;
+                        font-family: 'Noto-semibold';
+
+                    }
+				}
+			}
+		}
 	}
 }

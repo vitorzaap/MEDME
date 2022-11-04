@@ -6,6 +6,7 @@ import icon from "../../../assets/images/user-icon.svg"
 import search from "../../../assets/images/search-bar.svg"
 export default function Index() {
 	const user = storage("userInfo");
+	const name = user.name
 	const navigate = useNavigate();
 	return (
 		<header className="default-header">
@@ -39,7 +40,7 @@ export default function Index() {
 				</div>
 				<div className="profile-div" onClick={() => navigate("/profile")}>
 					<img src={icon} alt="default-icon" width="32px" className="icon-user" />
-					<span className="profile-name">{user.name}</span>
+					<span className="profile-name">{name[0].toUpperCase() + name.slice(1)}</span>
 				</div>
 			</div>
 		</header>
