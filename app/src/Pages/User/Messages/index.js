@@ -17,7 +17,7 @@ export default function Index() {
 	const user = storage("userInfo");
 	const [messages, setMessages] = useState([]);
 	const [conversation, setConversation] = useState([]);
-	const [conversationId, setConversationId] = useState(1);
+	const [conversationId, setConversationId] = useState();
 	const [doctorInfo, setDoctorInfo] = useState([]);
 	const [name, setName] = useState("");
 	async function listUserConversation() {
@@ -27,6 +27,7 @@ export default function Index() {
 	async function searchById(id) {
 		const r = await getConversationInfoById(id);
 		setDoctorInfo(r);
+		setConversationId('')
 	}
 	function submitMessage() {}
 
@@ -67,9 +68,16 @@ export default function Index() {
 							</div>
 						</div>
 						<div className="messages-div"></div>
+						{conversationId == '' && 
 						<div className="div-input-send-message">
-							<div className="div-send-archive"></div>
+
+						<div className="send-message">
+							<div className="div-send-message">
+							<input type="text" className="send-message-input" />
+							</div>
 						</div>
+					</div>
+						}
 					</div>
 				</div>
 			</div>
