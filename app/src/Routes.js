@@ -16,6 +16,7 @@ import MedicAvaliacoes from "./Pages/Medic/Evaluation";
 import UserProfile from "./Pages/User/Profile"
 import Feedback from "./Pages/System/LandingPage/Feedback";
 import Terms from "./Pages/System/LandingPage/Terms"
+import Work from "./Pages/System/LandingPage/Work"
 
 export default function Index() {
 	return (
@@ -37,6 +38,7 @@ export default function Index() {
 				<Route path="/profile" element={<UserProfile />} />
 				<Route path="/feedback" element={<Feedback />} />
 				<Route path="/terms" element={<Terms />} />
+				<Route path="/work" element={<Work />} />
 			</Routes>
 		</BrowserRouter>
 	);

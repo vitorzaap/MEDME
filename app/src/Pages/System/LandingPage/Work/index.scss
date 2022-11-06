@@ -1,0 +1,167 @@
+.sigin-main {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	background: url("../../../../assets/images/login-bg.png") no-repeat;
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+	.sigin-main-content {
+		display: flex;
+		width: 25%;
+		height: max-content;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		.sigin-main-content-text {
+			h1 {
+				font-family: "Noto-bold";
+				font-size: 2.5em;
+			}
+			p {
+				font-family: "Noto-regular";
+				font-size: 0.875em;
+			}
+		}
+		.sigin-main-content-inputs {
+			display: flex;
+			flex-direction: column;
+			padding: 2em 0;
+			width: 100%;
+			.sg-lg-btn-complex {
+				margin-top: 1.5em;
+				margin-bottom: 1.5em;
+			}
+			.input-main{
+				#input-message{
+					height: 10em;
+					resize: none;
+				}
+			}
+			.input-archive {
+                display: none;
+            }
+            .lb-archive {
+                height: 3em;
+                width: 9em;
+                padding: 0.8em 1.8em;
+                border: 2px solid #6336ff;
+                position: relative;
+                overflow: hidden;
+                background-color: transparent;
+                text-align: center;
+                text-transform: uppercase;
+                font-size: 0.825em;
+                transition: .3s;
+                z-index: 1;
+                font-family: "Noto-semibold";
+                color: #6336ff;
+               }
+               
+               .lb-archive::before {
+                content: '';
+                width: 0;
+                height: 300%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(45deg);
+                background: #6336ff;
+                transition: .5s ease;
+                display: block;
+                z-index: -1;
+               }
+               
+               .lb-archive:hover::before {
+                width: 105%;
+               }
+               
+               .lb-archive:hover {
+                color: rgb(255, 255, 255);
+               }
+            
+               
+               
+		}
+	}
+}
+
+
+
+@media (max-width: 1280px) {
+	.sigin-main {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		background: url("../../../../assets/images/login-bg.png") no-repeat;
+		background-size: cover;
+		justify-content: center;
+		align-items: center;
+		.sigin-main-content {
+			display: flex;
+			width: 35%;
+			height: max-content;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			.sigin-main-content-text {
+				h1 {
+					font-family: "Noto-semibold";
+					font-size: 2em;
+				}
+				p {
+					font-family: "Noto-regular";
+					font-size: 0.875em;
+				}
+			}
+			.sigin-main-content-inputs {
+				display: flex;
+				flex-direction: column;
+				padding: 2em 0;
+				width: 100%;
+				.sg-lg-btn-complex {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 414px) {
+	.sigin-main {
+		display: flex;
+		width: 100vw;
+		height: 100vh;
+		background: url("../../../../assets/images/login-bg.png") no-repeat;
+		background-size: cover;
+		justify-content: center;
+		align-items: center;
+		.sigin-main-content {
+			display: flex;
+			width: 80%;
+			height: max-content;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			.sigin-main-content-text {
+				h1 {
+					font-family: "Noto-semibold";
+					font-size: 2em;
+				}
+				p {
+					font-family: "Noto-regular";
+					font-size: 0.875em;
+				}
+			}
+			.sigin-main-content-inputs {
+				display: flex;
+				flex-direction: column;
+				padding: 2em 0;
+				width: 100%;
+				.sg-lg-btn-complex {
+					margin-top: 1.5em;
+				}
+			}
+		}
+	}
+}

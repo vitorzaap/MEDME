@@ -92,7 +92,7 @@ export default function Index() {
                     <div className="links-footer">
                         <a onClick={() => { navigate("/feedback")}}>Envie um feedback</a>
                         <a onClick={() => { navigate("/terms")}}>Termos e privacidade</a>
-                        <a onClick={() => { navigate("/user/login")}}>Trabalhe conosco</a>
+                        <a onClick={() => { navigate("work")}}>Trabalhe conosco</a>
                     </div>
                     <p className="footer-signature">©2022, Medme Company.</p>
                 </div>

@@ -89,7 +89,7 @@ export default function Terms() {
             </a>
             <a
               onClick={() => {
-                navigate("/user/login");
+                navigate("/work");
               }}
             >
               Trabalhe conosco

@@ -13,7 +13,7 @@ export default function Index() {
 			<div className="sigin-main-content">
 				<div className="sigin-main-content-text">
 					<img src={Logo} alt="Logo" />
-					<h1>Fale Conosco</h1>
+					<h1>Envie seu feedback</h1>
 				</div>
 				<div className="sigin-main-content-inputs">
 					<div className="input-main">
