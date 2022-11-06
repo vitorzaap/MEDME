@@ -46,7 +46,9 @@
 						display: flex;
 						justify-content: center;
 						align-items: center;
+						min-width: calc(20% + 0.5em);
 						width: calc(20% + 0.5em);
+						max-width: calc(20% + 0.5em);
 						margin-right: 0.5em;
 
 						img {
@@ -59,14 +61,23 @@
 
 					.conversation-info {
 						display: flex;
-						justify-content: left;
-						align-items: center;
+						justify-content: center;
+						flex-direction: column;
+						align-items: left;
 						width: 80%;
 						.name {
 							font-size: 1em;
 							font-family: "Noto-semibold";
 							height: max-content;
 							width: max-content;
+						}
+
+						.doctor-description{
+							max-width: 90%;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+							color: rgb(189, 189, 189);
 						}
 					}
 				}
@@ -128,10 +139,24 @@
 							display: flex;
 							width: 90%;
 							height: 60%;
+							.send-icon-div{
+								display: flex;
+								cursor: pointer;
+								align-items: center;
+								justify-content: center;
+								
+								height: 100%;
+								padding: .865em;
+								width: 5%;
+
+								img{
+									filter: invert(1);
+								}
+							}
 							
 
 							.send-message-input{
-								width: 100%;
+								width: 95%;
 								outline: none;
 								border: none;
 								border-radius: .5em;
@@ -149,7 +174,6 @@
 						}
 					}
 				}
-
 				.message-header {
 					display: flex;
 					background-color: rgb(55, 55, 55);
