@@ -1,8 +1,8 @@
 import "./index.scss";
 import "../../../Common/common.scss";
 import Logo from "../../../../assets/images/login-logo.svg";
-import { useState, useEffect} from "react";
-
+import { useState} from "react";
+import emailjs from '@emailjs/browser'
 import { useNavigate } from "react-router-dom"
 
 export default function Index() {
@@ -13,8 +13,18 @@ export default function Index() {
 	const nav = useNavigate();
 	function sendEmail(e){
 		e.preventDefault();
-		
-		alert('pinto')
+		const templateParams={
+			from_name: nome,
+			message: msg,
+			email:email
+		}
+	emailjs.send("service_zsyasq7","template_194ib1d", templateParams, "yqWVGlu6_H6kx5fYq")
+	.then(() =>{
+		setNome('')
+		setEmail('')
+		setMsg('')
+
+	})
 
 	}
 
