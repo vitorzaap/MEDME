@@ -38,9 +38,9 @@
 					resize: none;
 				}
 			}
-			.input-archive {
+			input[type="file"] {
                 display: none;
-            }
+            } 
             .lb-archive {
                 height: 3em;
                 width: 9em;
