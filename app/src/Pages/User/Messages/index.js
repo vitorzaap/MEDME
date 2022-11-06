@@ -73,7 +73,7 @@ export default function Index() {
 
 						<div className="send-message">
 							<div className="div-send-message">
-							<input type="text" className="send-message-input" />
+							<input type="text" className="send-message-input"  placeholder="Digite uma mensagem"/>
 							</div>
 						</div>
 					</div>
