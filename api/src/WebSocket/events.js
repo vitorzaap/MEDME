@@ -24,6 +24,7 @@ io.on("connection", (socket) => {
   //enviando as mensagens para os usuários de uma conversa (id)
   socket.on("receive_message", async (data) => {
     const r = await listMessages(data.conversationId);
+    console.log(data);
     socket.emit("receive_message", r)
   });
 });
