@@ -231,3 +231,39 @@
 		}
 	}
 }
+@media (max-width: 414px) {
+
+	.default-header{
+		justify-content: center;
+		align-items: center;
+	width: 100vw;
+		.default-header-content{
+			flex-direction: column;
+	
+			width: 60%;
+			.links-div{
+				flex-direction: column;
+
+				.div-pages{
+					
+					display: flex;
+					flex-direction: column;
+					.default-button-page{
+						padding: 1em;
+					}
+				}
+			}
+
+			.profile-div{
+				padding: 1em;
+			}
+
+			.search-div{
+				width: 80vw;
+				.input-search-main{
+					justify-content: center;
+				}
+			}
+		}
+}
+}

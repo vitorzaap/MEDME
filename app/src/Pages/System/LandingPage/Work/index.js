@@ -11,7 +11,7 @@ export default function Index(){
         <main className="sigin-main">
 			<div className="sigin-main-content">
 				<div className="sigin-main-content-text">
-					<img src={Logo} alt="Logo" />
+					<img src={Logo} onClick={() => { navigate("/")}}  alt="Logo" />
 					<h1>Trabalhe conosco</h1>
 				</div>
 				<div className="sigin-main-content-inputs">

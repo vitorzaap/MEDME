@@ -10,7 +10,7 @@ export default function Index() {
 	const[email,setEmail] = useState();
 	const[msg,setMsg] = useState();
 	
-	const nav = useNavigate();
+	const navigate = useNavigate();
 	function sendEmail(e){
 		e.preventDefault();
 		const templateParams={
@@ -32,7 +32,7 @@ export default function Index() {
 		<main className="sigin-main">
 			<div className="sigin-main-content">
 				<div className="sigin-main-content-text">
-					<img src={Logo} alt="Logo" />
+					<img src={Logo} onClick={() => { navigate("/")}} alt="Logo"  />
 					<h1>Envie seu feedback</h1>
 				</div>
 				<form onSubmit={sendEmail}>
