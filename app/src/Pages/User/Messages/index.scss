@@ -121,7 +121,8 @@
 						background-color: #44444470;
 						backdrop-filter: blur(10px);
 						justify-content: left;
-						margin-top: 0.5em;
+						margin-top: 0.25em;
+            margin-bottom: 0.25em;
 						width: max-content;
 						border-radius: 0.5em;
 						.message-text {
@@ -132,7 +133,8 @@
 					}
 					.msg-right {
 						display: flex;
-						margin-top: 0.5em;
+						margin-top: 0.25em;
+            margin-bottom: 0.25em;
 						justify-content: right;
 						width: calc(100% - 1em);
 						.message-text {
