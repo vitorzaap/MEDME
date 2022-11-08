@@ -7,6 +7,14 @@
 	background-color: #252525;
 	overflow: hidden;
 
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #663bdd;
+    border-radius: .5em;
+  }
+
 	.messages-content {
 		display: flex;
 		width: 80%;
@@ -97,11 +105,15 @@
 				justify-content: space-between;
 				width: 80%;
 
+
 				.messages-div {
 					display: flex;
 					height: 100%;
 					color: #fff;
 					flex-direction: column;
+          max-height: 100%;
+          overflow-y: scroll;
+          overflow-x: hidden;
 
 					.msg-left {
 						display: flex;
