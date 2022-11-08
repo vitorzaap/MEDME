@@ -181,13 +181,19 @@
 								align-items: center;
 								justify-content: center;
 								height: 100%;
-								padding: 0.865em;
-								width: 5%;
+								padding: .625em;
+								width: 4%;
+                border-radius: .5em;
+                margin-left: .25em;
 
 								img {
 									filter: invert(1);
 								}
 							}
+
+              .send-icon-div:hover {
+                background-color: #282828;
+              }
 
 							.send-message-input {
 								width: 95%;

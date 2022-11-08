@@ -49,9 +49,6 @@ export default function Index() {
       return "msg-left"
     }
   }
-  
-  
-
 	socket.on("receive_message", (data) => {
     setMessages(data);
 	});
