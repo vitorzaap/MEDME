@@ -359,7 +359,7 @@
 					.div-input-send-message {
 						display: flex;
 						border-radius: 0 0 1em 0;
-						height: 8.75%;
+						height: 10%;
 						background-color: rgb(55, 55, 55);
 						width: 100%;
 						transform: translateY(100px);
@@ -396,7 +396,7 @@
 							.div-send-message {
 								display: flex;
 								width: 90%;
-								height: 60%;
+								height: 70%;
 								.send-icon-div {
 									display: flex;
 									transition: all 0.25s;
@@ -441,7 +441,6 @@
 					.message-header {
 						display: flex;
 						background-color: rgb(55, 55, 55);
-
 						border-radius: 0 1em 0 0;
 						width: 100%;
 						height: 9%;
