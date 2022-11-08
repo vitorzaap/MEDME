@@ -1,30 +1,16 @@
-import { io } from "./socket";
-import {
-  createConversation,
-  userConversations,
-  doctorConversation,
-} from "../Repo/conversationRepo.js";
-import {
-  listMessages,
-  userSendMessages,
-  doctorSendMessages,
-} from "../Repo/messagesRepo.js";
+import { io } from "./socket.js";
+import { sendMessage, listMessage } from "../Repo/messagesRepo.js"
 
-io.on("connection", (socket) => {
-  //recebendo mensagens do usuário e enviando para a API salvar no banco 
-  socket.on("user_send_message", async (data) => {
-    const r = await userSendMessages(data.conversationId, data.userId, data.message);
-  });
+io.on("connection", async (socket) => {
 
-  //recebendo mensagens do médico e enviando para a API salvar no banco
-  socket.on("doctor_send_message", async (data) => {
-    const r = await doctorSendMessages(data.conversationId, data.doctorId, data.message);
-  });
+  //recebendo mensagens e enviando para o banco
+  socket.on("send_message", async (data) => {
+    const r = await sendMessage(data.type, data.conversationId, data.message, data.senderId)
+  })
 
-  //enviando as mensagens para os usuários de uma conversa (id)
+  //listando todas as mensagens para os usuários da conversa
   socket.on("receive_message", async (data) => {
-    const r = await listMessages(data.conversationId);
-    console.log(data);
+    const r = await listMessage(data.conversationId)
     socket.emit("receive_message", r)
-  });
+  })
 });

@@ -21,7 +21,7 @@ export async function doctorConversation(doctorId) {
     tb_conversa.id_usuario    doctorId,
     tb_usuario.nm_usuario     userName,
     tb_conversa.id_usuario               userId
-FROM      tb_conversa
+        FROM      tb_conversa
 INNER JOIN      tb_usuario ON tb_conversa.id_usuario = tb_usuario.id_usuario	
 WHERE      tb_conversa.id_medico = ?;
         `;

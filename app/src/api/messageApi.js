@@ -5,8 +5,8 @@ export async function listMessages(conversationId){
     return r.data
 }
 
-export default function userSendMessage(conversationid, doctorId, userId, message){
-    const r = api.post(`/message/${conversationid}?doctorId=${doctorId}&userId=${userId}`, {
+export default function sendMessage(conversationId, type, senderId, message){
+    const r = api.post(`/message?conversation=${conversationId}&type=${type}&senderId=${senderId}`, {
         message: message,
     });
     return r.data
