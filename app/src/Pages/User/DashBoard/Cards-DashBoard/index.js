@@ -10,7 +10,6 @@ export default function Card(props){
                         <h1>{props.titulo}</h1>
                     </div>
                     <div className="dashboard-cards-props">
-                        {/*{props.tipo = 'numero' ? <p>{props.numero}</p> : <img src={imagem}/>} */}
                         <p>65</p>
                     </div>
                     <div className="dashboard-cards-subtitulo">
