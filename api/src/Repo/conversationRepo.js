@@ -2,13 +2,14 @@ import { con } from "./connection.js";
 
 export async function userConversations(userId) {
   const c = `
-        SELECT  	id_conversa              conversationId,
+        SELECT  	      id_conversa              conversationId,
                         tb_conversa.id_medico    doctorId,
                         tb_medico.nm_medico      doctorName,
                         tb_medico.ds_medico      doctorDesc,
                         id_usuario               userId
         FROM            tb_conversa
-        INNER JOIN      tb_medico ON tb_conversa.id_medico = tb_medico.id_medico	
+        INNER JOIN      tb_medico 
+        ON              tb_conversa.id_medico = tb_medico.id_medico	
         WHERE           tb_conversa.id_usuario = ?;
         `;
   const [r] = await con.query(c, [userId]);
@@ -17,10 +18,10 @@ export async function userConversations(userId) {
 
 export async function doctorConversation(doctorId) {
   const c = `
-        SELECT  	                id_conversa              conversationId,
-        tb_conversa.id_usuario          doctorId,
-        tb_usuario.nm_usuario           userName,
-        tb_conversa.id_usuario          userId
+        SELECT  	                      id_conversa              conversationId,
+        tb_conversa.id_medico           doctorId,
+        tb_conversa.id_usuario          userId,
+        tb_usuario.nm_usuario           userName
         FROM                            tb_conversa
         INNER JOIN                      tb_usuario 
         ON                              tb_conversa.id_usuario = tb_usuario.id_usuario	
