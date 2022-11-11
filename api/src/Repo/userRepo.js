@@ -1,5 +1,14 @@
 import { con } from "./connection.js";
 
+export async function alterimage(image, id){
+  const c = `
+  UPDATE  tb_usuario
+  SET     img_icon =      ?
+  WHERE   id_usuario =    ?`
+
+  const [resp] = await con.query(c, [image, id])
+  return resp.affectedRows;
+}
 export async function userLogin(user) {
   const c = `
         SELECT 

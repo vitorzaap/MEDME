@@ -6,7 +6,7 @@ import iconuser from "../../../assets/images/user-icon.svg";
 import storage from "local-storage"
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { getUser, userChangeProfile } from "../../../api/userApi";
+import { getUser, userChangeProfile, alterImage } from "../../../api/userApi";
 export default function Index() {
 	const user = storage("userInfo");
 	const [usuario, setUsuario] = useState([])
@@ -16,9 +16,10 @@ export default function Index() {
 	const [email, setEmail] = useState();
 	const [senha, setSenha] = useState();
 	const [repitSenha, setRepitSenha] = useState();
-	const [passLength, setPassLength] = useState("")
+	const [passLength, setPassLength] = useState("");
 	const [err, setErr] = useState('');
 	const [verificPass, setVerificPass] = useState(0)
+	const [image, setImage] = useState()
 	const navigate = useNavigate();
 
 	async function exibirUser() {
@@ -45,9 +46,13 @@ export default function Index() {
 		if (!senha || senha === undefined) {
 			setSenha(usuario.ds_senha)
 		}
+		if (!image || image === undefined) {
+			setImage(usuario.img_icon)
+		}
 	}
 	async function alterarConfig() {
 		await userChangeProfile(nome, sobrenome, email, senha, user.id)
+		console.log(await userChangeProfile(nome, sobrenome, email, senha, user.id))
 	}
 	function length() {
 		let s = ""
@@ -67,8 +72,12 @@ export default function Index() {
 							<h1 className="card-title">Editar Perfil</h1>
 						</div>
 						<div className="main-user-card-picture">
-							<div className="user-card-picture">
-								<img src={iconuser} alt="profile picture" width="96px" className="profile-picture" />
+							<div className="user-card-picture" onClick={() => document.getElementById('imagem').click()}>
+								{!image 
+								? <img src={iconuser} alt="profile picture" width="96px" className="profile-picture" /> 
+								: <img src={URL.createObjectURL(image)} alt="profile picture" width="96px" className="profile-picture" />
+								}
+								<input type='file' id='imagem' onChange={e => setImage(e.target.files[0])}/>
 								<button className="remove-picture-button">Remover Foto de Perfil</button>
 							</div>
 						</div>

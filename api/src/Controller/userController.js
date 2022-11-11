@@ -1,7 +1,25 @@
 import { response, Router } from "express";
-import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser } from "../Repo/userRepo.js";
+import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage } from "../Repo/userRepo.js";
+import multer from 'multer';
 
 const router = Router();
+const upload = multer({ dest: 'storage/userImages' })
+
+router.put("/api/user/:id/capa", upload.single('capa'), async (req, res) => {
+	try{
+		const { id } = 	req.params;
+		const image  = 	req.file.path;
+		const r = await alterimage(image, id)
+		if(r != 1) 
+			throw new Error('A imagem não pode ser salva.')
+
+		res.status(204).send()
+	} catch (err) {
+		res.status(400).send({
+			erro: err.message,
+		});
+	}
+})
 
 router.post("/api/user/login", async (req, res) => {
 	try {

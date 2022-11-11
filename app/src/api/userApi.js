@@ -55,3 +55,13 @@ export async function getUser(id) {
 	const r = await api.get(`/api/user/${id}`)
 	return r.data
 }
+export async function alterImage(id, image){
+	let form = new FormData()
+	form.append('capa', image)
+	const r = await api.put(`/api/user/${id}/capa`, form, {
+	  headers: {
+		'Content-Type' : 'multipart/form-data'
+	  }
+	})
+	return r.data
+  }
