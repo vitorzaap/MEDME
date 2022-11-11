@@ -106,14 +106,14 @@ export async function changeUser(user) {
                 ds_senha = ?
         WHERE   id_usuario = ?
         `;
-  const res = await con.query(c, [
+  const [res] = await con.query(c, [
     user.name,
     user.sobrenome,
     user.email,
     user.pass,
     user.id,
   ]);
-  return res;
+  return user;
 }
 export async function getUser(userId) {
   const c = `

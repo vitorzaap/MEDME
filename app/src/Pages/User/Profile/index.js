@@ -31,6 +31,7 @@ export default function Index() {
 		if (!usuario) {
 			navigate('/')
 		}
+		alterConfigVerification()
 		length();
 	}, [])
 	function alterConfigVerification() {
@@ -51,8 +52,8 @@ export default function Index() {
 		}
 	}
 	async function alterarConfig() {
-		await userChangeProfile(nome, sobrenome, email, senha, user.id)
-		console.log(await userChangeProfile(nome, sobrenome, email, senha, user.id))
+		const userConfig = await userChangeProfile(nome, sobrenome, email, senha, user.id)
+		const r = alterImage(userConfig.id, image)
 	}
 	function length() {
 		let s = ""
