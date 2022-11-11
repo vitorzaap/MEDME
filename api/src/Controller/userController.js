@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage } from "../Repo/userRepo.js";
+import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage, addConversa } from "../Repo/userRepo.js";
 import multer from 'multer';
 
 const router = Router();
@@ -70,7 +70,7 @@ router.put("/api/user/consultas", async (req, res) => {
 router.get("/api/user/consultas", async (req, res) => {
 	try {
 		let add = 1
-		let { id, start, limit} = req.query; // parametros start e end para definir o tamanho da array a ser retornada.
+		let { id, start, limit } = req.query; // parametros start e end para definir o tamanho da array a ser retornada.
 		let r = await getConsultas(id);
 		for (let i = 0; i < r.length; i++) {
 			let l = new Date(r[i].dataConsulta);
@@ -136,6 +136,16 @@ router.get("/api/user/:id", async (req, res) => {
 		});
 	}
 });
-
+router.post("/api/user/conversa", async (req, res) => {
+	try {
+		const { medicID, userId } = req.body;
+		let r = await addConversa(medicID, userId);
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
 
 export default router;
