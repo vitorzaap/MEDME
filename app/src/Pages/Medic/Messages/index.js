@@ -33,7 +33,7 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 1,
+			type: 14,
 			senderId: user.id,
 			message: message,
 		});
@@ -44,7 +44,7 @@ export default function Index() {
 	}
 
   function messageSide(type) {
-		if (type == 1) {
+		if (type == 14) {
 			return "msg-right";
     } else {
       return "msg-left"
@@ -78,7 +78,7 @@ export default function Index() {
 									<img src={DavidLester} alt="user icon" />
 								</div>
 								<div className="conversation-info">
-									<h1 className="name">{item.doctorName[0].toUpperCase() + item.doctorName.slice(1)}</h1>
+									
 									<p className="doctor-description">{item.doctorDesc}</p>
 								</div>
 							</div>
@@ -90,9 +90,7 @@ export default function Index() {
 								<img src={DavidLester} alt="icon" width="70%" />
 							</div>
 							<div className="div-message-header-name">
-								{doctorInfo.map((item) => (
-									<span>{item.docName[0].toUpperCase() + item.docName.slice(1)}</span>
-								))}
+								
 							</div>
 						</div>
 						<div className="messages-div">

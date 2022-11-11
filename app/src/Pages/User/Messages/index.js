@@ -32,7 +32,7 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 1,
+			type: 4,
 			senderId: user.id,
 			message: message,
 		});
@@ -43,7 +43,7 @@ export default function Index() {
 	}
 
   function messageSide(type) {
-		if (type == 1) {
+		if (type == 4) {
 			return "msg-right";
     } else {
       return "msg-left"
