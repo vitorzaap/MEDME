@@ -1,12 +1,12 @@
 import { con } from "./connection.js";
 
-export async function alterimage(image, id){
+export async function alterimage(image, id) {
   const c = `
   UPDATE  tb_usuario
   SET     img_icon =      ?
-  WHERE   id_usuario =    ?`
+  WHERE   id_usuario =    ?`;
 
-  const [resp] = await con.query(c, [image, id])
+  const [resp] = await con.query(c, [image, id]);
   return resp.affectedRows;
 }
 export async function userLogin(user) {
@@ -78,7 +78,8 @@ export async function getConsultas(userId) {
 }
 
 export async function addAvaliacao(medicId, userId, descricao, number) {
-  const c = `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) VALUES (?, ?, ?, ?)
+  const c = `INSERT INTO tb_avaliacao(id_medico, id_usuario,ds_avaliacao,nr_avaliacao) 
+  VALUES (?, ?, ?, ?)
         `;
   const res = await con.query(c, [medicId, userId, descricao, number]);
   return res;
@@ -121,5 +122,13 @@ export async function getUser(userId) {
         WHERE                   id_usuario = ?;
         `;
   const [res] = await con.query(c, [userId]);
+  return res;
+}
+export async function addConversa(medicID, userId) {
+  const c = `
+  INSERT into tb_conversa(id_medico, id_usuario) 
+  VALUES (?,?)
+        `;
+  const [res] = await con.query(c, [medicID, userId]);
   return res;
 }
