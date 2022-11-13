@@ -20,7 +20,7 @@ export default function Medics() {
   return (
     <main className="user-medics-main">
       <section className="user-medics-section-main">
-        <Cabecalho />
+      <Cabecalho />
         <div className="user-medics-content">
           <div className="user-medics-card-main">
             {medicos.map((item) => (

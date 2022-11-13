@@ -12,14 +12,14 @@ const socket = io.connect("http://localhost:5000");
 
 export default function Index() {
 	const [message, setMessage] = useState("");
-	const user = storage("userInfo");
+	const doctor = storage("userInfo");
 	const [messages, setMessages] = useState([]);
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
 	const [doctorInfo, setDoctorInfo] = useState([]);
 
 	async function listUserConversation() {
-		const r = await listConversation(user.id, null);
+		const r = await listConversation(doctor.id, null);
 		console.log(r)
 		setConversation(r);
 	}
@@ -33,8 +33,8 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 14,
-			senderId: user.id,
+			type: 2,
+			senderId: doctor.id,
 			message: message,
 		});
 		socket.emit("receive_message", {
@@ -44,7 +44,7 @@ export default function Index() {
 	}
 
   function messageSide(type) {
-		if (type == 14) {
+		if (type == 2) {
 			return "msg-right";
     } else {
       return "msg-left"
