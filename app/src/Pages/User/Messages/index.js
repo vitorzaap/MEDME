@@ -26,8 +26,7 @@ export default function Index() {
 	async function searchById(id) {
 		const r = await getConversationInfoById(id);
 		setDoctorInfo(r);
-  }
-
+	}
 
 	async function submitMessage() {
 		socket.emit("send_message", {
@@ -37,27 +36,25 @@ export default function Index() {
 			message: message,
 		});
 		socket.emit("receive_message", {
-      conversationId: conversationId,
-    });
+			conversationId: conversationId,
+		});
 		setMessage("");
 	}
 
-  function messageSide(type) {
+	function messageSide(type) {
 		if (type == 1) {
 			return "msg-right";
-    } else {
-      return "msg-left"
-    }
-  }
+		} else {
+			return "msg-left";
+		}
+	}
 	socket.on("receive_message", (data) => {
-    setMessages(data);
+		setMessages(data);
 	});
 
 	useEffect(() => {
 		listUserConversation();
-  }, []);
-  
-  
+	}, []);
 
 	return (
 		<main className="messages-main">
@@ -96,10 +93,15 @@ export default function Index() {
 								))}
 							</div>
 						</div>
-						<div className="messages-div">
+						<div className="messages-div" id="messages-div">
 							{messages &&
 								messages.map((item) => {
-									return <div className={messageSide(item.senderType)}> <span className="message-text">{item.message}</span> </div>;
+									return (
+										<div className={messageSide(item.senderType)}>
+											{" "}
+											<span className="message-text">{item.message}</span>{" "}
+										</div>
+									);
 								})}
 						</div>
 						{conversationId != -1 && (

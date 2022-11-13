@@ -7,13 +7,13 @@
 	background-color: #252525;
 	overflow: hidden;
 
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: #663bdd;
-    border-radius: .5em;
-  }
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+	::-webkit-scrollbar-thumb {
+		background-color: #663bdd;
+		border-radius: 0.5em;
+	}
 
 	.messages-content {
 		display: flex;
@@ -105,15 +105,15 @@
 				justify-content: space-between;
 				width: 80%;
 
-
 				.messages-div {
 					display: flex;
 					height: 100%;
 					color: #fff;
 					flex-direction: column;
-          max-height: 100%;
-          overflow-y: scroll;
-          overflow-x: hidden;
+					
+					max-height: 100%;
+					overflow-y: scroll;
+					overflow-x: hidden;
 
 					.msg-left {
 						display: flex;
@@ -122,7 +122,7 @@
 						backdrop-filter: blur(10px);
 						justify-content: left;
 						margin-top: 0.25em;
-            margin-bottom: 0.25em;
+						margin-bottom: 0.25em;
 						width: max-content;
 						border-radius: 0.5em;
 						.message-text {
@@ -134,14 +134,14 @@
 					.msg-right {
 						display: flex;
 						margin-top: 0.25em;
-            margin-bottom: 0.25em;
+						margin-bottom: 0.25em;
 						justify-content: right;
 						width: calc(100% - 1em);
 						.message-text {
 							font-family: "Noto-regular";
 							padding: 0.5em 1em;
 							background-color: #663bdd70;
-              border-radius: .5em;
+							border-radius: 0.5em;
 							backdrop-filter: blur(10px);
 							font-size: 1em;
 						}
@@ -195,19 +195,19 @@
 								align-items: center;
 								justify-content: center;
 								height: 100%;
-								padding: .625em;
+								padding: 0.625em;
 								width: 4%;
-                border-radius: .5em;
-                margin-left: .25em;
+								border-radius: 0.5em;
+								margin-left: 0.25em;
 
 								img {
 									filter: invert(1);
 								}
 							}
 
-              .send-icon-div:hover {
-                background-color: #282828;
-              }
+							.send-icon-div:hover {
+								background-color: #282828;
+							}
 
 							.send-message-input {
 								width: 95%;

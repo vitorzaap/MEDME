@@ -23,6 +23,7 @@ export default function Medics() {
       <Cabecalho />
         <div className="user-medics-content">
           <div className="user-medics-card-main">
+            <div className="align">
             {medicos.map((item) => (
               <div className="user-medics-card-medic" onClick={() => {
                 navigate('/mensagens');
@@ -31,20 +32,16 @@ export default function Medics() {
                 <div className="user-medics-card-medic-profile">
                   {item.icon ? <img src={item.icon} /> : <img src={iconuser} />}
                   <h1>{item.nome[0].toUpperCase() + item.nome.substring(1)}</h1>
+                  <p>{item.atuacao.toUpperCase()}</p>
                 </div>
-                {item.atuacao === item.atuacao1 ? (
-                  <div className="user-medics-card-medic-description">
-                    <p>{item.atuacao.toUpperCase()}</p>
-                    <h6>{item.descricao}</h6>
+                <div className="user-medics-card-medic-description">
+                  <p>{item.descricao}</p>
+                   
                   </div>
-                ) : (
-                  <div className="user-medics-card-medic-description">
-                    <p>{item.atuacao}</p>
-                    <p>{item.atuacao1}</p>
-                  </div>
-                )}
+                
               </div>
             ))}
+            </div>
           </div>
         </div>
       </section>
