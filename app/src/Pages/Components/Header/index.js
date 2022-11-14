@@ -69,7 +69,7 @@ export default function Index() {
               />
             </div>
           </div>
-          <div className="profile-div" onClick={() => navigate("/profile")}>
+          <div className="profile-div" onClick={() => navigate("/medic/profile")}>
             <img
               src={icon}
               alt="default-icon"

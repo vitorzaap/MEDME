@@ -140,3 +140,31 @@ export async function ultimaAvaliacao(doctorId) {
 	return res;
   }
   
+  export async function changeDoctor(doctor) {
+	const c = `
+		  UPDATE  tb_medico
+		  SET     nm_medico = ?,    
+				  ds_email = ?,
+				  ds_senha = ?,
+				  ds_medico = ?
+		  WHERE   id_medico = ?
+		  `;
+	const [res] = await con.query(c, [
+		doctor.name,
+		doctor.email,
+		doctor.pass,
+		doctor.descricao,
+		doctor.id,
+	]);
+	return doctor;
+  }
+
+  export async function alterimage(image, id) {
+	const c = `
+	UPDATE  tb_medico
+	SET     img_icon =      ?
+	WHERE   id_medico =    ?`;
+  
+	const [resp] = await con.query(c, [image, id]);
+	return resp.affectedRows;
+  }

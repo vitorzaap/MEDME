@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userConversations, doctorConversation,createConversation, searchConversationbyId } from "../Repo/conversationRepo.js";
+import { userConversations, doctorConversation,createConversation, searchConversationbyId, searchConversationbyIdDoctor } from "../Repo/conversationRepo.js";
 
 const router = Router();
 router.get('/conversation/search', async (req, res) => {
@@ -13,6 +13,18 @@ router.get('/conversation/search', async (req, res) => {
         })
     }
 })
+router.get('/conversation/doctor/search', async (req, res) => {
+    try {
+        const { id } = req.query;
+        const r = await searchConversationbyIdDoctor(id);
+        res.send(r)
+    } catch (err) {
+        res.status(401).send({
+            erro: err.message
+        })
+    }
+})
+
 router.get("/conversation", async (req, res) => {
 	try {
         const { doctorId, userId } = req.query;

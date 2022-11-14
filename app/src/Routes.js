@@ -15,6 +15,7 @@ import MedicMessages from "./Pages/Medic/Messages";
 import MedicConsultas from "./Pages/Medic/Consultas";
 import MedicAvaliacoes from "./Pages/Medic/Evaluation";
 import UserProfile from "./Pages/User/Profile"
+import MedicProfile from "./Pages/Medic/Profile"
 import Feedback from "./Pages/System/LandingPage/Feedback";
 import Terms from "./Pages/System/LandingPage/Terms"
 import Work from "./Pages/System/LandingPage/Work"
@@ -37,6 +38,7 @@ export default function Index() {
 				<Route path="/medic/mensagens" element={<MedicMessages />} />
 				<Route path="/medic/consultas" element={<MedicConsultas />} />
 				<Route path="/medic/avaliacoes" element={<MedicAvaliacoes />} />
+				<Route path="/medic/profile" element={<MedicProfile />} />
 				<Route path="/profile" element={<UserProfile />} />
 				<Route path="/feedback" element={<Feedback />} />
 				<Route path="/terms" element={<Terms />} />

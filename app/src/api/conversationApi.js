@@ -16,6 +16,10 @@ export async function getConversationInfoById(conversationId) {
     const r = await api.get(`/conversation/search?id=${Number(conversationId)}`);
     return r.data;
 }
+export async function getConversationInfoByIdDoctor(conversationId) {
+    const r = await api.get(`/conversation/doctor/search?id=${Number(conversationId)}`);
+    return r.data;
+}
 
 export async function joinConversation(userId, doctorId){
     const r = await api.post(`/conversation`, {

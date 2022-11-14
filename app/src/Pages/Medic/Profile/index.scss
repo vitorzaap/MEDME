@@ -1,0 +1,102 @@
+.user-profile-main {
+	display: flex;
+	width: 100%;
+	overflow-x: hidden;
+	height: 100%;
+
+	.user-profile-main-content {
+		display: flex;
+		flex-direction: column;
+
+		.user-profile-content {
+			display: flex;
+			width: 100%;
+			background-color: #edeef2;
+			height: 100%;
+			align-items: center;
+			padding: 1em 2em;
+			justify-content: center;
+
+			.user-profile-card {
+				display: flex;
+				flex-direction: column;
+				padding: 1em 2em 3em 2em;
+				width: 90%;
+				height: max-content;
+				border-radius: 1em;
+				background-color: #ffffff;
+				.user-card-title {
+					display: flex;
+					height: max-content;
+					width: 100%;
+					padding: 0 0 1em 0;
+					.card-title {
+						font-size: 2.5em;
+						color: #252627;
+					}
+				}
+
+				.main-user-card-picture {
+					display: flex;
+					width: 100%;
+					padding: 0 2em;
+					align-items: center;
+					justify-content: center;
+					.user-card-picture {
+						display: flex;
+						flex-direction: column;
+						align-items: center;
+						justify-content: center;
+						input{
+							display: none;
+						}
+						.profile-picture {
+							transition: all 0.3s;
+							cursor: pointer;
+							margin-bottom: 1em;
+						}
+						.profile-picture:hover {
+							filter: blur(2px);
+						}
+
+						.remove-picture-button {
+							height: max-content;
+							width: max-content;
+							font-family: "Noto-bold";
+							background-color: #e23c3c;
+							color: #fff;
+							border: none;
+							border-radius: 0.625em;
+							font-size: 0.925em;
+							padding: 0.625em 2em;
+						}
+						.remove-picture-button:hover {
+							background-color: #e94a4a;
+						}
+					}
+				}
+
+				.main-user-profile-form {
+					display: flex;
+					margin-top: 1em;
+					height: max-content;
+					width: 100%;
+					justify-content: center;
+
+					.left-inputs {
+						display: flex;
+						height: max-content;
+						flex-direction: column;
+						width: 60%;
+						.input-main {
+							width: 100%;
+						}
+                        .sg-lg-btn-complex{
+                            margin-top: 1em;
+                        }
+					}
+				}
+			}
+		}
+	}
+}

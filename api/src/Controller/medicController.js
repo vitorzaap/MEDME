@@ -1,7 +1,26 @@
 import { Router } from "express";
-import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById, pendentConsult, allConsuts, ultimaAvaliacao } from "../Repo/medicRepo.js";
+import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById, pendentConsult, allConsuts, ultimaAvaliacao, changeDoctor, alterimage } from "../Repo/medicRepo.js";
+import multer from 'multer';
 
 const router = Router();
+const upload = multer({ dest: 'storage/userImages' })
+
+router.put("/api/medic/:id/capa", upload.single('capa'), async (req, res) => {
+	try{
+		const { id } = 	req.params;
+		const image  = 	req.file.path;
+		const r = await alterimage(image, id)
+		if(r != 1) 
+			throw new Error('A imagem não pode ser salva.')
+
+		res.status(204).send()
+	} catch (err) {
+		res.status(400).send({
+			erro: err.message,
+		});
+	}
+})
+
 router.post("/api/medic/login", async (req, res) => {
 	try {
 		const medic = req.body;
@@ -131,6 +150,18 @@ router.get("/api/medic/LastAvaliation/:doctorId", async (req, res) => {
 		if(!r) 
 			throw new Error('Você não fez nenhuma avaliação ainda')
 		res.send(r[0]);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+
+router.put("/api/medic/account", async (req, res) => {
+	try {
+		const doctor = req.body;
+		const r = await changeDoctor(doctor);
+			res.status(201).send(r);
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,

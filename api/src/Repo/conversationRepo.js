@@ -46,7 +46,18 @@ export async function searchConversationbyId(conversationId) {
   const [r] = await con.query(c, [conversationId]);
   return r;
 }
-
+export async function searchConversationbyIdDoctor(conversationId) {
+  const c = `
+                SELECT tb_usuario.id_usuario      id,
+                       nm_usuario                userName,
+                       img_icon                 icon
+                FROM   tb_conversa
+                INNER JOIN tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario
+                WHERE id_conversa = ?;
+                `;
+  const [r] = await con.query(c, [conversationId]);
+  return r;
+}
 export async function createConversation(doctorId, userId) {
   const c = `
         INSERT INTO tb_conversa(id_medico, id_usuario) 

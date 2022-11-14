@@ -4,7 +4,7 @@ import Cabecalho from "../../Components/Header/index.js";
 import DavidLester from "../../../assets/images/david.svg";
 import SendVector from "../../../assets/images/send-message-icon.svg";
 import storage from "local-storage";
-import { listConversation, getConversationInfoById } from "../../../api/conversationApi.js";
+import { listConversation, getConversationInfoByIdDoctor } from "../../../api/conversationApi.js";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
@@ -16,19 +16,18 @@ export default function Index() {
 	const [messages, setMessages] = useState([]);
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
-	const [doctorInfo, setDoctorInfo] = useState([]);
+	const [userInfo, setUserInfo] = useState([]);
 
-	async function listUserConversation() {
+	async function listDoctorConversation() {
 		const r = await listConversation(doctor.id, null);
 		console.log(r)
 		setConversation(r);
 	}
 
 	async function searchById(id) {
-		const r = await getConversationInfoById(id);
-		setDoctorInfo(r);
+		const r = await getConversationInfoByIdDoctor(id);
+		setUserInfo(r);
   }
-
 
 	async function submitMessage() {
 		socket.emit("send_message", {
@@ -55,9 +54,8 @@ export default function Index() {
 	});
 
 	useEffect(() => {
-		listUserConversation();
+		listDoctorConversation();
   }, []);
-
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -78,7 +76,7 @@ export default function Index() {
 									<img src={DavidLester} alt="user icon" />
 								</div>
 								<div className="conversation-info">
-									
+								<h1 className="name">{item.userName}</h1>
 									<p className="doctor-description">{item.doctorDesc}</p>
 								</div>
 							</div>
@@ -90,7 +88,9 @@ export default function Index() {
 								<img src={DavidLester} alt="icon" width="70%" />
 							</div>
 							<div className="div-message-header-name">
-								
+							{userInfo.map((item) => (
+									<span>{item.userName}</span>
+								))}
 							</div>
 						</div>
 						<div className="messages-div">
