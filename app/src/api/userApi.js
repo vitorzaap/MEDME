@@ -84,3 +84,7 @@ export async function LastAvaliation(userId) {
   const r = await api.get(`/api/user/LastAvaliation/${userId}`);
   return r.data;
 }
+export async function searchMedic(doctorId) {
+  const r = await api.get(`/api/user/medic/${doctorId}`);
+  return r.data;
+}

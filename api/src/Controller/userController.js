@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage, addConversa, pendentConsult, ultimaAvaliacao } from "../Repo/userRepo.js";
+import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage, addConversa, pendentConsult, ultimaAvaliacao, searchMedic } from "../Repo/userRepo.js";
 import multer from 'multer';
 
 const router = Router();
@@ -166,6 +166,17 @@ router.get("/api/user/LastAvaliation/:userId", async (req, res) => {
 		let r = await ultimaAvaliacao(userId);
 		if(!r) 
 			throw new Error('Você não fez nenhuma avaliação ainda')
+		res.send(r[0]);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+router.get("/api/user/medic/:doctorId", async (req, res) => {
+	try {
+		const { doctorId } = req.params;
+		let r = await searchMedic(doctorId);
 		res.send(r[0]);
 	} catch (err) {
 		res.status(401).send({

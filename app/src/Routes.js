@@ -8,6 +8,7 @@ import UserMessages from "./Pages/User/Messages";
 import UserConsultas from "./Pages/User/Consultas";
 import UserAvaliacoes from "./Pages/User/Evaluation";
 import UserMedics from "./Pages/User/Medics";
+import UserMedicsDescription from "./Pages/User/Medics/description-medic";
 import MedicLogin from "./Pages/Medic/login";
 import MedicDashBoard from "./Pages/Medic/DashBoard";
 import MedicMessages from "./Pages/Medic/Messages";
@@ -29,6 +30,7 @@ export default function Index() {
 				<Route path="/mensagens" element={<UserMessages />} />
 				<Route path="/consultas" element={<UserConsultas />} />
 				<Route path="/medics" element={<UserMedics />} />
+				<Route path="/medics/description/:doctorId" element={<UserMedicsDescription />} />
 				<Route path="/avaliacoes/:id/:idConsulta" element={<UserAvaliacoes />} />
 				<Route path="/medic/login" element={<MedicLogin />} />
 				<Route path="/medic/dashboard" element={<MedicDashBoard />} />

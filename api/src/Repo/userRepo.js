@@ -150,3 +150,11 @@ export async function ultimaAvaliacao(userId) {
   const [res] = await con.query(c, [userId]);
   return res;
 }
+export async function searchMedic(doctorId){
+  const c = `
+  SELECT * FROM tb_medico
+  WHERE id_medico = ?
+        `;
+  const [res] = await con.query(c, [doctorId]);
+  return res;
+}

@@ -26,8 +26,7 @@ export default function Medics() {
             <div className="align">
             {medicos.map((item) => (
               <div className="user-medics-card-medic" onClick={() => {
-                navigate('/mensagens');
-                addConversa(item.id, user.id)
+                navigate(`/medics/description/${item.id}`);
               }}>
                 <div className="user-medics-card-medic-profile">
                   {item.icon ? <img src={item.icon} /> : <img src={iconuser} />}
@@ -36,9 +35,7 @@ export default function Medics() {
                 </div>
                 <div className="user-medics-card-medic-description">
                   <p>{item.descricao}</p>
-                   
                   </div>
-                
               </div>
             ))}
             </div>
