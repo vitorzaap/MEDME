@@ -132,3 +132,21 @@ export async function addConversa(medicID, userId) {
   const [res] = await con.query(c, [medicID, userId]);
   return res;
 }
+export async function pendentConsult(userId) {
+  const c = `
+  SELECT * FROM tb_consulta 
+  WHERE id_situacao = 1
+  AND id_usuario = ?
+        `;
+  const [res] = await con.query(c, [userId]);
+  return res;
+}
+export async function ultimaAvaliacao(userId) {
+  const c = `
+  SELECT * FROM tb_avaliacao
+  WHERE id_usuario = ?
+  ORDER BY id_avaliacao DESC
+        `;
+  const [res] = await con.query(c, [userId]);
+  return res;
+}

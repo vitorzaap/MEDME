@@ -1,5 +1,5 @@
 import { response, Router } from "express";
-import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage, addConversa } from "../Repo/userRepo.js";
+import { getUser, getMedics, userLogin, userSigIn, verifUserEmail, userAccept, getConsultas, addAvaliacao, changeUser, alterimage, addConversa, pendentConsult, ultimaAvaliacao } from "../Repo/userRepo.js";
 import multer from 'multer';
 
 const router = Router();
@@ -147,5 +147,30 @@ router.post("/api/user/conversa", async (req, res) => {
 		});
 	}
 });
-
+router.get("/api/user/consulta/pendent/:userId", async (req, res) => {
+	try {
+		const { userId } = req.params;
+		let r = await pendentConsult(userId);
+		if(!r) 
+			throw new Error('Você não possui consultas pendentes')
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+router.get("/api/user/LastAvaliation/:userId", async (req, res) => {
+	try {
+		const { userId } = req.params;
+		let r = await ultimaAvaliacao(userId);
+		if(!r) 
+			throw new Error('Você não fez nenhuma avaliação ainda')
+		res.send(r[0]);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
 export default router;

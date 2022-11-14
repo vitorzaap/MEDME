@@ -76,3 +76,11 @@ export async function addConversa(medicId, userId) {
   });
   return r.data;
 }
+export async function pendentConsult(userId) {
+  const r = await api.get(`/api/user/consulta/pendent/${userId}`);
+  return r.data;
+}
+export async function LastAvaliation(userId) {
+  const r = await api.get(`/api/user/LastAvaliation/${userId}`);
+  return r.data;
+}

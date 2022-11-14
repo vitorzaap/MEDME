@@ -6,16 +6,24 @@ import Cards from "./Cards-DashBoard";
 import Calendar from "../../../assets/images/calendar-dashboard.svg";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
-import { getConsultasId } from "../../../api/userApi.js";
+import { getConsultasId, LastAvaliation, pendentConsult } from "../../../api/userApi.js";
 
 export default function Index() {
+	const user = storage("userInfo");
 	const [consultas, setConsultas] = useState([]);
+	const [consPendente, setConsPendente] = useState([])
+	const [lastAvaliation, setLastAvaliation] = useState([])
 	const [erro, setErro] = useState();
+	async function pendentConsultResponse(){
+		setConsPendente(await pendentConsult(user.id))
+	}
+	async function LastAvaliationResponse(){
+		setLastAvaliation(await LastAvaliation(user.id))
+	}
 	useEffect(() => {
 		async function getConsult() {
 			try {
 				let limit = 9;
-				const user = storage("userInfo");
 				if (window.innerHeight <= 696) {
 					limit = 4;
 				}
@@ -31,15 +39,18 @@ export default function Index() {
 			}
 		}
 		getConsult();
+		pendentConsultResponse()
+		LastAvaliationResponse()
 	}, []);
+	console.log(lastAvaliation)
 	return (
 		<main className="dashboard-main">
 			<section className="dashboard-section-main">
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards titulo="Avaliações" imagem={Calendar} tipo="numero" numero="65" subtitulo="Sua última avaliação" />
-						<Cards titulo="Conversas" imagem={Calendar} tipo="numero" numero="4" subtitulo="Conversas ainda não respondidas." />
+						<Cards titulo="Avaliações" tipo="numero" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
+						<Cards titulo="Conversas" tipo="numero" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
 					</div>
 					<div className="main-div-table">
 						<table className="user-table">

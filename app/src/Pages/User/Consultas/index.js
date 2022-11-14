@@ -35,7 +35,6 @@ export default function Index() {
 		}
 		getConsult();
 	}, []);
-
 	return (
 		<main className="user-main-consultas">
 			<div className="user-consultas-main-content">
@@ -76,7 +75,6 @@ export default function Index() {
 						{consultas.length > 10 && <div className="div-table-navButtons">
 							{storage("page") > 1 && (
 								<div>
-										
 									<button
 										className="btn-nav"
 										onClick={() => {
@@ -95,7 +93,6 @@ export default function Index() {
 							)}
 							{((consultas.length >= 7 && window.innerHeight <= 696) || (consultas.length >= 10 && window.innerHeight > 696)) && (
 								<div>
-										
 									<button
 										className="btn-nav"
 										onClick={() => {
