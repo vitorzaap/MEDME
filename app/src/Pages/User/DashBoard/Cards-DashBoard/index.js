@@ -1,6 +1,5 @@
 import "../../../Common/common.scss"
 import "../index.scss"
-import imagem from '../../../../assets/images/calendar-dashboard.svg'
 
 export default function Card(props){
     return(

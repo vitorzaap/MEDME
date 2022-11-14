@@ -47,3 +47,15 @@ export async function getDoctorById(doctorId) {
 	const r = await api.get(`/api/medic?id=${doctorId}`)
 	return r.data;
 }
+export async function pendentConsult(doctorId) {
+	const r = await api.get(`/api/medic/consulta/pendent/${doctorId}`);
+	return r.data;
+}
+export async function allConsuts(doctorId) {
+	const r = await api.get(`/api/medic/consultas/${doctorId}`);
+	return r.data;
+}
+export async function LastAvaliation(doctorId) {
+	const r = await api.get(`/api/medic/LastAvaliation/${doctorId}`);
+	return r.data;
+  }

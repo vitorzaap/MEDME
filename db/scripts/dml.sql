@@ -48,8 +48,8 @@ INSERT INTO tb_plataforma(ds_plataforma)
 -- EXECUTAR NA ORDEM!!!
 
 -- TB_CONSULTA
-INSERT INTO tb_consulta(id_medico, id_usuario, id_atuacao, id_plataforma, ds_consulta, dt_consulta, vl_preco, ds_link, id_situacao)
-VALUES(1, 34, 1, 4, "Consulta Será Realizada Por Conta Da Falta De Higiene Do Paciente", "2022-11-15", 1200, "https://meet.com", 1);
+INSERT INTO tb_consulta(id_medico, id_usuario, id_atuacao, id_plataforma, ds_consulta, dt_consulta, tm_consulta, vl_preco, ds_link, id_situacao)
+VALUES(1, 34, 1, 4, "Consulta Será Realizada Por Conta Da Falta De Higiene Do Paciente", "2022-11-15", "11:30:00", 1200, "https://meet.com", 1);
 
 -- TB_AVALIACAO
 INSERT INTO tb_avaliacao(id_medico, id_usuario, ds_avaliacao, nr_avaliacao) 

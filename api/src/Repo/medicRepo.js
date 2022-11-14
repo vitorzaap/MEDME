@@ -111,3 +111,32 @@ export async function getDoctorById(id) {
 	const [res] = await con.query(c, [id])
 	return res;
 }
+export async function allConsuts(doctorId) {
+	const c = `
+	SELECT * FROM tb_consulta 
+	WHERE id_medico = ?
+		  `;
+	const [res] = await con.query(c, [doctorId]);
+	return res;
+  }
+
+export async function pendentConsult(doctorId) {
+	const c = `
+	SELECT * FROM tb_consulta 
+	WHERE id_situacao = 1
+	AND id_medico = ?
+		  `;
+	const [res] = await con.query(c, [doctorId]);
+	return res;
+}
+
+export async function ultimaAvaliacao(doctorId) {
+	const c = `
+	SELECT * FROM tb_avaliacao
+	WHERE id_medico = ?
+	ORDER BY id_avaliacao DESC
+		`;
+	const [res] = await con.query(c, [doctorId]);
+	return res;
+  }
+  

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById } from "../Repo/medicRepo.js";
+import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById, pendentConsult, allConsuts, ultimaAvaliacao } from "../Repo/medicRepo.js";
 
 const router = Router();
 router.post("/api/medic/login", async (req, res) => {
@@ -97,4 +97,44 @@ router.get("/api/medic/plataforma", async (req, res) => {
 	}
 });
 
+router.get("/api/medic/consulta/pendent/:doctorId", async (req, res) => {
+	try {
+		const { doctorId } = req.params;
+		let r = await pendentConsult(doctorId);
+		if(!r) 
+			throw new Error('Você não possui consultas pendentes')
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+
+router.get("/api/medic/consultas/:doctorId", async (req, res) => {
+	try {
+		const { doctorId } = req.params;
+		let r = await allConsuts(doctorId);
+		if(!r) 
+			throw new Error('Você não possui consultas pendentes')
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
+router.get("/api/medic/LastAvaliation/:doctorId", async (req, res) => {
+	try {
+		const { doctorId } = req.params;
+		let r = await ultimaAvaliacao(doctorId);
+		if(!r) 
+			throw new Error('Você não fez nenhuma avaliação ainda')
+		res.send(r[0]);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message,
+		});
+	}
+});
 export default router;

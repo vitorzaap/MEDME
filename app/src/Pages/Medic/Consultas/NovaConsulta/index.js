@@ -150,7 +150,7 @@ export default function Index(props) {
 							<div className="coin-text-main">
 								<p className="coin-text">R$</p>
 							</div>
-							<input type="number" className="default-input" placeholder="100" value={price} onChange={(e) => setPrice(e.target.value)} />
+							<input type="number" min={10} className="default-input" placeholder="100" value={price} onChange={(e) => setPrice(e.target.value)} />
 						</div>
 					</div>
 					<div className="input-main">
