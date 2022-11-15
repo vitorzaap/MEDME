@@ -46,7 +46,7 @@ export default function Index(props) {
 		<main className="consult-content-1">
 			<LoadingBar ref={ref} color="#6236fff1" />
 			<div className="title">
-				<h1>Nova Consulta #{storage("userInfo").numConsulta}</h1>
+				<h1>Nova Consulta #{storage("doctorInfo").numConsulta}</h1>
 				<img
 					src={cancel}
 					alt="cancelar"
@@ -65,7 +65,7 @@ export default function Index(props) {
 								value={userId}
 								onChange={(e) => setUserId(e.target.value)}
 								onClick={async () => {
-									const userInfo = storage("userInfo");
+									const userInfo = storage("doctorInfo");
 									const r = await listarPacientes(userInfo.id);
 									setUsers(r);
 								}}>
@@ -103,7 +103,7 @@ export default function Index(props) {
 							value={actionId}
 							onChange={(e) => setActionId(e.target.value)}
 							onClick={async () => {
-								const userInfo = storage("userInfo");
+								const userInfo = storage("doctorInfo");
 								const r = await listarAtuacao(userInfo.id);
 								setAction([r]);
 							}}>
@@ -176,7 +176,7 @@ export default function Index(props) {
 							if (link && desc && price && plataformaId && actionId && userId) {
 								setDisabled(true);
 								ref.current.continuousStart();
-								const medic = storage("userInfo");
+								const medic = storage("doctorInfo");
 								const r = await adicionarConsulta(medic.id, userId, desc, date, time, actionId, plataformaId, price, link);
 								setTimeout(() => {
 									ref.current.complete();

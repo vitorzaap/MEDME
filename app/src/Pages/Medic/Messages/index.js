@@ -12,7 +12,7 @@ const socket = io.connect("http://localhost:5000");
 
 export default function Index() {
 	const [message, setMessage] = useState("");
-	const doctor = storage("userInfo");
+	const doctor = storage("doctorInfo");
 	const [messages, setMessages] = useState([]);
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
@@ -20,7 +20,6 @@ export default function Index() {
 
 	async function listDoctorConversation() {
 		const r = await listConversation(doctor.id, null);
-		console.log(r)
 		setConversation(r);
 	}
 
@@ -32,7 +31,7 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 2,
+			type: 14,
 			senderId: doctor.id,
 			message: message,
 		});

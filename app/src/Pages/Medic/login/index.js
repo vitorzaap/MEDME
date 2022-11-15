@@ -86,7 +86,7 @@ export default function Index() {
 								setDisabled(true);
 								try {
 									const r = await medicLogin(email, pass);
-									storage("userInfo", r);
+									storage("doctorInfo", r);
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000);

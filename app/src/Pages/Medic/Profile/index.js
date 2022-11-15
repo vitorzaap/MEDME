@@ -12,7 +12,7 @@ import {
   medicChangeProfile,
 } from "../../../api/medicApi";
 export default function Index() {
-  const doctor = storage("userInfo");
+  const doctor = storage("doctorInfo");
   const [usuario, setUsuario] = useState([]);
   const [classErrNome, setClassErrNome] = useState("default-input");
   const [nome, setNome] = useState();

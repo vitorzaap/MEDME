@@ -116,11 +116,13 @@
       h1{
         color: #fff;
         font-size: 3em;
+        font-family: "Noto-bold";
       }
       h6{
         text-align: center;
-        color: rgb(224, 224, 224);
+        color: rgb(204, 204, 204);
         width: 50%;
+        font-family: "Noto-semibold";
         font-size: 1em;
       }
       p{
@@ -132,8 +134,11 @@
       width: 35%;
       font-family: inherit;
       font-size: 20px;
-      background: royalblue;
-      color: white;
+      background: #fff;
+      color: #7d59ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 0.7em 1em;
       padding-left: 0.9em;
       display: flex;

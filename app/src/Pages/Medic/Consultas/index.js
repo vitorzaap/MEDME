@@ -20,7 +20,7 @@ export default function Index() {
     useEffect(() => {
 		async function getConsult() {
 			try {
-				const medic = storage("userInfo");
+				const medic = storage("doctorInfo");
 				let response = await getConsultas(medic.id);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);

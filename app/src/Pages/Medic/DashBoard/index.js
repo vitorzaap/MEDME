@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { allConsuts, LastAvaliation, pendentConsult } from "../../../api/medicApi";
 
 export default function Index() {
-    const user = storage("userInfo");
+    const user = storage("doctorInfo");
     const [consPendente, setConsPendente] = useState([])
     const [lastAvaliation, setLastAvaliation] = useState([])
     const [consults, setConsults] = useState([])
