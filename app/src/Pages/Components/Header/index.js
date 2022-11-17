@@ -13,7 +13,7 @@ export default function Index(props) {
   const ref = useRef();
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
-  const [doctor2, setDoctor2] = useState({})
+  const [doctor2, setDoctor2] = useState([])
   function loadNavigate(locate) {
     ref.current.continuousStart();
     setDisabled(true);
@@ -27,12 +27,13 @@ export default function Index(props) {
   }
   async function setDoctor() {
     const [r] = await getDoctorById(doctor.id)
+    console.log(r)
     setDoctor2(r)
+    
   }
   useEffect(() => {
     setDoctor()
-  })
-  console.log(doctor2.img_icon)
+  }, [])
   return (
     <header className="default-header">
       <LoadingBar ref={ref} color="#fff" />

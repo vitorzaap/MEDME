@@ -77,7 +77,7 @@ export default function Index() {
 									});
 								}}>
 								<div className="icon-div">
-									<img src={DavidLester} alt="user icon" />
+									
 								</div>
 								<div className="conversation-info">
 								<h1 className="name">{item.userName}</h1>
@@ -89,7 +89,7 @@ export default function Index() {
 					<div className="div-message">
 						<div className="message-header">
 							<div className="div-message-header-icon">
-								<img src={DavidLester} alt="icon" width="70%" />
+								
 							</div>
 							<div className="div-message-header-name">
 							{userInfo.map((item) => (
