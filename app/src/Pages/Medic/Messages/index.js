@@ -36,7 +36,7 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 14,
+			type: 2,
 			senderId: doctor.id,
 			message: message,
 		});
@@ -56,6 +56,12 @@ export default function Index() {
 	socket.on("receive_message", (data) => {
     setMessages(data);
 	});
+	document.addEventListener("keypress" , function (e) {
+		if(e.key === "Enter"){
+			const btn = document.querySelector("#send-doctor");
+			btn.click();
+		}
+	})
 
 	useEffect(() => {
 		listDoctorConversation();
@@ -109,7 +115,7 @@ export default function Index() {
 									<div className="div-send-message">
 										<input type="text" className="send-message-input" value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
 										{message && (
-											<div className="send-icon-div" onClick={() => submitMessage()}>
+											<div id='send-doctor'className="send-icon-div" onClick={() => submitMessage()}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
 											</div>
 										)}

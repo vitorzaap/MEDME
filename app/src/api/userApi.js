@@ -60,8 +60,6 @@ export async function getUser(id) {
   return r.data;
 }
 export async function alterImage(id, image) {
-  console.log(id, image)
-  console.log(form)
   let form = new FormData();
   form.append("capa", image);
  

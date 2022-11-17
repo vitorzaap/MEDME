@@ -10,6 +10,7 @@ import {
   alterImage,
   getDoctorById,
   medicChangeProfile,
+  searchImage,
 } from "../../../api/medicApi";
 export default function Index() {
   const doctor = storage("doctorInfo");
@@ -33,6 +34,13 @@ export default function Index() {
     const [r] = await getDoctorById(doctor.id);
     setUsuario(r);
   }
+  async function setImageUser() {
+    const r = await (usuario.img_icon)
+    setImage(r)
+  }
+  useEffect(() => {
+    if (image != usuario.img_icon) setImageUser()
+  }, [usuario])
   useEffect(() => {
     exibirUser();
     if (!usuario) {
@@ -54,9 +62,6 @@ export default function Index() {
     if (!senha || senha === undefined) {
       setSenha(usuario.ds_senha);
     }
-    if (!image || image === undefined) {
-      setImage(usuario.img_icon);
-    }
   }
   async function alterarConfig() {
     const userConfig = await medicChangeProfile(
@@ -75,6 +80,9 @@ export default function Index() {
     }
     setPassLength(s);
   }
+  function show(x) {
+    return URL.createObjectURL(x);
+  }
   return (
     <main className="user-profile-main">
       <div className="user-profile-main-content">
@@ -87,23 +95,34 @@ export default function Index() {
             </div>
             <div className="main-user-card-picture">
               <div className="user-card-picture">
-                {!image ? (
+              {!usuario.img_icon && (
                   <img
                     src={iconuser}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
-                    onClick={() => document.getElementById("imagem").click()}
+					          onClick={() => document.getElementById("imagem").click()}
                   />
-                ) : (
+                )}
+                {image == ('http://localhost:5000/'+usuario.img_icon) ? (
                   <img
-                    src={URL.createObjectURL(image)}
+                    src={image}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
-                    onClick={() => document.getElementById("imagem").click()}
+					          onClick={() => document.getElementById("imagem").click()}
                   />
-                )}
+                )
+                  : (
+                    <img
+                    src={image ? show(image) : ``}
+                    alt="profile picture"
+                    width="96px"
+                    className="profile-picture"
+                      onClick={() => document.getElementById("imagem").click()}
+                  />
+                  )
+              }
                 <input
                   type="file"
                   id="imagem"

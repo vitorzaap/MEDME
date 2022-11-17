@@ -12,15 +12,14 @@ export default function Index() {
   const user = storage("userInfo");
   const [usuario, setUsuario] = useState([]);
   const [classErrNome, setClassErrNome] = useState("default-input");
-  const [nome, setNome] = useState();
-  const [sobrenome, setSobrenome] = useState();
-  const [email, setEmail] = useState();
-  const [senha, setSenha] = useState();
-  const [passLength, setPassLength] = useState("");
+  const [nome, setNome] = useState(user.name);
+  const [sobrenome, setSobrenome] = useState(user.sobrenome);
+  const [email, setEmail] = useState(user.email);
+  const [senha, setSenha] = useState(user.pass);
   const [err, setErr] = useState("");
   const [image, setImage] = useState();
   const navigate = useNavigate();
-  
+
   if (!storage("userInfo")) {
     navigate("/login")
   }
@@ -42,7 +41,6 @@ export default function Index() {
       navigate("/");
     }
     alterConfigVerification();
-    length();
   }, []);
   function alterConfigVerification() {
     if (!nome || nome === undefined) {
@@ -67,20 +65,15 @@ export default function Index() {
         senha,
         user.id
       );
+      storage("userInfo", userConfig)
       const r = await alterImage(user.id, image);
     
     } catch (error) {
-      console.log(error.response)  
+      console.log(error)  
     }
     
   }
-  function length() {
-    let s = "";
-    for (let i = 0; i < user.senha.length; i++) {
-      s += "*";
-    }
-    setPassLength(s);
-  }
+
   function show(x) {
     return URL.createObjectURL(x);
   }
@@ -118,11 +111,11 @@ export default function Index() {
                 )
                   : (
                     <img
-                    src={image ? show(image) : ``}
+                    src={image ? show(image) : ''}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
-                    onClick={() => document.getElementById("imagem").click()}
+                      onClick={() => document.getElementById("imagem").click()}
                   />
                   )
               }
@@ -238,13 +231,13 @@ export default function Index() {
                     )}
                   </div>
                 )}
-                {!senha ? (
+                
                   <div className="input-main">
                     <p className="input-text">Nova Senha</p>
                     <input
                       type="text"
                       className={classErrNome}
-                      placeholder={passLength}
+                      placeholder={senha}
                       value={senha}
                       onChange={(e) => setSenha(e.target.value)}
                     />
@@ -252,23 +245,7 @@ export default function Index() {
                       <p className="err-p">Este campo não pode estar vazio.</p>
                     )}
                   </div>
-                ) : (
-                  <div className="input-main">
-                    <p className="input-text">Nova Senha</p>
-                    <input
-                      type="text"
-                      className={classErrNome}
-                      value={senha}
-                      onChange={(e) => {
-                        alterConfigVerification();
-                        setSenha(e.target.value);
-                      }}
-                    />
-                    {classErrNome === "err-input" && (
-                      <p className="err-p">Este campo não pode estar vazio.</p>
-                    )}
-                  </div>
-                )}
+                
                 <div className="btn-div">
                   <button
                     id="send"

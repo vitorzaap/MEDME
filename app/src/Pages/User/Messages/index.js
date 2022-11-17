@@ -56,6 +56,12 @@ export default function Index() {
 		console.log(data);
 		setMessages(data);
 	});
+	document.addEventListener("keypress" , function (e) {
+		if(e.key === "Enter"){
+			const btn = document.querySelector("#send");
+			btn.click();
+		}
+	})
 
 	useEffect(() => {
 		listUserConversation();
@@ -115,9 +121,9 @@ export default function Index() {
 									<div className="div-send-message">
 										<input type="text" className="send-message-input" value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
 										{message && (
-											<div className="send-icon-div" onClick={() => submitMessage()}>
+											<div id="send" className="send-icon-div" onClick={() => submitMessage()}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
-											</div>
+											</div> 
 										)}
 									</div>
 								</div>
