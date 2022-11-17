@@ -278,7 +278,7 @@ export default function Index() {
                                 fontSize: ".92em",
                               }}
                             >
-                              Editar
+                              Sim
                             </button>
                           </span>
                         ),
@@ -291,7 +291,7 @@ export default function Index() {
                       );
                     }}
                   >
-                    Editar Perfil
+                    Salvar
                   </button>
                 </div>
               </div>

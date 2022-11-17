@@ -48,8 +48,8 @@ export default function Index() {
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards titulo="Avaliações" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
-						<Cards titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
+						<Cards cor='#202020' titulo="Avaliações" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
+						<Cards cor='#202020' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
 					</div>
 					<div className="main-div-table">
 						<table className="user-table">
@@ -92,7 +92,7 @@ export default function Index() {
 							))}
 						</table>
 						{erro !== undefined && (
-							<div className="err-div-message">
+							<div className="err-div-message" style={{ width: '80.25%' }}>
 								<span className="err-message">{erro}</span>
 							</div>
 						)}

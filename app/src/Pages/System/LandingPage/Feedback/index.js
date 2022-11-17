@@ -20,13 +20,17 @@ export default function Index() {
 		}
 	emailjs.send("service_zsyasq7","template_194ib1d", templateParams, "yqWVGlu6_H6kx5fYq")
 	.then(() =>{
-		setNome('')
-		setEmail('')
-		setMsg('')
+		
 
 	})
 
 	}
+	document.addEventListener("keypress", function (e) {
+		if (e.key === "Enter") {
+			const btn = document.querySelector("#send");
+			btn.click();
+		}
+	})
 
 	return (
 		<main className="sigin-main">
@@ -51,7 +55,11 @@ export default function Index() {
 						<textarea className="default-input" id="input-message" onChange={(e)=> setMsg(e.target.value)}/>
 					</div>
 					
-					<button className="sg-lg-btn-complex" >
+						<button  id= "send" className="sg-lg-btn-complex" onClick={() => {
+							setNome('')
+							setEmail('')
+							setMsg('')
+						}}>
 						Enviar
 					</button>
 

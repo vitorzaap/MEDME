@@ -3,10 +3,11 @@ import "../../Common/common.scss";
 import toast, { Toaster } from "react-hot-toast";
 import Header from "../../Components/Header";
 import iconuser from "../../../assets/images/user-icon.svg";
-import storage from "local-storage";
+import storage, { set } from "local-storage";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUser, userChangeProfile, alterImage } from "../../../api/userApi";
+import { searchImage } from "../../../api/medicApi";
 export default function Index() {
   const user = storage("userInfo");
   const [usuario, setUsuario] = useState([]);
@@ -28,6 +29,13 @@ export default function Index() {
     const [r] = await getUser(user.id);
     setUsuario(r);
   }
+  async function setImageUser(){
+    const r = await searchImage(usuario.img_icon)
+    setImage(r)
+  }
+  useEffect(() => {
+    if(image != usuario.img_icon) setImageUser()
+  }, [usuario])
   useEffect(() => {
     exibirUser();
     if (!usuario) {
@@ -48,9 +56,6 @@ export default function Index() {
     }
     if (!senha || senha === undefined) {
       setSenha(usuario.ds_senha);
-    }
-    if (!image || image === undefined) {
-      setImage(usuario.img_icon);
     }
   }
   async function alterarConfig() {
@@ -84,27 +89,38 @@ export default function Index() {
               <div
                 className="user-card-picture"
               >
-                {!image ? (
+                {!usuario.img_icon && (
                   <img
                     src={iconuser}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
-					onClick={() => document.getElementById("imagem").click()}
+					          onClick={() => document.getElementById("imagem").click()}
                   />
-                ) : (
+                )}
+                {image == ('http://localhost:5000/'+usuario.img_icon) ? (
                   <img
-                    src={URL.createObjectURL(image)}
+                    src={image}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
-					onClick={() => document.getElementById("imagem").click()}
+					          onClick={() => document.getElementById("imagem").click()}
                   />
-                )}
+                )
+                  : (
+                    <img
+                    src={iconuser}
+                    alt="profile picture"
+                    width="96px"
+                    className="profile-picture"
+                    onClick={() => document.getElementById("imagem").click()}
+                  />
+                  )
+              }
                 <input
                   type="file"
                   id="imagem"
-                  onChange={(e) => setImage(e.target.files[0])}
+                  onChange={e => setImage(e.target.files[0])}
                 />
                 {!image ? (
                   <div></div>
@@ -124,7 +140,7 @@ export default function Index() {
                     <input
                       type="text"
                       className={classErrNome}
-                      placeholder={user.name}
+                      placeholder={usuario.nm_usuario}
                       value={nome}
                       onChange={(e) => setNome(e.target.value)}
                     />
@@ -155,7 +171,7 @@ export default function Index() {
                     <input
                       type="text"
                       className={classErrNome}
-                      placeholder={user.sobrenome}
+                      placeholder={usuario.sbr_usuario}
                       value={sobrenome}
                       onChange={(e) => setSobrenome(e.target.value)}
                     />
@@ -186,7 +202,7 @@ export default function Index() {
                     <input
                       type="text"
                       className={classErrNome}
-                      placeholder={user.email}
+                      placeholder={usuario.ds_email}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
