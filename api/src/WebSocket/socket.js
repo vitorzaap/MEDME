@@ -10,6 +10,7 @@ app.use(cors());
 
 //configurando storage
 app.use('/storage/userImages', express.static('storage/userImages'));
+app.use('/storage/doctorImages', express.static('storage/doctorImages'));
 
 //criando o httpServer passando como parâmetro o server express
 const serverHttp = http.createServer(app);

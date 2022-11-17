@@ -3,7 +3,7 @@ import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPla
 import multer from 'multer';
 
 const router = Router();
-const upload = multer({ dest: 'storage/userImages' })
+const upload = multer({ dest: 'storage/doctorImages' })
 
 router.put("/api/medic/:id/capa", upload.single('capa'), async (req, res) => {
 	try{

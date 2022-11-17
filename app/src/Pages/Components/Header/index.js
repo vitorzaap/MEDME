@@ -5,14 +5,15 @@ import Logo from "../../../assets/images/Logo2 (2).svg";
 import icon from "../../../assets/images/user-icon.svg";
 import search from "../../../assets/images/search-bar.svg";
 import LoadingBar from "react-top-loading-bar";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { getDoctorById, searchImage } from "../../../api/medicApi";
 export default function Index(props) {
   const user = storage("userInfo");
   const doctor = storage("doctorInfo")
   const ref = useRef();
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
-
+  const [doctor2, setDoctor2] = useState({})
   function loadNavigate(locate) {
     ref.current.continuousStart();
     setDisabled(true);
@@ -24,6 +25,14 @@ export default function Index(props) {
       }, 200);
     }, Math.floor(Math.random() * 1500) + 500);
   }
+  async function setDoctor() {
+    const [r] = await getDoctorById(doctor.id)
+    setDoctor2(r)
+  }
+  useEffect(() => {
+    setDoctor()
+  })
+  console.log(doctor2.img_icon)
   return (
     <header className="default-header">
       <LoadingBar ref={ref} color="#fff" />
@@ -33,16 +42,16 @@ export default function Index(props) {
             <div className="logo-div" onClick={() => {
               ref.current.continuousStart();
               setDisabled(true);
-              
+
               setTimeout(() => {
-                 ref.current.complete();
+                ref.current.complete();
                 setTimeout(() => {
                   storage.remove('doctorInfo')
                   navigate('/medic/login')
-                   setDisabled(false);
-                 }, 200);
-               }, Math.floor(Math.random() * 1500) + 500);
-               
+                  setDisabled(false);
+                }, 200);
+              }, Math.floor(Math.random() * 1500) + 500);
+
             }}>
               <img src={Logo} width="32px" />
             </div>
@@ -70,27 +79,36 @@ export default function Index(props) {
               </button>
             </div>
           </div>
-          
+
           <div className="profile-div" onClick={() => navigate("/medic/profile")}>
-            <img
-              src={icon}
-              alt="default-icon"
-              width="32px"
-              className="icon-user"
-            />
+            {doctor2.img_icon === null
+              ? <img
+                src={icon}
+                alt="default-icon"
+                width="32px"
+                className="icon-user"
+              />
+              : <img
+              src={searchImage(doctor2.img_icon)}
+                alt="default-icon"
+                width="32px"
+                className="icon-user"
+              />
+            }
+
             <span className="profile-name">
-              {doctor.name[0].toUpperCase() + doctor.name.slice(1)}
+              {doctor2.nm_medico}
             </span>
           </div>
         </div>
       ) : (
         <div className="default-header-content">
           <div className="links-div">
-              <div className="logo-div" onClick={() => {
-                storage.remove('userInfo')
-                setTimeout(() => {
-                  navigate('/user/login')
-                }, 2000)
+            <div className="logo-div" onClick={() => {
+              storage.remove('userInfo')
+              setTimeout(() => {
+                navigate('/user/login')
+              }, 2000)
             }}>
               <img src={Logo} width="32px" />
             </div>

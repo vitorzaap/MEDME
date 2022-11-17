@@ -70,7 +70,7 @@ export default function Index() {
                         <Cards titulo='Conversas' numero={consPendente.length} subtitulo="Conversas criadas." cor='#6336FF' accentcolor='7750FF'/>
                     </div>
                     
-                        <div className="main-div-table" style={{ border:"1px solid red", justifyContent:"start",width: "100%" }}>
+                        <div className="main-div-table" style={{ justifyContent:"start",width: "100%" }}>
 						<table className="user-table" style={{width: "96.5%"}}>
 							<tr className="user-tr">
 								<th>Paciente</th>
