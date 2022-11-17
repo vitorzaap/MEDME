@@ -6,18 +6,21 @@ import { getConsultas } from "../../../api/medicApi.js"
 import storage from "local-storage"
 import { Toaster } from "react-hot-toast";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Index() {
     const [erro, setErro] = useState();
-    const [consultas, setConsultas] = useState([]);
-
+	const [consultas, setConsultas] = useState([]);
+	const navigate = useNavigate();
+	
     function showNova(){
         var element = document.getElementById("pop-up");
         element.classList.add("show-main");
     }
 
-    useEffect(() => {
+	useEffect(() => {
+		
 		async function getConsult() {
 			try {
 				const medic = storage("doctorInfo");

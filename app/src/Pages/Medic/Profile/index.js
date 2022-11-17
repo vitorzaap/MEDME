@@ -25,6 +25,9 @@ export default function Index() {
   const [verificPass, setVerificPass] = useState(0);
   const [image, setImage] = useState();
   const navigate = useNavigate();
+	if (!storage("doctorInfo")) {
+		navigate("/medic/login")
+	}
 
   async function exibirUser() {
     const [r] = await getDoctorById(doctor.id);

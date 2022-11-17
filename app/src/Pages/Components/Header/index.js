@@ -6,9 +6,9 @@ import icon from "../../../assets/images/user-icon.svg";
 import search from "../../../assets/images/search-bar.svg";
 import LoadingBar from "react-top-loading-bar";
 import { useRef, useState } from "react";
-export default function Index() {
+export default function Index(props) {
   const user = storage("userInfo");
-  const name = user.name;
+  const doctor = storage("doctorInfo")
   const ref = useRef();
   const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
@@ -27,10 +27,23 @@ export default function Index() {
   return (
     <header className="default-header">
       <LoadingBar ref={ref} color="#fff" />
-      {user.atuacao ? (
+      {user == null ? (
         <div className="default-header-content">
           <div className="links-div">
-            <div className="logo-div">
+            <div className="logo-div" onClick={() => {
+              ref.current.continuousStart();
+              setDisabled(true);
+              
+              setTimeout(() => {
+                 ref.current.complete();
+                setTimeout(() => {
+                  storage.remove('doctorInfo')
+                  navigate('/medic/login')
+                   setDisabled(false);
+                 }, 200);
+               }, Math.floor(Math.random() * 1500) + 500);
+               
+            }}>
               <img src={Logo} width="32px" />
             </div>
             <div className="div-pages">
@@ -57,18 +70,7 @@ export default function Index() {
               </button>
             </div>
           </div>
-          <div className="search-div">
-            <div className="input-search-main">
-              <div className="div-search-icon">
-                <img src={search} alt="search-icon" className="search-icon" />
-              </div>
-              <input
-                type="search"
-                className="default-header-search"
-                placeholder="Busque o que quiser..."
-              />
-            </div>
-          </div>
+          
           <div className="profile-div" onClick={() => navigate("/medic/profile")}>
             <img
               src={icon}
@@ -77,14 +79,19 @@ export default function Index() {
               className="icon-user"
             />
             <span className="profile-name">
-              {name[0].toUpperCase() + name.slice(1)}
+              {doctor.name[0].toUpperCase() + doctor.name.slice(1)}
             </span>
           </div>
         </div>
       ) : (
         <div className="default-header-content">
           <div className="links-div">
-            <div className="logo-div">
+              <div className="logo-div" onClick={() => {
+                storage.remove('userInfo')
+                setTimeout(() => {
+                  navigate('/user/login')
+                }, 2000)
+            }}>
               <img src={Logo} width="32px" />
             </div>
             <div className="div-pages">
@@ -138,7 +145,7 @@ export default function Index() {
               className="icon-user"
             />
             <span className="profile-name">
-              {name[0].toUpperCase() + name.slice(1)}
+              {user.name[0].toUpperCase() + user.name.slice(1)}
             </span>
           </div>
         </div>

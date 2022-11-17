@@ -7,7 +7,6 @@ import Calendar from "../../../assets/images/calendar-dashboard.svg";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
 import { getConsultasId, LastAvaliation, pendentConsult } from "../../../api/userApi.js";
-
 export default function Index() {
 	const user = storage("userInfo");
 	const [consultas, setConsultas] = useState([]);

@@ -24,6 +24,10 @@ export default function Index() {
 		orange: "#F6D523",
 		gray: "#B4B4B4",
 	};
+	const navigate = useNavigate();
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
 
 	document.addEventListener("keypress", function (e) {
 		if (e.key === "Enter") {

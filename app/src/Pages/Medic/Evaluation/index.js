@@ -4,7 +4,14 @@ import Cabecalho from "../../Components/Header/index.js"
 import LinhaSeparação from "../../../assets/images/linha-separação2.svg"
 import Card from "./card-comments"
 import David from "../../../assets/images/david.svg";
+import { useNavigate } from "react-router-dom";
+import storage from "local-storage"
 export default function Index() {
+
+    const navigate = useNavigate();
+	if (!storage("doctorInfo")) {
+		navigate("/medic/login")
+	}
 	return (
 		<main className="evaluation-main">
             <section className="evaluation-section-main">

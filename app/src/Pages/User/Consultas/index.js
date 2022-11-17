@@ -13,6 +13,10 @@ import arrowLeft from "../../../assets/images/arrow-left.svg";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
 	const [erro, setErro] = useState();
+	const navigate = useNavigate();
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
 	useEffect(() => {
 		async function getConsult() {
 			try {

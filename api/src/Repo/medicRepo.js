@@ -19,6 +19,10 @@ export async function medicLogin(medic) {
 	return res[0];
 }
 
+export async function searchByDate(id, date) {
+	const c = `SELECT * FROM tb_consulta WHERE id_medico = ? AND dt_consulta = ?`
+}
+
 export async function novaConsulta(consulta) {
 	const c = `
 			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, id_plataforma, vl_preco, ds_link, id_situacao)
@@ -86,6 +90,7 @@ export async function getConsulta(id) {
 	tb_atuacao.ds_atuacao			atuacao,
 	tb_plataforma.ds_plataforma     plataforma,
 	ds_consulta						descricao,
+	nr_consulta						consultas,
 	dt_consulta						dataConsulta,
 	tm_consulta						horaConsulta,
 	vl_preco		        		preco,
@@ -94,10 +99,11 @@ export async function getConsulta(id) {
 	tb_situacao.id_situacao			idSituacao
 	FROM tb_consulta 
 	INNER JOIN tb_plataforma ON tb_plataforma.id_plataforma = tb_consulta.id_plataforma
+	INNER JOIN tb_medico on tb_medico.id_medico = tb_consulta.id_medico
 	INNER JOIN tb_atuacao ON tb_atuacao.id_atuacao = tb_consulta.id_atuacao
 	INNER JOIN tb_usuario ON tb_usuario.id_usuario = tb_consulta.id_usuario
 	INNER JOIN tb_situacao ON tb_situacao.id_situacao = tb_consulta.id_situacao
-	WHERE id_medico = ?;
+	WHERE tb_medico.id_medico = ?;
 		`;
 	const [res] = await con.query(c, [id]);
 	return res;
@@ -132,7 +138,7 @@ export async function pendentConsult(doctorId) {
 
 export async function ultimaAvaliacao(doctorId) {
 	const c = `
-	SELECT * FROM tb_avaliacao
+	SELECT nr_avaliacao FROM tb_avaliacao
 	WHERE id_medico = ?
 	ORDER BY id_avaliacao DESC
 		`;

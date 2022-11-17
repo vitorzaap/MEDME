@@ -21,7 +21,9 @@ export default function Index() {
   const [verificPass, setVerificPass] = useState(0);
   const [image, setImage] = useState();
   const navigate = useNavigate();
-
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
   async function exibirUser() {
     const [r] = await getUser(user.id);
     setUsuario(r);

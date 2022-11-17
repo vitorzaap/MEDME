@@ -7,6 +7,7 @@ import storage from "local-storage";
 import { listConversation, getConversationInfoById } from "../../../api/conversationApi.js";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
+import { useNavigate } from "react-router-dom";
 
 const socket = io.connect("http://localhost:5000");
 
@@ -17,7 +18,10 @@ export default function Index() {
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
 	const [doctorInfo, setDoctorInfo] = useState([]);
-
+	const navigate = useNavigate();
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
 	async function listUserConversation() {
 		const r = await listConversation(null, user.id);
 		setConversation(r);

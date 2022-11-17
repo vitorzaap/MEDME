@@ -9,6 +9,10 @@ import { useNavigate } from "react-router-dom";
 export default function Medics() {
   const user = storage("userInfo");
   const [medicos, setMedicos] = useState([]);
+  const navigate = useNavigate();
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
   async function carregarMedic() {
     const resposta = await getConsultas();
     setMedicos(resposta);
@@ -16,7 +20,7 @@ export default function Medics() {
   useEffect(() => {
     carregarMedic();
   }, []);
-  const navigate = useNavigate();
+
   return (
     <main className="user-medics-main">
       <section className="user-medics-section-main">

@@ -10,6 +10,10 @@ export default function Medics() {
   const user = storage("userInfo");
   const [medico, setMedico] = useState([]);
   const { doctorId } = useParams();
+  const navigate = useNavigate();
+	if (!storage("userInfo")) {
+		navigate("/login")
+	}
   async function carregarMedic() {
     const resposta = await searchMedic(doctorId);
     setMedico(resposta);
@@ -17,7 +21,7 @@ export default function Medics() {
   useEffect(() => {
     carregarMedic();
   }, []);
-  const navigate = useNavigate();
+
   return (
     <main className="user-medics-main">
       <section className="user-medics-section-main">
