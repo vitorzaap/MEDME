@@ -20,7 +20,7 @@ export default function Index() {
 	const [userInfo, setUserInfo] = useState([]);
 	const navigate = useNavigate();
 	if (!storage("doctorInfo")) {
-		navigate("/medic/login")
+		navigate("/medic/login");
 	}
 
 	async function listDoctorConversation() {
@@ -31,7 +31,7 @@ export default function Index() {
 	async function searchById(id) {
 		const r = await getConversationInfoByIdDoctor(id);
 		setUserInfo(r);
-  }
+	}
 
 	async function submitMessage() {
 		socket.emit("send_message", {
@@ -41,31 +41,31 @@ export default function Index() {
 			message: message,
 		});
 		socket.emit("receive_message", {
-      conversationId: conversationId,
-    });
+			conversationId: conversationId,
+		});
 		setMessage("");
 	}
 
-  function messageSide(type) {
+	function messageSide(type) {
 		if (type == 2) {
 			return "msg-right";
-    } else {
-      return "msg-left"
-    }
-  }
+		} else {
+			return "msg-left";
+		}
+	}
 	socket.on("receive_message", (data) => {
-    setMessages(data);
+		setMessages(data);
 	});
-	document.addEventListener("keypress" , function (e) {
-		if(e.key === "Enter"){
+	document.addEventListener("keypress", function (e) {
+		if (e.key === "Enter") {
 			const btn = document.querySelector("#send-doctor");
 			btn.click();
 		}
-	})
+	});
 
 	useEffect(() => {
 		listDoctorConversation();
-  }, []);
+	}, []);
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -82,11 +82,9 @@ export default function Index() {
 										conversationId: item.conversationId,
 									});
 								}}>
-								<div className="icon-div">
-									
-								</div>
+								<div className="icon-div"></div>
 								<div className="conversation-info">
-								<h1 className="name">{item.userName}</h1>
+									<h1 className="name">{item.userName}</h1>
 									<p className="doctor-description">{item.doctorDesc}</p>
 								</div>
 							</div>
@@ -94,11 +92,9 @@ export default function Index() {
 					</div>
 					<div className="div-message">
 						<div className="message-header">
-							<div className="div-message-header-icon">
-								
-							</div>
+							<div className="div-message-header-icon"></div>
 							<div className="div-message-header-name">
-							{userInfo.map((item) => (
+								{userInfo.map((item) => (
 									<span>{item.userName}</span>
 								))}
 							</div>
@@ -106,16 +102,22 @@ export default function Index() {
 						<div className="messages-div">
 							{messages &&
 								messages.map((item) => {
-									return <div className={messageSide(item.senderType)}> <span className="message-text">{item.message}</span> </div>;
+									return (
+										<div className={messageSide(item.senderType)}>
+											<div className="message-box">
+												<span className="message-text" >{item.message}</span>{" "}
+											</div>
+										</div>
+									);
 								})}
 						</div>
 						{conversationId != -1 && (
 							<div className="div-input-send-message">
 								<div className="send-message">
 									<div className="div-send-message">
-										<input type="text" className="send-message-input" value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
+										<input type="text" className="send-message-input"  value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
 										{message && (
-											<div id='send-doctor'className="send-icon-div" onClick={() => submitMessage()}>
+											<div id="send-doctor" className="send-icon-div" onClick={() => submitMessage()}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
 											</div>
 										)}

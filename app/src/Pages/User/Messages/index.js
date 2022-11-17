@@ -35,7 +35,7 @@ export default function Index() {
 	async function submitMessage() {
 		socket.emit("send_message", {
 			conversationId: conversationId,
-			type: 4,
+			type: 1,
 			senderId: user.id,
 			message: message,
 		});
@@ -46,7 +46,7 @@ export default function Index() {
 	}
 
 	function messageSide(type) {
-		if (type == 4) {
+		if (type == 1) {
 			return "msg-right";
 		} else {
 			return "msg-left";
@@ -109,8 +109,10 @@ export default function Index() {
 								messages.map((item) => {
 									return (
 										<div className={messageSide(item.senderType)}>
-											{" "}
-											<span className="message-text">{item.message}</span>{" "}
+											
+											<div className="message-box">
+											<p className="message-text">{item.message}</p>
+											</div>
 										</div>
 									);
 								})}

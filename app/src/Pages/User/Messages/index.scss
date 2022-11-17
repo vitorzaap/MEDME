@@ -125,10 +125,14 @@
 						margin-bottom: 0.25em;
 						width: max-content;
 						border-radius: 0.5em;
-						.message-text {
-							padding: 0.5em 1em;
-							font-family: "Noto-regular";
-							font-size: 1em;
+						.message-box{
+							display: flex;
+							border: 1px solid red;
+							.message-text {
+								padding: 0.5em 1em;
+								font-family: "Noto-regular";
+								font-size: 1em;
+							}
 						}
 					}
 					.msg-right {
@@ -137,13 +141,19 @@
 						margin-bottom: 0.25em;
 						justify-content: right;
 						width: calc(100% - 1em);
-						.message-text {
-							font-family: "Noto-regular";
-							padding: 0.5em 1em;
-							background-color: #663bdd70;
-							border-radius: 0.5em;
-							backdrop-filter: blur(10px);
-							font-size: 1em;
+						.message-box{
+							display: flex;
+							max-width: 70%;
+							word-wrap: break-word;
+							.message-text {
+								font-family: "Noto-regular";
+								max-width: 100%;
+								padding: 0.5em 1em;
+								background-color: #663bdd70;
+								border-radius: 0.5em;
+								backdrop-filter: blur(10px);
+								font-size: 1em;
+							}
 						}
 					}
 				}
