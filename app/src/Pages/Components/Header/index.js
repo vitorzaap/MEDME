@@ -180,8 +180,8 @@ export default function Index(props) {
                   src={imageuser}
                   alt="default-icon"
                   width="32px"
-                    className="icon-user"
-                    style={{ borderRadius: '99px' }}
+                  className="icon-user"
+                  
                 />
               }
             

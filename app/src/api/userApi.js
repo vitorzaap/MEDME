@@ -60,14 +60,19 @@ export async function getUser(id) {
   return r.data;
 }
 export async function alterImage(id, image) {
+  console.log(id, image)
+  console.log(form)
   let form = new FormData();
   form.append("capa", image);
+ 
   const r = await api.put(`/api/user/${id}/capa`, form, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
   });
+  
   return r.data;
+  
 }
 export async function addConversa(medicId, userId) {
   const r = await api.post(`/api/user/conversa`, {

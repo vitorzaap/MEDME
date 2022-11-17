@@ -16,26 +16,26 @@ export default function Index() {
   const [sobrenome, setSobrenome] = useState();
   const [email, setEmail] = useState();
   const [senha, setSenha] = useState();
-  const [repitSenha, setRepitSenha] = useState();
   const [passLength, setPassLength] = useState("");
   const [err, setErr] = useState("");
-  const [verificPass, setVerificPass] = useState(0);
   const [image, setImage] = useState();
   const navigate = useNavigate();
-	if (!storage("userInfo")) {
-		navigate("/login")
-	}
+  
+  if (!storage("userInfo")) {
+    navigate("/login")
+  }
   async function exibirUser() {
     const [r] = await getUser(user.id);
     setUsuario(r);
   }
-  async function setImageUser(){
+  async function setImageUser() {
     const r = await searchImage(usuario.img_icon)
     setImage(r)
   }
   useEffect(() => {
-    if(image != usuario.img_icon) setImageUser()
+    if (image != usuario.img_icon) setImageUser()
   }, [usuario])
+
   useEffect(() => {
     exibirUser();
     if (!usuario) {
@@ -59,14 +59,20 @@ export default function Index() {
     }
   }
   async function alterarConfig() {
-    const userConfig = await userChangeProfile(
-      nome,
-      sobrenome,
-      email,
-      senha,
-      user.id
-    );
-    const r = alterImage(userConfig.id, image);
+    try {
+      const userConfig = await userChangeProfile(
+        nome,
+        sobrenome,
+        email,
+        senha,
+        user.id
+      );
+      const r = await alterImage(user.id, image);
+    
+    } catch (error) {
+      console.log(error.response)  
+    }
+    
   }
   function length() {
     let s = "";
@@ -74,6 +80,9 @@ export default function Index() {
       s += "*";
     }
     setPassLength(s);
+  }
+  function show(x) {
+    return URL.createObjectURL(x);
   }
   return (
     <main className="user-profile-main">
@@ -109,7 +118,7 @@ export default function Index() {
                 )
                   : (
                     <img
-                    src={iconuser}
+                    src={image ? show(image) : ``}
                     alt="profile picture"
                     width="96px"
                     className="profile-picture"
@@ -120,7 +129,9 @@ export default function Index() {
                 <input
                   type="file"
                   id="imagem"
-                  onChange={e => setImage(e.target.files[0])}
+                  onChange={e => {
+                    setImage(e.target.files[0])
+                  }}
                 />
                 {!image ? (
                   <div></div>
@@ -276,8 +287,9 @@ export default function Index() {
                                 setTimeout(() => {
                                   toast.dismiss();
                                   toast.success(`Perfil editado com sucesso!`);
-                                  alterarConfig();
+                                  
                                 }, 2000);
+                                await alterarConfig();
                               }}
                               style={{
                                 padding: ".6em 1.2em",
