@@ -26,8 +26,8 @@ export default function Medics() {
 	useEffect(() => {
 		carregarMedic();
 	}, []);
-	async function BuscarImagem() {
-		const r = await searchImage(medico.img_icon)
+	function BuscarImagem() {
+		const r = searchImage(medico.img_icon)
 		setImagem(r)
 	}
 	useEffect(() => {
