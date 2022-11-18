@@ -21,8 +21,11 @@ export default function Medics() {
   }
   useEffect(() => {
     carregarMedic();
-    
   }, []);
+  async function buscarImagem(image) {
+    const r = await searchImage(image)
+    return r
+  }
   return (
     <main className="user-medics-main">
       <section className="user-medics-section-main">
@@ -35,7 +38,7 @@ export default function Medics() {
                 navigate(`/medics/description/${item.id}`);
               }}>
                 <div className="user-medics-card-medic-profile">
-                  <img src={iconuser} />: <img src={iconuser} />
+                  {item.icon ? <img src={buscarImagem(item.icon)} /> : <img src={iconuser} />}
                   <h1>{item.nome[0].toUpperCase() + item.nome.substring(1)}</h1>
                   <p>{item.atuacao.toUpperCase()}</p>
                 </div>

@@ -8,10 +8,12 @@ import { addConversa } from "../../../../api/conversationApi.js"
 import {  searchMedic } from "../../../../api/userApi";
 import { useParams, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { searchImage } from "../../../../api/medicApi";
 export default function Medics() {
 	const user = storage("userInfo");
 	const [doctorName, setDoctorName] = useState();
 	const [medico, setMedico] = useState([]);
+	const [imagem, setImagem] = useState()
 	const { doctorId } = useParams();
 	const navigate = useNavigate();
 	if (!storage("userInfo")) {
@@ -24,6 +26,13 @@ export default function Medics() {
 	useEffect(() => {
 		carregarMedic();
 	}, []);
+	async function BuscarImagem() {
+		const r = await searchImage(medico.img_icon)
+		setImagem(r)
+	}
+	useEffect(() => {
+		BuscarImagem()
+	}, [medico])
 
 	return (
 		<main className="user-medics-main">
@@ -34,7 +43,7 @@ export default function Medics() {
 					<div className="user-medics-description-card">
 						<div className="user-medics-description">
 							<div className="user-medics-description-content">
-								{medico.img_icon ? <img src={medico.img_icon} /> : <img src={iconuser} />}
+								{medico.img_icon ? <img style={{borderRadius: "99px"}} src={ imagem } /> : <img src={iconuser} />}
 								<h1>{medico.nm_medico}</h1>
 								<h6>{medico.ds_medico}</h6>
 							</div>
