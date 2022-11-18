@@ -8,6 +8,7 @@ import { listConversation, getConversationInfoById } from "../../../api/conversa
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
+import { searchImage } from "../../../api/medicApi";
 
 const socket = io.connect("http://localhost:5000");
 
@@ -18,6 +19,7 @@ export default function Index() {
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
 	const [doctorInfo, setDoctorInfo] = useState([]);
+	const [selectedDoctor, setSelectedDoctor] = useState("")
 	const [trim, setTrim] = useState();
 	const navigate = useNavigate();
 	const el = document.getElementById("chat-feed");
@@ -30,7 +32,7 @@ export default function Index() {
 	}
 
 	async function searchById(id) {
-		const r = await getConversationInfoById(id);
+		const [r] = await getConversationInfoById(id);
 		setDoctorInfo(r);
 	}
 
@@ -76,7 +78,7 @@ export default function Index() {
 			el.scrollTop = bottom;
 		}
 	}, [messages])
-
+	console.log(conversation)
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -95,7 +97,7 @@ export default function Index() {
 									
 								}}>
 								<div className="icon-div">
-									<img src={DavidLester} alt="user icon" />
+									<img src={searchImage(item.icon)} alt="user icon" style={{borderRadius:'99px'}}/>
 								</div>
 								<div className="conversation-info">
 									<h1 className="name">{item.doctorName[0].toUpperCase() + item.doctorName.slice(1)}</h1>
@@ -107,12 +109,14 @@ export default function Index() {
 					<div className="div-message">
 						<div className="message-header">
 							<div className="div-message-header-icon">
-								<img src={DavidLester} alt="icon" width="70%" />
+								{doctorInfo.icon
+									? <img src={DavidLester} alt="icon" width="70%" />
+									: <div></div>
+								}
 							</div>
 							<div className="div-message-header-name">
-								{doctorInfo.map((item) => (
-									<span>{item.docName[0].toUpperCase() + item.docName.slice(1)}</span>
-								))}
+	
+									<span>{doctorInfo.docName[0].toUpperCase() + doctorInfo.docName.slice(1)}</span>
 							</div>
 						</div>
 						<div className="messages-div" id="chat-feed">

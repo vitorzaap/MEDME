@@ -6,6 +6,7 @@ export async function userConversations(userId) {
                         tb_conversa.id_medico    doctorId,
                         tb_medico.nm_medico      doctorName,
                         tb_medico.ds_medico      doctorDesc,
+                        tb_medico.img_icon       icon,
                         id_usuario               userId
         FROM            tb_conversa
         INNER JOIN      tb_medico 
@@ -21,7 +22,8 @@ export async function doctorConversation(doctorId) {
         SELECT  	                      id_conversa              conversationId,
         tb_conversa.id_medico           doctorId,
         tb_conversa.id_usuario          userId,
-        tb_usuario.nm_usuario           userName
+        tb_usuario.nm_usuario           userName,
+        tb_usuario.img_icon             icon
         FROM                            tb_conversa
         INNER JOIN                      tb_usuario 
         ON                              tb_conversa.id_usuario = tb_usuario.id_usuario	
@@ -59,7 +61,7 @@ export async function searchConversationbyIdDoctor(conversationId) {
   const c = `
                 SELECT tb_usuario.id_usuario      id,
                        nm_usuario                userName,
-                       img_icon                 icon
+                       img_icon                  icon
                 FROM   tb_conversa
                 INNER JOIN tb_usuario on tb_conversa.id_usuario = tb_usuario.id_usuario
                 WHERE id_conversa = ?;
