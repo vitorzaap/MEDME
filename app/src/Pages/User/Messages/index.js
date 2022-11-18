@@ -98,7 +98,9 @@ export default function Index() {
 									
 								}}>
 								<div className="icon-div">
-									<img src={searchImage(item.icon)} alt="user icon" style={{borderRadius:'99px'}}/>
+									{item.icon
+									? 	<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
+									:	<img src={icon} alt="icon" width="70%" style={{borderRadius:'99px'}} />}
 								</div>
 								<div className="conversation-info">
 									<h1 className="name">{item.doctorName[0].toUpperCase() + item.doctorName.slice(1)}</h1>

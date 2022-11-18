@@ -1,7 +1,7 @@
 import "./index.scss";
 import "../../Common/common.scss";
 import Cabecalho from "../../Components/Header/index.js";
-import DavidLester from "../../../assets/images/david.svg";
+import icon from "../../../assets/images/user-icon.svg";
 import SendVector from "../../../assets/images/send-message-icon.svg";
 import storage from "local-storage";
 import { listConversation, getConversationInfoByIdDoctor } from "../../../api/conversationApi.js";
@@ -92,7 +92,9 @@ export default function Index() {
 									});
 								}}>
 								<div className="icon-div">
-									<img src={searchImage(item.icon)} alt="user icon" style={{ borderRadius: '99px', minHeight: "36px", height: "36px"}}/>
+									{item.icon
+									? 	<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
+									:	<img src={icon} alt="icon" width="70%" style={{borderRadius:'99px'}} />}
 								</div>
 								<div className="conversation-info">
 									<h1 className="name">{item.userName}</h1>
@@ -104,7 +106,9 @@ export default function Index() {
 						<div className="message-header">
 							<div className="div-message-header-icon">
 								{userInfo.map(item => (
-									<img src={searchImage(item.icon)} alt="icon" width="70%" style={{ borderRadius: '99px', minHeight: "36px", height: "36px"}} />
+									item.icon
+									? 	<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
+									:	<img src={icon} alt="icon" width="70%" style={{borderRadius:'99px'}} />
 								))}
 							</div>
 							<div className="div-message-header-name">
