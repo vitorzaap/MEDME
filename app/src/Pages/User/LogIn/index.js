@@ -88,6 +88,7 @@ export default function Index() {
 								try {
 									const r = await userLogin(email, pass);
 									storage("userInfo", r);
+									storage.remove('doctorInfo')
 									storage("page", 1)
 									setTimeout(() => {
 										ref.current.complete();

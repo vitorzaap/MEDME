@@ -28,7 +28,7 @@ export default function Index() {
 					<img src={Logo} alt="Logo" />
 					<h1>Bem-vindo ao trabalho!</h1>
 					<p>
-						Você é usuário?{" "}
+						Você é usuário?
 						<button
 							className="sg-lg-btn"
 							onClick={() => {
@@ -87,6 +87,7 @@ export default function Index() {
 								try {
 									const r = await medicLogin(email, pass);
 									storage("doctorInfo", r);
+									storage.remove('userInfo')
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000);
