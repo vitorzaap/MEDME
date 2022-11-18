@@ -32,7 +32,8 @@ export default function Index() {
 	}
 
 	async function searchById(id) {
-		const [r] = await getConversationInfoById(id);
+		const r = await getConversationInfoById(id);
+		console.log(r)
 		setDoctorInfo(r);
 	}
 
@@ -78,7 +79,7 @@ export default function Index() {
 			el.scrollTop = bottom;
 		}
 	}, [messages])
-	console.log(conversation)
+	
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -109,14 +110,14 @@ export default function Index() {
 					<div className="div-message">
 						<div className="message-header">
 							<div className="div-message-header-icon">
-								{doctorInfo.icon
-									? <img src={DavidLester} alt="icon" width="70%" />
-									: <div></div>
-								}
+								{doctorInfo.map(item => (
+									<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
+								))}
 							</div>
 							<div className="div-message-header-name">
-	
-									<span>{doctorInfo.docName[0].toUpperCase() + doctorInfo.docName.slice(1)}</span>
+								{doctorInfo.map((item) => (
+									<span>{item.docName[0].toUpperCase() + item.docName.slice(1)}</span>
+								))}
 							</div>
 						</div>
 						<div className="messages-div" id="chat-feed">
