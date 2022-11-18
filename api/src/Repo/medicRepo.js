@@ -138,9 +138,12 @@ export async function pendentConsult(doctorId) {
 
 export async function ultimaAvaliacao(doctorId) {
 	const c = `
-	SELECT nr_avaliacao FROM tb_avaliacao
+	SELECT 
+	id_avaliacao,
+	nr_avaliacao 
+	FROM tb_avaliacao
 	WHERE id_medico = ?
-	ORDER BY id_avaliacao DESC
+	ORDER BY id_avaliacao DESC;
 		`;
 	const [res] = await con.query(c, [doctorId]);
 	return res;

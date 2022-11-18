@@ -48,7 +48,8 @@ export default function Index() {
             setLastAvaliation(0)
         }
         else {
-            setLastAvaliation(last)
+            setLastAvaliation(last.nr_avaliacao)
+            console.log(last)
         }
         setConsPendente(await pendentConsult(user.id))
         setConsults(await allConsuts(user.id))
