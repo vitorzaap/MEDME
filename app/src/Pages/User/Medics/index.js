@@ -22,12 +22,12 @@ export default function Medics() {
   useEffect(() => {
     carregarMedic();
   }, []);
-  async function buscarImagem(image) {
-    const r = await searchImage(image)
-    return r
+  function buscarImagem(image) {
+    const r =  searchImage(image)
+    return r;
   }
   return (
-    
+
     <main className="user-medics-main">
       <section className="user-medics-section-main">
       <Cabecalho />
@@ -39,7 +39,7 @@ export default function Medics() {
                 navigate(`/medics/description/${item.id}`);
               }}>
                 <div className="user-medics-card-medic-profile">
-                  {item.icon ? <img src={buscarImagem(item.icon)} /> : <img src={iconuser} />}
+                  {item.icon ? <img style={{borderRadius:"99px"}} src={buscarImagem(item.icon)} /> : <img src={iconuser} />}
                   <h1>{item.nome[0].toUpperCase() + item.nome.substring(1)}</h1>
                   <p>{item.atuacao.toUpperCase()}</p>
                 </div>

@@ -91,7 +91,7 @@ export async function alterImage(id, image) {
   return r.data;
 }
 
-export async function searchImage(image){
+export function searchImage(image){
   return `${api.getUri()}/${image}`
 }
 
