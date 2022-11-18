@@ -31,6 +31,15 @@ export async function doctorConversation(doctorId) {
   return r;
 }
 
+export async function isChatCreated(doctorId, userId) {
+  const c =
+    `
+      SELECT * FROM tb_conversa WHERE id_medico = ? AND id_usuario = ?;
+    `
+  const [r] = await con.query(c, [doctorId, userId]);
+  return r;
+}
+
 export async function searchConversationbyId(conversationId) {
   const c = `
                 SELECT tb_medico.id_medico      id,

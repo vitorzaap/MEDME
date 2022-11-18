@@ -18,9 +18,11 @@ export default function Index() {
 	const [conversation, setConversation] = useState([]);
 	const [conversationId, setConversationId] = useState(-1);
 	const [doctorInfo, setDoctorInfo] = useState([]);
+	const [trim, setTrim] = useState();
 	const navigate = useNavigate();
+	const el = document.getElementById("chat-feed");
 	if (!storage("userInfo")) {
-		navigate("/login")
+		navigate("/login");
 	}
 	async function listUserConversation() {
 		const r = await listConversation(null, user.id);
@@ -41,8 +43,10 @@ export default function Index() {
 		});
 		socket.emit("receive_message", {
 			conversationId: conversationId,
-		});
+		}
+		);
 		setMessage("");
+		
 	}
 
 	function messageSide(type) {
@@ -55,17 +59,23 @@ export default function Index() {
 	socket.on("receive_message", (data) => {
 		console.log(data);
 		setMessages(data);
+		
 	});
-	document.addEventListener("keypress" , function (e) {
-		if(e.key === "Enter"){
+	document.addEventListener("keypress", function (e) {
+		if (e.key === "Enter") {
 			const btn = document.querySelector("#send");
 			btn.click();
 		}
-	})
-
+	});
 	useEffect(() => {
 		listUserConversation();
 	}, []);
+	useEffect(() => {
+		if (el) {
+			const bottom = el.scrollHeight
+			el.scrollTop = bottom;
+		}
+	}, [messages])
 
 	return (
 		<main className="messages-main">
@@ -82,6 +92,7 @@ export default function Index() {
 									socket.emit("receive_message", {
 										conversationId: item.conversationId,
 									});
+									
 								}}>
 								<div className="icon-div">
 									<img src={DavidLester} alt="user icon" />
@@ -104,14 +115,13 @@ export default function Index() {
 								))}
 							</div>
 						</div>
-						<div className="messages-div" id="messages-div">
+						<div className="messages-div" id="chat-feed">
 							{messages &&
 								messages.map((item) => {
 									return (
 										<div className={messageSide(item.senderType)}>
-											
 											<div className="message-box">
-											<p className="message-text">{item.message}</p>
+												<p className="message-text">{item.message}</p>
 											</div>
 										</div>
 									);
@@ -122,10 +132,10 @@ export default function Index() {
 								<div className="send-message">
 									<div className="div-send-message">
 										<input type="text" className="send-message-input" value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
-										{message && (
+										{message && message.trim() && (
 											<div id="send" className="send-icon-div" onClick={() => submitMessage()}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
-											</div> 
+											</div>
 										)}
 									</div>
 								</div>

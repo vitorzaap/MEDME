@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userConversations, doctorConversation,createConversation, searchConversationbyId, searchConversationbyIdDoctor } from "../Repo/conversationRepo.js";
+import { userConversations, doctorConversation,createConversation, searchConversationbyId, searchConversationbyIdDoctor, isChatCreated } from "../Repo/conversationRepo.js";
 
 const router = Router();
 router.get('/conversation/search', async (req, res) => {
@@ -62,7 +62,11 @@ router.get("/conversation", async (req, res) => {
 
 router.post("/conversation", async (req, res) => {
     try {
-        const { doctorId, userId } = req.query;
+        const { doctorId, userId } = req.query; 
+        const verif = await isChatCreated(doctorId, userId)
+            if(verif.length > 0){
+                throw new Error("Esta conversa já existe.")
+            }
         const r = await createConversation(Number(doctorId), Number(userId))
         res.sendStatus(200)
     }

@@ -72,13 +72,7 @@ export async function alterImage(id, image) {
   return r.data;
   
 }
-export async function addConversa(medicId, userId) {
-  const r = await api.post(`/api/user/conversa`, {
-	userId: userId,
-  	medicID : medicId
-  });
-  return r.data;
-}
+
 export async function pendentConsult(userId) {
   const r = await api.get(`/api/user/consulta/pendent/${userId}`);
   return r.data;

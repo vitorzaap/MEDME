@@ -136,17 +136,7 @@ router.get("/api/user/:id", async (req, res) => {
 		});
 	}
 });
-router.post("/api/user/conversa", async (req, res) => {
-	try {
-		const { medicID, userId } = req.body;
-		let r = await addConversa(medicID, userId);
-		res.send(r);
-	} catch (err) {
-		res.status(401).send({
-			erro: err.message,
-		});
-	}
-});
+
 router.get("/api/user/consulta/pendent/:userId", async (req, res) => {
 	try {
 		const { userId } = req.params;

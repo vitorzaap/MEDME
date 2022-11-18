@@ -6,21 +6,23 @@ import storage from "local-storage";
 import { addConversa, getConsultas } from "../../../api/userApi";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { searchImage } from "../../../api/medicApi";
 export default function Medics() {
   const user = storage("userInfo");
   const [medicos, setMedicos] = useState([]);
+  const [image, setImage] = useState()
   const navigate = useNavigate();
-	if (!storage("userInfo")) {
-		navigate("/login")
-	}
+  if (!storage("userInfo")) {
+    navigate("/login")
+  }
   async function carregarMedic() {
     const resposta = await getConsultas();
     setMedicos(resposta);
   }
   useEffect(() => {
     carregarMedic();
+    
   }, []);
-
   return (
     <main className="user-medics-main">
       <section className="user-medics-section-main">
@@ -33,7 +35,7 @@ export default function Medics() {
                 navigate(`/medics/description/${item.id}`);
               }}>
                 <div className="user-medics-card-medic-profile">
-                  {item.icon ? <img src={item.icon} /> : <img src={iconuser} />}
+                  <img src={iconuser} />: <img src={iconuser} />
                   <h1>{item.nome[0].toUpperCase() + item.nome.substring(1)}</h1>
                   <p>{item.atuacao.toUpperCase()}</p>
                 </div>

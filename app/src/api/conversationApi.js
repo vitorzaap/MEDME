@@ -11,6 +11,10 @@ export async function listConversation(doctorId, userId) {
     const r = await api.get(call)
     return r.data;
 }
+export async function addConversa(doctorId, userId) {
+    const r = await api.post(`/conversation?doctorId=${doctorId}&userId=${userId}`)
+    return r.data;
+  }
 
 export async function getConversationInfoById(conversationId) {
     const r = await api.get(`/conversation/search?id=${Number(conversationId)}`);

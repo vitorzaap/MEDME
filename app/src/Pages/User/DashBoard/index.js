@@ -48,8 +48,8 @@ export default function Index() {
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards cor='#202020' titulo="Avaliações" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
-						<Cards cor='#202020' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
+						<Cards cor='#39B6D2' titulo="Avaliações" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
+						<Cards cor='#6336FF' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
 					</div>
 					<div className="main-div-table">
 						<table className="user-table">

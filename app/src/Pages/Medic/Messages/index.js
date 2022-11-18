@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 const socket = io.connect("http://localhost:5000");
 
 export default function Index() {
+	const el = document.getElementById("chat-feed");
 	const [message, setMessage] = useState("");
 	const doctor = storage("doctorInfo");
 	const [messages, setMessages] = useState([]);
@@ -66,6 +67,12 @@ export default function Index() {
 	useEffect(() => {
 		listDoctorConversation();
 	}, []);
+	useEffect(() => {
+		if (el) {
+			const bottom = el.scrollHeight
+			el.scrollTop = bottom;
+		}
+	}, [messages])
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -99,7 +106,7 @@ export default function Index() {
 								))}
 							</div>
 						</div>
-						<div className="messages-div">
+						<div className="messages-div" id="chat-feed">
 							{messages &&
 								messages.map((item) => {
 									return (
@@ -116,7 +123,7 @@ export default function Index() {
 								<div className="send-message">
 									<div className="div-send-message">
 										<input type="text" className="send-message-input"  value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
-										{message && (
+										{(message && message.trim()) && (
 											<div id="send-doctor" className="send-icon-div" onClick={() => submitMessage()}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
 											</div>
