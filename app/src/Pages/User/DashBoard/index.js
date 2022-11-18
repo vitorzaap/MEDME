@@ -17,7 +17,13 @@ export default function Index() {
 		setConsPendente(await pendentConsult(user.id))
 	}
 	async function LastAvaliationResponse(){
-		setLastAvaliation(await LastAvaliation(user.id))
+		const last = await LastAvaliation(user.id)
+		if(!last.nr_avalicao){
+			setLastAvaliation(0)
+		}
+		else{
+			setLastAvaliation(last.nr_avaliacao)
+		}
 	}
 	useEffect(() => {
 		async function getConsult() {
@@ -48,7 +54,7 @@ export default function Index() {
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards cor='#39B6D2' titulo="Avaliações" desc={lastAvaliation.ds_avaliacao} subtitulo="Sua última avaliação" />
+						<Cards cor='#39B6D2' titulo="Avaliações" numero={lastAvaliation} subtitulo="Sua última avaliação" />
 						<Cards cor='#6336FF' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
 					</div>
 					<div className="main-div-table">
