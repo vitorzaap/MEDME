@@ -27,6 +27,7 @@ export default function Medics() {
     return r
   }
   return (
+    
     <main className="user-medics-main">
       <section className="user-medics-section-main">
       <Cabecalho />
