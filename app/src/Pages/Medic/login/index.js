@@ -10,6 +10,7 @@ export default function Index() {
 	const [ClassErrPass, setClassErrPass] = useState("default-input");
 	const [erro, setErro] = useState("");
 	const [disabled, setDisabled] = useState(false);
+	const [erroEmail, setErroEmail] = useState('')
 	const [email, setEmail] = useState("");
 	const [pass, setPass] = useState("");
 	const ref = useRef();
@@ -53,7 +54,7 @@ export default function Index() {
 					<div className="input-main">
 						<p className="input-text">E-mail</p>
 						<input type="email" className={classErrEmail} placeholder="medme@medme.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-						{classErrEmail === "err-input" && <p className="err-p">{erro}</p>}
+						{classErrEmail === "err-input" && <p className="err-p">{erroEmail}</p>}
 					</div>
 					<div className="input-main">
 						<p className="input-text">Senha</p>
@@ -67,11 +68,11 @@ export default function Index() {
 						onClick={async () => {
 							if (!email) {
 								setClassErrEmail("err-input")
-								setErro("Este campo não pode estar vazio.")
+								setErroEmail("Este campo não pode estar vazio.")
 							}
 							else {
 								setClassErrEmail("default-input");
-								setErro("")
+								setErroEmail("")
 							}
 							if (!pass) {
 								setClassErrPass("err-input")
@@ -104,6 +105,7 @@ export default function Index() {
 												setClassErrPass("err-input");
 											}
 											setErro(err.response.data.erro);
+											setErroEmail(err.response.data.erro);
 										}
 									}, 1000);
 								}
