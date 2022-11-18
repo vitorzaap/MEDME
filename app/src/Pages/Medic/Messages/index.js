@@ -8,6 +8,7 @@ import { listConversation, getConversationInfoByIdDoctor } from "../../../api/co
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
+import { searchImage } from "../../../api/medicApi";
 
 const socket = io.connect("http://localhost:5000");
 
@@ -73,6 +74,7 @@ export default function Index() {
 			el.scrollTop = bottom;
 		}
 	}, [messages])
+	console.log(conversation)
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -89,17 +91,22 @@ export default function Index() {
 										conversationId: item.conversationId,
 									});
 								}}>
-								<div className="icon-div"></div>
+								<div className="icon-div">
+									<img src={searchImage(item.icon)} alt="user icon" style={{ borderRadius: '99px', minHeight: "36px", height: "36px"}}/>
+								</div>
 								<div className="conversation-info">
 									<h1 className="name">{item.userName}</h1>
-									<p className="doctor-description">{item.doctorDesc}</p>
 								</div>
 							</div>
 						))}
 					</div>
 					<div className="div-message">
 						<div className="message-header">
-							<div className="div-message-header-icon"></div>
+							<div className="div-message-header-icon">
+								{userInfo.map(item => (
+									<img src={searchImage(item.icon)} alt="icon" width="70%" style={{ borderRadius: '99px', minHeight: "36px", height: "36px"}} />
+								))}
+							</div>
 							<div className="div-message-header-name">
 								{userInfo.map((item) => (
 									<span>{item.userName}</span>
