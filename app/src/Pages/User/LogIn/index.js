@@ -30,7 +30,7 @@ export default function Index() {
 					<img src={Logo} alt="Logo" />
 					<h1>Bem-vindo de volta!</h1>
 					<p>
-						Não possui uma conta?{" "}
+						Não possui uma conta? 
 						<button
 							className="sg-lg-btn"
 							onClick={() => {
