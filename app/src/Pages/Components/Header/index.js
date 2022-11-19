@@ -29,14 +29,6 @@ export default function Index(props) {
 			}, 200);
 		}, Math.floor(Math.random() * 1500) + 500);
 	}
-	async function setImageR() {
-		const r = await searchImage(doctor2.img_icon);
-		setImage(r);
-	}
-	async function setImageUserR() {
-		const r = await searchImage(user2.img_icon);
-		setImageUser(r);
-	}
 	async function setUserF() {
 		const [r] = await getUser(user.id);
 		setUser2(r);
@@ -50,12 +42,6 @@ export default function Index(props) {
 		setDoctor();
 		setUserF();
 	}, []);
-	useEffect(() => {
-		setImageR();
-	}, [doctor2]);
-	useEffect(() => {
-		setImageUserR();
-	}, [user2]);
 	return (
 		<header className="default-header">
 			<LoadingBar ref={ref} color="#fff" />
@@ -96,7 +82,7 @@ export default function Index(props) {
 						{!doctor2.img_icon ? (
 							<img src={icon} alt="default-icon" width="32px" className="icon-user" />
 						) : (
-							<img src={image} alt="default-icon" width="32px" height='32px' className="icon-user" style={{ borderRadius: "99px" }} />
+							<img src={searchImage(doctor2.img_icon)} alt="default-icon" width="32px" height='32px' className="icon-user" style={{ borderRadius: "99px" }} />
 						)}
 						<span className="profile-name">{doctor2.nm_medico}</span>
 					</div>
@@ -133,7 +119,7 @@ export default function Index(props) {
 						{!user2.img_icon ? (
 							<img src={icon} alt="default-icon" width="32px" className="icon-user" />
 						) : (
-							<img src={imageuser} alt="default-icon" width="32px" height="32px" className="icon-user" style={{ borderRadius: "99px" }} />
+							<img src={searchImage(user2.img_icon)} alt="default-icon" width="32px" height="32px" className="icon-user" style={{ borderRadius: "99px" }} />
 						)}
 
 						<span className="profile-name">{user.name[0].toUpperCase() + user.name.slice(1)}</span>
