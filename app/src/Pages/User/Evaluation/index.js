@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { addAvaliacao } from "../../../api/userApi.js";
 import { useNavigate, useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { getDoctorById } from "../../../api/medicApi";
+import { getDoctorById, searchImage } from "../../../api/medicApi";
 export default function Index() {
 	const userInfo = storage("userInfo");
 	const { id, idConsulta } = useParams();
@@ -20,6 +20,7 @@ export default function Index() {
 	const [descricaoConsulta, setDescricaoConsulta] = useState();
 	const [doctorName, setDoctorName] = useState("");
 	const [doctorDesc, setDoctorDesc] = useState("")
+	const [doctorImage, setDoctorImage] = useState()
 	const colorStar = {
 		orange: "#F6D523",
 		gray: "#B4B4B4",
@@ -50,10 +51,10 @@ export default function Index() {
 			const [r] = await getDoctorById(id)
 			setDoctorDesc(r.ds_medico);
 			setDoctorName(r.nm_medico);
+			setDoctorImage(r.img_icon)
 		}
 		fetchDoctor();
 	}, [])
-
 	return (
 		<main className="evaluation-main">
 			<section className="evaluation-section-main">
@@ -140,7 +141,7 @@ export default function Index() {
 								</div>
 								<div className="page-evaluation-medic">
 									<div className="page-evaluation-medic-info">
-										<img src={David} />
+										<img src={searchImage(doctorImage)} />
 										<h1>{doctorName}</h1>
 									</div>
 									<img src={LinhaSeparação2} className="page-evaluation-medic-info-separation" />
