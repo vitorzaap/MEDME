@@ -131,7 +131,7 @@
       }
     }
     button {
-      width: 35%;
+      width: 40%;
       font-family: inherit;
       font-size: 20px;
       background: #fff;
@@ -158,6 +158,7 @@
     
     button svg {
       display: block;
+      
       transform-origin: center center;
       transition: transform 0.3s ease-in-out;
     }
@@ -167,6 +168,7 @@
     }
     
     button:hover svg {
+      margin-right: .5em;
       transform: translateX(5.5em) rotate(45deg) scale(1.1);
     }
     

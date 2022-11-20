@@ -35,17 +35,22 @@ export default function Index() {
 		setUserInfo(r);
 	}
 
-	async function submitMessage() {
-		socket.emit("send_message", {
-			conversationId: conversationId,
-			type: 2,
-			senderId: doctor.id,
-			message: message,
-		});
-		socket.emit("receive_message", {
-			conversationId: conversationId,
-		});
-		setMessage("");
+	async function submitMessage(event) {
+		if (event.key == "Enter" || event == "Enter") {
+			if (message.trim()) {
+				socket.emit("send_message", {
+					conversationId: conversationId,
+					type: 2,
+					senderId: doctor.id,
+					message: message,
+				});
+				el.scrollTop = el.scrollHeight;
+				socket.emit("receive_message", {
+					conversationId: conversationId,
+				});
+				setMessage("");
+			}
+		}
 	}
 
 	function messageSide(type) {
@@ -55,26 +60,25 @@ export default function Index() {
 			return "msg-left";
 		}
 	}
+
+	socket.emit("receive_message", {
+		conversationId: storage("conversationId"),
+	});
 	socket.on("receive_message", (data) => {
 		setMessages(data);
 	});
-	document.addEventListener("keypress", function (e) {
-		if (e.key === "Enter") {
-			const btn = document.querySelector("#send-doctor");
-			btn.click();
-		}
-	});
 
 	useEffect(() => {
+		storage("conversationId", "");
 		listDoctorConversation();
 	}, []);
 	useEffect(() => {
 		if (el) {
-			const bottom = el.scrollHeight
-			el.scrollTop = bottom;
+			const bottom = el.scrollHeight;
+		el.scrollTop = bottom;
 		}
-	}, [messages])
-	console.log(conversation)
+	}, [messages.length]);
+
 	return (
 		<main className="messages-main">
 			<Cabecalho />
@@ -87,17 +91,20 @@ export default function Index() {
 								onClick={() => {
 									setConversationId(item.conversationId);
 									searchById(item.conversationId);
+									storage("conversationId", item.conversationId);
 									socket.emit("receive_message", {
 										conversationId: item.conversationId,
 									});
 								}}>
 								<div className="icon-div">
-									{item.icon
-									? 	<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
-									:	<img src={icon} alt="icon" width="70%" style={{borderRadius:'99px'}} />}
+									{item.icon ? (
+										<img src={searchImage(item.icon)} alt="icon" width="70%" style={{ borderRadius: "99px" }} />
+									) : (
+										<img src={icon} alt="icon" width="70%" style={{ borderRadius: "99px" }} />
+									)}
 								</div>
 								<div className="conversation-info">
-									<h1 className="name">{item.userName}</h1>
+									<h1 className="name">{item.userName} </h1>
 								</div>
 							</div>
 						))}
@@ -105,11 +112,13 @@ export default function Index() {
 					<div className="div-message">
 						<div className="message-header">
 							<div className="div-message-header-icon">
-								{userInfo.map(item => (
-									item.icon
-									? 	<img src={searchImage(item.icon)} alt="icon" width="70%" style={{borderRadius:'99px'}} />
-									:	<img src={icon} alt="icon" width="70%" style={{borderRadius:'99px'}} />
-								))}
+								{userInfo.map((item) =>
+									item.icon ? (
+										<img src={searchImage(item.icon)} alt="icon" width="70%" style={{ borderRadius: "99px" }} />
+									) : (
+										<img src={icon} alt="icon" width="70%" style={{ borderRadius: "99px" }} />
+									)
+								)}
 							</div>
 							<div className="div-message-header-name">
 								{userInfo.map((item) => (
@@ -123,7 +132,7 @@ export default function Index() {
 									return (
 										<div className={messageSide(item.senderType)}>
 											<div className="message-box">
-												<span className="message-text" >{item.message}</span>{" "}
+												<span className="message-text">{item.message}</span>{" "}
 											</div>
 										</div>
 									);
@@ -133,9 +142,16 @@ export default function Index() {
 							<div className="div-input-send-message">
 								<div className="send-message">
 									<div className="div-send-message">
-										<input type="text" className="send-message-input"  value={message} placeholder="Digite uma mensagem" onChange={(e) => setMessage(e.target.value)} />
-										{(message && message.trim()) && (
-											<div id="send-doctor" className="send-icon-div" onClick={() => submitMessage()}>
+										<input
+											type="text"
+											className="send-message-input"
+											value={message}
+											placeholder="Digite uma mensagem"
+											onChange={(e) => setMessage(e.target.value)}
+											onKeyDown={submitMessage}
+										/>
+										{message && message.trim() && (
+											<div className="send-icon-div" onClick={() => submitMessage("Enter")}>
 												<img src={SendVector} alt="send-icon" className="send-icon-vector" />
 											</div>
 										)}

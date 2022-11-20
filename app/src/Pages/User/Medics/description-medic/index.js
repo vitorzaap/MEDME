@@ -4,8 +4,8 @@ import iconuser from "../../../../assets/images/user-icon.svg";
 import Cabecalho from "../../../Components/Header/index.js";
 import storage from "local-storage";
 import { useEffect, useState } from "react";
-import { addConversa } from "../../../../api/conversationApi.js"
-import {  searchMedic } from "../../../../api/userApi";
+import { addConversa } from "../../../../api/conversationApi.js";
+import { searchMedic } from "../../../../api/userApi";
 import { useParams, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { searchImage } from "../../../../api/medicApi";
@@ -13,7 +13,7 @@ export default function Medics() {
 	const user = storage("userInfo");
 	const [doctorName, setDoctorName] = useState();
 	const [medico, setMedico] = useState([]);
-	const [imagem, setImagem] = useState()
+	const [imagem, setImagem] = useState();
 	const { doctorId } = useParams();
 	const navigate = useNavigate();
 	if (!storage("userInfo")) {
@@ -27,12 +27,12 @@ export default function Medics() {
 		carregarMedic();
 	}, []);
 	function BuscarImagem() {
-		const r = searchImage(medico.img_icon)
-		setImagem(r)
+		const r = searchImage(medico.img_icon);
+		setImagem(r);
 	}
 	useEffect(() => {
-		BuscarImagem()
-	}, [medico])
+		BuscarImagem();
+	}, [medico]);
 
 	return (
 		<main className="user-medics-main">
@@ -43,7 +43,7 @@ export default function Medics() {
 					<div className="user-medics-description-card">
 						<div className="user-medics-description">
 							<div className="user-medics-description-content">
-								{medico.img_icon ? <img style={{borderRadius: "99px"}} src={ imagem } /> : <img src={iconuser} />}
+								{medico.img_icon ? <img style={{ borderRadius: "99px" }} src={imagem} /> : <img src={iconuser} />}
 								<h1>{medico.nm_medico}</h1>
 								<h6>{medico.ds_medico}</h6>
 							</div>
@@ -57,29 +57,27 @@ export default function Medics() {
 													onClick={async () => {
 														try {
 															toast.dismiss(t.id);
-                              toast.loading("Criando Sua Conversa...");
-                              setTimeout(async () => {
-                                try {
-                                  const r = await addConversa(medico.id_medico, user.id);
-                                  setTimeout(() => {
-																toast.dismiss();
-																toast.success(`Conversa criada com sucesso!`);
+															toast.loading("Criando Sua Conversa...");
+															setTimeout(async () => {
+																try {
+																	const r = await addConversa(medico.id_medico, user.id);
+																	setTimeout(() => {
+																		toast.dismiss();
+																		toast.success(`Conversa criada com sucesso!`);
+																	}, 1000);
+																} catch (err) {
+																	if (err.response.data.erro) {
+																		toast.dismiss();
+																		toast.error(err.response.data.erro);
+																	}
+																}
 															}, 1000);
-                                } catch (err) {
-                                  if (err.response.data.erro) {
-                                    toast.dismiss()
-                                    toast.error(err.response.data.erro)
-                                  }
-                                }
-                              }, 1000)
-                              
-															
-                            } catch (err) {
-                              if (err.response.data.erro) {
-                                toast.dismiss()
-                                toast.error(err.response.data.erro)
-                              }
-                            }
+														} catch (err) {
+															if (err.response.data.erro) {
+																toast.dismiss();
+																toast.error(err.response.data.erro);
+															}
+														}
 													}}
 													style={{
 														padding: ".6em 1.2em",
