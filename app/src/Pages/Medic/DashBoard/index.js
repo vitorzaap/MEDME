@@ -7,8 +7,9 @@ import Calendar from '../../../assets/images/calendar-dashboard.svg'
 import Star from '../../../assets/images/Star1.svg'
 import Mail from '../../../assets/images/mail-unread2.svg'
 import storage from "local-storage";
+import { listConversation } from "../../../api/conversationApi.js"
 import { useEffect, useState } from "react";
-import { allConsuts, LastAvaliation, pendentConsult, getConsultas } from "../../../api/medicApi";
+import { allConsuts, LastAvaliation, getConsultas } from "../../../api/medicApi";
 import { useNavigate } from "react-router-dom";
 
 export default function Index() {
@@ -40,7 +41,7 @@ export default function Index() {
             setErro(err.response.data.erro);
         }
     }
-    getConsult();
+    
 
     async function pendentConsultResponse() {
         const last = await LastAvaliation(user.id)
@@ -51,7 +52,9 @@ export default function Index() {
             setLastAvaliation(last.nr_avaliacao)
             console.log(last)
         }
-        setConsPendente(await pendentConsult(user.id))
+        const r = await listConversation(user.id, null)
+        console.log(r)
+        setConsPendente(r)
         setConsults(await allConsuts(user.id))
         
         
@@ -59,6 +62,7 @@ export default function Index() {
 	}
     useEffect(() => {
         pendentConsultResponse()
+        getConsult();
     },[])
 	return (
 		<main className="dashboard-main">
@@ -92,8 +96,8 @@ export default function Index() {
 									<td>#{item.consultas}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Consulta aceita</span>}
-										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
+										{(item.idSituacao == 2 && item.diff < 0) && <span className="item2">Consulta aceita</span>}
+										{(item.idSituacao == 3) && <span className="item3">Consulta recusada</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
 										{item.diff < 0 && item.idSituacao == 1 && (
 											<span className="item1">

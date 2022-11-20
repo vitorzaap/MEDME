@@ -48,8 +48,8 @@ export async function adicionarConsulta(
   return r.data;
 }
 
-export async function getConsultas(id) {
-  const r = await api.get(`/api/medic/consulta?id=${id}`);
+export async function getConsultas(id,start, limit) {
+  const r = await api.get(`/api/medic/consulta?id=${id}&start=${start}&limit=${limit}`);
   return r.data;
 }
 

@@ -85,12 +85,22 @@ router.post("/api/medic/consulta", async (req, res) => {
 
 router.get("/api/medic/consulta", async (req, res) => {
 	try {
-		const { id } = req.query;
-		const r = await getConsulta(id);
+		const { id, start, limit } = req.query;
+		console.log(start, limit)
+		let r = await getConsulta(id);
+		for (let i = 0; i < r.length; i++) {
+			let l = new Date(r[i].dataConsulta);
+			const time = r[i].horaConsulta;
+			const hour = time.slice(0, 2);
+			const minute = Number(time.slice(3, 5));
+			l.setHours(hour - 3, minute);
+			const difference = new Date() - l;
+			r[i].diff = difference;
+		}
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
 		} else {
-			res.send(r);
+			res.send(r); // retorno a array com limite para a paginação.
 		}
 	} catch (err) {
 		res.status(401).send({
