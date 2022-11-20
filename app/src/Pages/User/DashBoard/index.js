@@ -48,7 +48,7 @@ export default function Index() {
 		pendentConsultResponse()
 		LastAvaliationResponse()
 	}, []);
-	console.log(lastAvaliation)
+	console.log(consultas)
 	return (
 		<main className="dashboard-main">
 			<section className="dashboard-section-main">
@@ -79,7 +79,7 @@ export default function Index() {
 									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao && item.diff < 0)&& <span className="item2">Consulta aceita</span>}
+										{(item.idSituacao == 2)&& <span className="item2">Consulta aceita</span>}
 										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
 										{item.diff < 0 && item.idSituacao == 1 && (
