@@ -1,25 +1,44 @@
 import { Router } from "express";
-import { medicLogin, novaConsulta, selecionarPaciente, selecionarAtuacao, secPlataforma, getConsulta, getDoctorById, pendentConsult, allConsuts, ultimaAvaliacao, changeDoctor, alterimage } from "../Repo/medicRepo.js";
-import multer from 'multer';
+import {
+	medicLogin,
+	novaConsulta,
+	selecionarPaciente,
+	selecionarAtuacao,
+	secPlataforma,
+	getConsulta,
+	getDoctorById,
+	pendentConsult,
+	allConsuts,
+	ultimaAvaliacao,
+	changeDoctor,
+	alterimage,
+} from "../Repo/medicRepo.js";
+import multer from "multer";
 
 const router = Router();
-const upload = multer({ dest: 'storage/doctorImages' })
+const upload = multer({ dest: "storage/doctorImages" });
 
-router.put("/api/medic/:id/capa", upload.single('capa'), async (req, res) => {
-	try{
-		const { id } = 	req.params;
-		const image  = 	req.file.path;
-		const r = await alterimage(image, id)
-		if(r != 1) 
-			throw new Error('A imagem não pode ser salva.')
+router.put("/api/medic/:id/capa", upload.single("capa"), async (req, res) => {
+	try {
+		const { id } = req.params;
+		function isImageNull() {
+			if (req.file == undefined) {
+				return null;
+			} else {
+				return req.file.path;
+			}
+		}
+		const image = isImageNull();
+		const r = await alterimage(image, id);
+		if (r != 1) throw new Error("A imagem não pode ser salva.");
 
-		res.status(204).send()
+		res.status(204).send();
 	} catch (err) {
 		res.status(400).send({
 			erro: err.message,
 		});
 	}
-})
+});
 
 router.post("/api/medic/login", async (req, res) => {
 	try {
@@ -42,16 +61,15 @@ router.get("/api/medic", async (req, res) => {
 		const { id } = req.query;
 		const r = await getDoctorById(id);
 		if (!r || r.length < 1) {
-			throw new Error("Ocorreu algum erro.")
+			throw new Error("Ocorreu algum erro.");
 		}
 		res.send(r);
-	}
-	catch (err) {
+	} catch (err) {
 		res.send({
-			erro: err.message
-		})
+			erro: err.message,
+		});
 	}
-})
+});
 
 router.post("/api/medic/consulta", async (req, res) => {
 	try {
@@ -120,8 +138,7 @@ router.get("/api/medic/consulta/pendent/:doctorId", async (req, res) => {
 	try {
 		const { doctorId } = req.params;
 		let r = await pendentConsult(doctorId);
-		if(!r) 
-			throw new Error('Você não possui consultas pendentes')
+		if (!r) throw new Error("Você não possui consultas pendentes");
 		res.send(r);
 	} catch (err) {
 		res.status(401).send({
@@ -134,8 +151,7 @@ router.get("/api/medic/consultas/:doctorId", async (req, res) => {
 	try {
 		const { doctorId } = req.params;
 		let r = await allConsuts(doctorId);
-		if(!r) 
-			throw new Error('Você não possui consultas pendentes')
+		if (!r) throw new Error("Você não possui consultas pendentes");
 		res.send(r);
 	} catch (err) {
 		res.status(401).send({
@@ -147,8 +163,7 @@ router.get("/api/medic/LastAvaliation/:doctorId", async (req, res) => {
 	try {
 		const { doctorId } = req.params;
 		let r = await ultimaAvaliacao(doctorId);
-		if(!r) 
-			throw new Error('Você não fez nenhuma avaliação ainda')
+		if (!r) throw new Error("Você não fez nenhuma avaliação ainda");
 		res.send(r[0]);
 	} catch (err) {
 		res.status(401).send({
@@ -161,7 +176,7 @@ router.put("/api/medic/account", async (req, res) => {
 	try {
 		const doctor = req.body;
 		const r = await changeDoctor(doctor);
-			res.status(201).send(r);
+		res.status(201).send(r);
 	} catch (err) {
 		res.status(401).send({
 			erro: err.message,

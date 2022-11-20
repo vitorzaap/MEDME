@@ -8,7 +8,7 @@ CREATE TABLE tb_usuario(
 		sbr_usuario         VARCHAR(200) NOT NULL,
     	ds_email			VARCHAR(200) NOT NULL,
     	ds_senha			VARCHAR(200) NOT NULL,
-    	img_icon			VARCHAR(200)
+    	img_icon			VARCHAR(200) DEFAULT "storage\defaul\6dda5a7c1dc3ad14f876849bc8bf23f0"
 );
 CREATE TABLE tb_atuacao(
 	id_atuacao			INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,7 +20,7 @@ CREATE TABLE tb_medico(
    	 ds_email			VARCHAR(200) NOT NULL,
    	 ds_senha			VARCHAR(200) NOT NULL,
    	 ds_medico			VARCHAR(1500),
-   	 img_icon			VARCHAR(200),
+   	 img_icon			VARCHAR(200) DEFAULT "storage\defaul\6dda5a7c1dc3ad14f876849bc8bf23f0",
    	 id_atuacao			INT NOT NULL,
    	 id_atuacao1		INT,
    	 nr_consulta		INT DEFAULT 0,

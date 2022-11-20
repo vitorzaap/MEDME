@@ -11,24 +11,26 @@ import { searchImage } from "../../../api/medicApi";
 export default function Index() {
 	const user = storage("userInfo");
 	const [usuario, setUsuario] = useState([]);
+	const [isDefault, setIsDefault] = useState(false);
 	const [classErrNome, setClassErrNome] = useState("default-input");
 	const [nome, setNome] = useState(user.name);
 	const [sobrenome, setSobrenome] = useState(user.sobrenome);
 	const [email, setEmail] = useState(user.email);
-	const [senha, setSenha] = useState(user.senha);
+	const [senha, setSenha] = useState(!user.senha ? user.pass : user.senha);
 	const [err, setErr] = useState("");
 	const [image, setImage] = useState();
 	const navigate = useNavigate();
 
 	if (!storage("userInfo")) {
-		navigate("/login");
+		navigate("/user/login");
 	}
 	async function exibirUser() {
 		const [r] = await getUser(user.id);
+		console.log(r)
 		setUsuario(r);
 	}
-	async function setImageUser() {
-		const r = await searchImage(usuario.img_icon);
+	function setImageUser() {
+		const r = searchImage(usuario.img_icon);
 		setImage(r);
 	}
 	useEffect(() => {
@@ -37,6 +39,7 @@ export default function Index() {
 
 	useEffect(() => {
 		exibirUser();
+
 		if (!usuario) {
 			navigate("/");
 		}
@@ -67,6 +70,9 @@ export default function Index() {
 	}
 
 	function show(x) {
+		if (x == `http://localhost:5000/${usuario.img_icon}` && usuario.img_icon != null) {
+			return image
+		}
 		return URL.createObjectURL(x);
 	}
 	return (
@@ -81,13 +87,9 @@ export default function Index() {
 						</div>
 						<div className="main-user-card-picture">
 							<div className="user-card-picture">
-								{!usuario.img_icon && <img src={iconuser} alt="profile picture" width="96px" className="profile-picture" onClick={() => document.getElementById("imagem").click()} />}
-                {(image == "http://localhost:5000/" + usuario.img_icon && usuario.img_icon != null) && (
-                  <img src={image} alt="profile picture" width="96px" className="profile-picture" onClick={() => document.getElementById("imagem").click()} />
-                )}
-                {(usuario.img_icon != null && image != `http://localhost:5000/${usuario.img_icon}`) &&  
-									<img src={image ? show(image) : ""} alt="profile picture" width="96px" className="profile-picture" onClick={() => document.getElementById("imagem").click()} />
-								}
+								{(!image) ? <img src={iconuser} alt="profile picture" width="96px" className="profile-picture" onClick={() => {
+									document.getElementById("imagem").click()
+								}} /> : (<img src={show(image)} alt="" className="profile-picture" width="96px" onClick={() => { document.getElementById("imagem").click() }} />)}
 								<input
 									type="file"
 									id="imagem"
@@ -98,7 +100,12 @@ export default function Index() {
 								{!image ? (
 									<div></div>
 								) : (
-									<button className="remove-picture-button" onClick={() => setImage(null)}>
+									<button
+										className="remove-picture-button"
+										onClick={() => {
+											setIsDefault(true);
+											setImage(null);
+										}}>
 										Remover Foto de Perfil
 									</button>
 								)}
@@ -185,17 +192,20 @@ export default function Index() {
 											toast(
 												(t) => (
 													<span>
-														Tem certeza que deseja editar seu perfil ?
+														Tem certeza que deseja editar seu perfil?
 														<button
 															onClick={async () => {
 																toast.dismiss(t.id);
 																toast.loading("Editando o perfil...");
-
-																setTimeout(() => {
+																setTimeout(async () => {
 																	toast.dismiss();
 																	toast.success(`Perfil editado com sucesso!`);
+																	await alterarConfig();
+																	setTimeout(() => {
+																		window.location.reload();
+																	}, 500);
 																}, 2000);
-																await alterarConfig();
+																
 															}}
 															style={{
 																padding: ".6em 1.2em",
@@ -206,7 +216,7 @@ export default function Index() {
 																borderRadius: ".5em",
 																fontSize: ".92em",
 															}}>
-															Editar
+															Salvar
 														</button>
 													</span>
 												),
@@ -218,7 +228,7 @@ export default function Index() {
 												}
 											);
 										}}>
-										Editar Perfil
+										Salvar
 									</button>
 								</div>
 							</div>
