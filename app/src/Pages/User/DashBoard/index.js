@@ -3,6 +3,7 @@ import "../Consultas/index.scss";
 import "../../Common/common.scss";
 import Cabecalho from "../../Components/Header/index.js";
 import Cards from "./Cards-DashBoard";
+import { listConversation } from "../../../api/conversationApi.js"
 import Calendar from "../../../assets/images/calendar-dashboard.svg";
 import { useEffect, useState } from "react";
 import storage from "local-storage";
@@ -14,7 +15,7 @@ export default function Index() {
 	const [lastAvaliation, setLastAvaliation] = useState([])
 	const [erro, setErro] = useState();
 	async function pendentConsultResponse(){
-		setConsPendente(await pendentConsult(user.id))
+		setConsPendente(await listConversation(null, user.id))
 	}
 	async function LastAvaliationResponse(){
 		const last = await LastAvaliation(user.id)
@@ -75,10 +76,10 @@ export default function Index() {
 									<td>{item.dataConsulta}</td>
 									<td>{item.horaConsulta}</td>
 									<td>{item.atuacao}</td>
-									<td>#{item.idConsultaUsuario}</td>
+									<td>#{item.idConsulta}</td>
 									<td>{item.plataforma}</td>
 									<td className="td-buttons">
-										{(item.idSituacao && item.diff > 0) == 2 && <span className="item2">Consulta aceita</span>}
+										{(item.idSituacao && item.diff < 0)&& <span className="item2">Consulta aceita</span>}
 										{item.idSituacao == 3 && <span className="item3">Consulta recusada</span>}
 										{item.idSituacao == 4 && <span className="item4">Consulta avaliada</span>}
 										{item.diff < 0 && item.idSituacao == 1 && (
