@@ -101,7 +101,7 @@ router.get("/api/medic/consulta", async (req, res) => {
 		if (r.length < 1) {
 			throw new Error("Você não tem nenhuma consulta ainda.");
 		} else {
-			res.send(r); // retorno a array com limite para a paginação.
+			res.send(r.slice(Number(start), Number(start) + Number(limit))); // retorno a array com limite para a paginação.
 		}
 	} catch (err) {
 		res.status(401).send({

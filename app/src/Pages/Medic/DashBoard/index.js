@@ -26,7 +26,7 @@ export default function Index() {
 
     async function getConsult() {
         try {
-            let limit = 9;
+            let limit = 4;
             if (window.innerHeight <= 696) {
                 limit = 4;
             }
@@ -36,7 +36,7 @@ export default function Index() {
                 response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
                 response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
             }
-            setConsultas(response);
+            setConsultas(response.slice(0, 4));
         } catch (err) {
             setErro(err.response.data.erro);
         }

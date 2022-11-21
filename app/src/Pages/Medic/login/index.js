@@ -89,6 +89,7 @@ export default function Index() {
 									const r = await medicLogin(email, pass);
 									storage("doctorInfo", r);
 									storage.remove('userInfo')
+									storage("doctorPage", 1)
 									setTimeout(() => {
 										ref.current.complete();
 									}, 2000);

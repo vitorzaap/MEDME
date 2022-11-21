@@ -10,7 +10,7 @@ import io from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import { searchImage } from "../../../api/medicApi";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("http://192.168.3.15:3051");
 
 export default function Index() {
 	const [message, setMessage] = useState("");

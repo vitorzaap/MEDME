@@ -78,13 +78,17 @@
 						width: 80%;
 						.name {
 							font-size: 1em;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							white-space: nowrap;
+							max-width: 90%;
 							font-family: "Noto-semibold";
 							height: max-content;
 							width: max-content;
 						}
 
 						.doctor-description {
-							max-width: 90%;
+							max-width: 80%;
 							text-overflow: ellipsis;
 							overflow: hidden;
 							white-space: nowrap;

@@ -51,7 +51,7 @@ export default function Index() {
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards cor='#39B6D2' titulo="Avaliações" numero={lastAvaliation} subtitulo="Sua última avaliação" linkTo="/consultas" />
+						<Cards cor='#39B6D2' titulo="Avaliações" numero={lastAvaliation ? lastAvaliation : 0} subtitulo="Sua última avaliação" linkTo="/consultas" />
 						<Cards cor='#6336FF' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." linkTo={`/mensagens`} />
 					</div>
 					<div className="main-div-table">

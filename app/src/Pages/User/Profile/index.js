@@ -87,9 +87,9 @@ export default function Index() {
 						</div>
 						<div className="main-user-card-picture">
 							<div className="user-card-picture">
-								{(!image) ? <img src={iconuser} alt="profile picture" width="96px" className="profile-picture" onClick={() => {
+								{(!image) ? <img src={iconuser} alt="profile picture" width="96px" height="96px" className="profile-picture" onClick={() => {
 									document.getElementById("imagem").click()
-								}} /> : (<img src={show(image)} alt="" className="profile-picture" width="96px" onClick={() => { document.getElementById("imagem").click() }} />)}
+								}} /> : (<img src={show(image)} alt="" className="profile-picture" width="96px" height="96px"i onClick={() => { document.getElementById("imagem").click() }} />)}
 								<input
 									type="file"
 									id="imagem"

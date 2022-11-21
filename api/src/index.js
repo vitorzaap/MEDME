@@ -17,4 +17,4 @@ app.use(messagesController);
 app.use(conversationController);
 
 //subindo o servidor
-serverHttp.listen(5000, () => console.log(`API running on PORT: 5000`));
+serverHttp.listen(process.env.PORT, () => console.log(`API running on PORT: ${process.env.PORT}`));

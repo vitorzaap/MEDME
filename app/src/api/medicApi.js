@@ -48,8 +48,9 @@ export async function adicionarConsulta(
   return r.data;
 }
 
-export async function getConsultas(id,start, limit) {
-  const r = await api.get(`/api/medic/consulta?id=${id}&start=${start}&limit=${limit}`);
+export async function getConsultas(id, page, limit) {
+  const virtualPage = (page - 1) * limit <= 0 ? 0 : (page - 1) * limit;
+  const r = await api.get(`/api/medic/consulta?id=${id}&start=${virtualPage}&limit=${limit}`);
   return r.data;
 }
 

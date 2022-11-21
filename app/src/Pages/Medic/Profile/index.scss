@@ -20,9 +20,9 @@
 			.user-profile-card {
 				display: flex;
 				flex-direction: column;
-				padding: 1em 2em 3em 2em;
+				padding: 1em 2em;
 				width: 90%;
-				height: 100%;
+				height: max-content;
 				min-height: 100%;
 				border-radius: 1em;
 				background-color: #ffffff;

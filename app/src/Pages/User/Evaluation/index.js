@@ -101,6 +101,7 @@ export default function Index() {
 																Tem certeza que deseja enviar este feedback?
 																<button
 																	onClick={async () => {
+																		toast.dismiss();
 																		toast.dismiss(t.id);
 																		toast.loading("Enviando seu Feedback...")
 																		

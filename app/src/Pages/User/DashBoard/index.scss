@@ -26,9 +26,9 @@ $color2: #39b6d2;
       }
       .main-div-table {
         width: 100%;
-        justify-content: center;
+
         .user-table {
-          width: 80%;
+          width: 90%;
           border-radius: 0.5em;
         }
       }
@@ -41,7 +41,7 @@ $color2: #39b6d2;
   transform: scale(1.025);
 }
 .dashboard-cards {
-  width: 30%;
+  width: 40%;
   transition: all .2s ease-in-out;
   height: 90%;
   margin: 1em;

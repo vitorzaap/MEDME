@@ -12,6 +12,7 @@ import arrowRight from "../../../assets/images/arrow-right.svg";
 import arrowLeft from "../../../assets/images/arrow-left.svg";
 export default function Index() {
 	const [consultas, setConsultas] = useState([]);
+	const [length, setLength] = useState()
 	const [erro, setErro] = useState();
 	const navigate = useNavigate();
 	if (!storage("userInfo")) {
@@ -20,19 +21,21 @@ export default function Index() {
 	useEffect(() => {
 		async function getConsult() {
 			try {
-				let limit = 10;
+				let limit = 5;
 				const user = storage("userInfo");
 				if (window.innerHeight <= 696) {
-					limit = 7;
+					limit = 5;
 				}
 				let response = await getConsultasId(user.id, storage("page"), limit);
+				let length = await getConsultasId(user.id, 0, Infinity);
 				for (let i = 0; i < response.length; i++) {
 					const novaData = new Date(response[i].dataConsulta);
 					response[i].dataConsulta = novaData.toLocaleDateString("pt-BR");
 					response[i].horaConsulta = response[i].horaConsulta.slice(0, 5);
 				}
+				setLength(length.length)
 				setConsultas(response);
-				console.log(response)
+				
 			} catch (err) {
 				setErro(err.response.data.erro);
 			}
@@ -76,7 +79,7 @@ export default function Index() {
 							))}
 							
 						</table>
-						{consultas.length > 10 && <div className="div-table-navButtons">
+						{length >= 5 && <div className="div-table-navButtons">
 							{storage("page") > 1 && (
 								<div>
 									<button
@@ -95,8 +98,7 @@ export default function Index() {
 									</button>
 								</div>
 							)}
-							{((consultas.length >= 7 && window.innerHeight <= 696) || (consultas.length >= 10 && window.innerHeight > 696)) && (
-								<div>
+							{(length > 5 && consultas.length == 5) && <div>
 									<button
 										className="btn-nav"
 										onClick={() => {
@@ -111,8 +113,8 @@ export default function Index() {
 											<img src={arrowRight} />
 										</div>
 									</button>
-								</div>
-							)}
+								</div>}
+							
 						</div>}
 						{erro !== undefined && (
 							<div className="err-div-message">

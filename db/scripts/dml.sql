@@ -94,6 +94,8 @@ INSERT INTO tb_plataforma(ds_plataforma)
 INSERT INTO tb_plataforma(ds_plataforma)
 		VALUES("Google Meet");
 INSERT INTO tb_plataforma(ds_plataforma)
+		VALUES("Teams");
+INSERT INTO tb_plataforma(ds_plataforma)
 		VALUES("Zooom");
 -- TB_PLATAFORMA
 
