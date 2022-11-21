@@ -6,25 +6,22 @@ import Cards from "./Cards-DashBoard";
 import { listConversation } from "../../../api/conversationApi.js"
 import Calendar from "../../../assets/images/calendar-dashboard.svg";
 import { useEffect, useState } from "react";
+
 import storage from "local-storage";
 import { getConsultasId, LastAvaliation, pendentConsult } from "../../../api/userApi.js";
 export default function Index() {
 	const user = storage("userInfo");
 	const [consultas, setConsultas] = useState([]);
 	const [consPendente, setConsPendente] = useState([])
-	const [lastAvaliation, setLastAvaliation] = useState([])
+	const [lastAvaliation, setLastAvaliation] = useState(0)
 	const [erro, setErro] = useState();
 	async function pendentConsultResponse(){
 		setConsPendente(await listConversation(null, user.id))
 	}
 	async function LastAvaliationResponse(){
 		const last = await LastAvaliation(user.id)
-		if(!last.nr_avalicao){
-			setLastAvaliation(0)
-		}
-		else{
-			setLastAvaliation(last.nr_avaliacao)
-		}
+		console.log(last)
+		setLastAvaliation(last.nr_avaliacao)
 	}
 	useEffect(() => {
 		async function getConsult() {
@@ -46,17 +43,16 @@ export default function Index() {
 		}
 		getConsult();
 		pendentConsultResponse()
-		LastAvaliationResponse()
+		LastAvaliationResponse();
 	}, []);
-	console.log(consultas)
 	return (
 		<main className="dashboard-main">
 			<section className="dashboard-section-main">
 				<Cabecalho />
 				<div className="dashboard-content">
 					<div className="dashboard-cards-content">
-						<Cards cor='#39B6D2' titulo="Avaliações" numero={lastAvaliation} subtitulo="Sua última avaliação" />
-						<Cards cor='#6336FF' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." />
+						<Cards cor='#39B6D2' titulo="Avaliações" numero={lastAvaliation} subtitulo="Sua última avaliação" linkTo="/consultas" />
+						<Cards cor='#6336FF' titulo="Conversas" numero={consPendente.length} subtitulo="Conversas ainda não respondidas." linkTo={`/mensagens`} />
 					</div>
 					<div className="main-div-table">
 						<table className="user-table">

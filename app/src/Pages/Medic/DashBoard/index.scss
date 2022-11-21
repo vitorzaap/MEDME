@@ -41,6 +41,10 @@
 		}
 	}
 }
+.doctor-dashboard-cards:hover{
+	cursor: pointer;
+	transform: scale(1.015);
+  }
 .doctor-dashboard-cards {
 	width: 30%;
 	height: 90%;

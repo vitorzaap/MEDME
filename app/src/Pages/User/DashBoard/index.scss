@@ -35,8 +35,14 @@ $color2: #39b6d2;
     }
   }
 }
+
+.dashboard-cards:hover{
+  cursor: pointer;
+  transform: scale(1.025);
+}
 .dashboard-cards {
   width: 30%;
+  transition: all .2s ease-in-out;
   height: 90%;
   margin: 1em;
   border-radius: 1.5em;

@@ -106,7 +106,6 @@ $btn-hover: #6236fff1;
 .sg-lg-btn-complex:hover {
 	background-color: #6236fff1;
 }
-
 .main-div-table {
 	display: flex;
 	width: max-content;
@@ -133,6 +132,7 @@ $btn-hover: #6236fff1;
 			font-family: "Noto-semibold";
 		}
 	}
+	
 	.user-table {
 		background-color: #fff;
 		border-radius: 0.5em 0.5em 0 0;
@@ -148,6 +148,8 @@ $btn-hover: #6236fff1;
 		tr:nth-child(even) {
 			background-color: #f2ecff;
 		}
+
+		
 		.user-tr {
 			text-align: center;
 			

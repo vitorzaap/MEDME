@@ -3,7 +3,6 @@ import "../../Common/common.scss";
 import Cabecalho from "../../Components/Header/index.js";
 import LinhaSeparação2 from "../../../assets/images/linha-separação4.svg";
 import { statusConsult } from "../../../api/userApi.js";
-import David from "../../../assets/images/david.svg";
 import storage from "local-storage";
 import { FaStar } from "react-icons/fa";
 import { useEffect, useState } from "react";

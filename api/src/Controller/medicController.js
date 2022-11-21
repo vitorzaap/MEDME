@@ -12,6 +12,7 @@ import {
 	ultimaAvaliacao,
 	changeDoctor,
 	alterimage,
+	getComents,
 } from "../Repo/medicRepo.js";
 import multer from "multer";
 
@@ -193,4 +194,16 @@ router.put("/api/medic/account", async (req, res) => {
 		});
 	}
 });
+
+router.get("/api/medic/coment", async (req, res) => {
+	try {
+		const { id } = req.query;
+		const r = await getComents(id)
+		res.send(r);
+	} catch (err) {
+		res.status(401).send({
+			erro: err.message
+		})
+	}
+})
 export default router;

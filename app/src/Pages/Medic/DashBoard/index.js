@@ -70,9 +70,9 @@ export default function Index() {
                 <Cabecalho />
                 <div className="dashboard-content">
                     <div className="dashboard-cards-content">
-                        <Cards titulo='Avaliações' numero={lastAvaliation} subtitulo='Sua última avaliação recebida' cor='#4375F4' accentcolor='8FAEFC'/>
-                        <Cards titulo='Consultas' numero={consults.length} subtitulo='Consultas já criadas' cor='#39B6D2' accentcolor='#84D6E8'/>
-                        <Cards titulo='Conversas' numero={consPendente.length} subtitulo="Conversas criadas." cor='#6336FF' accentcolor='7750FF'/>
+                        <Cards titulo='Avaliações' numero={lastAvaliation} subtitulo='Sua última avaliação recebida' cor='#4375F4' accentcolor='8FAEFC' linkTo={`/medic/avaliacoes`} />
+                        <Cards titulo='Consultas' numero={consults.length} subtitulo='Consultas já criadas' cor='#39B6D2' accentcolor='#84D6E8' linkTo={`/medic/consultas`}/>
+                        <Cards titulo='Conversas' numero={consPendente.length} subtitulo="Conversas criadas." cor='#6336FF' accentcolor='7750FF' linkTo={`/medic/mensagens`}/>
                     </div>
                     
                         <div className="main-div-table" style={{ justifyContent:"start",width: "100%" }}>

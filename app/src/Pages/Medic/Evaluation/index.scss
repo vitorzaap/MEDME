@@ -51,6 +51,10 @@
                         height: 80%;
                         .page-evaluation-comment-div-cards{
                             width: 65%;
+                            overflow-x: hidden;
+                            overflow-y: scroll;
+                            max-width: 65%;
+                            max-height: 100%;
                         }
                         .page-evaluation-comment-hates{
                             text-align: center;

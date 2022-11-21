@@ -20,7 +20,7 @@ export async function medicLogin(medic) {
 }
 
 export async function searchByDate(id, date) {
-	const c = `SELECT * FROM tb_consulta WHERE id_medico = ? AND dt_consulta = ?`
+	const c = `SELECT * FROM tb_consulta WHERE id_medico = ? AND dt_consulta = ?`;
 }
 
 export async function novaConsulta(consulta) {
@@ -28,17 +28,7 @@ export async function novaConsulta(consulta) {
 			INSERT INTO tb_consulta(id_medico, id_usuario, ds_consulta, dt_consulta, tm_consulta, id_atuacao, id_plataforma, vl_preco, ds_link, id_situacao)
 			VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, 1);
         `;
-	const [res] = await con.query(c, [
-		consulta.medicoid,
-		consulta.userid,
-		consulta.descricao,
-		consulta.data,
-		consulta.hora,
-		consulta.atuacao,
-		consulta.plataforma,
-		consulta.preco,
-		consulta.link,
-	]);
+	const [res] = await con.query(c, [consulta.medicoid, consulta.userid, consulta.descricao, consulta.data, consulta.hora, consulta.atuacao, consulta.plataforma, consulta.preco, consulta.link]);
 	consulta.id = res.insertId;
 
 	const add = `
@@ -109,12 +99,28 @@ export async function getConsulta(id) {
 	return res;
 }
 
+export async function getComents(id) {
+	const c = `
+		SELECT 
+		id_avaliacao,
+        tb_medico.nm_medico,
+        tb_usuario.nm_usuario,
+        tb_usuario.img_icon,
+        tb_avaliacao.ds_avaliacao,
+        tb_avaliacao.nr_avaliacao
+		FROM tb_avaliacao 
+		INNER JOIN tb_usuario ON tb_avaliacao.id_usuario = tb_usuario.id_usuario
+		INNER JOIN tb_medico ON tb_avaliacao.id_medico = tb_medico.id_medico WHERE tb_medico.id_medico = ?;
+		`;
+	const [r] = await con.query(c, [id]);
+	return r;
+}
+
 export async function getDoctorById(id) {
-	const c = 
-		`
+	const c = `
 		SELECT * FROM tb_medico WHERE id_medico = ?
-		`
-	const [res] = await con.query(c, [id])
+		`;
+	const [res] = await con.query(c, [id]);
 	return res;
 }
 export async function allConsuts(doctorId) {
@@ -124,7 +130,7 @@ export async function allConsuts(doctorId) {
 		  `;
 	const [res] = await con.query(c, [doctorId]);
 	return res;
-  }
+}
 
 export async function pendentConsult(doctorId) {
 	const c = `
@@ -147,9 +153,9 @@ export async function ultimaAvaliacao(doctorId) {
 		`;
 	const [res] = await con.query(c, [doctorId]);
 	return res;
-  }
-  
-  export async function changeDoctor(doctor) {
+}
+
+export async function changeDoctor(doctor) {
 	const c = `
 		  UPDATE  tb_medico
 		  SET     nm_medico = ?,    
@@ -158,22 +164,16 @@ export async function ultimaAvaliacao(doctorId) {
 				  ds_medico = ?
 		  WHERE   id_medico = ?
 		  `;
-	const [res] = await con.query(c, [
-		doctor.name,
-		doctor.email,
-		doctor.pass,
-		doctor.descricao,
-		doctor.id,
-	]);
+	const [res] = await con.query(c, [doctor.name, doctor.email, doctor.pass, doctor.descricao, doctor.id]);
 	return doctor;
-  }
+}
 
-  export async function alterimage(image, id) {
+export async function alterimage(image, id) {
 	const c = `
 	UPDATE  tb_medico
 	SET     img_icon =      ?
 	WHERE   id_medico =    ?`;
-  
+
 	const [resp] = await con.query(c, [image, id]);
 	return resp.affectedRows;
-  }
+}

@@ -80,6 +80,11 @@ export async function medicChangeProfile(name, email, pass, descricao, id) {
   return r.data;
 }
 
+export async function getComents(id) {
+  const r = await api.get(`/api/medic/coment?id=${id}`)
+  return r.data
+}
+
 export async function alterImage(id, image) {
   let form = new FormData();
   form.append("capa", image);
